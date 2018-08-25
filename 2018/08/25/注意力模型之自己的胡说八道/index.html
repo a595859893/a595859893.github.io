@@ -15,17 +15,17 @@
 
 
 
-<meta name="description" content="https://www.jianshu.com/p/75eeaee7f67dhttp://tensorfly.cn/tfdoc/tutorials/recurrent.html">
+<meta name="description" content="事先提醒 以下内容属于自己在尚未完全理解时，对于注意力模型自己胡乱思考得出来的毫无根据的个人见解，看看就好，不要全信。可能含有不专业的个人生造词 以上为自己以后回顾和其它观看的人（如果有的话……？）的警告可能参考的东西：认识论的框架问题 关于筛选信息先引用一下人工智能框架问题  必须让机器人知道哪些蕴含事件是相关的，而哪些是不相关的，并且学会忽略那些不相关的事件。……框架问题是要解释信息解封（In">
 <meta property="og:type" content="article">
-<meta property="og:title" content="RNN的一些资料">
-<meta property="og:url" content="https://a595859893.github.io/2018/07/29/RNN的一些资料/index.html">
+<meta property="og:title" content="注意力模型之自己的胡说八道">
+<meta property="og:url" content="https://a595859893.github.io/2018/08/25/注意力模型之自己的胡说八道/index.html">
 <meta property="og:site_name" content="简陋的小屋">
-<meta property="og:description" content="https://www.jianshu.com/p/75eeaee7f67dhttp://tensorfly.cn/tfdoc/tutorials/recurrent.html">
+<meta property="og:description" content="事先提醒 以下内容属于自己在尚未完全理解时，对于注意力模型自己胡乱思考得出来的毫无根据的个人见解，看看就好，不要全信。可能含有不专业的个人生造词 以上为自己以后回顾和其它观看的人（如果有的话……？）的警告可能参考的东西：认识论的框架问题 关于筛选信息先引用一下人工智能框架问题  必须让机器人知道哪些蕴含事件是相关的，而哪些是不相关的，并且学会忽略那些不相关的事件。……框架问题是要解释信息解封（In">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-29T03:07:58.244Z">
+<meta property="og:updated_time" content="2018-08-25T10:52:31.184Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="RNN的一些资料">
-<meta name="twitter:description" content="https://www.jianshu.com/p/75eeaee7f67dhttp://tensorfly.cn/tfdoc/tutorials/recurrent.html">
+<meta name="twitter:title" content="注意力模型之自己的胡说八道">
+<meta name="twitter:description" content="事先提醒 以下内容属于自己在尚未完全理解时，对于注意力模型自己胡乱思考得出来的毫无根据的个人见解，看看就好，不要全信。可能含有不专业的个人生造词 以上为自己以后回顾和其它观看的人（如果有的话……？）的警告可能参考的东西：认识论的框架问题 关于筛选信息先引用一下人工智能框架问题  必须让机器人知道哪些蕴含事件是相关的，而哪些是不相关的，并且学会忽略那些不相关的事件。……框架问题是要解释信息解封（In">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -55,7 +55,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>RNN的一些资料 | 简陋的小屋</title>
+<title>注意力模型之自己的胡说八道 | 简陋的小屋</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -248,11 +248,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-RNN的一些资料" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-注意力模型之自己的胡说八道" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2018/07/29/RNN的一些资料/" class="article-date">
-      <time datetime="2018-07-29T02:51:56.000Z" itemprop="datePublished">2018-07-29</time>
+      <a href="/2018/08/25/注意力模型之自己的胡说八道/" class="article-date">
+      <time datetime="2018-08-25T09:25:05.000Z" itemprop="datePublished">2018-08-25</time>
 </a>
 
 
@@ -267,7 +267,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      RNN的一些资料
+      注意力模型之自己的胡说八道
     </h1>
   
 
@@ -288,7 +288,20 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p><a href="https://www.jianshu.com/p/75eeaee7f67d" target="_blank" rel="noopener">https://www.jianshu.com/p/75eeaee7f67d</a><br><a href="http://tensorfly.cn/tfdoc/tutorials/recurrent.html" target="_blank" rel="noopener">http://tensorfly.cn/tfdoc/tutorials/recurrent.html</a></p>
+        <h1 id="事先提醒"><a href="#事先提醒" class="headerlink" title="事先提醒"></a>事先提醒</h1><hr>
+<p>以下内容属于自己在尚<em>未完全理解</em>时，对于注意力模型自己<em>胡乱思考</em>得出来的<em>毫无根据</em>的<em>个人见解</em>，<em>看看就好，不要全信</em>。<br>可能含有<em>不专业</em>的<em>个人生造词</em></p>
+<h2 id="以上为自己以后回顾和其它观看的人（如果有的话……？）的警告"><a href="#以上为自己以后回顾和其它观看的人（如果有的话……？）的警告" class="headerlink" title="以上为自己以后回顾和其它观看的人（如果有的话……？）的警告"></a>以上为自己以后回顾和其它观看的人（如果有的话……？）的警告</h2><p>可能参考的东西：<br><a href="http://www.cssn.cn/zhx/zx_kxjszx/201601/t20160126_2844813_1.shtml" target="_blank" rel="noopener">认识论的框架问题</a></p>
+<h1 id="关于筛选信息"><a href="#关于筛选信息" class="headerlink" title="关于筛选信息"></a>关于筛选信息</h1><p>先引用一下人工智能框架问题</p>
+<blockquote>
+<p>必须让机器人知道哪些蕴含事件是相关的，而哪些是不相关的，并且学会忽略那些不相关的事件。<br>……<br>框架问题是要解释信息解封（Informationally Unencapsulated）的认知过程，即既能有效解决来自任何潜在认知域的信息，而又不至于受累于不得不明晰地把相关事物从不相关事物中筛选出来的繁重工作。</p>
+</blockquote>
+<p>(题外话：感谢 命运石之门0)</p>
+<p>引用的目的是为了表达信息筛选的重要性，当需要的信息被精确的筛选出来，在之后的步骤中进行处理就会变得更加高效和准确</p>
+<h1 id="关于RNN-Encoder-Decoder中的注意力模型"><a href="#关于RNN-Encoder-Decoder中的注意力模型" class="headerlink" title="关于RNN Encoder-Decoder中的注意力模型"></a>关于RNN Encoder-Decoder中的注意力模型</h1><p>引入注意力模型的RNN Encoder-Decoder为模型带来的更多的信息（因为要将每一步Encoder处理的向量都参与运算<br>而将这些信息筛选出有用的，则是注意力模型关键的地方，将这些信息输入，返回需要位置编号的注意权重<br>一般的解释中，是说权重越高的代表模型越关注这个位置的信息<br>而从另一个角度来看，也可以说是权重越低的信息被筛去的越多，只留下了对自己有用的信息</p>
+<h1 id="关于注意力模型的想法"><a href="#关于注意力模型的想法" class="headerlink" title="关于注意力模型的想法"></a>关于注意力模型的想法</h1><p>看了网上的许多关于NLP的注意力模型的文章，似乎都将注意力模型输出的参数代表成“对应位置上的注意力”<br>从各种截图上来看，对应位置似乎就是对应的输入（词或者单字）<br>但是考虑到最后注意力模型输出是与RNN输出的语义向量进行乘法运算<br>所以注意力模型输出参数代表的应该是“对应位置及其之前的输入综合得到的语义向量的注意力”</p>
+<p>为什么要关注这个呢？<br>首先是对应位置的向量只考虑的前面位置的数据，没有考虑后面位置的数据<br>但最重要的是，这个数据里面存在冗余<br>当然，并不否认这个向量里面存在着判断所需要的词汇的数据，这些数据是有必要存在的<br>但同时也存在着许多没有必要的数据</p>
+<p>如果能够想到办法将这些没有必要的数据筛选出去，或许是一个提升效果的思路？<br>（不过可以真的要改的话模型会发生很大的变化，或许连RNN都不是了？）</p>
+<p>然后是对位置的看法……<br>个人对这个位置表示的注意力有些排斥<br>其第一点就是原本变长十分方便的RNN为了引入注意力可能长度就要固定了（或许有不固定的方法？反正我是不知道了……）<br>其次考虑到句子本身长度是不定的，每个成分的长度也是不定的<br>如果某一个成分的长度发生了变化（或者注意力模型本身因为失误判断错位了一些），注意力模型的后续整个输出会不会因此造成错位？<br>（但愿这只是我不理解造成的误会吧……如果有证明或者证伪我这个观点的论文或者其它数据，我还是很希望知道的，至少能安心一些）</p>
 
       
     </div>
@@ -297,13 +310,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2018/07/29/RNN的一些资料/">RNN的一些资料</a></p>
+        <p><span>本文标题:</span><a href="/2018/08/25/注意力模型之自己的胡说八道/">注意力模型之自己的胡说八道</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Wuny</a></p>
-        <p><span>发布时间:</span>2018-07-29, 10:51:56</p>
-        <p><span>最后更新:</span>2018-07-29, 11:07:58</p>
+        <p><span>发布时间:</span>2018-08-25, 17:25:05</p>
+        <p><span>最后更新:</span>2018-08-25, 18:52:31</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2018/07/29/RNN的一些资料/" title="RNN的一些资料">https://a595859893.github.io/2018/07/29/RNN的一些资料/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://a595859893.github.io/2018/07/29/RNN的一些资料/　　作者: Wuny" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2018/08/25/注意力模型之自己的胡说八道/" title="注意力模型之自己的胡说八道">https://a595859893.github.io/2018/08/25/注意力模型之自己的胡说八道/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://a595859893.github.io/2018/08/25/注意力模型之自己的胡说八道/　　作者: Wuny" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -315,16 +328,10 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2018/08/23/NLP资料记录/">
-                    工具、文档以及NLP资料记录
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2018/07/20/无脑邮件服务器/">
-                    无脑邮件服务器
+                <a href="/2018/08/23/NLP资料记录/">
+                    工具、文档以及NLP资料记录
                 </a>
             </div>
         
@@ -336,7 +343,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#事先提醒"><span class="toc-number">1.</span> <span class="toc-text">事先提醒</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#以上为自己以后回顾和其它观看的人（如果有的话……？）的警告"><span class="toc-number">1.1.</span> <span class="toc-text">以上为自己以后回顾和其它观看的人（如果有的话……？）的警告</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#关于筛选信息"><span class="toc-number">2.</span> <span class="toc-text">关于筛选信息</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#关于RNN-Encoder-Decoder中的注意力模型"><span class="toc-number">3.</span> <span class="toc-text">关于RNN Encoder-Decoder中的注意力模型</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#关于注意力模型的想法"><span class="toc-number">4.</span> <span class="toc-text">关于注意力模型的想法</span></a></li></ol>
         
     </div>
     <style>
@@ -367,21 +374,19 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2018/08/23/NLP资料记录/" title="上一篇: 工具、文档以及NLP资料记录">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2018/07/20/无脑邮件服务器/" title="下一篇: 无脑邮件服务器">
+            <a href="/2018/08/23/NLP资料记录/" title="下一篇: 工具、文档以及NLP资料记录">
                 <i class="fa fa-angle-right"></i>
             </a>
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/08/23/NLP资料记录/">工具、文档以及NLP资料记录</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/29/RNN的一些资料/">RNN的一些资料</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/20/无脑邮件服务器/">无脑邮件服务器</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/02/C-COM组件编写，并在C-上运行/">C# COM组件编写，并在C++上运行</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/18/C-WinFrom组件和3D动画资料/">C#WinFrom组件和3D动画资料</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/09/go-搭一个websocket/">go 搭一个websocket</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/03/构架演变（大概）/">构架演变（大概）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/30/卷积网络笔记/">卷积网络笔记以及WaveNet理解相关资料</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/05/go-gin框架的一些坑/">go gin框架的一些坑</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/04/关于整数为什么不能用对角线来证明不可数/">关于整数为什么不能用对角线来证明不可数</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/04/go-关于mysql/">go 关于mysql</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/30/go笔记-3/">go笔记-3</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/30/go笔记-2/">go笔记-2</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/30/go笔记-1/">go笔记-1</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/29/VSCode-go-插件安装/">VSCode go 插件安装</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/28/无脑配服务器-Nginx-MySQL-mongoDB-go-redis/">无脑配服务器/Nginx/MySQL/mongoDB/go/redis</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/28/new-Page/">new Page</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/12/first-page/">first page</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/08/25/注意力模型之自己的胡说八道/">注意力模型之自己的胡说八道</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/23/NLP资料记录/">工具、文档以及NLP资料记录</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/20/无脑邮件服务器/">无脑邮件服务器</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/02/C-COM组件编写，并在C-上运行/">C# COM组件编写，并在C++上运行</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/18/C-WinFrom组件和3D动画资料/">C#WinFrom组件和3D动画资料</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/09/go-搭一个websocket/">go 搭一个websocket</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/03/构架演变（大概）/">构架演变（大概）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/30/卷积网络笔记/">卷积网络笔记以及WaveNet理解相关资料</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/05/go-gin框架的一些坑/">go gin框架的一些坑</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/04/关于整数为什么不能用对角线来证明不可数/">关于整数为什么不能用对角线来证明不可数</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/04/go-关于mysql/">go 关于mysql</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/30/go笔记-3/">go笔记-3</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/30/go笔记-2/">go笔记-2</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/30/go笔记-1/">go笔记-1</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/29/VSCode-go-插件安装/">VSCode go 插件安装</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/28/无脑配服务器-Nginx-MySQL-mongoDB-go-redis/">无脑配服务器/Nginx/MySQL/mongoDB/go/redis</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/28/new-Page/">new Page</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/12/first-page/">first page</a></li></ul>
 
 
 

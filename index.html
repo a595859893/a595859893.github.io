@@ -252,6 +252,79 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-注意力模型之自己的胡说八道" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/08/25/注意力模型之自己的胡说八道/" class="article-date">
+      <time datetime="2018-08-25T09:25:05.000Z" itemprop="datePublished">2018-08-25</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/25/注意力模型之自己的胡说八道/">注意力模型之自己的胡说八道</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="事先提醒"><a href="#事先提醒" class="headerlink" title="事先提醒"></a>事先提醒</h1><hr>
+<p>以下内容属于自己在尚<em>未完全理解</em>时，对于注意力模型自己<em>胡乱思考</em>得出来的<em>毫无根据</em>的<em>个人见解</em>，<em>看看就好，不要全信</em>。<br>可能含有<em>不专业</em>的<em>个人生造词</em></p>
+<h2 id="以上为自己以后回顾和其它观看的人（如果有的话……？）的警告"><a href="#以上为自己以后回顾和其它观看的人（如果有的话……？）的警告" class="headerlink" title="以上为自己以后回顾和其它观看的人（如果有的话……？）的警告"></a>以上为自己以后回顾和其它观看的人（如果有的话……？）的警告</h2><p>可能参考的东西：<br><a href="http://www.cssn.cn/zhx/zx_kxjszx/201601/t20160126_2844813_1.shtml" target="_blank" rel="noopener">认识论的框架问题</a></p>
+<h1 id="关于筛选信息"><a href="#关于筛选信息" class="headerlink" title="关于筛选信息"></a>关于筛选信息</h1><p>先引用一下人工智能框架问题</p>
+<blockquote>
+<p>必须让机器人知道哪些蕴含事件是相关的，而哪些是不相关的，并且学会忽略那些不相关的事件。<br>……<br>框架问题是要解释信息解封（Informationally Unencapsulated）的认知过程，即既能有效解决来自任何潜在认知域的信息，而又不至于受累于不得不明晰地把相关事物从不相关事物中筛选出来的繁重工作。</p>
+</blockquote>
+<p>(题外话：感谢 命运石之门0)</p>
+<p>引用的目的是为了表达信息筛选的重要性，当需要的信息被精确的筛选出来，在之后的步骤中进行处理就会变得更加高效和准确</p>
+<h1 id="关于RNN-Encoder-Decoder中的注意力模型"><a href="#关于RNN-Encoder-Decoder中的注意力模型" class="headerlink" title="关于RNN Encoder-Decoder中的注意力模型"></a>关于RNN Encoder-Decoder中的注意力模型</h1><p>引入注意力模型的RNN Encoder-Decoder为模型带来的更多的信息（因为要将每一步Encoder处理的向量都参与运算<br>而将这些信息筛选出有用的，则是注意力模型关键的地方，将这些信息输入，返回需要位置编号的注意权重<br>一般的解释中，是说权重越高的代表模型越关注这个位置的信息<br>而从另一个角度来看，也可以说是权重越低的信息被筛去的越多，只留下了对自己有用的信息</p>
+<h1 id="关于注意力模型的想法"><a href="#关于注意力模型的想法" class="headerlink" title="关于注意力模型的想法"></a>关于注意力模型的想法</h1><p>看了网上的许多关于NLP的注意力模型的文章，似乎都将注意力模型输出的参数代表成“对应位置上的注意力”<br>从各种截图上来看，对应位置似乎就是对应的输入（词或者单字）<br>但是考虑到最后注意力模型输出是与RNN输出的语义向量进行乘法运算<br>所以注意力模型输出参数代表的应该是“对应位置及其之前的输入综合得到的语义向量的注意力”</p>
+<p>为什么要关注这个呢？<br>首先是对应位置的向量只考虑的前面位置的数据，没有考虑后面位置的数据<br>但最重要的是，这个数据里面存在冗余<br>当然，并不否认这个向量里面存在着判断所需要的词汇的数据，这些数据是有必要存在的<br>但同时也存在着许多没有必要的数据</p>
+<p>如果能够想到办法将这些没有必要的数据筛选出去，或许是一个提升效果的思路？<br>（不过可以真的要改的话模型会发生很大的变化，或许连RNN都不是了？）</p>
+<p>然后是对位置的看法……<br>个人对这个位置表示的注意力有些排斥<br>其第一点就是原本变长十分方便的RNN为了引入注意力可能长度就要固定了（或许有不固定的方法？反正我是不知道了……）<br>其次考虑到句子本身长度是不定的，每个成分的长度也是不定的<br>如果某一个成分的长度发生了变化（或者注意力模型本身因为失误判断错位了一些），注意力模型的后续整个输出会不会因此造成错位？<br>（但愿这只是我不理解造成的误会吧……如果有证明或者证伪我这个观点的论文或者其它数据，我还是很希望知道的，至少能安心一些）</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/AI/">AI</a><a class="article-category-link" href="/categories/AI/NeuralNetwork/">NeuralNetwork</a>
+    </div>
+
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-NLP资料记录" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -287,72 +360,17 @@
 <p><a href="https://keras.io/" target="_blank" rel="noopener">英文文档</a><br>英文，相对中文文档来说资料更全更新一些，在中文文档不够用的时候就要上了</p>
 <p><a href="https://tensorflow.google.cn/" target="_blank" rel="noopener">tensorflow</a><br>含有基于keras的高级API教程和一些文档API<br>也有一些对基本模型的讨论和讲述<br>以后想要自定义keras的训练层的时候可能会需要在这里找文档<br>对于tensorflow的新功能也可以在这里多看看了解一下</p>
 <p><a href="https://github.com/keras-team/keras/tree/master/examples" target="_blank" rel="noopener">官方例子</a><br>很棒的例子，代码简洁，有助于理解keras的使用和对部分网络结构的熟悉<br>不过建议只用来理解，真正做的时候看一下文档，因为部分例子里没有文档里的一些更方便的东西<br>（比如说在我写这篇的时候，seq2seq就没有使用embedding层，也没有忽略0数据<br>（不过更新似乎一直在继续，也许之后会看到更有效率的做法吧</p>
-<h1 id="RNN"><a href="#RNN" class="headerlink" title="RNN"></a>RNN</h1><p><a href="https://www.jianshu.com/p/75eeaee7f67d" target="_blank" rel="noopener">简要介绍</a><br><a href="http://tensorfly.cn/tfdoc/tutorials/recurrent.html" target="_blank" rel="noopener">http://tensorfly.cn/tfdoc/tutorials/recurrent.html</a></p>
+<h1 id="RNN"><a href="#RNN" class="headerlink" title="RNN"></a>RNN</h1><p><a href="https://www.jianshu.com/p/75eeaee7f67d" target="_blank" rel="noopener">简要介绍</a></p>
 <h1 id="seq2seq"><a href="#seq2seq" class="headerlink" title="seq2seq"></a>seq2seq</h1><p><a href="http://rsarxiv.github.io/2016/05/31/Sequence-to-Sequence-Learning-with-Neural-Networks-PaperWeekly/" target="_blank" rel="noopener">Sequence to Sequence Learning with Neural Networks</a><br>关于seq2seq的介绍</p>
 <p><a href="http://rsarxiv.github.io/2016/06/01/Learning-Phrase-Representations-using-RNN-Encoder–Decoder-for-Statistical-Machine-Translation-PaperWeekly/" target="_blank" rel="noopener">Learning Phrase Representations using RNN Encoder–Decoder for Statistical Machine Translation</a><br>里面涉及到的原论文中给出了GRU单元的算法以及概率的计算，可以较为清楚地了解GRU这个东西，还有seq2seq的原理</p>
 <h1 id="注意力模型"><a href="#注意力模型" class="headerlink" title="注意力模型"></a>注意力模型</h1><p><a href="https://arxiv.org/pdf/1409.0473.pdf" target="_blank" rel="noopener">NEURAL MACHINE TRANSLATION BY JOINTLY LEARNING TO ALIGN AND TRANSLATE</a><br>关于注意力模型的论文<br><a href="https://zhuanlan.zhihu.com/p/21287807" target="_blank" rel="noopener">知乎上对论文的中文介绍和理解</a></p>
+<p><a href="https://blog.csdn.net/malefactor/article/details/50550211" target="_blank" rel="noopener">自然语言处理中的Attention Model：是什么及为什么</a><br>将引入注意力模型的原因和详细的解释一步步的说了出来，很清晰</p>
+<p><a href="https://zhuanlan.zhihu.com/p/37835894" target="_blank" rel="noopener">attention模型方法综述</a></p>
 <p><a href="http://ruder.io/deep-learning-nlp-best-practices/" target="_blank" rel="noopener">deep-learning-nlp-best-practices</a><br>比较全面的介绍</p>
+<p><a href="https://blog.csdn.net/malefactor/article/details/50583474" target="_blank" rel="noopener">以Attention Model为例谈谈两种研究创新模式</a><br>对注意力模型的总结回顾和拓展</p>
 <h1 id="对抗生成"><a href="#对抗生成" class="headerlink" title="对抗生成"></a>对抗生成</h1><p>待填</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/AI/">AI</a><a class="article-category-link" href="/categories/AI/NeuralNetwork/">NeuralNetwork</a>
-    </div>
-
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-RNN的一些资料" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/07/29/RNN的一些资料/" class="article-date">
-      <time datetime="2018-07-29T02:51:56.000Z" itemprop="datePublished">2018-07-29</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/29/RNN的一些资料/">RNN的一些资料</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p><a href="https://www.jianshu.com/p/75eeaee7f67d" target="_blank" rel="noopener">https://www.jianshu.com/p/75eeaee7f67d</a><br><a href="http://tensorfly.cn/tfdoc/tutorials/recurrent.html" target="_blank" rel="noopener">http://tensorfly.cn/tfdoc/tutorials/recurrent.html</a></p>
+<h1 id="知识图谱"><a href="#知识图谱" class="headerlink" title="知识图谱"></a>知识图谱</h1><p><a href="https://zhuanlan.zhihu.com/p/41637843" target="_blank" rel="noopener">《知识图谱》专题论文解读</a><br>还没看，之后评价</p>
+<h1 id="推荐"><a href="#推荐" class="headerlink" title="推荐"></a>推荐</h1><p><a href="http://rsarxiv.github.io/" target="_blank" rel="noopener">PaperWeekly</a><br>可以看到许多不错的论文推荐之类的东西<br>不过似乎没有在更新了，最新的一篇也只是2017年的东西了<br>但是里面的东西对个人还是挺有学习价值的<br><em>修正：<a href="http://paperweek.ly/" target="_blank" rel="noopener">PaperWeekly</a>新地址，似乎在这边更新了，似乎要注册才能看</em></p>
 
       
     </div>
