@@ -294,7 +294,7 @@
 <h1 id="关于注意力模型的想法"><a href="#关于注意力模型的想法" class="headerlink" title="关于注意力模型的想法"></a>关于注意力模型的想法</h1><p>看了网上的许多关于NLP的注意力模型的文章，似乎都将注意力模型输出的参数代表成“对应位置上的注意力”<br>从各种截图上来看，对应位置似乎就是对应的输入（词或者单字）<br>但是考虑到最后注意力模型输出是与RNN输出的语义向量进行乘法运算<br>所以注意力模型输出参数代表的应该是“对应位置及其之前的输入综合得到的语义向量的注意力”</p>
 <p>为什么要关注这个呢？<br>首先是对应位置的向量只考虑的前面位置的数据，没有考虑后面位置的数据<br>但最重要的是，这个数据里面存在冗余<br>当然，并不否认这个向量里面存在着判断所需要的词汇的数据，这些数据是有必要存在的<br>但同时也存在着许多没有必要的数据</p>
 <p>如果能够想到办法将这些没有必要的数据筛选出去，或许是一个提升效果的思路？<br>（不过可以真的要改的话模型会发生很大的变化，或许连RNN都不是了？）</p>
-<p>然后是对位置的看法……<br>个人对这个位置表示的注意力有些排斥<br>其第一点就是原本变长十分方便的RNN为了引入注意力可能长度就要固定了（或许有不固定的方法？反正我是不知道了……）<br>其次考虑到句子本身长度是不定的，每个成分的长度也是不定的<br>如果某一个成分的长度发生了变化（或者注意力模型本身因为失误判断错位了一些），注意力模型的后续整个输出会不会因此造成错位？<br>（但愿这只是我不理解造成的误会吧……如果有证明或者证伪我这个观点的论文或者其它数据，我还是很希望知道的，至少能安心一些）</p>
+<p><del>然后是对位置的看法……<br>个人对这个位置表示的注意力有些排斥<br>其第一点就是原本变长十分方便的RNN为了引入注意力可能长度就要固定了（或许有不固定的方法？反正我是不知道了……）<br>其次考虑到句子本身长度是不定的，每个成分的长度也是不定的<br>如果某一个成分的长度发生了变化（或者注意力模型本身因为失误判断错位了一些），注意力模型的后续整个输出会不会因此造成错位？<br>（但愿这只是我不理解造成的误会吧……如果有证明或者证伪我这个观点的论文或者其它数据，我还是很希望知道的，至少能安心一些）</del><br>居然还有滑动窗口这种神奇的东西……</p>
 
       
     </div>
@@ -354,7 +354,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h1 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h1><p><a href="www.runoob.com/python/python-tutorial.html">菜鸟基础教程</a><br>如果忽然忘了一些Python的基础操作可以在这里找</p>
+        <h1 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h1><p><a href="https://www.runoob.com/python/python-tutorial.html" target="_blank" rel="noopener">菜鸟基础教程</a><br>如果忽然忘了一些Python的基础操作可以在这里找</p>
 <p><a href="https://www.jianshu.com/p/04d180d90a3f" target="_blank" rel="noopener">《利用Python进行数据分析·第2版》</a><br>前几章详细地介绍了numpy等工具的利用，可以用于参考</p>
 <h1 id="Keras"><a href="#Keras" class="headerlink" title="Keras"></a>Keras</h1><p><a href="https://keras-cn.readthedocs.io/en/latest/" target="_blank" rel="noopener">中文文档</a><br>因为是中文所以看着比较轻松，但是和英文相比有许多不全的地方<br>找不到或者不详尽的地方还是要看英文的文档</p>
 <p><a href="https://keras.io/" target="_blank" rel="noopener">英文文档</a><br>英文，相对中文文档来说资料更全更新一些，在中文文档不够用的时候就要上了</p>
@@ -368,6 +368,9 @@
 <p><a href="https://zhuanlan.zhihu.com/p/37835894" target="_blank" rel="noopener">attention模型方法综述</a></p>
 <p><a href="http://ruder.io/deep-learning-nlp-best-practices/" target="_blank" rel="noopener">deep-learning-nlp-best-practices</a><br>比较全面的介绍</p>
 <p><a href="https://blog.csdn.net/malefactor/article/details/50583474" target="_blank" rel="noopener">以Attention Model为例谈谈两种研究创新模式</a><br>对注意力模型的总结回顾和拓展</p>
+<p><a href="https://blog.csdn.net/mpk_no1/article/details/72862348" target="_blank" rel="noopener">深度学习笔记——Attention Model（注意力模型）学习总结</a></p>
+<p><a href="https://github.com/Xls1994/CDRextraction" target="_blank" rel="noopener">CDRextraction</a><br>似乎含有keras的attentionLayer实现</p>
+<p><a href="https://github.com/Lsdefine/attention-is-all-you-need-keras/blob/master/rnn_s2s.py" target="_blank" rel="noopener">attention-is-all-you-need-keras </a><br>含有注意力的seq2seq</p>
 <h1 id="对抗生成"><a href="#对抗生成" class="headerlink" title="对抗生成"></a>对抗生成</h1><p>待填</p>
 <h1 id="知识图谱"><a href="#知识图谱" class="headerlink" title="知识图谱"></a>知识图谱</h1><p><a href="https://zhuanlan.zhihu.com/p/41637843" target="_blank" rel="noopener">《知识图谱》专题论文解读</a><br>还没看，之后评价</p>
 <h1 id="推荐"><a href="#推荐" class="headerlink" title="推荐"></a>推荐</h1><p><a href="http://rsarxiv.github.io/" target="_blank" rel="noopener">PaperWeekly</a><br>可以看到许多不错的论文推荐之类的东西<br>不过似乎没有在更新了，最新的一篇也只是2017年的东西了<br>但是里面的东西对个人还是挺有学习价值的<br><em>修正：<a href="http://paperweek.ly/" target="_blank" rel="noopener">PaperWeekly</a>新地址，似乎在这边更新了，似乎要注册才能看</em></p>
