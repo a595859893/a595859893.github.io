@@ -252,6 +252,192 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-tensorflow-小技巧" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/09/05/tensorflow-小技巧/" class="article-date">
+      <time datetime="2018-09-05T14:01:17.000Z" itemprop="datePublished">2018-09-05</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/05/tensorflow-小技巧/">tensorflow 小技巧</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="Android-模型移植"><a href="#Android-模型移植" class="headerlink" title="Android 模型移植"></a>Android 模型移植</h1><p>将模型移植到手机端的时候，需要提供input和output的layer名字</p>
+<p>tensorflow保存为pb模型的时候output名字在layer层里面会加入后缀，我们需要查看后缀之后输入它的输出名字<br>（如Dense层，名字为output的层的输出名字是output/Sigmoid</p>
+<p>可以通过下述代码查看层的名字，这在将层移植到手机端上设置输入输出名的时候会很有用<br><code>[op for op in sess.graph.get_operations() if op.type == &quot;Const&quot;]</code></p>
+<p>也可以在tensorflow里先生成图然后在tensorboard里查看，里面的名字也是一样的（相对更加方便看一些）</p>
+<p>Android版本的tensorflow的feed输入是一维float数组，最后的long数组参数代表维数</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/AI/">AI</a><a class="article-category-link" href="/categories/AI/NeuralNetwork/">NeuralNetwork</a><a class="article-category-link" href="/categories/AI/NeuralNetwork/tensorflow/">tensorflow</a><a class="article-category-link" href="/categories/AI/NeuralNetwork/tensorflow/tips/">tips</a>
+    </div>
+
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-python-小技巧" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/09/05/python-小技巧/" class="article-date">
+      <time datetime="2018-09-05T14:01:07.000Z" itemprop="datePublished">2018-09-05</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/05/python-小技巧/">python 小技巧</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="pip上"><a href="#pip上" class="headerlink" title="pip上"></a>pip上</h1><p>pip install packagename –upgrade<br>升级某个包，以去除安装包的时候提示的版本不对的错误</p>
+<h1 id="vscode上"><a href="#vscode上" class="headerlink" title="vscode上"></a>vscode上</h1><p>使用flake8比pylint舒服一些……</p>
+<p>“python.linting.flake8Args”: [“–max-line-length=248”]<br>提高flake8Args的line to long提示限制</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/python/">python</a><a class="article-category-link" href="/categories/python/tips/">tips</a>
+    </div>
+
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-keras-小技巧" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/09/05/keras-小技巧/" class="article-date">
+      <time datetime="2018-09-05T14:00:54.000Z" itemprop="datePublished">2018-09-05</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/05/keras-小技巧/">keras 小技巧</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>#暂缺</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/AI/">AI</a><a class="article-category-link" href="/categories/AI/NeuralNetwork/">NeuralNetwork</a><a class="article-category-link" href="/categories/AI/NeuralNetwork/keras/">keras</a><a class="article-category-link" href="/categories/AI/NeuralNetwork/keras/tips/">tips</a>
+    </div>
+
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-注意力模型之自己的胡说八道" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -363,6 +549,7 @@
 <h1 id="RNN"><a href="#RNN" class="headerlink" title="RNN"></a>RNN</h1><p><a href="https://www.jianshu.com/p/75eeaee7f67d" target="_blank" rel="noopener">简要介绍</a></p>
 <h1 id="seq2seq"><a href="#seq2seq" class="headerlink" title="seq2seq"></a>seq2seq</h1><p><a href="http://rsarxiv.github.io/2016/05/31/Sequence-to-Sequence-Learning-with-Neural-Networks-PaperWeekly/" target="_blank" rel="noopener">Sequence to Sequence Learning with Neural Networks</a><br>关于seq2seq的介绍</p>
 <p><a href="http://rsarxiv.github.io/2016/06/01/Learning-Phrase-Representations-using-RNN-Encoder–Decoder-for-Statistical-Machine-Translation-PaperWeekly/" target="_blank" rel="noopener">Learning Phrase Representations using RNN Encoder–Decoder for Statistical Machine Translation</a><br>里面涉及到的原论文中给出了GRU单元的算法以及概率的计算，可以较为清楚地了解GRU这个东西，还有seq2seq的原理</p>
+<p><a href="https://github.com/Lsdefine/attention-is-all-you-need-keras/blob/master/rnn_s2s.py" target="_blank" rel="noopener">attention-is-all-you-need-keras</a><br>含有自定义程度较高的keras的seq2seq实现</p>
 <h1 id="注意力模型"><a href="#注意力模型" class="headerlink" title="注意力模型"></a>注意力模型</h1><p><a href="https://arxiv.org/pdf/1409.0473.pdf" target="_blank" rel="noopener">NEURAL MACHINE TRANSLATION BY JOINTLY LEARNING TO ALIGN AND TRANSLATE</a><br>关于注意力模型的论文<br><a href="https://zhuanlan.zhihu.com/p/21287807" target="_blank" rel="noopener">知乎上对论文的中文介绍和理解</a></p>
 <p><a href="https://blog.csdn.net/malefactor/article/details/50550211" target="_blank" rel="noopener">自然语言处理中的Attention Model：是什么及为什么</a><br>将引入注意力模型的原因和详细的解释一步步的说了出来，很清晰</p>
 <p><a href="https://zhuanlan.zhihu.com/p/37835894" target="_blank" rel="noopener">attention模型方法综述</a></p>
@@ -370,7 +557,7 @@
 <p><a href="https://blog.csdn.net/malefactor/article/details/50583474" target="_blank" rel="noopener">以Attention Model为例谈谈两种研究创新模式</a><br>对注意力模型的总结回顾和拓展</p>
 <p><a href="https://blog.csdn.net/mpk_no1/article/details/72862348" target="_blank" rel="noopener">深度学习笔记——Attention Model（注意力模型）学习总结</a></p>
 <p><a href="https://github.com/Xls1994/CDRextraction" target="_blank" rel="noopener">CDRextraction</a><br>似乎含有keras的attentionLayer实现</p>
-<p><a href="https://github.com/Lsdefine/attention-is-all-you-need-keras/blob/master/rnn_s2s.py" target="_blank" rel="noopener">attention-is-all-you-need-keras </a><br>含有注意力的seq2seq</p>
+<p><a href="https://arxiv.org/pdf/1706.03762.pdf" target="_blank" rel="noopener">AttentionIsAllYouNeed</a><br>不含有RNN和CNN的纯粹注意力模型论文<br>keras实践：<a href="https://github.com/Lsdefine/attention-is-all-you-need-keras/blob/master/transformer.py" target="_blank" rel="noopener">attention-is-all-you-need-keras </a><br>可能需要的参考：<br><a href="https://arxiv.org/pdf/1607.06450v1.pdf" target="_blank" rel="noopener">Layer Normalization</a><br><a href="https://www.zhihu.com/question/48820040" target="_blank" rel="noopener">你是怎样看待刚刚出炉的 Layer Normalisation 的？</a></p>
 <h1 id="对抗生成"><a href="#对抗生成" class="headerlink" title="对抗生成"></a>对抗生成</h1><p>待填</p>
 <h1 id="知识图谱"><a href="#知识图谱" class="headerlink" title="知识图谱"></a>知识图谱</h1><p><a href="https://zhuanlan.zhihu.com/p/41637843" target="_blank" rel="noopener">《知识图谱》专题论文解读</a><br>还没看，之后评价</p>
 <h1 id="推荐"><a href="#推荐" class="headerlink" title="推荐"></a>推荐</h1><p><a href="http://rsarxiv.github.io/" target="_blank" rel="noopener">PaperWeekly</a><br>可以看到许多不错的论文推荐之类的东西<br>不过似乎没有在更新了，最新的一篇也只是2017年的东西了<br>但是里面的东西对个人还是挺有学习价值的<br><em>修正：<a href="http://paperweek.ly/" target="_blank" rel="noopener">PaperWeekly</a>新地址，似乎在这边更新了，似乎要注册才能看</em></p>
@@ -730,195 +917,9 @@
 
 
   
-    <article id="post-卷积网络笔记" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/04/30/卷积网络笔记/" class="article-date">
-      <time datetime="2018-04-30T13:58:27.000Z" itemprop="datePublished">2018-04-30</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/30/卷积网络笔记/">卷积网络笔记以及WaveNet理解相关资料</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p><a href="https://www.zhihu.com/question/39022858" target="_blank" rel="noopener">来自知乎的原文</a><br>下面是自己的一些理解？<br>对于图像的操作可以写成矩阵的形式，作为<em>滤波器</em><br>这些<em>滤波器（filter）</em>会对特定的模式有高的激活（识别特定的曲线或者其它的模式）<br>训练卷积神经网络的时候，我们实际上是在训练每一格卷积层一系列的<em>滤波器</em><br>第二层的滤波器会将第一层的输出作为它的输出，来检测低阶特征的组合等情况<br>随着卷积层数的增加，组合的累计让神经网络能够检测的特征更加的复杂<br>这种方式与人类大脑的视觉信息处理模式相仿，都是由简单到复杂抽象</p>
-<p>构建滤波器（训练）的方式是<em>修改滤波器矩阵的值（权重Weight）</em>,使其能识别特定的特征<br>修改依据是损失函数的输出，尽可能的让损失函数的值最小<br>使其变为一个最优化问题</p>
-<p>WaveNet理解用相关资料<br>(卷积变种)[<a href="https://www.cnblogs.com/yangperasd/p/7071657.html]" target="_blank" rel="noopener">https://www.cnblogs.com/yangperasd/p/7071657.html]</a><br>(优化方法)[<a href="https://zhuanlan.zhihu.com/p/22252270]" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/22252270]</a><br>(卷积训练公式推导)[<a href="https://zybuluo.com/hanbingtao/note/485480]" target="_blank" rel="noopener">https://zybuluo.com/hanbingtao/note/485480]</a></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/AI/">AI</a><a class="article-category-link" href="/categories/AI/NeuralNetwork/">NeuralNetwork</a>
-    </div>
-
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-go-gin框架的一些坑" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/04/05/go-gin框架的一些坑/" class="article-date">
-      <time datetime="2018-04-05T14:26:10.000Z" itemprop="datePublished">2018-04-05</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/05/go-gin框架的一些坑/">go gin框架的一些坑</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>我们可以使用<code>c.Bind(&amp;abc)</code>来将传入的数据(json,xml,form等格式)赋值到abc这个struct中<br>但是要注意abc这个struct类型里，字母变量一定要<strong>首字母大写</strong><br>不然的话外部包无法访问这个变量，然后就无法对其赋值了<br>排查了4小时BUG的血的教训</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Language/">Language</a><a class="article-category-link" href="/categories/Language/Golang/">Golang</a>
-    </div>
-
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-关于整数为什么不能用对角线来证明不可数" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/04/04/关于整数为什么不能用对角线来证明不可数/" class="article-date">
-      <time datetime="2018-04-04T04:36:32.000Z" itemprop="datePublished">2018-04-04</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/04/关于整数为什么不能用对角线来证明不可数/">关于整数为什么不能用对角线来证明不可数</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>如题，存点连接<br><a href="https://zhuanlan.zhihu.com/p/19729557?utm_source=wechat_session&amp;utm_medium=social" target="_blank" rel="noopener">来自知乎</a></p>
-<blockquote>
-<p>实数的一种构造是「有理数列的极限」。</p>
-</blockquote>
-<h1 id="这里的数列是柯西数列，但我就不重复高等数学教材上的定义了。如果你学过或者手上有书，请翻书。如果没学过，那就随便看看吧。反正，柯西数列的定义中需要一种「距离」的概念。有了这个「距离」，柯西数列就是直观上越来越近的一系列点。在实数的定义中，这个距离很简单，就是两个有理数之前的差的绝对值。比如-3-14-和-3-1-之间的「距离」就是-0-04，而-3-3-1-3-14-3-141-3-1415-…-就是一个柯西数列。柯西有理数列的极限们就叫做实数。"><a href="#这里的数列是柯西数列，但我就不重复高等数学教材上的定义了。如果你学过或者手上有书，请翻书。如果没学过，那就随便看看吧。反正，柯西数列的定义中需要一种「距离」的概念。有了这个「距离」，柯西数列就是直观上越来越近的一系列点。在实数的定义中，这个距离很简单，就是两个有理数之前的差的绝对值。比如-3-14-和-3-1-之间的「距离」就是-0-04，而-3-3-1-3-14-3-141-3-1415-…-就是一个柯西数列。柯西有理数列的极限们就叫做实数。" class="headerlink" title="这里的数列是柯西数列，但我就不重复高等数学教材上的定义了。如果你学过或者手上有书，请翻书。如果没学过，那就随便看看吧。反正，柯西数列的定义中需要一种「距离」的概念。有了这个「距离」，柯西数列就是直观上越来越近的一系列点。在实数的定义中，这个距离很简单，就是两个有理数之前的差的绝对值。比如 3.14 和 3.1 之间的「距离」就是 0.04，而 3, 3.1, 3.14, 3.141, 3.1415, … 就是一个柯西数列。柯西有理数列的极限们就叫做实数。"></a>这里的数列是柯西数列，但我就不重复高等数学教材上的定义了。如果你学过或者手上有书，请翻书。如果没学过，那就随便看看吧。反正，柯西数列的定义中需要一种「距离」的概念。有了这个「距离」，柯西数列就是直观上越来越近的一系列点。在实数的定义中，这个距离很简单，就是两个有理数之前的差的绝对值。比如 3.14 和 3.1 之间的「距离」就是 0.04，而 3, 3.1, 3.14, 3.141, 3.1415, … 就是一个柯西数列。柯西有理数列的极限们就叫做实数。</h1><p>开头提到的题目中，题主在纠结：如果整数往左一直写下去是什么呢？在初等数学中，这仅仅是一个无穷整数数列，而且这个数列没有定义极限.<br>但是，我们现在来引入一个新的「距离」。如果一个有理数可以写成的形式，其中 p 和 q 不能被 2 整除，那么我们记 n 的「绝对值」为. 也就是说，如果 n 里包含一个 2 的次幂，那么幂次越高 n 就越「小」，幂次越低 n 就越「大」。在这个「绝对值」下，我们定义两个数的「距离」为.<br>我知道这个定义很让人纠结。如果你接受这个定义，那么将数字向左无穷写下去，即 这种形式，就有意义了。在新的「距离」下，比如 1, 01, 101, 1101, 01101, 101101 … 这样的数列就成了一个柯西数列。这个数列在新的「距离」下是收敛的。这些无穷数列的极限叫「2-进数」。比如 1, 11, 111, 1111, 11111 … 这个无穷数列，其极限是 -1.（我只是随便举个例子，请勿用初等数学来解释这个例子）。这样的做法自然适用于所有素数 p，相应的我们就有了 p-进数。<br>如题主所期望的，因为对给定的 p-进数，其位数是无限的，即每个 p-进数都对应一个无穷数列，所以可以用对角线方法证明，p-进数是不可数的。</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Math/">Math</a>
-    </div>
-
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 </div>
