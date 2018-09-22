@@ -3,6 +3,39 @@
   
     
     <entry>
+      <title>Unity 单元测试坑</title>
+      <link href="/2018/09/22/Unity-%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E5%9D%91/"/>
+      <url>/2018/09/22/Unity-%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E5%9D%91/</url>
+      <content type="html"><![CDATA[<p>写于Unity 2018版本</p><p>创建单元测试方式：<br>将<code>Project</code>目录切换到<code>Editor</code>上（如果没有则新建）<br>打开<code>Window -&gt; TestRunner</code><br>找到<code>EditMode</code>（如果要在游戏内测试，也可以选择<code>PlayMode</code>）<br>点击<code>Create Test Assembly Folder</code>创建测试文件夹<br>点击<code>Create Test Script in current floder</code>创建测试脚本</p><p>这样一个测试模块就创建好了，但是问题是这个模块不能够使用真实运行时引用的脚本<br>为了能够使用，需要进行以下步骤</p><p>在你需要引用到测试模块的脚本的文件夹下，<code>右键-&gt;Create-&gt;Assembly Definition</code>创建设定文件<br>回到你创建的测试文件夹，找到其中的设定文件<br>点击设定文件，在<code>Inspector</code>中找到<code>References</code>，添加之前创建的设定文件<br>打开VS，如果还是不能引用，就重建解决方案</p><p>到这应该就可以使用了</p>]]></content>
+      
+      
+        <tags>
+            
+            <tag> Unity </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>软件记录</title>
+      <link href="/2018/09/06/%E8%BD%AF%E4%BB%B6%E8%AE%B0%E5%BD%95/"/>
+      <url>/2018/09/06/%E8%BD%AF%E4%BB%B6%E8%AE%B0%E5%BD%95/</url>
+      <content type="html"><![CDATA[]]></content>
+      
+      
+    </entry>
+    
+    <entry>
+      <title>杂乱的连接收藏</title>
+      <link href="/2018/09/05/%E6%9D%82%E4%B9%B1%E7%9A%84%E8%BF%9E%E6%8E%A5%E6%94%B6%E8%97%8F/"/>
+      <url>/2018/09/05/%E6%9D%82%E4%B9%B1%E7%9A%84%E8%BF%9E%E6%8E%A5%E6%94%B6%E8%97%8F/</url>
+      <content type="html"><![CDATA[<h1 id="软件"><a href="#软件" class="headerlink" title="软件"></a>软件</h1><p><a href="https://code.visualstudio.com/" target="_blank" rel="noopener">VS Code</a><br><a href="https://www.freedownloadmanager.org/" target="_blank" rel="noopener">Free Download Manager</a><br><a href="http://potplayer.daum.net/" target="_blank" rel="noopener">potplayer</a><br><a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a><br><a href="https://typora.io/" target="_blank" rel="noopener">Typora</a><br><a href="https://notepad-plus-plus.org/[Everything](http://www.voidtools.com/" target="_blank" rel="noopener">notpad++</a><br><a href="https://www.cockos.com/licecap/" target="_blank" rel="noopener">LICEcap</a><br><a href="https://www.blender.org/" target="_blank" rel="noopener">Blender</a><br><a href="https://sai.yufan.me/" target="_blank" rel="noopener">SAI</a><br><a href="https://www.ccleaner.com/ccleaner" target="_blank" rel="noopener">CClear</a><br>UleadGIF(以前的连接挂掉了，未找到可信赖连接，备份于网盘)<br>Windows Store<br>    M8! MindMap<br>    微软必应词典<br>    奇妙清单</p><h1 id="视频"><a href="#视频" class="headerlink" title="视频"></a>视频</h1><p><a href="https://www.bilibili.com/video/av12465079" target="_blank" rel="noopener">【官方双语】想知道比特币（和其他加密货币）的原理吗？</a></p>]]></content>
+      
+      
+    </entry>
+    
+    <entry>
       <title>tensorflow 小技巧</title>
       <link href="/2018/09/05/tensorflow-%E5%B0%8F%E6%8A%80%E5%B7%A7/"/>
       <url>/2018/09/05/tensorflow-%E5%B0%8F%E6%8A%80%E5%B7%A7/</url>
