@@ -15,17 +15,17 @@
 
 
 
-<meta name="description" content="安装1234567sudo apt-get updatesudo apt-get install bison ed gawk gcc libc6-dev make -ysudo apt-get install nginx -ysudo apt-get install mongodb-server -ysudo apt-get install redis-server -ysudo apt-get">
+<meta name="description" content="使用keras  [中文] Tushare Pro pandas plt 相关教程Pandashttp://www.cnblogs.com/chaosimple/p/4153083.html https://jingyan.baidu.com/article/93f9803fe29aece0e46f55cb.html pandas 遍历 12for index, row in data.iterr">
 <meta property="og:type" content="article">
-<meta property="og:title" content="无脑配服务器&#x2F;Nginx&#x2F;MySQL&#x2F;mongoDB&#x2F;go&#x2F;redis">
-<meta property="og:url" content="https://a595859893.github.io/2018/03/28/无脑配服务器-Nginx-MySQL-mongoDB-go-redis/index.html">
+<meta property="og:title" content="神经网络简单实践记录">
+<meta property="og:url" content="https://a595859893.github.io/2018/10/24/神经网络简单实践记录/index.html">
 <meta property="og:site_name" content="简陋的小屋">
-<meta property="og:description" content="安装1234567sudo apt-get updatesudo apt-get install bison ed gawk gcc libc6-dev make -ysudo apt-get install nginx -ysudo apt-get install mongodb-server -ysudo apt-get install redis-server -ysudo apt-get">
+<meta property="og:description" content="使用keras  [中文] Tushare Pro pandas plt 相关教程Pandashttp://www.cnblogs.com/chaosimple/p/4153083.html https://jingyan.baidu.com/article/93f9803fe29aece0e46f55cb.html pandas 遍历 12for index, row in data.iterr">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-02T08:30:16.680Z">
+<meta property="og:updated_time" content="2018-11-02T13:21:44.610Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="无脑配服务器&#x2F;Nginx&#x2F;MySQL&#x2F;mongoDB&#x2F;go&#x2F;redis">
-<meta name="twitter:description" content="安装1234567sudo apt-get updatesudo apt-get install bison ed gawk gcc libc6-dev make -ysudo apt-get install nginx -ysudo apt-get install mongodb-server -ysudo apt-get install redis-server -ysudo apt-get">
+<meta name="twitter:title" content="神经网络简单实践记录">
+<meta name="twitter:description" content="使用keras  [中文] Tushare Pro pandas plt 相关教程Pandashttp://www.cnblogs.com/chaosimple/p/4153083.html https://jingyan.baidu.com/article/93f9803fe29aece0e46f55cb.html pandas 遍历 12for index, row in data.iterr">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -55,7 +55,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>无脑配服务器/Nginx/MySQL/mongoDB/go/redis | 简陋的小屋</title>
+<title>神经网络简单实践记录 | 简陋的小屋</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -248,11 +248,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-无脑配服务器-Nginx-MySQL-mongoDB-go-redis" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-神经网络简单实践记录" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2018/03/28/无脑配服务器-Nginx-MySQL-mongoDB-go-redis/" class="article-date">
-      <time datetime="2018-03-28T07:02:19.000Z" itemprop="datePublished">2018-03-28</time>
+      <a href="/2018/10/24/神经网络简单实践记录/" class="article-date">
+      <time datetime="2018-10-24T15:00:54.000Z" itemprop="datePublished">2018-10-24</time>
 </a>
 
 
@@ -267,7 +267,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      无脑配服务器/Nginx/MySQL/mongoDB/go/redis
+      神经网络简单实践记录
     </h1>
   
 
@@ -275,10 +275,6 @@
       
       <div class="article-info article-info-post">
         
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Server/">Server</a>
-    </div>
-
 
         
         <div class="clearfix"></div>
@@ -288,40 +284,17 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install bison ed gawk gcc libc6-dev make -y</span><br><span class="line">sudo apt-get install nginx -y</span><br><span class="line">sudo apt-get install mongodb-server -y</span><br><span class="line">sudo apt-get install redis-server -y</span><br><span class="line">sudo apt-get install mysql-server -y</span><br><span class="line">sudo apt-get install golang -y</span><br></pre></td></tr></table></figure>
-<p>MYSQL安装需要输入root账户的密码</p>
-<hr>
-<hr>
-<h2 id="nginx配置"><a href="#nginx配置" class="headerlink" title="nginx配置"></a>nginx配置</h2><p>创建nginx用权限账户 www（或者在配置文件中修改user为已存在用户）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo /usr/sbin/groupadd www</span><br><span class="line">sudo /usr/sbin/useradd -g www www</span><br></pre></td></tr></table></figure></p>
-<p>(可能会报sudo: unable to resolve host,这只是warning,可以不用管，下同)</p>
-<p>修改配置文件（参考文件中有参考网址可以查看参数的作用）<br><code>sudo vim /etc/nginx/nginx.conf</code></p>
-<blockquote>
-<p>/etc/nginx/conf.d/*.conf;<br>/etc/nginx/sites-enabled/*;<br>这两个是配置文件中带有的目录，网站的参数也可以在这里进行修改</p>
-</blockquote>
-<blockquote>
-<p>默认在”/etc/nginx/sites-enabled/default”中存在80端口的配置<br>如果自己需要修改80端口的话，可以直接修改这个文件，或者删掉自己重新配置</p>
-</blockquote>
-<p>重启nginx适用配置</p>
-<h2 id="sudo-service-nginx-restart"><a href="#sudo-service-nginx-restart" class="headerlink" title="sudo service nginx restart"></a><code>sudo service nginx restart</code></h2><hr>
-<h2 id="MySql配置"><a href="#MySql配置" class="headerlink" title="MySql配置"></a>MySql配置</h2><p>登陆mysql并创建数据库NEST,远程访问用户bird，并授权<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mysql -u username -p password</span><br><span class="line">create database NEST</span><br><span class="line">CREATE USER &apos;bird&apos;@&apos;%&apos; IDENTIFIED BY &apos;password here&apos;;</span><br><span class="line">GRANT ALL ON NEST.* TO &apos;bird&apos;@&apos;%&apos;;</span><br><span class="line">flush privileges;</span><br></pre></td></tr></table></figure></p>
-<p>修改配置文件<br><code>sudo vim /etc/mysql/mysql.conf.d/mysqld.cnf</code><br>修改bind-address为0.0.0.0</p>
-<p>重启mysql适用配置<br><code>sudo service mysql restart</code></p>
-<hr>
-<hr>
-<h2 id="mongoDB配置"><a href="#mongoDB配置" class="headerlink" title="mongoDB配置"></a>mongoDB配置</h2><p>（记得在防火墙打开27017端口）</p>
-<p>添加用户数据<br>（创建了超级权限的root用户，和一个只读写nest数据库的bird用户）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mongo</span><br><span class="line">use admin</span><br><span class="line">db.createUser(&#123;user:&quot;root&quot;,pwd:&quot;password here&quot;,roles:[&quot;root&quot;]&#125;)</span><br><span class="line">use nest</span><br><span class="line">db.createCollection(&quot;nest&quot;)</span><br><span class="line">db.createUser(&#123;user:&quot;bird&quot;,pwd:&quot;password here&quot;,roles:[&#123;role:&quot;readWrite&quot;,db:&quot;nest&quot;&#125;]&#125;)</span><br></pre></td></tr></table></figure></p>
-<p>然后退出mongo<br><a href="https://docs.mongodb.com/manual/reference/method/db.createUser/#db.createUser" target="_blank" rel="noopener">用户添加参考</a><br><a href="https://docs.mongodb.com/manual/reference/built-in-roles/#built-in-roles" target="_blank" rel="noopener">内置权限参考</a><br><a href="https://docs.mongodb.com/manual/core/security-user-defined-roles/#user-defined-roles" target="_blank" rel="noopener">自定义权限参考</a></p>
-<p>修改配置文件<br><code>sudo vim /etc/mongodb.conf</code><br>注释”bind_ip=127.0.0.1”一行,以允许远程访问<br>取消注释”auth = true”一行,以启用权限管理</p>
-<p>重启mongodb适用配置<br><code>sudo service mongodb restart</code></p>
-<hr>
-<hr>
-<h2 id="redis配置"><a href="#redis配置" class="headerlink" title="redis配置"></a>redis配置</h2><p>（记得在防火墙打开6379端口）<br>如果想要允许远程访问的话，修改配置文件即可<br><code>sudo vim /etc/redis/redis.conf</code><br><code>bind 127.0.0.1改为bind 0.0.0.0</code><br>取消<code>requirepass foobared</code>注释，并且将foobared改为你的密码，如<code>requirepass &quot;your password&quot;</code><br>重启redis服务<br><code>sudo service redis-server restart</code></p>
-<blockquote>
-<p>修改之后在<code>redis-cli</code>中需要添加<code>-a &quot;your password&quot;</code>参数来启动(your password改为你设置的密码)</p>
-</blockquote>
-<h2 id="不添加该参数虽然也可以登录成功，但是没有任何操作权限。"><a href="#不添加该参数虽然也可以登录成功，但是没有任何操作权限。" class="headerlink" title="不添加该参数虽然也可以登录成功，但是没有任何操作权限。"></a>不添加该参数虽然也可以登录成功，但是没有任何操作权限。</h2><hr>
-<h2 id="go配置"><a href="#go配置" class="headerlink" title="go配置"></a>go配置</h2><p>创建工作目录，配置环境变量和项目目录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">cd $HMOE</span><br><span class="line">mkdir Applications Applications/Go</span><br><span class="line">mkdir Applications/Go/src Applications/Go/pkg Applications/Go/bin</span><br><span class="line">export GOROOT=$HOME/go</span><br><span class="line">export PATH=$GOROOT/bin:$PATH</span><br><span class="line">export GOPATH=$HOME/Applications/Go</span><br></pre></td></tr></table></figure></p>
-<hr>
+        <h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p><a href="https://keras.io/" target="_blank" rel="noopener">keras</a>  <a href="https://keras-cn.readthedocs.io/en/latest/" target="_blank" rel="noopener">[中文]</a></p>
+<p><a href="https://tushare.pro/" target="_blank" rel="noopener">Tushare Pro</a></p>
+<p><a href="https://pandas.pydata.org/" target="_blank" rel="noopener">pandas</a></p>
+<p><a href="https://matplotlib.org/" target="_blank" rel="noopener">plt</a></p>
+<h2 id="相关教程"><a href="#相关教程" class="headerlink" title="相关教程"></a>相关教程</h2><h3 id="Pandas"><a href="#Pandas" class="headerlink" title="Pandas"></a>Pandas</h3><p><a href="http://www.cnblogs.com/chaosimple/p/4153083.html" target="_blank" rel="noopener">http://www.cnblogs.com/chaosimple/p/4153083.html</a></p>
+<p><a href="https://jingyan.baidu.com/article/93f9803fe29aece0e46f55cb.html" target="_blank" rel="noopener">https://jingyan.baidu.com/article/93f9803fe29aece0e46f55cb.html</a></p>
+<p>pandas 遍历</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> index, row <span class="keyword">in</span> data.iterrows():</span><br><span class="line">    <span class="keyword">pass</span> <span class="comment">#做点什么</span></span><br></pre></td></tr></table></figure>
+<h3 id="plt"><a href="#plt" class="headerlink" title="plt"></a>plt</h3><p><a href="http://www.cnblogs.com/wei-li/archive/2012/05/23/2506940.html#pyplot" target="_blank" rel="noopener">http://www.cnblogs.com/wei-li/archive/2012/05/23/2506940.html#pyplot</a></p>
+<h2 id="keras"><a href="#keras" class="headerlink" title="keras"></a>keras</h2><p><a href="https://www.jianshu.com/p/6de246284f5c" target="_blank" rel="noopener">https://www.jianshu.com/p/6de246284f5c</a></p>
+<h2 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h2><p><a href="https://zhuanlan.zhihu.com/p/34667893" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/34667893</a><br><a href="https://blog.csdn.net/u010312436/article/details/78449632" target="_blank" rel="noopener">https://blog.csdn.net/u010312436/article/details/78449632</a></p>
 
       
     </div>
@@ -330,13 +303,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2018/03/28/无脑配服务器-Nginx-MySQL-mongoDB-go-redis/">无脑配服务器/Nginx/MySQL/mongoDB/go/redis</a></p>
+        <p><span>本文标题:</span><a href="/2018/10/24/神经网络简单实践记录/">神经网络简单实践记录</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Wuny</a></p>
-        <p><span>发布时间:</span>2018-03-28, 15:02:19</p>
-        <p><span>最后更新:</span>2018-06-02, 16:30:16</p>
+        <p><span>发布时间:</span>2018-10-24, 23:00:54</p>
+        <p><span>最后更新:</span>2018-11-02, 21:21:44</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2018/03/28/无脑配服务器-Nginx-MySQL-mongoDB-go-redis/" title="无脑配服务器/Nginx/MySQL/mongoDB/go/redis">https://a595859893.github.io/2018/03/28/无脑配服务器-Nginx-MySQL-mongoDB-go-redis/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://a595859893.github.io/2018/03/28/无脑配服务器-Nginx-MySQL-mongoDB-go-redis/　　作者: Wuny" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2018/10/24/神经网络简单实践记录/" title="神经网络简单实践记录">https://a595859893.github.io/2018/10/24/神经网络简单实践记录/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://a595859893.github.io/2018/10/24/神经网络简单实践记录/　　作者: Wuny" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -349,15 +322,15 @@
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2018/03/29/VSCode-go-插件安装/">
-                    VSCode go 插件安装
+                <a href="/2018/10/26/Anaconda相关/">
+                    Anaconda相关
                 </a>
             </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2018/03/28/new-Page/">
-                    new Page
+                <a href="/2018/10/14/关于队列随机抽取概率均等的问题/">
+                    关于队列随机抽取概率均等的问题
                 </a>
             </div>
         
@@ -369,7 +342,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装"><span class="toc-number">1.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#nginx配置"><span class="toc-number">2.</span> <span class="toc-text">nginx配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sudo-service-nginx-restart"><span class="toc-number">3.</span> <span class="toc-text">sudo service nginx restart</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MySql配置"><span class="toc-number">4.</span> <span class="toc-text">MySql配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mongoDB配置"><span class="toc-number">5.</span> <span class="toc-text">mongoDB配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#redis配置"><span class="toc-number">6.</span> <span class="toc-text">redis配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#不添加该参数虽然也可以登录成功，但是没有任何操作权限。"><span class="toc-number">7.</span> <span class="toc-text">不添加该参数虽然也可以登录成功，但是没有任何操作权限。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#go配置"><span class="toc-number">8.</span> <span class="toc-text">go配置</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#使用"><span class="toc-number">1.</span> <span class="toc-text">使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#相关教程"><span class="toc-number">2.</span> <span class="toc-text">相关教程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Pandas"><span class="toc-number">2.1.</span> <span class="toc-text">Pandas</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#plt"><span class="toc-number">2.2.</span> <span class="toc-text">plt</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#keras"><span class="toc-number">3.</span> <span class="toc-text">keras</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#损失函数"><span class="toc-number">4.</span> <span class="toc-text">损失函数</span></a></li></ol>
         
     </div>
     <style>
@@ -400,7 +373,7 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2018/03/29/VSCode-go-插件安装/" title="上一篇: VSCode go 插件安装">
+            <a href="/2018/10/26/Anaconda相关/" title="上一篇: Anaconda相关">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -408,7 +381,7 @@
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2018/03/28/new-Page/" title="下一篇: new Page">
+            <a href="/2018/10/14/关于队列随机抽取概率均等的问题/" title="下一篇: 关于队列随机抽取概率均等的问题">
                 <i class="fa fa-angle-right"></i>
             </a>
         

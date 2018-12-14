@@ -252,6 +252,273 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-关于影印店病毒" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/12/05/关于影印店病毒/" class="article-date">
+      <time datetime="2018-12-05T15:02:23.000Z" itemprop="datePublished">2018-12-05</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/05/关于影印店病毒/">关于影印店病毒</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>跑了各种打印店，结果U盘一插上去总是中这个病毒<br>第一次的时候导致作业没办法按时交上去<br>后面虽然知道怎么解决了，这东西还是导致为了处理这货上课迟到了不少次<br>无法忍受后决定好好研究一番，看看能不能从根源上解决这个问题</p>
+<h1 id="目前进度"><a href="#目前进度" class="headerlink" title="目前进度"></a>目前进度</h1><p>由于是最后一次感染病毒萌生了这个想法<br>之前看了看快捷方式，大概猜测到了可能的方式是通过快捷方式执行一个vbs程序<br>所以最后一次感染的时候并没有立即处理，而是关掉了反病毒软件，保留了病毒的vbs文件<br>打开源码好好看了下</p>
+<p>相当混乱的代码<br>虽然没有学过vbs，不过大体上连蒙带猜外加百度推出了一些东西<br>然后推到一半发现这个病毒似乎早就有人已经在网上分析过了<br><a href="https://moozik.cn/archives/297/" target="_blank" rel="noopener">网址在这</a></p>
+<p>对比了明文并且并且解析了下加密部分，似乎连代码都没有变过……<br>感觉就是一个相当古老的病毒在打印店里的古老样本<br>虽然存在各种后门，但是后门的IP都ping不通了<br>（一个大胆的想法， 如果我们将后门网址的域名购买了的话……）</p>
+<h1 id="暂坑"><a href="#暂坑" class="headerlink" title="暂坑"></a>暂坑</h1>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-Anaconda相关" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/10/26/Anaconda相关/" class="article-date">
+      <time datetime="2018-10-25T16:06:14.000Z" itemprop="datePublished">2018-10-26</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/26/Anaconda相关/">Anaconda相关</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="镜像"><a href="#镜像" class="headerlink" title="镜像"></a>镜像</h1><p>为解决部分安装包无法下载的问题</p>
+<p><a href="https://mirrors.tuna.tsinghua.edu.cn/help/anaconda/" target="_blank" rel="noopener">清华大学开源镜像站</a></p>
+<h1 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h1><p><code>conda create -n env_name [list of packages]</code> 创建新的虚拟环境(参数<code>python=3</code>或<code>python=2</code>指定版本)</p>
+<p><code>conda env remove -n env_name</code> 移除虚拟环境</p>
+<p><code>conda env list</code> 列出当前虚拟环境表</p>
+<p><code>conda activate env_name</code> 激活环境</p>
+<p><code>conda install package_name</code> 安装包</p>
+<p><code>conda upgrade --all</code>更新所有包</p>
+<p>更多参考：<br><a href="https://www.jianshu.com/p/169403f7e40c" target="_blank" rel="noopener">Anaconda入门使用指南</a><br><a href="http://www.cnblogs.com/harvey888/p/5465452.html" target="_blank" rel="noopener">Anaconda多环境多版本python配置指导</a></p>
+<h2 id="常用包"><a href="#常用包" class="headerlink" title="常用包"></a>常用包</h2><p>pandas tensorflow keras pytorch tushare flake8 numpy</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/AI/">AI</a><a class="article-category-link" href="/categories/AI/NeuralNetwork/">NeuralNetwork</a><a class="article-category-link" href="/categories/AI/NeuralNetwork/anaconda/">anaconda</a><a class="article-category-link" href="/categories/AI/NeuralNetwork/anaconda/tips/">tips</a>
+    </div>
+
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-神经网络简单实践记录" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/10/24/神经网络简单实践记录/" class="article-date">
+      <time datetime="2018-10-24T15:00:54.000Z" itemprop="datePublished">2018-10-24</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/24/神经网络简单实践记录/">神经网络简单实践记录</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p><a href="https://keras.io/" target="_blank" rel="noopener">keras</a>  <a href="https://keras-cn.readthedocs.io/en/latest/" target="_blank" rel="noopener">[中文]</a></p>
+<p><a href="https://tushare.pro/" target="_blank" rel="noopener">Tushare Pro</a></p>
+<p><a href="https://pandas.pydata.org/" target="_blank" rel="noopener">pandas</a></p>
+<p><a href="https://matplotlib.org/" target="_blank" rel="noopener">plt</a></p>
+<h2 id="相关教程"><a href="#相关教程" class="headerlink" title="相关教程"></a>相关教程</h2><h3 id="Pandas"><a href="#Pandas" class="headerlink" title="Pandas"></a>Pandas</h3><p><a href="http://www.cnblogs.com/chaosimple/p/4153083.html" target="_blank" rel="noopener">http://www.cnblogs.com/chaosimple/p/4153083.html</a></p>
+<p><a href="https://jingyan.baidu.com/article/93f9803fe29aece0e46f55cb.html" target="_blank" rel="noopener">https://jingyan.baidu.com/article/93f9803fe29aece0e46f55cb.html</a></p>
+<p>pandas 遍历</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> index, row <span class="keyword">in</span> data.iterrows():</span><br><span class="line">    <span class="keyword">pass</span> <span class="comment">#做点什么</span></span><br></pre></td></tr></table></figure>
+<h3 id="plt"><a href="#plt" class="headerlink" title="plt"></a>plt</h3><p><a href="http://www.cnblogs.com/wei-li/archive/2012/05/23/2506940.html#pyplot" target="_blank" rel="noopener">http://www.cnblogs.com/wei-li/archive/2012/05/23/2506940.html#pyplot</a></p>
+<h2 id="keras"><a href="#keras" class="headerlink" title="keras"></a>keras</h2><p><a href="https://www.jianshu.com/p/6de246284f5c" target="_blank" rel="noopener">https://www.jianshu.com/p/6de246284f5c</a></p>
+<h2 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h2><p><a href="https://zhuanlan.zhihu.com/p/34667893" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/34667893</a><br><a href="https://blog.csdn.net/u010312436/article/details/78449632" target="_blank" rel="noopener">https://blog.csdn.net/u010312436/article/details/78449632</a></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-关于队列随机抽取概率均等的问题" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/10/14/关于队列随机抽取概率均等的问题/" class="article-date">
+      <time datetime="2018-10-14T15:22:45.000Z" itemprop="datePublished">2018-10-14</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/14/关于队列随机抽取概率均等的问题/">关于队列随机抽取概率均等的问题</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>也算是闲着没事吧，本来能用一些判断弄出来的东西，为了不用循环而用队列将复杂度从降低个n所以设计了概率的方式，所以倒腾出了这个问题，虽然说计算概率估计效率本身也不怎么高</p>
+<p>权当是娱乐和复习概率了……</p>
+<p>答案不确保正确，欢迎讨论（虽然并没有讨论的联系方式……）</p>
+<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>现有一队列，元素可以从头部或者尾部插入，第n个元素记为\(A_n\)，其插入队列头部的概率为 \(p_n\) </p>
+<p>现在已知每加入8个元素就要从中抽取1个元素出来，一共重复c次</p>
+<p>对每个n求 \(p_n\) 为什么时，才能保证每个元素被抽取出来的概率在当次相等？</p>
+<p>例子：</p>
+<p>第一次抽取的时候，要求<br>$$<br>p(A_n)=\frac{1}{8} (n=1,2…8)<br>$$</p>
+<p>而第二次抽取的时候，设第一次被抽取到的是\(A_k\)，则要求<br>$$<br>p(A_n)=\frac{1}{15} (n=1,2…k-1,k+1…16)<br>$$</p>
+<p>以此类推</p>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>考虑到最后一次抽取情况较为简单，从后往前推</p>
+<p>最后一个要被抽中，那么它必然要在队列首位，那么他被抽中的概率就等于它放在头部的概率</p>
+<p>而要求它被抽中的概率为</p>
+<p>$$<br>p(A_{8c})=\frac{1}{8c-(c-1)}=\frac{1}{7c+1}<br>$$</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/Math/">Math</a>
+    </div>
+
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-神经科学学习随意记录" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -807,6 +1074,8 @@
       
           
         <h1 id="pip上"><a href="#pip上" class="headerlink" title="pip上"></a>pip上</h1><p>pip install packagename –upgrade<br>升级某个包，以去除安装包的时候提示的版本不对的错误</p>
+<p>python 字符串前加f，代表该字符串使用fomat格式，可以通过{XXXX}来嵌入变量和表达式</p>
+<p><a href="https://www.biaodianfu.com/python-error-unable-to-find-vcvarsall-bat.html" target="_blank" rel="noopener">某cython错误</a></p>
 <h1 id="vscode上"><a href="#vscode上" class="headerlink" title="vscode上"></a>vscode上</h1><p>使用flake8比pylint舒服一些……</p>
 <p>“python.linting.flake8Args”: [“–max-line-length=248”]<br>提高flake8Args的line to long提示限制</p>
 
@@ -820,283 +1089,6 @@
     <a class="article-category-link" href="/categories/python/">python</a><a class="article-category-link" href="/categories/python/tips/">tips</a>
     </div>
 
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-keras-小技巧" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/09/05/keras-小技巧/" class="article-date">
-      <time datetime="2018-09-05T14:00:54.000Z" itemprop="datePublished">2018-09-05</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/05/keras-小技巧/">keras 小技巧</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>#暂缺</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/AI/">AI</a><a class="article-category-link" href="/categories/AI/NeuralNetwork/">NeuralNetwork</a><a class="article-category-link" href="/categories/AI/NeuralNetwork/keras/">keras</a><a class="article-category-link" href="/categories/AI/NeuralNetwork/keras/tips/">tips</a>
-    </div>
-
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-注意力模型之自己的胡说八道" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/08/25/注意力模型之自己的胡说八道/" class="article-date">
-      <time datetime="2018-08-25T09:25:05.000Z" itemprop="datePublished">2018-08-25</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/08/25/注意力模型之自己的胡说八道/">注意力模型之自己的胡说八道</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h1 id="事先提醒"><a href="#事先提醒" class="headerlink" title="事先提醒"></a>事先提醒</h1><hr>
-<p>以下内容属于自己在尚<em>未完全理解</em>时，对于注意力模型自己<em>胡乱思考</em>得出来的<em>毫无根据</em>的<em>个人见解</em>，<em>看看就好，不要全信</em>。<br>可能含有<em>不专业</em>的<em>个人生造词</em></p>
-<h2 id="以上为自己以后回顾和其它观看的人（如果有的话……？）的警告"><a href="#以上为自己以后回顾和其它观看的人（如果有的话……？）的警告" class="headerlink" title="以上为自己以后回顾和其它观看的人（如果有的话……？）的警告"></a>以上为自己以后回顾和其它观看的人（如果有的话……？）的警告</h2><p>可能参考的东西：<br><a href="http://www.cssn.cn/zhx/zx_kxjszx/201601/t20160126_2844813_1.shtml" target="_blank" rel="noopener">认识论的框架问题</a></p>
-<h1 id="关于筛选信息"><a href="#关于筛选信息" class="headerlink" title="关于筛选信息"></a>关于筛选信息</h1><p>先引用一下人工智能框架问题</p>
-<blockquote>
-<p>必须让机器人知道哪些蕴含事件是相关的，而哪些是不相关的，并且学会忽略那些不相关的事件。<br>……<br>框架问题是要解释信息解封（Informationally Unencapsulated）的认知过程，即既能有效解决来自任何潜在认知域的信息，而又不至于受累于不得不明晰地把相关事物从不相关事物中筛选出来的繁重工作。</p>
-</blockquote>
-<p>(题外话：感谢 命运石之门0)</p>
-<p>引用的目的是为了表达信息筛选的重要性，当需要的信息被精确的筛选出来，在之后的步骤中进行处理就会变得更加高效和准确</p>
-<h1 id="关于RNN-Encoder-Decoder中的注意力模型"><a href="#关于RNN-Encoder-Decoder中的注意力模型" class="headerlink" title="关于RNN Encoder-Decoder中的注意力模型"></a>关于RNN Encoder-Decoder中的注意力模型</h1><p>引入注意力模型的RNN Encoder-Decoder为模型带来的更多的信息（因为要将每一步Encoder处理的向量都参与运算<br>而将这些信息筛选出有用的，则是注意力模型关键的地方，将这些信息输入，返回需要位置编号的注意权重<br>一般的解释中，是说权重越高的代表模型越关注这个位置的信息<br>而从另一个角度来看，也可以说是权重越低的信息被筛去的越多，只留下了对自己有用的信息</p>
-<h1 id="关于注意力模型的想法"><a href="#关于注意力模型的想法" class="headerlink" title="关于注意力模型的想法"></a>关于注意力模型的想法</h1><p>看了网上的许多关于NLP的注意力模型的文章，似乎都将注意力模型输出的参数代表成“对应位置上的注意力”<br>从各种截图上来看，对应位置似乎就是对应的输入（词或者单字）<br>但是考虑到最后注意力模型输出是与RNN输出的语义向量进行乘法运算<br>所以注意力模型输出参数代表的应该是“对应位置及其之前的输入综合得到的语义向量的注意力”</p>
-<p>为什么要关注这个呢？<br>首先是对应位置的向量只考虑的前面位置的数据，没有考虑后面位置的数据<br>但最重要的是，这个数据里面存在冗余<br>当然，并不否认这个向量里面存在着判断所需要的词汇的数据，这些数据是有必要存在的<br>但同时也存在着许多没有必要的数据</p>
-<p>如果能够想到办法将这些没有必要的数据筛选出去，或许是一个提升效果的思路？<br>（不过可以真的要改的话模型会发生很大的变化，或许连RNN都不是了？）</p>
-<p><del>然后是对位置的看法……<br>个人对这个位置表示的注意力有些排斥<br>其第一点就是原本变长十分方便的RNN为了引入注意力可能长度就要固定了（或许有不固定的方法？反正我是不知道了……）<br>其次考虑到句子本身长度是不定的，每个成分的长度也是不定的<br>如果某一个成分的长度发生了变化（或者注意力模型本身因为失误判断错位了一些），注意力模型的后续整个输出会不会因此造成错位？<br>（但愿这只是我不理解造成的误会吧……如果有证明或者证伪我这个观点的论文或者其它数据，我还是很希望知道的，至少能安心一些）</del><br>居然还有滑动窗口这种神奇的东西……</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/AI/">AI</a><a class="article-category-link" href="/categories/AI/NeuralNetwork/">NeuralNetwork</a>
-    </div>
-
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-NLP资料记录" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/08/23/NLP资料记录/" class="article-date">
-      <time datetime="2018-08-23T11:54:59.000Z" itemprop="datePublished">2018-08-23</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/08/23/NLP资料记录/">工具、文档以及NLP资料记录</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h1 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h1><p><a href="https://www.runoob.com/python/python-tutorial.html" target="_blank" rel="noopener">菜鸟基础教程</a><br>如果忽然忘了一些Python的基础操作可以在这里找</p>
-<p><a href="https://www.jianshu.com/p/04d180d90a3f" target="_blank" rel="noopener">《利用Python进行数据分析·第2版》</a><br>前几章详细地介绍了numpy等工具的利用，可以用于参考</p>
-<h1 id="Keras"><a href="#Keras" class="headerlink" title="Keras"></a>Keras</h1><p><a href="https://keras-cn.readthedocs.io/en/latest/" target="_blank" rel="noopener">中文文档</a><br>因为是中文所以看着比较轻松，但是和英文相比有许多不全的地方<br>找不到或者不详尽的地方还是要看英文的文档</p>
-<p><a href="https://keras.io/" target="_blank" rel="noopener">英文文档</a><br>英文，相对中文文档来说资料更全更新一些，在中文文档不够用的时候就要上了</p>
-<p><a href="https://tensorflow.google.cn/" target="_blank" rel="noopener">tensorflow</a><br>含有基于keras的高级API教程和一些文档API<br>也有一些对基本模型的讨论和讲述<br>以后想要自定义keras的训练层的时候可能会需要在这里找文档<br>对于tensorflow的新功能也可以在这里多看看了解一下</p>
-<p><a href="https://github.com/keras-team/keras/tree/master/examples" target="_blank" rel="noopener">官方例子</a><br>很棒的例子，代码简洁，有助于理解keras的使用和对部分网络结构的熟悉<br>不过建议只用来理解，真正做的时候看一下文档，因为部分例子里没有文档里的一些更方便的东西<br>（比如说在我写这篇的时候，seq2seq就没有使用embedding层，也没有忽略0数据<br>（不过更新似乎一直在继续，也许之后会看到更有效率的做法吧</p>
-<h1 id="RNN"><a href="#RNN" class="headerlink" title="RNN"></a>RNN</h1><p><a href="https://www.jianshu.com/p/75eeaee7f67d" target="_blank" rel="noopener">简要介绍</a></p>
-<h1 id="seq2seq"><a href="#seq2seq" class="headerlink" title="seq2seq"></a>seq2seq</h1><p><a href="http://rsarxiv.github.io/2016/05/31/Sequence-to-Sequence-Learning-with-Neural-Networks-PaperWeekly/" target="_blank" rel="noopener">Sequence to Sequence Learning with Neural Networks</a><br>关于seq2seq的介绍</p>
-<p><a href="http://rsarxiv.github.io/2016/06/01/Learning-Phrase-Representations-using-RNN-Encoder–Decoder-for-Statistical-Machine-Translation-PaperWeekly/" target="_blank" rel="noopener">Learning Phrase Representations using RNN Encoder–Decoder for Statistical Machine Translation</a><br>里面涉及到的原论文中给出了GRU单元的算法以及概率的计算，可以较为清楚地了解GRU这个东西，还有seq2seq的原理</p>
-<p><a href="https://github.com/Lsdefine/attention-is-all-you-need-keras/blob/master/rnn_s2s.py" target="_blank" rel="noopener">attention-is-all-you-need-keras</a><br>含有自定义程度较高的keras的seq2seq实现</p>
-<h1 id="注意力模型"><a href="#注意力模型" class="headerlink" title="注意力模型"></a>注意力模型</h1><p><a href="https://arxiv.org/pdf/1409.0473.pdf" target="_blank" rel="noopener">NEURAL MACHINE TRANSLATION BY JOINTLY LEARNING TO ALIGN AND TRANSLATE</a><br>关于注意力模型的论文<br><a href="https://zhuanlan.zhihu.com/p/21287807" target="_blank" rel="noopener">知乎上对论文的中文介绍和理解</a></p>
-<p><a href="https://blog.csdn.net/malefactor/article/details/50550211" target="_blank" rel="noopener">自然语言处理中的Attention Model：是什么及为什么</a><br>将引入注意力模型的原因和详细的解释一步步的说了出来，很清晰</p>
-<p><a href="https://zhuanlan.zhihu.com/p/37835894" target="_blank" rel="noopener">attention模型方法综述</a></p>
-<p><a href="http://ruder.io/deep-learning-nlp-best-practices/" target="_blank" rel="noopener">deep-learning-nlp-best-practices</a><br>比较全面的介绍</p>
-<p><a href="https://blog.csdn.net/malefactor/article/details/50583474" target="_blank" rel="noopener">以Attention Model为例谈谈两种研究创新模式</a><br>对注意力模型的总结回顾和拓展</p>
-<p><a href="https://blog.csdn.net/mpk_no1/article/details/72862348" target="_blank" rel="noopener">深度学习笔记——Attention Model（注意力模型）学习总结</a></p>
-<p><a href="https://github.com/Xls1994/CDRextraction" target="_blank" rel="noopener">CDRextraction</a><br>似乎含有keras的attentionLayer实现</p>
-<p><a href="https://arxiv.org/pdf/1706.03762.pdf" target="_blank" rel="noopener">AttentionIsAllYouNeed</a><br>不含有RNN和CNN的纯粹注意力模型论文<br>keras实践：<a href="https://github.com/Lsdefine/attention-is-all-you-need-keras/blob/master/transformer.py" target="_blank" rel="noopener">attention-is-all-you-need-keras </a><br>可能需要的参考：<br><a href="https://arxiv.org/pdf/1607.06450v1.pdf" target="_blank" rel="noopener">Layer Normalization</a><br><a href="https://www.zhihu.com/question/48820040" target="_blank" rel="noopener">你是怎样看待刚刚出炉的 Layer Normalisation 的？</a></p>
-<h1 id="对抗生成"><a href="#对抗生成" class="headerlink" title="对抗生成"></a>对抗生成</h1><p>待填</p>
-<h1 id="知识图谱"><a href="#知识图谱" class="headerlink" title="知识图谱"></a>知识图谱</h1><p><a href="https://zhuanlan.zhihu.com/p/41637843" target="_blank" rel="noopener">《知识图谱》专题论文解读</a><br>还没看，之后评价</p>
-<h1 id="推荐"><a href="#推荐" class="headerlink" title="推荐"></a>推荐</h1><p><a href="http://rsarxiv.github.io/" target="_blank" rel="noopener">PaperWeekly</a><br>可以看到许多不错的论文推荐之类的东西<br>不过似乎没有在更新了，最新的一篇也只是2017年的东西了<br>但是里面的东西对个人还是挺有学习价值的<br><em>修正：<a href="http://paperweek.ly/" target="_blank" rel="noopener">PaperWeekly</a>新地址，似乎在这边更新了，似乎要注册才能看</em></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/AI/">AI</a><a class="article-category-link" href="/categories/AI/NeuralNetwork/">NeuralNetwork</a>
-    </div>
-
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-无脑邮件服务器" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/07/20/无脑邮件服务器/" class="article-date">
-      <time datetime="2018-07-20T13:46:30.000Z" itemprop="datePublished">2018-07-20</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/20/无脑邮件服务器/">无脑邮件服务器</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>参考资料：<br><a href="https://www.itmanbu.com/docker-mail-server.html" target="_blank" rel="noopener">利用Docker自建多功能加密邮件服务器</a><br><a href="https://github.com/tomav/docker-mailserver" target="_blank" rel="noopener">docker-mailserver git网址</a></p>
-<p>##安装<br>(安装docker的指令不太确定,如果不行的话上网找吧)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt install docker -y</span><br><span class="line">sudo apt install docker-compose -y</span><br><span class="line">sudo apt install dovecot-core -y</span><br><span class="line">sudo docker pull tvial/docker-mailserver:latest</span><br><span class="line"></span><br><span class="line">sudo apt-get install software-properties-common</span><br><span class="line">sudo add-apt-repository ppa:certbot/certbot</span><br><span class="line"></span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install certbot</span><br></pre></td></tr></table></figure></p>
-<h2 id="拉取配置文件"><a href="#拉取配置文件" class="headerlink" title="拉取配置文件"></a>拉取配置文件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">curl -o setup.sh https://raw.githubusercontent.com/tomav/docker-mailserver/master/setup.sh; chmod a+x ./setup.sh</span><br><span class="line">curl -o docker-compose.yml https://raw.githubusercontent.com/tomav/docker-mailserver/master/docker-compose.yml.dist</span><br><span class="line">curl -o .env https://raw.githubusercontent.com/tomav/docker-mailserver/master/.env.dist</span><br></pre></td></tr></table></figure>
-<p>修改拉取后的.env文件进行配置，配置属性详情<a href="https://github.com/tomav/docker-mailserver" target="_blank" rel="noopener">见此</a></p>
-<h2 id="DNS域名解析："><a href="#DNS域名解析：" class="headerlink" title="DNS域名解析："></a>DNS域名解析：</h2><p>sudo ./setup.sh config dkim<br>复制config/opendkim/keys/domain.tld/mail.txt下内容，将引号内字符串拼接后用于设置DNS<br>类型为TXT，记录名为mail._domainkey，记录值为拼接后字符串<br>类型为MX，记录名为@，记录值”mail.(你的域名)”(如”mail.abc.cn”,下面的域名以此为例)<br>类型为A，记录名为mail，记录值为(服务器的IP)</p>
-<h2 id="证书-域名以”mail-abc-cn”-为例"><a href="#证书-域名以”mail-abc-cn”-为例" class="headerlink" title="证书(域名以”mail.abc.cn”,为例)"></a>证书(域名以”mail.abc.cn”,为例)</h2><p>certbot certonly –standalone -d mail.abc.cn<br>之后会要求你输入邮箱来获取安全信息等，填入邮箱即可。还会问你是否接受推送，这个看个人意愿选择吧。</p>
-<p>证书续期<br><code>crontab -e</code>打开定时任务设置面板，按i进入编辑模式，粘贴进这段代码即：<br><code>0 5 * * 1 /usr/bin/certbot renew --quiet</code><br>可每周一凌晨5点0分给证书续期</p>
-<h2 id="启动容器"><a href="#启动容器" class="headerlink" title="启动容器"></a>启动容器</h2><p><code>docker-compose up -d mail</code></p>
-<h2 id="注册邮箱-邮箱名字以”wuny-abc-cn“为例-密码以yourpassword为例"><a href="#注册邮箱-邮箱名字以”wuny-abc-cn“为例-密码以yourpassword为例" class="headerlink" title="注册邮箱(邮箱名字以”wuny@abc.cn“为例,密码以yourpassword为例)"></a>注册邮箱(邮箱名字以”<a href="mailto:wuny@abc.cn" target="_blank" rel="noopener">wuny@abc.cn</a>“为例,密码以yourpassword为例)</h2><p>sudo ./setup.sh email add <a href="mailto:wuny@abc.cn" target="_blank" rel="noopener">wuny@abc.cn</a> yourpassword</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
 
       
       

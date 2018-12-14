@@ -15,17 +15,17 @@
 
 
 
-<meta name="description" content="安装1234567sudo apt-get updatesudo apt-get install bison ed gawk gcc libc6-dev make -ysudo apt-get install nginx -ysudo apt-get install mongodb-server -ysudo apt-get install redis-server -ysudo apt-get">
+<meta name="description" content="前言也算是闲着没事吧，本来能用一些判断弄出来的东西，为了不用循环而用队列将复杂度从降低个n所以设计了概率的方式，所以倒腾出了这个问题，虽然说计算概率估计效率本身也不怎么高 权当是娱乐和复习概率了…… 答案不确保正确，欢迎讨论（虽然并没有讨论的联系方式……） 问题现有一队列，元素可以从头部或者尾部插入，第n个元素记为\(A_n\)，其插入队列头部的概率为 \(p_n\)  现在已知每加入8个元素就要">
 <meta property="og:type" content="article">
-<meta property="og:title" content="无脑配服务器&#x2F;Nginx&#x2F;MySQL&#x2F;mongoDB&#x2F;go&#x2F;redis">
-<meta property="og:url" content="https://a595859893.github.io/2018/03/28/无脑配服务器-Nginx-MySQL-mongoDB-go-redis/index.html">
+<meta property="og:title" content="关于队列随机抽取概率均等的问题">
+<meta property="og:url" content="https://a595859893.github.io/2018/10/14/关于队列随机抽取概率均等的问题/index.html">
 <meta property="og:site_name" content="简陋的小屋">
-<meta property="og:description" content="安装1234567sudo apt-get updatesudo apt-get install bison ed gawk gcc libc6-dev make -ysudo apt-get install nginx -ysudo apt-get install mongodb-server -ysudo apt-get install redis-server -ysudo apt-get">
+<meta property="og:description" content="前言也算是闲着没事吧，本来能用一些判断弄出来的东西，为了不用循环而用队列将复杂度从降低个n所以设计了概率的方式，所以倒腾出了这个问题，虽然说计算概率估计效率本身也不怎么高 权当是娱乐和复习概率了…… 答案不确保正确，欢迎讨论（虽然并没有讨论的联系方式……） 问题现有一队列，元素可以从头部或者尾部插入，第n个元素记为\(A_n\)，其插入队列头部的概率为 \(p_n\)  现在已知每加入8个元素就要">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-02T08:30:16.680Z">
+<meta property="og:updated_time" content="2018-10-14T17:45:49.538Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="无脑配服务器&#x2F;Nginx&#x2F;MySQL&#x2F;mongoDB&#x2F;go&#x2F;redis">
-<meta name="twitter:description" content="安装1234567sudo apt-get updatesudo apt-get install bison ed gawk gcc libc6-dev make -ysudo apt-get install nginx -ysudo apt-get install mongodb-server -ysudo apt-get install redis-server -ysudo apt-get">
+<meta name="twitter:title" content="关于队列随机抽取概率均等的问题">
+<meta name="twitter:description" content="前言也算是闲着没事吧，本来能用一些判断弄出来的东西，为了不用循环而用队列将复杂度从降低个n所以设计了概率的方式，所以倒腾出了这个问题，虽然说计算概率估计效率本身也不怎么高 权当是娱乐和复习概率了…… 答案不确保正确，欢迎讨论（虽然并没有讨论的联系方式……） 问题现有一队列，元素可以从头部或者尾部插入，第n个元素记为\(A_n\)，其插入队列头部的概率为 \(p_n\)  现在已知每加入8个元素就要">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -55,7 +55,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>无脑配服务器/Nginx/MySQL/mongoDB/go/redis | 简陋的小屋</title>
+<title>关于队列随机抽取概率均等的问题 | 简陋的小屋</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -248,11 +248,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-无脑配服务器-Nginx-MySQL-mongoDB-go-redis" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-关于队列随机抽取概率均等的问题" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2018/03/28/无脑配服务器-Nginx-MySQL-mongoDB-go-redis/" class="article-date">
-      <time datetime="2018-03-28T07:02:19.000Z" itemprop="datePublished">2018-03-28</time>
+      <a href="/2018/10/14/关于队列随机抽取概率均等的问题/" class="article-date">
+      <time datetime="2018-10-14T15:22:45.000Z" itemprop="datePublished">2018-10-14</time>
 </a>
 
 
@@ -267,7 +267,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      无脑配服务器/Nginx/MySQL/mongoDB/go/redis
+      关于队列随机抽取概率均等的问题
     </h1>
   
 
@@ -276,7 +276,7 @@
       <div class="article-info article-info-post">
         
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Server/">Server</a>
+    <a class="article-category-link" href="/categories/Math/">Math</a>
     </div>
 
 
@@ -288,40 +288,20 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install bison ed gawk gcc libc6-dev make -y</span><br><span class="line">sudo apt-get install nginx -y</span><br><span class="line">sudo apt-get install mongodb-server -y</span><br><span class="line">sudo apt-get install redis-server -y</span><br><span class="line">sudo apt-get install mysql-server -y</span><br><span class="line">sudo apt-get install golang -y</span><br></pre></td></tr></table></figure>
-<p>MYSQL安装需要输入root账户的密码</p>
-<hr>
-<hr>
-<h2 id="nginx配置"><a href="#nginx配置" class="headerlink" title="nginx配置"></a>nginx配置</h2><p>创建nginx用权限账户 www（或者在配置文件中修改user为已存在用户）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo /usr/sbin/groupadd www</span><br><span class="line">sudo /usr/sbin/useradd -g www www</span><br></pre></td></tr></table></figure></p>
-<p>(可能会报sudo: unable to resolve host,这只是warning,可以不用管，下同)</p>
-<p>修改配置文件（参考文件中有参考网址可以查看参数的作用）<br><code>sudo vim /etc/nginx/nginx.conf</code></p>
-<blockquote>
-<p>/etc/nginx/conf.d/*.conf;<br>/etc/nginx/sites-enabled/*;<br>这两个是配置文件中带有的目录，网站的参数也可以在这里进行修改</p>
-</blockquote>
-<blockquote>
-<p>默认在”/etc/nginx/sites-enabled/default”中存在80端口的配置<br>如果自己需要修改80端口的话，可以直接修改这个文件，或者删掉自己重新配置</p>
-</blockquote>
-<p>重启nginx适用配置</p>
-<h2 id="sudo-service-nginx-restart"><a href="#sudo-service-nginx-restart" class="headerlink" title="sudo service nginx restart"></a><code>sudo service nginx restart</code></h2><hr>
-<h2 id="MySql配置"><a href="#MySql配置" class="headerlink" title="MySql配置"></a>MySql配置</h2><p>登陆mysql并创建数据库NEST,远程访问用户bird，并授权<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mysql -u username -p password</span><br><span class="line">create database NEST</span><br><span class="line">CREATE USER &apos;bird&apos;@&apos;%&apos; IDENTIFIED BY &apos;password here&apos;;</span><br><span class="line">GRANT ALL ON NEST.* TO &apos;bird&apos;@&apos;%&apos;;</span><br><span class="line">flush privileges;</span><br></pre></td></tr></table></figure></p>
-<p>修改配置文件<br><code>sudo vim /etc/mysql/mysql.conf.d/mysqld.cnf</code><br>修改bind-address为0.0.0.0</p>
-<p>重启mysql适用配置<br><code>sudo service mysql restart</code></p>
-<hr>
-<hr>
-<h2 id="mongoDB配置"><a href="#mongoDB配置" class="headerlink" title="mongoDB配置"></a>mongoDB配置</h2><p>（记得在防火墙打开27017端口）</p>
-<p>添加用户数据<br>（创建了超级权限的root用户，和一个只读写nest数据库的bird用户）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mongo</span><br><span class="line">use admin</span><br><span class="line">db.createUser(&#123;user:&quot;root&quot;,pwd:&quot;password here&quot;,roles:[&quot;root&quot;]&#125;)</span><br><span class="line">use nest</span><br><span class="line">db.createCollection(&quot;nest&quot;)</span><br><span class="line">db.createUser(&#123;user:&quot;bird&quot;,pwd:&quot;password here&quot;,roles:[&#123;role:&quot;readWrite&quot;,db:&quot;nest&quot;&#125;]&#125;)</span><br></pre></td></tr></table></figure></p>
-<p>然后退出mongo<br><a href="https://docs.mongodb.com/manual/reference/method/db.createUser/#db.createUser" target="_blank" rel="noopener">用户添加参考</a><br><a href="https://docs.mongodb.com/manual/reference/built-in-roles/#built-in-roles" target="_blank" rel="noopener">内置权限参考</a><br><a href="https://docs.mongodb.com/manual/core/security-user-defined-roles/#user-defined-roles" target="_blank" rel="noopener">自定义权限参考</a></p>
-<p>修改配置文件<br><code>sudo vim /etc/mongodb.conf</code><br>注释”bind_ip=127.0.0.1”一行,以允许远程访问<br>取消注释”auth = true”一行,以启用权限管理</p>
-<p>重启mongodb适用配置<br><code>sudo service mongodb restart</code></p>
-<hr>
-<hr>
-<h2 id="redis配置"><a href="#redis配置" class="headerlink" title="redis配置"></a>redis配置</h2><p>（记得在防火墙打开6379端口）<br>如果想要允许远程访问的话，修改配置文件即可<br><code>sudo vim /etc/redis/redis.conf</code><br><code>bind 127.0.0.1改为bind 0.0.0.0</code><br>取消<code>requirepass foobared</code>注释，并且将foobared改为你的密码，如<code>requirepass &quot;your password&quot;</code><br>重启redis服务<br><code>sudo service redis-server restart</code></p>
-<blockquote>
-<p>修改之后在<code>redis-cli</code>中需要添加<code>-a &quot;your password&quot;</code>参数来启动(your password改为你设置的密码)</p>
-</blockquote>
-<h2 id="不添加该参数虽然也可以登录成功，但是没有任何操作权限。"><a href="#不添加该参数虽然也可以登录成功，但是没有任何操作权限。" class="headerlink" title="不添加该参数虽然也可以登录成功，但是没有任何操作权限。"></a>不添加该参数虽然也可以登录成功，但是没有任何操作权限。</h2><hr>
-<h2 id="go配置"><a href="#go配置" class="headerlink" title="go配置"></a>go配置</h2><p>创建工作目录，配置环境变量和项目目录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">cd $HMOE</span><br><span class="line">mkdir Applications Applications/Go</span><br><span class="line">mkdir Applications/Go/src Applications/Go/pkg Applications/Go/bin</span><br><span class="line">export GOROOT=$HOME/go</span><br><span class="line">export PATH=$GOROOT/bin:$PATH</span><br><span class="line">export GOPATH=$HOME/Applications/Go</span><br></pre></td></tr></table></figure></p>
-<hr>
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>也算是闲着没事吧，本来能用一些判断弄出来的东西，为了不用循环而用队列将复杂度从降低个n所以设计了概率的方式，所以倒腾出了这个问题，虽然说计算概率估计效率本身也不怎么高</p>
+<p>权当是娱乐和复习概率了……</p>
+<p>答案不确保正确，欢迎讨论（虽然并没有讨论的联系方式……）</p>
+<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>现有一队列，元素可以从头部或者尾部插入，第n个元素记为\(A_n\)，其插入队列头部的概率为 \(p_n\) </p>
+<p>现在已知每加入8个元素就要从中抽取1个元素出来，一共重复c次</p>
+<p>对每个n求 \(p_n\) 为什么时，才能保证每个元素被抽取出来的概率在当次相等？</p>
+<p>例子：</p>
+<p>第一次抽取的时候，要求<br>$$<br>p(A_n)=\frac{1}{8} (n=1,2…8)<br>$$</p>
+<p>而第二次抽取的时候，设第一次被抽取到的是\(A_k\)，则要求<br>$$<br>p(A_n)=\frac{1}{15} (n=1,2…k-1,k+1…16)<br>$$</p>
+<p>以此类推</p>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>考虑到最后一次抽取情况较为简单，从后往前推</p>
+<p>最后一个要被抽中，那么它必然要在队列首位，那么他被抽中的概率就等于它放在头部的概率</p>
+<p>而要求它被抽中的概率为</p>
+<p>$$<br>p(A_{8c})=\frac{1}{8c-(c-1)}=\frac{1}{7c+1}<br>$$</p>
 
       
     </div>
@@ -330,13 +310,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2018/03/28/无脑配服务器-Nginx-MySQL-mongoDB-go-redis/">无脑配服务器/Nginx/MySQL/mongoDB/go/redis</a></p>
+        <p><span>本文标题:</span><a href="/2018/10/14/关于队列随机抽取概率均等的问题/">关于队列随机抽取概率均等的问题</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Wuny</a></p>
-        <p><span>发布时间:</span>2018-03-28, 15:02:19</p>
-        <p><span>最后更新:</span>2018-06-02, 16:30:16</p>
+        <p><span>发布时间:</span>2018-10-14, 23:22:45</p>
+        <p><span>最后更新:</span>2018-10-15, 01:45:49</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2018/03/28/无脑配服务器-Nginx-MySQL-mongoDB-go-redis/" title="无脑配服务器/Nginx/MySQL/mongoDB/go/redis">https://a595859893.github.io/2018/03/28/无脑配服务器-Nginx-MySQL-mongoDB-go-redis/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://a595859893.github.io/2018/03/28/无脑配服务器-Nginx-MySQL-mongoDB-go-redis/　　作者: Wuny" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2018/10/14/关于队列随机抽取概率均等的问题/" title="关于队列随机抽取概率均等的问题">https://a595859893.github.io/2018/10/14/关于队列随机抽取概率均等的问题/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://a595859893.github.io/2018/10/14/关于队列随机抽取概率均等的问题/　　作者: Wuny" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -349,15 +329,15 @@
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2018/03/29/VSCode-go-插件安装/">
-                    VSCode go 插件安装
+                <a href="/2018/10/24/神经网络简单实践记录/">
+                    神经网络简单实践记录
                 </a>
             </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2018/03/28/new-Page/">
-                    new Page
+                <a href="/2018/09/28/神经科学学习随意记录/">
+                    神经科学学习随意记录
                 </a>
             </div>
         
@@ -369,7 +349,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装"><span class="toc-number">1.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#nginx配置"><span class="toc-number">2.</span> <span class="toc-text">nginx配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sudo-service-nginx-restart"><span class="toc-number">3.</span> <span class="toc-text">sudo service nginx restart</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MySql配置"><span class="toc-number">4.</span> <span class="toc-text">MySql配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mongoDB配置"><span class="toc-number">5.</span> <span class="toc-text">mongoDB配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#redis配置"><span class="toc-number">6.</span> <span class="toc-text">redis配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#不添加该参数虽然也可以登录成功，但是没有任何操作权限。"><span class="toc-number">7.</span> <span class="toc-text">不添加该参数虽然也可以登录成功，但是没有任何操作权限。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#go配置"><span class="toc-number">8.</span> <span class="toc-text">go配置</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#问题"><span class="toc-number">2.</span> <span class="toc-text">问题</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#思路"><span class="toc-number">3.</span> <span class="toc-text">思路</span></a></li></ol>
         
     </div>
     <style>
@@ -400,7 +380,7 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2018/03/29/VSCode-go-插件安装/" title="上一篇: VSCode go 插件安装">
+            <a href="/2018/10/24/神经网络简单实践记录/" title="上一篇: 神经网络简单实践记录">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -408,7 +388,7 @@
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2018/03/28/new-Page/" title="下一篇: new Page">
+            <a href="/2018/09/28/神经科学学习随意记录/" title="下一篇: 神经科学学习随意记录">
                 <i class="fa fa-angle-right"></i>
             </a>
         
