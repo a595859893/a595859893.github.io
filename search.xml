@@ -45,6 +45,15 @@
     
     <entry>
       <title>numpy与pandas相关</title>
+      <link href="/2018/12/14/numpy%E4%B8%8Epandas%E7%9B%B8%E5%85%B3/"/>
+      <url>/2018/12/14/numpy%E4%B8%8Epandas%E7%9B%B8%E5%85%B3/</url>
+      <content type="html"><![CDATA[<p>#<br><a href="https://pandas.pydata.org/" target="_blank" rel="noopener">pandas官方网站</a></p><h1 id="Pandas教程资料"><a href="#Pandas教程资料" class="headerlink" title="Pandas教程资料"></a>Pandas教程资料</h1><p><a href="http://pandas.pydata.org/pandas-docs/stable/10min.html" target="_blank" rel="noopener">10 Minutes to pandas</a> <a href="http://www.cnblogs.com/chaosimple/p/4153083.html" target="_blank" rel="noopener">（中文翻译）</a></p><h1 id="Pandas备忘"><a href="#Pandas备忘" class="headerlink" title="Pandas备忘"></a>Pandas备忘</h1><h2 id="DataFrame遍历"><a href="#DataFrame遍历" class="headerlink" title="DataFrame遍历"></a>DataFrame遍历</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> index, row <span class="keyword">in</span> data.iterrows():</span><br><span class="line">    <span class="keyword">pass</span> <span class="comment">#做点什么</span></span><br></pre></td></tr></table></figure><h2 id="DataFrame-缺失值填充"><a href="#DataFrame-缺失值填充" class="headerlink" title="DataFrame 缺失值填充"></a>DataFrame 缺失值填充</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DataFrame.fillna()</span><br></pre></td></tr></table></figure><h1 id="个人需要注意的"><a href="#个人需要注意的" class="headerlink" title="个人需要注意的"></a>个人需要注意的</h1><p><a href="https://jingyan.baidu.com/article/93f9803fe29aece0e46f55cb.html" target="_blank" rel="noopener">Pandas填充缺失值</a></p>]]></content>
+      
+      
+    </entry>
+    
+    <entry>
+      <title>numpy与pandas相关</title>
       <link href="/2018/12/14/numpy-%E4%B8%8E-pandas/"/>
       <url>/2018/12/14/numpy-%E4%B8%8E-pandas/</url>
       <content type="html"><![CDATA[<p>#<br><a href="https://pandas.pydata.org/" target="_blank" rel="noopener">pandas官方网站</a></p><h1 id="Pandas教程资料"><a href="#Pandas教程资料" class="headerlink" title="Pandas教程资料"></a>Pandas教程资料</h1><p><a href="http://pandas.pydata.org/pandas-docs/stable/10min.html" target="_blank" rel="noopener">10 Minutes to pandas</a> <a href="http://www.cnblogs.com/chaosimple/p/4153083.html" target="_blank" rel="noopener">（中文翻译）</a><br><a href="https://www.jianshu.com/p/04d180d90a3f" target="_blank" rel="noopener">《利用Python进行数据分析·第2版》</a></p><h1 id="Pandas备忘"><a href="#Pandas备忘" class="headerlink" title="Pandas备忘"></a>Pandas备忘</h1><h2 id="DataFrame遍历"><a href="#DataFrame遍历" class="headerlink" title="DataFrame遍历"></a>DataFrame遍历</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> index, row <span class="keyword">in</span> data.iterrows():</span><br><span class="line">    <span class="keyword">pass</span> <span class="comment">#做点什么</span></span><br></pre></td></tr></table></figure><h2 id="DataFrame-缺失值填充"><a href="#DataFrame-缺失值填充" class="headerlink" title="DataFrame 缺失值填充"></a>DataFrame 缺失值填充</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DataFrame.fillna(<span class="number">0</span>) <span class="comment">#可以将0换成其它你想对缺失值填充的数据</span></span><br></pre></td></tr></table></figure>]]></content>
@@ -56,15 +65,6 @@
           <category> tips </category>
           
       </categories>
-      
-      
-    </entry>
-    
-    <entry>
-      <title>numpy与pandas相关</title>
-      <link href="/2018/12/14/numpy%E4%B8%8Epandas%E7%9B%B8%E5%85%B3/"/>
-      <url>/2018/12/14/numpy%E4%B8%8Epandas%E7%9B%B8%E5%85%B3/</url>
-      <content type="html"><![CDATA[<p>#<br><a href="https://pandas.pydata.org/" target="_blank" rel="noopener">pandas官方网站</a></p><h1 id="Pandas教程资料"><a href="#Pandas教程资料" class="headerlink" title="Pandas教程资料"></a>Pandas教程资料</h1><p><a href="http://pandas.pydata.org/pandas-docs/stable/10min.html" target="_blank" rel="noopener">10 Minutes to pandas</a> <a href="http://www.cnblogs.com/chaosimple/p/4153083.html" target="_blank" rel="noopener">（中文翻译）</a></p><h1 id="Pandas备忘"><a href="#Pandas备忘" class="headerlink" title="Pandas备忘"></a>Pandas备忘</h1><h2 id="DataFrame遍历"><a href="#DataFrame遍历" class="headerlink" title="DataFrame遍历"></a>DataFrame遍历</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> index, row <span class="keyword">in</span> data.iterrows():</span><br><span class="line">    <span class="keyword">pass</span> <span class="comment">#做点什么</span></span><br></pre></td></tr></table></figure><h2 id="DataFrame-缺失值填充"><a href="#DataFrame-缺失值填充" class="headerlink" title="DataFrame 缺失值填充"></a>DataFrame 缺失值填充</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DataFrame.fillna()</span><br></pre></td></tr></table></figure><h1 id="个人需要注意的"><a href="#个人需要注意的" class="headerlink" title="个人需要注意的"></a>个人需要注意的</h1><p><a href="https://jingyan.baidu.com/article/93f9803fe29aece0e46f55cb.html" target="_blank" rel="noopener">Pandas填充缺失值</a></p>]]></content>
       
       
     </entry>
