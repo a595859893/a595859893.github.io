@@ -3,10 +3,77 @@
   
     
     <entry>
+      <title>阅读进度表</title>
+      <link href="/2018/12/14/%E9%98%85%E8%AF%BB%E8%BF%9B%E5%BA%A6%E8%A1%A8/"/>
+      <url>/2018/12/14/%E9%98%85%E8%AF%BB%E8%BF%9B%E5%BA%A6%E8%A1%A8/</url>
+      <content type="html"><![CDATA[<h1 id="未完备注"><a href="#未完备注" class="headerlink" title="未完备注"></a>未完备注</h1><p>卷积基础知识论文<br><a href="https://arxiv.org/pdf/1806.00178.pdf" target="_blank" rel="noopener">https://arxiv.org/pdf/1806.00178.pdf</a><br><a href="https://arxiv.org/pdf/1611.05431.pdf" target="_blank" rel="noopener">https://arxiv.org/pdf/1611.05431.pdf</a><br><a href="https://arxiv.org/pdf/1611.07718.pdf" target="_blank" rel="noopener">https://arxiv.org/pdf/1611.07718.pdf</a><br><a href="http://nooverfit.com/wp/inception深度学习家族盘点-inception-v4-和inception-resnet未来走向何方/" target="_blank" rel="noopener">http://nooverfit.com/wp/inception深度学习家族盘点-inception-v4-和inception-resnet未来走向何方/</a><br><a href="https://arxiv.org/pdf/1409.4842.pdf" target="_blank" rel="noopener">https://arxiv.org/pdf/1409.4842.pdf</a></p><p>强化学习<br><a href="http://karpathy.github.io/2016/05/31/rl/" target="_blank" rel="noopener">http://karpathy.github.io/2016/05/31/rl/</a><br><a href="https://www.nature.com/articles/nature14236" target="_blank" rel="noopener">https://www.nature.com/articles/nature14236</a><br><a href="https://gist.github.com/karpathy/a4166c7fe253700972fcbc77e4ea32c5" target="_blank" rel="noopener">https://gist.github.com/karpathy/a4166c7fe253700972fcbc77e4ea32c5</a></p><p>《神经科学》<br>当前145页<br>罗素《哲学问题》<br><a href="http://yuedu.163.com/book_reader/12420b29a4a2479e8313467ab5a000e9_4" target="_blank" rel="noopener">http://yuedu.163.com/book_reader/12420b29a4a2479e8313467ab5a000e9_4</a></p><h1 id="资料网站"><a href="#资料网站" class="headerlink" title="资料网站"></a>资料网站</h1><p><a href="https://www.oschina.net/" target="_blank" rel="noopener">https://www.oschina.net/</a><br><a href="https://github.com/explore" target="_blank" rel="noopener">https://github.com/explore</a><br><a href="https://yq.aliyun.com/" target="_blank" rel="noopener">https://yq.aliyun.com/</a><br><a href="https://www.ccf.org.cn/" target="_blank" rel="noopener">https://www.ccf.org.cn/</a><br><a href="https://en.wikipedia.org/wiki/List_of_computer_science_conferences" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/List_of_computer_science_conferences</a></p><h1 id="已完备注"><a href="#已完备注" class="headerlink" title="已完备注"></a>已完备注</h1>]]></content>
+      
+      
+    </entry>
+    
+    <entry>
+      <title>数据结构相关</title>
+      <link href="/2018/12/14/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%9B%B8%E5%85%B3/"/>
+      <url>/2018/12/14/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%9B%B8%E5%85%B3/</url>
+      <content type="html"><![CDATA[<p><a href="https://www.zybang.com/question/6f70ed00e2fa62453476edf8668bb50b.html" target="_blank" rel="noopener">二叉树已知前序、后序，求中序</a><br><a href="https://blog.csdn.net/wang379275614/article/details/13990163/" target="_blank" rel="noopener">关键路径定义</a></p>]]></content>
+      
+      
+    </entry>
+    
+    <entry>
+      <title>pytorch相关</title>
+      <link href="/2018/12/14/pytorch%E7%9B%B8%E5%85%B3/"/>
+      <url>/2018/12/14/pytorch%E7%9B%B8%E5%85%B3/</url>
+      <content type="html"><![CDATA[<h2 id="将one-hot转为token"><a href="#将one-hot转为token" class="headerlink" title="将one-hot转为token"></a>将one-hot转为token</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">torch.eye(x.size(<span class="number">1</span>))[x.argmax(<span class="number">1</span>)]</span><br></pre></td></tr></table></figure><p>先生成单位向量，然后用花式索引选择其对应行<br>很赞的方法</p>]]></content>
+      
+      <categories>
+          
+          <category> python </category>
+          
+          <category> AI </category>
+          
+          <category> NeuralNetwork </category>
+          
+          <category> pytorch </category>
+          
+          <category> tips </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    <entry>
+      <title>numpy与pandas相关</title>
+      <link href="/2018/12/14/numpy%E4%B8%8Epandas%E7%9B%B8%E5%85%B3/"/>
+      <url>/2018/12/14/numpy%E4%B8%8Epandas%E7%9B%B8%E5%85%B3/</url>
+      <content type="html"><![CDATA[<p>#<br><a href="https://pandas.pydata.org/" target="_blank" rel="noopener">pandas官方网站</a></p><h1 id="Pandas教程资料"><a href="#Pandas教程资料" class="headerlink" title="Pandas教程资料"></a>Pandas教程资料</h1><p><a href="http://pandas.pydata.org/pandas-docs/stable/10min.html" target="_blank" rel="noopener">10 Minutes to pandas</a> <a href="http://www.cnblogs.com/chaosimple/p/4153083.html" target="_blank" rel="noopener">（中文翻译）</a></p><h1 id="Pandas备忘"><a href="#Pandas备忘" class="headerlink" title="Pandas备忘"></a>Pandas备忘</h1><h2 id="DataFrame遍历"><a href="#DataFrame遍历" class="headerlink" title="DataFrame遍历"></a>DataFrame遍历</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> index, row <span class="keyword">in</span> data.iterrows():</span><br><span class="line">    <span class="keyword">pass</span> <span class="comment">#做点什么</span></span><br></pre></td></tr></table></figure><h2 id="DataFrame-缺失值填充"><a href="#DataFrame-缺失值填充" class="headerlink" title="DataFrame 缺失值填充"></a>DataFrame 缺失值填充</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DataFrame.fillna()</span><br></pre></td></tr></table></figure><h1 id="个人需要注意的"><a href="#个人需要注意的" class="headerlink" title="个人需要注意的"></a>个人需要注意的</h1><p><a href="https://jingyan.baidu.com/article/93f9803fe29aece0e46f55cb.html" target="_blank" rel="noopener">Pandas填充缺失值</a></p>]]></content>
+      
+      
+    </entry>
+    
+    <entry>
+      <title>numpy与pandas相关</title>
+      <link href="/2018/12/14/numpy-%E4%B8%8E-pandas/"/>
+      <url>/2018/12/14/numpy-%E4%B8%8E-pandas/</url>
+      <content type="html"><![CDATA[<p>#<br><a href="https://pandas.pydata.org/" target="_blank" rel="noopener">pandas官方网站</a></p><h1 id="Pandas教程资料"><a href="#Pandas教程资料" class="headerlink" title="Pandas教程资料"></a>Pandas教程资料</h1><p><a href="http://pandas.pydata.org/pandas-docs/stable/10min.html" target="_blank" rel="noopener">10 Minutes to pandas</a> <a href="http://www.cnblogs.com/chaosimple/p/4153083.html" target="_blank" rel="noopener">（中文翻译）</a><br><a href="https://www.jianshu.com/p/04d180d90a3f" target="_blank" rel="noopener">《利用Python进行数据分析·第2版》</a></p><h1 id="Pandas备忘"><a href="#Pandas备忘" class="headerlink" title="Pandas备忘"></a>Pandas备忘</h1><h2 id="DataFrame遍历"><a href="#DataFrame遍历" class="headerlink" title="DataFrame遍历"></a>DataFrame遍历</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> index, row <span class="keyword">in</span> data.iterrows():</span><br><span class="line">    <span class="keyword">pass</span> <span class="comment">#做点什么</span></span><br></pre></td></tr></table></figure><h2 id="DataFrame-缺失值填充"><a href="#DataFrame-缺失值填充" class="headerlink" title="DataFrame 缺失值填充"></a>DataFrame 缺失值填充</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DataFrame.fillna(<span class="number">0</span>) <span class="comment">#可以将0换成其它你想对缺失值填充的数据</span></span><br></pre></td></tr></table></figure>]]></content>
+      
+      <categories>
+          
+          <category> python </category>
+          
+          <category> tips </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    <entry>
       <title>关于影印店病毒</title>
       <link href="/2018/12/05/%E5%85%B3%E4%BA%8E%E5%BD%B1%E5%8D%B0%E5%BA%97%E7%97%85%E6%AF%92/"/>
       <url>/2018/12/05/%E5%85%B3%E4%BA%8E%E5%BD%B1%E5%8D%B0%E5%BA%97%E7%97%85%E6%AF%92/</url>
-      <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>跑了各种打印店，结果U盘一插上去总是中这个病毒<br>第一次的时候导致作业没办法按时交上去<br>后面虽然知道怎么解决了，这东西还是导致为了处理这货上课迟到了不少次<br>无法忍受后决定好好研究一番，看看能不能从根源上解决这个问题</p><h1 id="目前进度"><a href="#目前进度" class="headerlink" title="目前进度"></a>目前进度</h1><p>由于是最后一次感染病毒萌生了这个想法<br>之前看了看快捷方式，大概猜测到了可能的方式是通过快捷方式执行一个vbs程序<br>所以最后一次感染的时候并没有立即处理，而是关掉了反病毒软件，保留了病毒的vbs文件<br>打开源码好好看了下</p><p>相当混乱的代码<br>虽然没有学过vbs，不过大体上连蒙带猜外加百度推出了一些东西<br>然后推到一半发现这个病毒似乎早就有人已经在网上分析过了<br><a href="https://moozik.cn/archives/297/" target="_blank" rel="noopener">网址在这</a></p><p>对比了明文并且并且解析了下加密部分，似乎连代码都没有变过……<br>感觉就是一个相当古老的病毒在打印店里的古老样本<br>虽然存在各种后门，但是后门的IP都ping不通了<br>（一个大胆的想法， 如果我们将后门网址的域名购买了的话……）</p><h1 id="暂坑"><a href="#暂坑" class="headerlink" title="暂坑"></a>暂坑</h1>]]></content>
+      <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>跑了各种打印店，结果U盘一插上去总是中这个病毒<br>第一次的时候导致作业没办法按时交上去<br>后面虽然知道怎么解决了，这东西还是导致为了处理这货上课迟到了不少次<br>无法忍受后决定好好研究一番，看看能不能从根源上解决这个问题</p><p>不过在行动之前，先记录下如果被病毒隐藏了文件后怎么恢复<br>打开命令行，转至U盘所在，输入下面命令<br><code>attrib -s -h /s /d</code><br>即依靠<code>/s</code>递归取消<code>系统文件(-s)</code>和<code>隐藏文件(-h)</code>属性</p><h1 id="目前进度"><a href="#目前进度" class="headerlink" title="目前进度"></a>目前进度</h1><p>由于是最后一次感染病毒萌生了这个想法<br>之前看了看快捷方式，大概猜测到了可能的方式是通过快捷方式执行一个vbs程序<br>所以最后一次感染的时候并没有立即处理，而是关掉了反病毒软件，保留了病毒的vbs文件<br>打开源码好好看了下</p><p>相当混乱的代码<br>虽然没有学过vbs，不过大体上连蒙带猜外加百度推出了一些东西<br>然后推到一半发现这个病毒似乎早就有人已经在网上分析过了<br><a href="https://moozik.cn/archives/297/" target="_blank" rel="noopener">网址在这</a></p><p>对比了明文并且并且解析了下加密部分，似乎连代码都没有变过……<br>感觉就是一个相当古老的病毒在打印店里的古老样本<br>虽然存在各种后门，但是后门的IP都ping不通了<br>（一个大胆的想法， 如果我们将后门网址的域名购买了的话……）</p><h1 id="暂坑"><a href="#暂坑" class="headerlink" title="暂坑"></a>暂坑</h1>]]></content>
       
       
     </entry>
@@ -19,6 +86,8 @@
       
       <categories>
           
+          <category> python </category>
+          
           <category> AI </category>
           
           <category> NeuralNetwork </category>
@@ -26,30 +95,6 @@
           <category> anaconda </category>
           
           <category> tips </category>
-          
-      </categories>
-      
-      
-    </entry>
-    
-    <entry>
-      <title>神经网络简单实践记录</title>
-      <link href="/2018/10/24/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%AE%80%E5%8D%95%E5%AE%9E%E8%B7%B5%E8%AE%B0%E5%BD%95/"/>
-      <url>/2018/10/24/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%AE%80%E5%8D%95%E5%AE%9E%E8%B7%B5%E8%AE%B0%E5%BD%95/</url>
-      <content type="html"><![CDATA[<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p><a href="https://keras.io/" target="_blank" rel="noopener">keras</a>  <a href="https://keras-cn.readthedocs.io/en/latest/" target="_blank" rel="noopener">[中文]</a></p><p><a href="https://tushare.pro/" target="_blank" rel="noopener">Tushare Pro</a></p><p><a href="https://pandas.pydata.org/" target="_blank" rel="noopener">pandas</a></p><p><a href="https://matplotlib.org/" target="_blank" rel="noopener">plt</a></p><h2 id="相关教程"><a href="#相关教程" class="headerlink" title="相关教程"></a>相关教程</h2><h3 id="Pandas"><a href="#Pandas" class="headerlink" title="Pandas"></a>Pandas</h3><p><a href="http://www.cnblogs.com/chaosimple/p/4153083.html" target="_blank" rel="noopener">http://www.cnblogs.com/chaosimple/p/4153083.html</a></p><p><a href="https://jingyan.baidu.com/article/93f9803fe29aece0e46f55cb.html" target="_blank" rel="noopener">https://jingyan.baidu.com/article/93f9803fe29aece0e46f55cb.html</a></p><p>pandas 遍历</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> index, row <span class="keyword">in</span> data.iterrows():</span><br><span class="line">    <span class="keyword">pass</span> <span class="comment">#做点什么</span></span><br></pre></td></tr></table></figure><h3 id="plt"><a href="#plt" class="headerlink" title="plt"></a>plt</h3><p><a href="http://www.cnblogs.com/wei-li/archive/2012/05/23/2506940.html#pyplot" target="_blank" rel="noopener">http://www.cnblogs.com/wei-li/archive/2012/05/23/2506940.html#pyplot</a></p><h2 id="keras"><a href="#keras" class="headerlink" title="keras"></a>keras</h2><p><a href="https://www.jianshu.com/p/6de246284f5c" target="_blank" rel="noopener">https://www.jianshu.com/p/6de246284f5c</a></p><h2 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h2><p><a href="https://zhuanlan.zhihu.com/p/34667893" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/34667893</a><br><a href="https://blog.csdn.net/u010312436/article/details/78449632" target="_blank" rel="noopener">https://blog.csdn.net/u010312436/article/details/78449632</a></p>]]></content>
-      
-      
-    </entry>
-    
-    <entry>
-      <title>关于队列随机抽取概率均等的问题</title>
-      <link href="/2018/10/14/%E5%85%B3%E4%BA%8E%E9%98%9F%E5%88%97%E9%9A%8F%E6%9C%BA%E6%8A%BD%E5%8F%96%E6%A6%82%E7%8E%87%E5%9D%87%E7%AD%89%E7%9A%84%E9%97%AE%E9%A2%98/"/>
-      <url>/2018/10/14/%E5%85%B3%E4%BA%8E%E9%98%9F%E5%88%97%E9%9A%8F%E6%9C%BA%E6%8A%BD%E5%8F%96%E6%A6%82%E7%8E%87%E5%9D%87%E7%AD%89%E7%9A%84%E9%97%AE%E9%A2%98/</url>
-      <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>也算是闲着没事吧，本来能用一些判断弄出来的东西，为了不用循环而用队列将复杂度从降低个n所以设计了概率的方式，所以倒腾出了这个问题，虽然说计算概率估计效率本身也不怎么高</p><p>权当是娱乐和复习概率了……</p><p>答案不确保正确，欢迎讨论（虽然并没有讨论的联系方式……）</p><h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>现有一队列，元素可以从头部或者尾部插入，第n个元素记为\(A_n\)，其插入队列头部的概率为 \(p_n\) </p><p>现在已知每加入8个元素就要从中抽取1个元素出来，一共重复c次</p><p>对每个n求 \(p_n\) 为什么时，才能保证每个元素被抽取出来的概率在当次相等？</p><p>例子：</p><p>第一次抽取的时候，要求<br>$$<br>p(A_n)=\frac{1}{8} (n=1,2…8)<br>$$</p><p>而第二次抽取的时候，设第一次被抽取到的是\(A_k\)，则要求<br>$$<br>p(A_n)=\frac{1}{15} (n=1,2…k-1,k+1…16)<br>$$</p><p>以此类推</p><h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><p>考虑到最后一次抽取情况较为简单，从后往前推</p><p>最后一个要被抽中，那么它必然要在队列首位，那么他被抽中的概率就等于它放在头部的概率</p><p>而要求它被抽中的概率为</p><p>$$<br>p(A_{8c})=\frac{1}{8c-(c-1)}=\frac{1}{7c+1}<br>$$</p>]]></content>
-      
-      <categories>
-          
-          <category> Math </category>
           
       </categories>
       
@@ -87,27 +132,24 @@
     </entry>
     
     <entry>
-      <title>软件记录</title>
-      <link href="/2018/09/06/%E8%BD%AF%E4%BB%B6%E8%AE%B0%E5%BD%95/"/>
-      <url>/2018/09/06/%E8%BD%AF%E4%BB%B6%E8%AE%B0%E5%BD%95/</url>
-      <content type="html"><![CDATA[]]></content>
-      
-      
-    </entry>
-    
-    <entry>
       <title>杂乱的连接收藏</title>
       <link href="/2018/09/05/%E6%9D%82%E4%B9%B1%E7%9A%84%E8%BF%9E%E6%8E%A5%E6%94%B6%E8%97%8F/"/>
       <url>/2018/09/05/%E6%9D%82%E4%B9%B1%E7%9A%84%E8%BF%9E%E6%8E%A5%E6%94%B6%E8%97%8F/</url>
-      <content type="html"><![CDATA[<h1 id="软件"><a href="#软件" class="headerlink" title="软件"></a>软件</h1><p><a href="https://code.visualstudio.com/" target="_blank" rel="noopener">VS Code</a><br><a href="https://www.freedownloadmanager.org/" target="_blank" rel="noopener">Free Download Manager</a><br><a href="http://potplayer.daum.net/" target="_blank" rel="noopener">potplayer</a><br><a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a><br><a href="https://typora.io/" target="_blank" rel="noopener">Typora</a><br><a href="https://notepad-plus-plus.org/[Everything](http://www.voidtools.com/" target="_blank" rel="noopener">notpad++</a><br><a href="https://www.cockos.com/licecap/" target="_blank" rel="noopener">LICEcap</a><br><a href="https://www.blender.org/" target="_blank" rel="noopener">Blender</a><br><a href="https://sai.yufan.me/" target="_blank" rel="noopener">SAI</a><br><a href="https://www.ccleaner.com/ccleaner" target="_blank" rel="noopener">CClear</a><br>UleadGIF(以前的连接挂掉了，未找到可信赖连接，备份于网盘)<br>Windows Store<br>    M8! MindMap<br>    微软必应词典<br>    奇妙清单</p><h1 id="视频"><a href="#视频" class="headerlink" title="视频"></a>视频</h1><p><a href="https://www.bilibili.com/video/av12465079" target="_blank" rel="noopener">【官方双语】想知道比特币（和其他加密货币）的原理吗？</a></p>]]></content>
+      <content type="html"><![CDATA[<h1 id="网站"><a href="#网站" class="headerlink" title="网站"></a>网站</h1><p><a href="https://colab.research.google.com/" target="_blank" rel="noopener">Colaboratory(墙)</a></p><h1 id="软件"><a href="#软件" class="headerlink" title="软件"></a>软件</h1><p><a href="https://code.visualstudio.com/" target="_blank" rel="noopener">VS Code</a><br><a href="https://www.freedownloadmanager.org/" target="_blank" rel="noopener">Free Download Manager</a><br><a href="http://potplayer.daum.net/" target="_blank" rel="noopener">potplayer</a><br><a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a><br><a href="https://typora.io/" target="_blank" rel="noopener">Typora</a><br><a href="https://notepad-plus-plus.org/[Everything](http://www.voidtools.com/" target="_blank" rel="noopener">notpad++</a><br><a href="https://www.cockos.com/licecap/" target="_blank" rel="noopener">LICEcap</a><br><a href="https://www.blender.org/" target="_blank" rel="noopener">Blender</a><br><a href="https://sai.yufan.me/" target="_blank" rel="noopener">SAI</a><br><a href="https://www.ccleaner.com/ccleaner" target="_blank" rel="noopener">CClear</a><br>UleadGIF(以前的连接挂掉了，未找到可信赖连接，备份于网盘)<br>Windows Store<br>    M8! MindMap<br>    微软必应词典<br>    奇妙清单</p><h1 id="视频"><a href="#视频" class="headerlink" title="视频"></a>视频</h1><p><a href="https://www.bilibili.com/video/av12465079" target="_blank" rel="noopener">【官方双语】想知道比特币（和其他加密货币）的原理吗？</a></p><h1 id="技巧"><a href="#技巧" class="headerlink" title="技巧"></a>技巧</h1><p>安装MinGW-w64编译器<br><a href="https://mingw-w64.org/doku.php/download" target="_blank" rel="noopener">https://mingw-w64.org/doku.php/download</a><br><a href="https://sourceforge.net/projects/mingw-w64/postdownload" target="_blank" rel="noopener">https://sourceforge.net/projects/mingw-w64/postdownload</a><br><a href="https://www.cnblogs.com/findumars/p/8289454.html" target="_blank" rel="noopener">https://www.cnblogs.com/findumars/p/8289454.html</a></p><p>安装Cmake<br><a href="https://cmake.org/" target="_blank" rel="noopener">https://cmake.org/</a></p><p>移除U盘“写保护”<br><a href="https://blog.csdn.net/asher_11/article/details/52801235" target="_blank" rel="noopener">https://blog.csdn.net/asher_11/article/details/52801235</a></p>]]></content>
+      
+      <categories>
+          
+          <category> tips </category>
+          
+      </categories>
       
       
     </entry>
     
     <entry>
-      <title>tensorflow 小技巧</title>
-      <link href="/2018/09/05/tensorflow-%E5%B0%8F%E6%8A%80%E5%B7%A7/"/>
-      <url>/2018/09/05/tensorflow-%E5%B0%8F%E6%8A%80%E5%B7%A7/</url>
+      <title>tensorflow相关</title>
+      <link href="/2018/09/05/tensorflow%E7%9B%B8%E5%85%B3/"/>
+      <url>/2018/09/05/tensorflow%E7%9B%B8%E5%85%B3/</url>
       <content type="html"><![CDATA[<h1 id="Android-模型移植"><a href="#Android-模型移植" class="headerlink" title="Android 模型移植"></a>Android 模型移植</h1><p>将模型移植到手机端的时候，需要提供input和output的layer名字</p><p>tensorflow保存为pb模型的时候output名字在layer层里面会加入后缀，我们需要查看后缀之后输入它的输出名字<br>（如Dense层，名字为output的层的输出名字是output/Sigmoid</p><p>可以通过下述代码查看层的名字，这在将层移植到手机端上设置输入输出名的时候会很有用<br><code>[op for op in sess.graph.get_operations() if op.type == &quot;Const&quot;]</code></p><p>也可以在tensorflow里先生成图然后在tensorboard里查看，里面的名字也是一样的（相对更加方便看一些）</p><p>Android版本的tensorflow的feed输入是一维float数组，最后的long数组参数代表维数</p>]]></content>
       
       <categories>
@@ -126,9 +168,9 @@
     </entry>
     
     <entry>
-      <title>python 小技巧</title>
-      <link href="/2018/09/05/python-%E5%B0%8F%E6%8A%80%E5%B7%A7/"/>
-      <url>/2018/09/05/python-%E5%B0%8F%E6%8A%80%E5%B7%A7/</url>
+      <title>python相关</title>
+      <link href="/2018/09/05/python%E7%9B%B8%E5%85%B3/"/>
+      <url>/2018/09/05/python%E7%9B%B8%E5%85%B3/</url>
       <content type="html"><![CDATA[<h1 id="pip上"><a href="#pip上" class="headerlink" title="pip上"></a>pip上</h1><p>pip install packagename –upgrade<br>升级某个包，以去除安装包的时候提示的版本不对的错误</p><p>python 字符串前加f，代表该字符串使用fomat格式，可以通过{XXXX}来嵌入变量和表达式</p><p><a href="https://www.biaodianfu.com/python-error-unable-to-find-vcvarsall-bat.html" target="_blank" rel="noopener">某cython错误</a></p><h1 id="vscode上"><a href="#vscode上" class="headerlink" title="vscode上"></a>vscode上</h1><p>使用flake8比pylint舒服一些……</p><p>“python.linting.flake8Args”: [“–max-line-length=248”]<br>提高flake8Args的line to long提示限制</p>]]></content>
       
       <categories>
@@ -149,6 +191,8 @@
       <content type="html"><![CDATA[<h1 id="层介绍"><a href="#层介绍" class="headerlink" title="层介绍"></a>层介绍</h1><p>RNN层的input一般是三维的array：0为样本，1为时序，2为当前时序的数据</p>]]></content>
       
       <categories>
+          
+          <category> python </category>
           
           <category> AI </category>
           
@@ -181,10 +225,10 @@
     </entry>
     
     <entry>
-      <title>工具、文档以及NLP资料记录</title>
-      <link href="/2018/08/23/NLP%E8%B5%84%E6%96%99%E8%AE%B0%E5%BD%95/"/>
-      <url>/2018/08/23/NLP%E8%B5%84%E6%96%99%E8%AE%B0%E5%BD%95/</url>
-      <content type="html"><![CDATA[<h1 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h1><p><a href="https://www.runoob.com/python/python-tutorial.html" target="_blank" rel="noopener">菜鸟基础教程</a><br>如果忽然忘了一些Python的基础操作可以在这里找</p><p><a href="https://www.jianshu.com/p/04d180d90a3f" target="_blank" rel="noopener">《利用Python进行数据分析·第2版》</a><br>前几章详细地介绍了numpy等工具的利用，可以用于参考</p><h1 id="Keras"><a href="#Keras" class="headerlink" title="Keras"></a>Keras</h1><p><a href="https://keras-cn.readthedocs.io/en/latest/" target="_blank" rel="noopener">中文文档</a><br>因为是中文所以看着比较轻松，但是和英文相比有许多不全的地方<br>找不到或者不详尽的地方还是要看英文的文档</p><p><a href="https://keras.io/" target="_blank" rel="noopener">英文文档</a><br>英文，相对中文文档来说资料更全更新一些，在中文文档不够用的时候就要上了</p><p><a href="https://tensorflow.google.cn/" target="_blank" rel="noopener">tensorflow</a><br>含有基于keras的高级API教程和一些文档API<br>也有一些对基本模型的讨论和讲述<br>以后想要自定义keras的训练层的时候可能会需要在这里找文档<br>对于tensorflow的新功能也可以在这里多看看了解一下</p><p><a href="https://github.com/keras-team/keras/tree/master/examples" target="_blank" rel="noopener">官方例子</a><br>很棒的例子，代码简洁，有助于理解keras的使用和对部分网络结构的熟悉<br>不过建议只用来理解，真正做的时候看一下文档，因为部分例子里没有文档里的一些更方便的东西<br>（比如说在我写这篇的时候，seq2seq就没有使用embedding层，也没有忽略0数据<br>（不过更新似乎一直在继续，也许之后会看到更有效率的做法吧</p><h1 id="RNN"><a href="#RNN" class="headerlink" title="RNN"></a>RNN</h1><p><a href="https://www.jianshu.com/p/75eeaee7f67d" target="_blank" rel="noopener">简要介绍</a></p><h1 id="seq2seq"><a href="#seq2seq" class="headerlink" title="seq2seq"></a>seq2seq</h1><p><a href="http://rsarxiv.github.io/2016/05/31/Sequence-to-Sequence-Learning-with-Neural-Networks-PaperWeekly/" target="_blank" rel="noopener">Sequence to Sequence Learning with Neural Networks</a><br>关于seq2seq的介绍</p><p><a href="http://rsarxiv.github.io/2016/06/01/Learning-Phrase-Representations-using-RNN-Encoder–Decoder-for-Statistical-Machine-Translation-PaperWeekly/" target="_blank" rel="noopener">Learning Phrase Representations using RNN Encoder–Decoder for Statistical Machine Translation</a><br>里面涉及到的原论文中给出了GRU单元的算法以及概率的计算，可以较为清楚地了解GRU这个东西，还有seq2seq的原理</p><p><a href="https://github.com/Lsdefine/attention-is-all-you-need-keras/blob/master/rnn_s2s.py" target="_blank" rel="noopener">attention-is-all-you-need-keras</a><br>含有自定义程度较高的keras的seq2seq实现</p><h1 id="注意力模型"><a href="#注意力模型" class="headerlink" title="注意力模型"></a>注意力模型</h1><p><a href="https://arxiv.org/pdf/1409.0473.pdf" target="_blank" rel="noopener">NEURAL MACHINE TRANSLATION BY JOINTLY LEARNING TO ALIGN AND TRANSLATE</a><br>关于注意力模型的论文<br><a href="https://zhuanlan.zhihu.com/p/21287807" target="_blank" rel="noopener">知乎上对论文的中文介绍和理解</a></p><p><a href="https://blog.csdn.net/malefactor/article/details/50550211" target="_blank" rel="noopener">自然语言处理中的Attention Model：是什么及为什么</a><br>将引入注意力模型的原因和详细的解释一步步的说了出来，很清晰</p><p><a href="https://zhuanlan.zhihu.com/p/37835894" target="_blank" rel="noopener">attention模型方法综述</a></p><p><a href="http://ruder.io/deep-learning-nlp-best-practices/" target="_blank" rel="noopener">deep-learning-nlp-best-practices</a><br>比较全面的介绍</p><p><a href="https://blog.csdn.net/malefactor/article/details/50583474" target="_blank" rel="noopener">以Attention Model为例谈谈两种研究创新模式</a><br>对注意力模型的总结回顾和拓展</p><p><a href="https://blog.csdn.net/mpk_no1/article/details/72862348" target="_blank" rel="noopener">深度学习笔记——Attention Model（注意力模型）学习总结</a></p><p><a href="https://github.com/Xls1994/CDRextraction" target="_blank" rel="noopener">CDRextraction</a><br>似乎含有keras的attentionLayer实现</p><p><a href="https://arxiv.org/pdf/1706.03762.pdf" target="_blank" rel="noopener">AttentionIsAllYouNeed</a><br>不含有RNN和CNN的纯粹注意力模型论文<br>keras实践：<a href="https://github.com/Lsdefine/attention-is-all-you-need-keras/blob/master/transformer.py" target="_blank" rel="noopener">attention-is-all-you-need-keras </a><br>可能需要的参考：<br><a href="https://arxiv.org/pdf/1607.06450v1.pdf" target="_blank" rel="noopener">Layer Normalization</a><br><a href="https://www.zhihu.com/question/48820040" target="_blank" rel="noopener">你是怎样看待刚刚出炉的 Layer Normalisation 的？</a></p><h1 id="对抗生成"><a href="#对抗生成" class="headerlink" title="对抗生成"></a>对抗生成</h1><p>待填</p><h1 id="知识图谱"><a href="#知识图谱" class="headerlink" title="知识图谱"></a>知识图谱</h1><p><a href="https://zhuanlan.zhihu.com/p/41637843" target="_blank" rel="noopener">《知识图谱》专题论文解读</a><br>还没看，之后评价</p><h1 id="推荐"><a href="#推荐" class="headerlink" title="推荐"></a>推荐</h1><p><a href="http://rsarxiv.github.io/" target="_blank" rel="noopener">PaperWeekly</a><br>可以看到许多不错的论文推荐之类的东西<br>不过似乎没有在更新了，最新的一篇也只是2017年的东西了<br>但是里面的东西对个人还是挺有学习价值的<br><em>修正：<a href="http://paperweek.ly/" target="_blank" rel="noopener">PaperWeekly</a>新地址，似乎在这边更新了，似乎要注册才能看</em></p>]]></content>
+      <title>机器学习的工具、文档以及资料记录</title>
+      <link href="/2018/08/23/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%9A%84%E5%B7%A5%E5%85%B7%E3%80%81%E6%96%87%E6%A1%A3%E4%BB%A5%E5%8F%8A%E8%B5%84%E6%96%99%E8%AE%B0%E5%BD%95/"/>
+      <url>/2018/08/23/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%9A%84%E5%B7%A5%E5%85%B7%E3%80%81%E6%96%87%E6%A1%A3%E4%BB%A5%E5%8F%8A%E8%B5%84%E6%96%99%E8%AE%B0%E5%BD%95/</url>
+      <content type="html"><![CDATA[<h1 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h1><p><a href="https://keras.io/" target="_blank" rel="noopener">keras</a>  <a href="https://keras-cn.readthedocs.io/en/latest/" target="_blank" rel="noopener">[中文]</a><br><a href="https://tushare.pro/" target="_blank" rel="noopener">Tushare Pro</a><br><a href="https://matplotlib.org/" target="_blank" rel="noopener">plt</a><br><a href="https://gym.openai.com/" target="_blank" rel="noopener">gym(openAI)</a></p><h1 id="相关教程及文档"><a href="#相关教程及文档" class="headerlink" title="相关教程及文档"></a>相关教程及文档</h1><h2 id="gym"><a href="#gym" class="headerlink" title="gym"></a>gym</h2><p><a href="https://www.jianshu.com/p/cb0839a4d1d3" target="_blank" rel="noopener">https://www.jianshu.com/p/cb0839a4d1d3</a></p><h2 id="plt"><a href="#plt" class="headerlink" title="plt"></a>plt</h2><p><a href="http://www.cnblogs.com/wei-li/archive/2012/05/23/2506940.html#pyplot" target="_blank" rel="noopener">http://www.cnblogs.com/wei-li/archive/2012/05/23/2506940.html#pyplot</a></p><h1 id="理论"><a href="#理论" class="headerlink" title="理论"></a>理论</h1><h2 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h2><p><a href="https://zhuanlan.zhihu.com/p/34667893" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/34667893</a><br><a href="https://blog.csdn.net/u010312436/article/details/78449632" target="_blank" rel="noopener">https://blog.csdn.net/u010312436/article/details/78449632</a></p><h1 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h1><p><a href="https://www.runoob.com/python/python-tutorial.html" target="_blank" rel="noopener">菜鸟基础教程</a><br>如果忽然忘了一些Python的基础操作可以在这里找<br><a href="https://www.jianshu.com/p/04d180d90a3f" target="_blank" rel="noopener">《利用Python进行数据分析·第2版》</a><br>前几章详细地介绍了numpy等工具的利用，可以用于参考</p><h1 id="Keras"><a href="#Keras" class="headerlink" title="Keras"></a>Keras</h1><p><a href="https://keras-cn.readthedocs.io/en/latest/" target="_blank" rel="noopener">中文文档</a><br><a href="https://www.jianshu.com/p/6de246284f5c" target="_blank" rel="noopener">LSTM详解</a><br>因为是中文所以看着比较轻松，但是和英文相比有许多不全的地方<br>找不到或者不详尽的地方还是要看英文的文档</p><p><a href="https://keras.io/" target="_blank" rel="noopener">英文文档</a><br>英文，相对中文文档来说资料更全更新一些，在中文文档不够用的时候就要上了</p><p><a href="https://tensorflow.google.cn/" target="_blank" rel="noopener">tensorflow</a><br>含有基于keras的高级API教程和一些文档API<br>也有一些对基本模型的讨论和讲述<br>以后想要自定义keras的训练层的时候可能会需要在这里找文档<br>对于tensorflow的新功能也可以在这里多看看了解一下</p><p><a href="https://github.com/keras-team/keras/tree/master/examples" target="_blank" rel="noopener">官方例子</a><br>很棒的例子，代码简洁，有助于理解keras的使用和对部分网络结构的熟悉<br>不过建议只用来理解，真正做的时候看一下文档，因为部分例子里没有文档里的一些更方便的东西<br>（比如说在我写这篇的时候，seq2seq就没有使用embedding层，也没有忽略0数据<br>（不过更新似乎一直在继续，也许之后会看到更有效率的做法吧</p><h1 id="RNN"><a href="#RNN" class="headerlink" title="RNN"></a>RNN</h1><p><a href="https://www.jianshu.com/p/75eeaee7f67d" target="_blank" rel="noopener">简要介绍</a></p><h1 id="seq2seq"><a href="#seq2seq" class="headerlink" title="seq2seq"></a>seq2seq</h1><p><a href="http://rsarxiv.github.io/2016/05/31/Sequence-to-Sequence-Learning-with-Neural-Networks-PaperWeekly/" target="_blank" rel="noopener">Sequence to Sequence Learning with Neural Networks</a><br>关于seq2seq的介绍</p><p><a href="http://rsarxiv.github.io/2016/06/01/Learning-Phrase-Representations-using-RNN-Encoder–Decoder-for-Statistical-Machine-Translation-PaperWeekly/" target="_blank" rel="noopener">Learning Phrase Representations using RNN Encoder–Decoder for Statistical Machine Translation</a><br>里面涉及到的原论文中给出了GRU单元的算法以及概率的计算，可以较为清楚地了解GRU这个东西，还有seq2seq的原理</p><p><a href="https://github.com/Lsdefine/attention-is-all-you-need-keras/blob/master/rnn_s2s.py" target="_blank" rel="noopener">attention-is-all-you-need-keras</a><br>含有自定义程度较高的keras的seq2seq实现</p><h1 id="注意力模型"><a href="#注意力模型" class="headerlink" title="注意力模型"></a>注意力模型</h1><p><a href="https://arxiv.org/pdf/1409.0473.pdf" target="_blank" rel="noopener">NEURAL MACHINE TRANSLATION BY JOINTLY LEARNING TO ALIGN AND TRANSLATE</a><br>关于注意力模型的论文<br><a href="https://zhuanlan.zhihu.com/p/21287807" target="_blank" rel="noopener">知乎上对论文的中文介绍和理解</a></p><p><a href="https://blog.csdn.net/malefactor/article/details/50550211" target="_blank" rel="noopener">自然语言处理中的Attention Model：是什么及为什么</a><br>将引入注意力模型的原因和详细的解释一步步的说了出来，很清晰</p><p><a href="https://zhuanlan.zhihu.com/p/37835894" target="_blank" rel="noopener">attention模型方法综述</a></p><p><a href="http://ruder.io/deep-learning-nlp-best-practices/" target="_blank" rel="noopener">deep-learning-nlp-best-practices</a><br>比较全面的介绍</p><p><a href="https://blog.csdn.net/malefactor/article/details/50583474" target="_blank" rel="noopener">以Attention Model为例谈谈两种研究创新模式</a><br>对注意力模型的总结回顾和拓展</p><p><a href="https://blog.csdn.net/mpk_no1/article/details/72862348" target="_blank" rel="noopener">深度学习笔记——Attention Model（注意力模型）学习总结</a></p><p><a href="https://github.com/Xls1994/CDRextraction" target="_blank" rel="noopener">CDRextraction</a><br>似乎含有keras的attentionLayer实现</p><p><a href="https://arxiv.org/pdf/1706.03762.pdf" target="_blank" rel="noopener">AttentionIsAllYouNeed</a><br>不含有RNN和CNN的纯粹注意力模型论文<br>keras实践：<a href="https://github.com/Lsdefine/attention-is-all-you-need-keras/blob/master/transformer.py" target="_blank" rel="noopener">attention-is-all-you-need-keras </a><br>可能需要的参考：<br><a href="https://arxiv.org/pdf/1607.06450v1.pdf" target="_blank" rel="noopener">Layer Normalization</a><br><a href="https://www.zhihu.com/question/48820040" target="_blank" rel="noopener">你是怎样看待刚刚出炉的 Layer Normalisation 的？</a></p><h1 id="对抗生成"><a href="#对抗生成" class="headerlink" title="对抗生成"></a>对抗生成</h1><p>待填</p><h1 id="知识图谱"><a href="#知识图谱" class="headerlink" title="知识图谱"></a>知识图谱</h1><p><a href="https://zhuanlan.zhihu.com/p/41637843" target="_blank" rel="noopener">《知识图谱》专题论文解读</a><br>还没看，之后评价</p><h1 id="推荐"><a href="#推荐" class="headerlink" title="推荐"></a>推荐</h1><p><a href="http://rsarxiv.github.io/" target="_blank" rel="noopener">PaperWeekly</a><br>可以看到许多不错的论文推荐之类的东西<br>不过似乎没有在更新了，最新的一篇也只是2017年的东西了<br>但是里面的东西对个人还是挺有学习价值的<br><em>修正：<a href="http://paperweek.ly/" target="_blank" rel="noopener">PaperWeekly</a>新地址，似乎在这边更新了，似乎要注册才能看</em></p>]]></content>
       
       <categories>
           

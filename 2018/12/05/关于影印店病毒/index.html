@@ -15,17 +15,17 @@
 
 
 
-<meta name="description" content="前言跑了各种打印店，结果U盘一插上去总是中这个病毒第一次的时候导致作业没办法按时交上去后面虽然知道怎么解决了，这东西还是导致为了处理这货上课迟到了不少次无法忍受后决定好好研究一番，看看能不能从根源上解决这个问题 目前进度由于是最后一次感染病毒萌生了这个想法之前看了看快捷方式，大概猜测到了可能的方式是通过快捷方式执行一个vbs程序所以最后一次感染的时候并没有立即处理，而是关掉了反病毒软件，保留了病毒">
+<meta name="description" content="前言跑了各种打印店，结果U盘一插上去总是中这个病毒第一次的时候导致作业没办法按时交上去后面虽然知道怎么解决了，这东西还是导致为了处理这货上课迟到了不少次无法忍受后决定好好研究一番，看看能不能从根源上解决这个问题 不过在行动之前，先记录下如果被病毒隐藏了文件后怎么恢复打开命令行，转至U盘所在，输入下面命令attrib -s -h /s /d即依靠/s递归取消系统文件(-s)和隐藏文件(-h)属性 目">
 <meta property="og:type" content="article">
 <meta property="og:title" content="关于影印店病毒">
 <meta property="og:url" content="https://a595859893.github.io/2018/12/05/关于影印店病毒/index.html">
 <meta property="og:site_name" content="简陋的小屋">
-<meta property="og:description" content="前言跑了各种打印店，结果U盘一插上去总是中这个病毒第一次的时候导致作业没办法按时交上去后面虽然知道怎么解决了，这东西还是导致为了处理这货上课迟到了不少次无法忍受后决定好好研究一番，看看能不能从根源上解决这个问题 目前进度由于是最后一次感染病毒萌生了这个想法之前看了看快捷方式，大概猜测到了可能的方式是通过快捷方式执行一个vbs程序所以最后一次感染的时候并没有立即处理，而是关掉了反病毒软件，保留了病毒">
+<meta property="og:description" content="前言跑了各种打印店，结果U盘一插上去总是中这个病毒第一次的时候导致作业没办法按时交上去后面虽然知道怎么解决了，这东西还是导致为了处理这货上课迟到了不少次无法忍受后决定好好研究一番，看看能不能从根源上解决这个问题 不过在行动之前，先记录下如果被病毒隐藏了文件后怎么恢复打开命令行，转至U盘所在，输入下面命令attrib -s -h /s /d即依靠/s递归取消系统文件(-s)和隐藏文件(-h)属性 目">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-14T10:46:36.314Z">
+<meta property="og:updated_time" content="2018-12-14T11:11:41.905Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于影印店病毒">
-<meta name="twitter:description" content="前言跑了各种打印店，结果U盘一插上去总是中这个病毒第一次的时候导致作业没办法按时交上去后面虽然知道怎么解决了，这东西还是导致为了处理这货上课迟到了不少次无法忍受后决定好好研究一番，看看能不能从根源上解决这个问题 目前进度由于是最后一次感染病毒萌生了这个想法之前看了看快捷方式，大概猜测到了可能的方式是通过快捷方式执行一个vbs程序所以最后一次感染的时候并没有立即处理，而是关掉了反病毒软件，保留了病毒">
+<meta name="twitter:description" content="前言跑了各种打印店，结果U盘一插上去总是中这个病毒第一次的时候导致作业没办法按时交上去后面虽然知道怎么解决了，这东西还是导致为了处理这货上课迟到了不少次无法忍受后决定好好研究一番，看看能不能从根源上解决这个问题 不过在行动之前，先记录下如果被病毒隐藏了文件后怎么恢复打开命令行，转至U盘所在，输入下面命令attrib -s -h /s /d即依靠/s递归取消系统文件(-s)和隐藏文件(-h)属性 目">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -285,6 +285,7 @@
       
           
         <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>跑了各种打印店，结果U盘一插上去总是中这个病毒<br>第一次的时候导致作业没办法按时交上去<br>后面虽然知道怎么解决了，这东西还是导致为了处理这货上课迟到了不少次<br>无法忍受后决定好好研究一番，看看能不能从根源上解决这个问题</p>
+<p>不过在行动之前，先记录下如果被病毒隐藏了文件后怎么恢复<br>打开命令行，转至U盘所在，输入下面命令<br><code>attrib -s -h /s /d</code><br>即依靠<code>/s</code>递归取消<code>系统文件(-s)</code>和<code>隐藏文件(-h)</code>属性</p>
 <h1 id="目前进度"><a href="#目前进度" class="headerlink" title="目前进度"></a>目前进度</h1><p>由于是最后一次感染病毒萌生了这个想法<br>之前看了看快捷方式，大概猜测到了可能的方式是通过快捷方式执行一个vbs程序<br>所以最后一次感染的时候并没有立即处理，而是关掉了反病毒软件，保留了病毒的vbs文件<br>打开源码好好看了下</p>
 <p>相当混乱的代码<br>虽然没有学过vbs，不过大体上连蒙带猜外加百度推出了一些东西<br>然后推到一半发现这个病毒似乎早就有人已经在网上分析过了<br><a href="https://moozik.cn/archives/297/" target="_blank" rel="noopener">网址在这</a></p>
 <p>对比了明文并且并且解析了下加密部分，似乎连代码都没有变过……<br>感觉就是一个相当古老的病毒在打印店里的古老样本<br>虽然存在各种后门，但是后门的IP都ping不通了<br>（一个大胆的想法， 如果我们将后门网址的域名购买了的话……）</p>
@@ -299,7 +300,7 @@
         <p><span>本文标题:</span><a href="/2018/12/05/关于影印店病毒/">关于影印店病毒</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Wuny</a></p>
         <p><span>发布时间:</span>2018-12-05, 23:02:23</p>
-        <p><span>最后更新:</span>2018-12-14, 18:46:36</p>
+        <p><span>最后更新:</span>2018-12-14, 19:11:41</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2018/12/05/关于影印店病毒/" title="关于影印店病毒">https://a595859893.github.io/2018/12/05/关于影印店病毒/</a>
             <span class="copy-path" data-clipboard-text="原文: https://a595859893.github.io/2018/12/05/关于影印店病毒/　　作者: Wuny" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -313,6 +314,12 @@
 
 
     <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2018/12/14/numpy-与-pandas/">
+                    numpy与pandas相关
+                </a>
+            </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
@@ -360,7 +367,9 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+            <a href="/2018/12/14/numpy-与-pandas/" title="上一篇: numpy与pandas相关">
+                <i class="fa fa-angle-left"></i>
+            </a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
@@ -372,7 +381,7 @@
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/12/05/关于影印店病毒/">关于影印店病毒</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/26/Anaconda相关/">Anaconda相关</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/24/神经网络简单实践记录/">神经网络简单实践记录</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/14/关于队列随机抽取概率均等的问题/">关于队列随机抽取概率均等的问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/28/神经科学学习随意记录/">神经科学学习随意记录</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/22/Unity-单元测试坑/">Unity 单元测试坑</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/06/软件记录/">软件记录</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/05/杂乱的连接收藏/">杂乱的连接收藏</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/05/tensorflow-小技巧/">tensorflow 小技巧</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/05/python-小技巧/">python 小技巧</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/05/keras相关/">keras 小技巧</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/25/注意力模型之自己的胡说八道/">注意力模型之自己的胡说八道</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/23/NLP资料记录/">工具、文档以及NLP资料记录</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/20/无脑邮件服务器/">无脑邮件服务器</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/02/C-COM组件编写，并在C-上运行/">C# COM组件编写，并在C++上运行</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/18/C-WinFrom组件和3D动画资料/">C#WinFrom组件和3D动画资料</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/09/go-搭一个websocket/">go 搭一个websocket</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/03/构架演变（大概）/">构架演变（大概）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/30/卷积网络笔记/">卷积网络笔记以及WaveNet理解相关资料</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/05/go-gin框架的一些坑/">go gin框架的一些坑</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/04/关于整数为什么不能用对角线来证明不可数/">关于整数为什么不能用对角线来证明不可数</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/04/go-关于mysql/">go 关于mysql</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/30/go笔记-3/">go笔记-3</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/30/go笔记-2/">go笔记-2</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/30/go笔记-1/">go笔记-1</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/29/VSCode-go-插件安装/">VSCode go 插件安装</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/28/无脑配服务器-Nginx-MySQL-mongoDB-go-redis/">无脑配服务器/Nginx/MySQL/mongoDB/go/redis</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/28/new-Page/">new Page</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/12/first-page/">first page</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/12/14/阅读进度表/">阅读进度表</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/14/数据结构相关/">数据结构相关</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/14/pytorch相关/">pytorch相关</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/14/numpy与pandas相关/">numpy与pandas相关</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/14/numpy-与-pandas/">numpy与pandas相关</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/12/05/关于影印店病毒/">关于影印店病毒</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/10/26/Anaconda相关/">Anaconda相关</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/28/神经科学学习随意记录/">神经科学学习随意记录</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/22/Unity-单元测试坑/">Unity 单元测试坑</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/05/杂乱的连接收藏/">杂乱的连接收藏</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/05/tensorflow相关/">tensorflow相关</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/05/python相关/">python相关</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/09/05/keras相关/">keras 小技巧</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/25/注意力模型之自己的胡说八道/">注意力模型之自己的胡说八道</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/08/23/机器学习的工具、文档以及资料记录/">机器学习的工具、文档以及资料记录</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/20/无脑邮件服务器/">无脑邮件服务器</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/06/02/C-COM组件编写，并在C-上运行/">C# COM组件编写，并在C++上运行</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/18/C-WinFrom组件和3D动画资料/">C#WinFrom组件和3D动画资料</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/09/go-搭一个websocket/">go 搭一个websocket</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/05/03/构架演变（大概）/">构架演变（大概）</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/30/卷积网络笔记/">卷积网络笔记以及WaveNet理解相关资料</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/05/go-gin框架的一些坑/">go gin框架的一些坑</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/04/关于整数为什么不能用对角线来证明不可数/">关于整数为什么不能用对角线来证明不可数</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/04/04/go-关于mysql/">go 关于mysql</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/30/go笔记-3/">go笔记-3</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/30/go笔记-2/">go笔记-2</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/30/go笔记-1/">go笔记-1</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/29/VSCode-go-插件安装/">VSCode go 插件安装</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/28/无脑配服务器-Nginx-MySQL-mongoDB-go-redis/">无脑配服务器/Nginx/MySQL/mongoDB/go/redis</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/28/new-Page/">new Page</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/12/first-page/">first page</a></li></ul>
 
 
 
