@@ -488,68 +488,6 @@
 
 
   
-    <article id="post-numpy-与-pandas" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/12/14/numpy-与-pandas/" class="article-date">
-      <time datetime="2018-12-14T10:53:48.000Z" itemprop="datePublished">2018-12-14</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/14/numpy-与-pandas/">numpy与pandas相关</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>#<br><a href="https://pandas.pydata.org/" target="_blank" rel="noopener">pandas官方网站</a></p>
-<h1 id="Pandas教程资料"><a href="#Pandas教程资料" class="headerlink" title="Pandas教程资料"></a>Pandas教程资料</h1><p><a href="http://pandas.pydata.org/pandas-docs/stable/10min.html" target="_blank" rel="noopener">10 Minutes to pandas</a> <a href="http://www.cnblogs.com/chaosimple/p/4153083.html" target="_blank" rel="noopener">（中文翻译）</a><br><a href="https://www.jianshu.com/p/04d180d90a3f" target="_blank" rel="noopener">《利用Python进行数据分析·第2版》</a></p>
-<h1 id="Pandas备忘"><a href="#Pandas备忘" class="headerlink" title="Pandas备忘"></a>Pandas备忘</h1><h2 id="DataFrame遍历"><a href="#DataFrame遍历" class="headerlink" title="DataFrame遍历"></a>DataFrame遍历</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> index, row <span class="keyword">in</span> data.iterrows():</span><br><span class="line">    <span class="keyword">pass</span> <span class="comment">#做点什么</span></span><br></pre></td></tr></table></figure>
-<h2 id="DataFrame-缺失值填充"><a href="#DataFrame-缺失值填充" class="headerlink" title="DataFrame 缺失值填充"></a>DataFrame 缺失值填充</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DataFrame.fillna(<span class="number">0</span>) <span class="comment">#可以将0换成其它你想对缺失值填充的数据</span></span><br></pre></td></tr></table></figure>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/python/">python</a><a class="article-category-link" href="/categories/python/tips/">tips</a>
-    </div>
-
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
     <article id="post-关于影印店病毒" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -1092,9 +1030,73 @@
 
 
   
+    <article id="post-tensorflow相关" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/09/05/tensorflow相关/" class="article-date">
+      <time datetime="2018-09-05T14:01:17.000Z" itemprop="datePublished">2018-09-05</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/05/tensorflow相关/">tensorflow相关</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="Android-模型移植"><a href="#Android-模型移植" class="headerlink" title="Android 模型移植"></a>Android 模型移植</h1><p>将模型移植到手机端的时候，需要提供input和output的layer名字</p>
+<p>tensorflow保存为pb模型的时候output名字在layer层里面会加入后缀，我们需要查看后缀之后输入它的输出名字<br>（如Dense层，名字为output的层的输出名字是output/Sigmoid</p>
+<p>可以通过下述代码查看层的名字，这在将层移植到手机端上设置输入输出名的时候会很有用<br><code>[op for op in sess.graph.get_operations() if op.type == &quot;Const&quot;]</code></p>
+<p>也可以在tensorflow里先生成图然后在tensorboard里查看，里面的名字也是一样的（相对更加方便看一些）</p>
+<p>Android版本的tensorflow的feed输入是一维float数组，最后的long数组参数代表维数</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/AI/">AI</a><a class="article-category-link" href="/categories/AI/NeuralNetwork/">NeuralNetwork</a><a class="article-category-link" href="/categories/AI/NeuralNetwork/tensorflow/">tensorflow</a><a class="article-category-link" href="/categories/AI/NeuralNetwork/tensorflow/tips/">tips</a>
+    </div>
+
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 </div>

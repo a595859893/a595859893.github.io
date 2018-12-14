@@ -252,70 +252,6 @@
 </nav>
       <div class="body-wrap">
   
-    <article id="post-tensorflow相关" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/09/05/tensorflow相关/" class="article-date">
-      <time datetime="2018-09-05T14:01:17.000Z" itemprop="datePublished">2018-09-05</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/05/tensorflow相关/">tensorflow相关</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h1 id="Android-模型移植"><a href="#Android-模型移植" class="headerlink" title="Android 模型移植"></a>Android 模型移植</h1><p>将模型移植到手机端的时候，需要提供input和output的layer名字</p>
-<p>tensorflow保存为pb模型的时候output名字在layer层里面会加入后缀，我们需要查看后缀之后输入它的输出名字<br>（如Dense层，名字为output的层的输出名字是output/Sigmoid</p>
-<p>可以通过下述代码查看层的名字，这在将层移植到手机端上设置输入输出名的时候会很有用<br><code>[op for op in sess.graph.get_operations() if op.type == &quot;Const&quot;]</code></p>
-<p>也可以在tensorflow里先生成图然后在tensorboard里查看，里面的名字也是一样的（相对更加方便看一些）</p>
-<p>Android版本的tensorflow的feed输入是一维float数组，最后的long数组参数代表维数</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/AI/">AI</a><a class="article-category-link" href="/categories/AI/NeuralNetwork/">NeuralNetwork</a><a class="article-category-link" href="/categories/AI/NeuralNetwork/tensorflow/">tensorflow</a><a class="article-category-link" href="/categories/AI/NeuralNetwork/tensorflow/tips/">tips</a>
-    </div>
-
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
     <article id="post-python相关" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -919,9 +855,71 @@
 
 
   
+    <article id="post-卷积网络笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/04/30/卷积网络笔记/" class="article-date">
+      <time datetime="2018-04-30T13:58:27.000Z" itemprop="datePublished">2018-04-30</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/04/30/卷积网络笔记/">卷积网络笔记以及WaveNet理解相关资料</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p><a href="https://www.zhihu.com/question/39022858" target="_blank" rel="noopener">来自知乎的原文</a><br>下面是自己的一些理解？<br>对于图像的操作可以写成矩阵的形式，作为<em>滤波器</em><br>这些<em>滤波器（filter）</em>会对特定的模式有高的激活（识别特定的曲线或者其它的模式）<br>训练卷积神经网络的时候，我们实际上是在训练每一格卷积层一系列的<em>滤波器</em><br>第二层的滤波器会将第一层的输出作为它的输出，来检测低阶特征的组合等情况<br>随着卷积层数的增加，组合的累计让神经网络能够检测的特征更加的复杂<br>这种方式与人类大脑的视觉信息处理模式相仿，都是由简单到复杂抽象</p>
+<p>构建滤波器（训练）的方式是<em>修改滤波器矩阵的值（权重Weight）</em>,使其能识别特定的特征<br>修改依据是损失函数的输出，尽可能的让损失函数的值最小<br>使其变为一个最优化问题</p>
+<p>WaveNet理解用相关资料<br>(卷积变种)[<a href="https://www.cnblogs.com/yangperasd/p/7071657.html]" target="_blank" rel="noopener">https://www.cnblogs.com/yangperasd/p/7071657.html]</a><br>(优化方法)[<a href="https://zhuanlan.zhihu.com/p/22252270]" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/22252270]</a><br>(卷积训练公式推导)[<a href="https://zybuluo.com/hanbingtao/note/485480]" target="_blank" rel="noopener">https://zybuluo.com/hanbingtao/note/485480]</a></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/AI/">AI</a><a class="article-category-link" href="/categories/AI/NeuralNetwork/">NeuralNetwork</a>
+    </div>
+
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
     </nav>
   
 </div>
