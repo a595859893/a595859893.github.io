@@ -252,6 +252,68 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-卷积网络笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/04/30/卷积网络笔记/" class="article-date">
+      <time datetime="2018-04-30T13:58:27.000Z" itemprop="datePublished">2018-04-30</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/04/30/卷积网络笔记/">卷积网络笔记以及WaveNet理解相关资料</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p><a href="https://www.zhihu.com/question/39022858" target="_blank" rel="noopener">来自知乎的原文</a><br>下面是自己的一些理解？<br>对于图像的操作可以写成矩阵的形式，作为<em>滤波器</em><br>这些<em>滤波器（filter）</em>会对特定的模式有高的激活（识别特定的曲线或者其它的模式）<br>训练卷积神经网络的时候，我们实际上是在训练每一格卷积层一系列的<em>滤波器</em><br>第二层的滤波器会将第一层的输出作为它的输出，来检测低阶特征的组合等情况<br>随着卷积层数的增加，组合的累计让神经网络能够检测的特征更加的复杂<br>这种方式与人类大脑的视觉信息处理模式相仿，都是由简单到复杂抽象</p>
+<p>构建滤波器（训练）的方式是<em>修改滤波器矩阵的值（权重Weight）</em>,使其能识别特定的特征<br>修改依据是损失函数的输出，尽可能的让损失函数的值最小<br>使其变为一个最优化问题</p>
+<p>WaveNet理解用相关资料<br>(卷积变种)[<a href="https://www.cnblogs.com/yangperasd/p/7071657.html]" target="_blank" rel="noopener">https://www.cnblogs.com/yangperasd/p/7071657.html]</a><br>(优化方法)[<a href="https://zhuanlan.zhihu.com/p/22252270]" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/22252270]</a><br>(卷积训练公式推导)[<a href="https://zybuluo.com/hanbingtao/note/485480]" target="_blank" rel="noopener">https://zybuluo.com/hanbingtao/note/485480]</a></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/AI/">AI</a><a class="article-category-link" href="/categories/AI/NeuralNetwork/">NeuralNetwork</a>
+    </div>
+
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-go-gin框架的一些坑" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -982,71 +1044,9 @@
 
 
   
-    <article id="post-first-page" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/10/12/first-page/" class="article-date">
-      <time datetime="2017-10-12T13:36:15.000Z" itemprop="datePublished">2017-10-12</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/12/first-page/">first page</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>嗯，总之就是简单的第一篇文章。</p>
-<blockquote><p>听说有引用这种东西，所以拿来试试</p>
-<footer><strong>简陋的小屋</strong><cite>Wuny</cite></footer></blockquote>
-<figure class="highlight c"><figcaption><span>++</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">printf</span>(<span class="string">"Hello world!"</span>);</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Diary/">Diary</a>
-    </div>
-
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
     </nav>
   
 </div>
@@ -1055,7 +1055,7 @@
         <div id="footer-info">
             <div class="footer-left">
                 <i class="fa fa-copyright"></i> 
-                2017-2018 Wuny
+                2017-2019 Wuny
             </div>
             <div class="footer-right">
                 <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
