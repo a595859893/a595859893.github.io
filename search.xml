@@ -6,7 +6,17 @@
       <title>关于VAE</title>
       <link href="/2019/01/23/%E5%85%B3%E4%BA%8EVAE/"/>
       <url>/2019/01/23/%E5%85%B3%E4%BA%8EVAE/</url>
-      <content type="html"><![CDATA[<p><a href="https://kexue.fm/archives/5253" target="_blank" rel="noopener">相关连接</a></p><h1 id="目前对自编码器的理解"><a href="#目前对自编码器的理解" class="headerlink" title="目前对自编码器的理解"></a>目前对自编码器的理解</h1><p>输入样本，经过隐藏层后输出同样的东西，实际上是将输入编码为了隐藏层的参数，使得隐藏层的参数和样本能够一一对应<br>即通过自编码器的不断学习，将样本一一编码至隐藏层向量中</p><h1 id="目前对VAE的理解"><a href="#目前对VAE的理解" class="headerlink" title="目前对VAE的理解"></a>目前对VAE的理解</h1><p>VAE中，一个样本对应的不再是一个隐藏层参数，而是一个分布（通常我们假设为正态分布……可能是因为好算？）<br>每个样本对应一个自己<em>单独</em>的分布<br>训练的时候在这个分布中采样计算loss梯度<br>KL散度是为了保持分布的方差$\sigma$不会趋于零（正则项，使得模型更具有泛化性），而正常loss项则是保持分布的均值$\mu$向应该在的位置靠拢，二者共同作用以训练分布）<br>（所以之前以为loss中KL散度是为了让隐变量z服从正态分布的想法不是那么准确，虽然z在这种情况下能推出z确实是正态分布（这也是为什么我们可以依靠随机采样正态分布作为z的依据））<br>之所以对应$\sigma^2$参数算出的代表为$log \sigma^2$是因为$sigma^2$恒为正，但是网络输出可能为负数，但是取对数后可正可负，就不用特殊处理负数情况了。</p>]]></content>
+      <content type="html"><![CDATA[<p><a href="https://kexue.fm/archives/5253" target="_blank" rel="noopener">相关连接</a></p><h1 id="目前对自编码器的理解"><a href="#目前对自编码器的理解" class="headerlink" title="目前对自编码器的理解"></a>目前对自编码器的理解</h1><p>输入样本，经过隐藏层后输出同样的东西，实际上是将输入编码为了隐藏层的参数，使得隐藏层的参数和样本能够一一对应<br>即通过自编码器的不断学习，将样本一一编码至隐藏层向量中</p><h1 id="目前对VAE的理解"><a href="#目前对VAE的理解" class="headerlink" title="目前对VAE的理解"></a>目前对VAE的理解</h1><p>VAE中，一个样本对应的不再是一个隐藏层参数向量，而是向量的分布（通常我们假设为正态分布……可能是因为好算？）<br>每个样本对应一个自己<em>单独</em>的向量分布<br>训练的时候在这个分布中采样计算loss梯度<br>KL散度是为了保持分布的方差$\sigma$不会趋于零（正则项，使得模型更具有泛化性），而正常loss项则是保持分布的均值$\mu$向应该在的位置靠拢，二者共同作用以训练分布）<br>（所以之前以为loss中KL散度是为了让隐变量z服从正态分布的想法不是那么准确，虽然z在这种情况下能推出z确实是正态分布（这也是为什么我们可以依靠随机采样正态分布作为z的依据））<br>之所以对应$\sigma^2$参数算出的代表为$log \sigma^2$是因为$\sigma^2$恒为正，但是网络输出可能为负数，但是取对数后可正可负，就不用特殊处理负数情况了。</p>]]></content>
+      
+      <categories>
+          
+          <category> python </category>
+          
+          <category> AI </category>
+          
+          <category> NeuralNetwork </category>
+          
+      </categories>
       
       
     </entry>
