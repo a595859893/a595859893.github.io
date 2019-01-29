@@ -623,7 +623,7 @@
       
           
         <p>参考资料：<br><a href="https://www.itmanbu.com/docker-mail-server.html" target="_blank" rel="noopener">利用Docker自建多功能加密邮件服务器</a><br><a href="https://github.com/tomav/docker-mailserver" target="_blank" rel="noopener">docker-mailserver git网址</a></p>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>(安装docker的指令不太确定,如果不行的话上网找吧)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt install docker -y</span><br><span class="line">sudo apt install docker-compose -y</span><br><span class="line">sudo apt install dovecot-core -y</span><br><span class="line">sudo docker pull tvial/docker-mailserver:latest</span><br><span class="line"></span><br><span class="line">sudo apt-get install software-properties-common -y</span><br><span class="line"></span><br><span class="line">sudo add-apt-repository ppa:certbot/certbot</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install certbot -y</span><br></pre></td></tr></table></figure></p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>(安装docker的指令不太确定,如果不行的话上网找吧)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update &amp;&amp; \</span><br><span class="line">sudo apt install docker -y &amp;&amp; \</span><br><span class="line">sudo apt install docker-compose -y &amp;&amp; \</span><br><span class="line">sudo apt install dovecot-core -y &amp;&amp; \</span><br><span class="line">sudo apt-get install software-properties-common -y  &amp;&amp; \</span><br><span class="line">sudo add-apt-repository ppa:certbot/certbot</span><br><span class="line"></span><br><span class="line">sudo apt-get update &amp;&amp; \</span><br><span class="line">sudo apt-get install certbot -y</span><br></pre></td></tr></table></figure></p>
 <h2 id="拉取配置文件"><a href="#拉取配置文件" class="headerlink" title="拉取配置文件"></a>拉取配置文件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">curl -o setup.sh https://raw.githubusercontent.com/tomav/docker-mailserver/master/setup.sh; chmod a+x ./setup.sh</span><br><span class="line">curl -o docker-compose.yml https://raw.githubusercontent.com/tomav/docker-mailserver/master/docker-compose.yml.dist</span><br><span class="line">curl -o .env https://raw.githubusercontent.com/tomav/docker-mailserver/master/.env.dist</span><br></pre></td></tr></table></figure>
 <p>hostname和domainname最终要拼成主机名<br>修改拉取后的.env文件进行配置，配置属性详情<a href="https://github.com/tomav/docker-mailserver" target="_blank" rel="noopener">见此</a><br>docker-compose中也需要修改volume的映射位置，包括文件存储位置和证书位置（如加入’/etc/letsencrypt:/etc/letsencrypt’）</p>
 <h2 id="启动容器进行初始化"><a href="#启动容器进行初始化" class="headerlink" title="启动容器进行初始化"></a>启动容器进行初始化</h2><p><code>docker-compose up -d mail</code></p>
@@ -640,6 +640,10 @@
     <div class="article-info article-info-index">
       
       
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/Server/">Server</a>
+    </div>
+
 
       
       
