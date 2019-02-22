@@ -252,6 +252,64 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-ts的配置文件经历" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/02/22/ts的配置文件经历/" class="article-date">
+      <time datetime="2019-02-22T13:55:29.000Z" itemprop="datePublished">2019-02-22</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/02/22/ts的配置文件经历/">ts的配置文件经历</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>想要弄一个舒服的配置文件路径，在src中建立了config目录，打算将所有配置文件放在config之下</p>
+<p>(tsconfig.json属性解说)[<a href="https://www.tslang.cn/docs/handbook/tsconfig-json.html]" target="_blank" rel="noopener">https://www.tslang.cn/docs/handbook/tsconfig-json.html]</a><br>我希望在import的时候不需要打一长串的路径，故将tsconfig.json属性中的baseUrl（代码提示中的根目录地点）设置为了<code>./src</code><br>这样只需要<code>import config/config，vacode</code>就能够识别出<code>config</code>目录下的<code>config.js</code>了</p>
+<p>(webpack的模块路径)[<a href="https://www.webpackjs.com/configuration/resolve/#resolve-modules]" target="_blank" rel="noopener">https://www.webpackjs.com/configuration/resolve/#resolve-modules]</a><br>打包的时候对于模块路径(即没有<code>/</code>(绝对路径)或者<code>./</code>(相对路径)开头的路径，node_modules的中模块引用属于模块路径)会从resolve.modules中查询<br>要注意绝对路径和相对路径下的区别，相对路径情况下会进行逐目录的搜索，而绝对路径不会对其祖先目录进行搜索<br>这里我使用了[path.resolve(__dirname,”./src”),”node_modules”]作为参数<br>node_modules是默认参数，用于搜索node的模块<br>前面则是自己增加的src路径，用来方便config配置的<br>此处src不用相对路径而是绝对路径的原因是：相对路径会搜索祖先文件夹，而祖先文件夹含有webpack的编译输出文件夹<code>dist</code><br>而自己使用了hot-reload，当编译结束的时候，由于dist发生了改变，又会引起下一次编译，导致编译不断进行无法结束<br>而使用绝对路径就不会考虑祖先文件夹，因此不会监听到dist的文件夹变化</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-关于VAE" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -458,7 +516,8 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="将one-hot转为token"><a href="#将one-hot转为token" class="headerlink" title="将one-hot转为token"></a>将one-hot转为token</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">torch.eye(x.size(<span class="number">1</span>))[x.argmax(<span class="number">1</span>)]</span><br></pre></td></tr></table></figure>
+        <h2 id="常用Tensor初始化"><a href="#常用Tensor初始化" class="headerlink" title="常用Tensor初始化"></a>常用Tensor初始化</h2><p>(基本的初始化)[<a href="https://pytorch.org/docs/stable/torch.html#creation-ops]" target="_blank" rel="noopener">https://pytorch.org/docs/stable/torch.html#creation-ops]</a><br>(与特定Tensor相同dtype和device的初始化，在自定义模型中使用可以不用分cpu和gpu了)[<a href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor]" target="_blank" rel="noopener">https://pytorch.org/docs/stable/tensors.html#torch.Tensor]</a><br>(说起来到底怎么判断一个模型属于cpu还是属于gpu……)</p>
+<h2 id="将one-hot转为token"><a href="#将one-hot转为token" class="headerlink" title="将one-hot转为token"></a>将one-hot转为token</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">torch.eye(x.size(<span class="number">1</span>))[x.argmax(<span class="number">1</span>)]</span><br></pre></td></tr></table></figure>
 <p>先生成单位向量，然后用花式索引选择其对应行<br>很赞的方法</p>
 
       
@@ -1006,71 +1065,6 @@
       
     <div class="article-category tagcloud">
     <a class="article-category-link" href="/categories/Unity/">Unity</a>
-    </div>
-
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-杂乱的连接收藏" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/09/05/杂乱的连接收藏/" class="article-date">
-      <time datetime="2018-09-05T14:43:39.000Z" itemprop="datePublished">2018-09-05</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/05/杂乱的连接收藏/">杂乱的连接收藏</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h1 id="软件"><a href="#软件" class="headerlink" title="软件"></a>软件</h1><p><a href="https://code.visualstudio.com/" target="_blank" rel="noopener">VS Code</a><br><a href="https://www.freedownloadmanager.org/" target="_blank" rel="noopener">Free Download Manager</a><br><a href="http://potplayer.daum.net/" target="_blank" rel="noopener">potplayer</a><br><a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a><br><a href="https://typora.io/" target="_blank" rel="noopener">Typora</a><br><a href="https://notepad-plus-plus.org/
-[Everything](http://www.voidtools.com/" target="_blank" rel="noopener">notpad++</a><br><a href="https://www.cockos.com/licecap/" target="_blank" rel="noopener">LICEcap</a><br><a href="https://www.blender.org/" target="_blank" rel="noopener">Blender</a><br><a href="https://sai.yufan.me/" target="_blank" rel="noopener">SAI</a><br><a href="https://www.ccleaner.com/ccleaner" target="_blank" rel="noopener">CClear</a><br><a href="https://www.draw.io/" target="_blank" rel="noopener">draw.io</a><br>UleadGIF(以前的连接挂掉了，未找到可信赖连接，备份于网盘)</p>
-<h1 id="视频"><a href="#视频" class="headerlink" title="视频"></a>视频</h1><p><a href="https://www.bilibili.com/video/av12465079" target="_blank" rel="noopener">【官方双语】想知道比特币（和其他加密货币）的原理吗？</a></p>
-<h1 id="技巧"><a href="#技巧" class="headerlink" title="技巧"></a>技巧</h1><p>安装MinGW-w64编译器<br><a href="https://mingw-w64.org/doku.php/download" target="_blank" rel="noopener">https://mingw-w64.org/doku.php/download</a><br><a href="https://sourceforge.net/projects/mingw-w64/postdownload" target="_blank" rel="noopener">https://sourceforge.net/projects/mingw-w64/postdownload</a><br><a href="https://www.cnblogs.com/findumars/p/8289454.html" target="_blank" rel="noopener">https://www.cnblogs.com/findumars/p/8289454.html</a></p>
-<p>安装Cmake<br><a href="https://cmake.org/" target="_blank" rel="noopener">https://cmake.org/</a></p>
-<p>移除U盘“写保护”<br><a href="https://blog.csdn.net/asher_11/article/details/52801235" target="_blank" rel="noopener">https://blog.csdn.net/asher_11/article/details/52801235</a></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/tips/">tips</a>
     </div>
 
 

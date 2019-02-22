@@ -15,17 +15,17 @@
 
 
 
-<meta name="description" content="参考资料：利用Docker自建多功能加密邮件服务器docker-mailserver git网址Installation-Examples 安装(安装docker的指令不太确定,如果不行的话上网找吧)123456789sudo apt-get update &amp;amp;&amp;amp; \sudo apt install docker -y &amp;amp;&amp;amp; \sudo apt install doc">
+<meta name="description" content="想要弄一个舒服的配置文件路径，在src中建立了config目录，打算将所有配置文件放在config之下 (tsconfig.json属性解说)[https://www.tslang.cn/docs/handbook/tsconfig-json.html]我希望在import的时候不需要打一长串的路径，故将tsconfig.json属性中的baseUrl（代码提示中的根目录地点）设置为了./src这">
 <meta property="og:type" content="article">
-<meta property="og:title" content="无脑邮件服务器">
-<meta property="og:url" content="https://a595859893.github.io/2018/07/20/无脑邮件服务器/index.html">
+<meta property="og:title" content="ts的配置文件经历">
+<meta property="og:url" content="https://a595859893.github.io/2019/02/22/ts的配置文件经历/index.html">
 <meta property="og:site_name" content="简陋的小屋">
-<meta property="og:description" content="参考资料：利用Docker自建多功能加密邮件服务器docker-mailserver git网址Installation-Examples 安装(安装docker的指令不太确定,如果不行的话上网找吧)123456789sudo apt-get update &amp;amp;&amp;amp; \sudo apt install docker -y &amp;amp;&amp;amp; \sudo apt install doc">
+<meta property="og:description" content="想要弄一个舒服的配置文件路径，在src中建立了config目录，打算将所有配置文件放在config之下 (tsconfig.json属性解说)[https://www.tslang.cn/docs/handbook/tsconfig-json.html]我希望在import的时候不需要打一长串的路径，故将tsconfig.json属性中的baseUrl（代码提示中的根目录地点）设置为了./src这">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-01-29T16:55:30.279Z">
+<meta property="og:updated_time" content="2019-02-22T13:56:03.664Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="无脑邮件服务器">
-<meta name="twitter:description" content="参考资料：利用Docker自建多功能加密邮件服务器docker-mailserver git网址Installation-Examples 安装(安装docker的指令不太确定,如果不行的话上网找吧)123456789sudo apt-get update &amp;amp;&amp;amp; \sudo apt install docker -y &amp;amp;&amp;amp; \sudo apt install doc">
+<meta name="twitter:title" content="ts的配置文件经历">
+<meta name="twitter:description" content="想要弄一个舒服的配置文件路径，在src中建立了config目录，打算将所有配置文件放在config之下 (tsconfig.json属性解说)[https://www.tslang.cn/docs/handbook/tsconfig-json.html]我希望在import的时候不需要打一长串的路径，故将tsconfig.json属性中的baseUrl（代码提示中的根目录地点）设置为了./src这">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -55,7 +55,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>无脑邮件服务器 | 简陋的小屋</title>
+<title>ts的配置文件经历 | 简陋的小屋</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -248,11 +248,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-无脑邮件服务器" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-ts的配置文件经历" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2018/07/20/无脑邮件服务器/" class="article-date">
-      <time datetime="2018-07-20T13:46:30.000Z" itemprop="datePublished">2018-07-20</time>
+      <a href="/2019/02/22/ts的配置文件经历/" class="article-date">
+      <time datetime="2019-02-22T13:55:29.000Z" itemprop="datePublished">2019-02-22</time>
 </a>
 
 
@@ -267,7 +267,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      无脑邮件服务器
+      ts的配置文件经历
     </h1>
   
 
@@ -275,10 +275,6 @@
       
       <div class="article-info article-info-post">
         
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Server/">Server</a>
-    </div>
-
 
         
         <div class="clearfix"></div>
@@ -288,17 +284,9 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>参考资料：<br><a href="https://www.itmanbu.com/docker-mail-server.html" target="_blank" rel="noopener">利用Docker自建多功能加密邮件服务器</a><br><a href="https://github.com/tomav/docker-mailserver" target="_blank" rel="noopener">docker-mailserver git网址</a><br><a href="https://github.com/tomav/docker-mailserver/wiki/Installation-Examples" target="_blank" rel="noopener">Installation-Examples</a></p>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>(安装docker的指令不太确定,如果不行的话上网找吧)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update &amp;&amp; \</span><br><span class="line">sudo apt install docker -y &amp;&amp; \</span><br><span class="line">sudo apt install docker-compose -y &amp;&amp; \</span><br><span class="line">sudo apt install dovecot-core -y &amp;&amp; \</span><br><span class="line">sudo apt-get install software-properties-common -y  &amp;&amp; \</span><br><span class="line">sudo add-apt-repository ppa:certbot/certbot</span><br><span class="line"></span><br><span class="line">sudo apt-get update &amp;&amp; \</span><br><span class="line">sudo apt-get install certbot -y</span><br></pre></td></tr></table></figure></p>
-<h2 id="拉取配置文件"><a href="#拉取配置文件" class="headerlink" title="拉取配置文件"></a>拉取配置文件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">curl -o setup.sh https://raw.githubusercontent.com/tomav/docker-mailserver/master/setup.sh; chmod a+x ./setup.sh</span><br><span class="line">curl -o docker-compose.yml https://raw.githubusercontent.com/tomav/docker-mailserver/master/docker-compose.yml.dist</span><br><span class="line">curl -o .env https://raw.githubusercontent.com/tomav/docker-mailserver/master/.env.dist</span><br></pre></td></tr></table></figure>
-<p>hostname和domainname最终要拼成主机名<br>port加入465<br>修改拉取后的.env文件进行配置，配置属性详情<a href="https://github.com/tomav/docker-mailserver" target="_blank" rel="noopener">见此</a><br>docker-compose中也需要修改volume的映射位置，包括文件存储位置和证书位置（如加入’/etc/letsencrypt:/etc/letsencrypt’）</p>
-<h2 id="启动容器进行初始化"><a href="#启动容器进行初始化" class="headerlink" title="启动容器进行初始化"></a>启动容器进行初始化</h2><p><code>docker-compose up -d mail</code></p>
-<p>可能出现的错误：<code>Couldn&#39;t connect to Docker daemon at http+docker://localunixsocket - is it running?</code><br>若存在上述错误，尝试将用户加入docker组，然后重启终端<br><code>sudo gpasswd -a ${USER} docker</code>)</p>
-<h2 id="DNS域名解析："><a href="#DNS域名解析：" class="headerlink" title="DNS域名解析："></a>DNS域名解析：</h2><p><code>sudo ./setup.sh config dkim</code><br>如果未出现config文件夹，可能需要先添加一个账户后重试<br>生成的字符串长度可以在dkim后面增加参数（如<code>sudo ./setup.sh config dkim 200</code>）进行限制</p>
-<p>复制config/opendkim/keys/domain.tld/mail.txt下内容，将引号内字符串拼接后用于设置DNS<br>类型为TXT，记录名为mail._domainkey，记录值为拼接后字符串<br>类型为MX，记录名为@，记录值”mail.(你的域名)”(如”mail.abc.cn”,下面的域名以此为例)<br>类型为A，记录名为mail，记录值为(服务器的IP)</p>
-<h2 id="证书-域名以”mail-abc-cn”-为例"><a href="#证书-域名以”mail-abc-cn”-为例" class="headerlink" title="证书(域名以”mail.abc.cn”,为例)"></a>证书(域名以”mail.abc.cn”,为例)</h2><p><code>certbot certonly --standalone -d mail.abc.cn</code><br>之后会要求你输入邮箱来获取安全信息等，填入邮箱即可。还会问你是否接受推送，这个看个人意愿选择吧。</p>
-<p>证书续期<br><code>crontab -e</code>打开定时任务设置面板，按i进入编辑模式，粘贴进这段代码即：<br><code>0 5 * * 1 /usr/bin/certbot renew --quiet</code><br>可每周一凌晨5点0分给证书续期</p>
-<h2 id="注册邮箱-邮箱名字以”wuny-abc-cn“为例-密码以yourpassword为例"><a href="#注册邮箱-邮箱名字以”wuny-abc-cn“为例-密码以yourpassword为例" class="headerlink" title="注册邮箱(邮箱名字以”wuny@abc.cn“为例,密码以yourpassword为例)"></a>注册邮箱(邮箱名字以”<a href="mailto:wuny@abc.cn" target="_blank" rel="noopener">wuny@abc.cn</a>“为例,密码以yourpassword为例)</h2><p>sudo ./setup.sh email add <a href="mailto:wuny@abc.cn" target="_blank" rel="noopener">wuny@abc.cn</a> yourpassword</p>
+        <p>想要弄一个舒服的配置文件路径，在src中建立了config目录，打算将所有配置文件放在config之下</p>
+<p>(tsconfig.json属性解说)[<a href="https://www.tslang.cn/docs/handbook/tsconfig-json.html]" target="_blank" rel="noopener">https://www.tslang.cn/docs/handbook/tsconfig-json.html]</a><br>我希望在import的时候不需要打一长串的路径，故将tsconfig.json属性中的baseUrl（代码提示中的根目录地点）设置为了<code>./src</code><br>这样只需要<code>import config/config，vacode</code>就能够识别出<code>config</code>目录下的<code>config.js</code>了</p>
+<p>(webpack的模块路径)[<a href="https://www.webpackjs.com/configuration/resolve/#resolve-modules]" target="_blank" rel="noopener">https://www.webpackjs.com/configuration/resolve/#resolve-modules]</a><br>打包的时候对于模块路径(即没有<code>/</code>(绝对路径)或者<code>./</code>(相对路径)开头的路径，node_modules的中模块引用属于模块路径)会从resolve.modules中查询<br>要注意绝对路径和相对路径下的区别，相对路径情况下会进行逐目录的搜索，而绝对路径不会对其祖先目录进行搜索<br>这里我使用了[path.resolve(__dirname,”./src”),”node_modules”]作为参数<br>node_modules是默认参数，用于搜索node的模块<br>前面则是自己增加的src路径，用来方便config配置的<br>此处src不用相对路径而是绝对路径的原因是：相对路径会搜索祖先文件夹，而祖先文件夹含有webpack的编译输出文件夹<code>dist</code><br>而自己使用了hot-reload，当编译结束的时候，由于dist发生了改变，又会引起下一次编译，导致编译不断进行无法结束<br>而使用绝对路径就不会考虑祖先文件夹，因此不会监听到dist的文件夹变化</p>
 
       
     </div>
@@ -307,13 +295,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2018/07/20/无脑邮件服务器/">无脑邮件服务器</a></p>
+        <p><span>本文标题:</span><a href="/2019/02/22/ts的配置文件经历/">ts的配置文件经历</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Wuny</a></p>
-        <p><span>发布时间:</span>2018-07-20, 21:46:30</p>
-        <p><span>最后更新:</span>2019-01-30, 00:55:30</p>
+        <p><span>发布时间:</span>2019-02-22, 21:55:29</p>
+        <p><span>最后更新:</span>2019-02-22, 21:56:03</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2018/07/20/无脑邮件服务器/" title="无脑邮件服务器">https://a595859893.github.io/2018/07/20/无脑邮件服务器/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://a595859893.github.io/2018/07/20/无脑邮件服务器/　　作者: Wuny" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2019/02/22/ts的配置文件经历/" title="ts的配置文件经历">https://a595859893.github.io/2019/02/22/ts的配置文件经历/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://a595859893.github.io/2019/02/22/ts的配置文件经历/　　作者: Wuny" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -325,16 +313,10 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2018/08/23/机器学习的工具、文档以及资料记录/">
-                    机器学习的工具、文档以及资料记录
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2018/06/02/C-COM组件编写，并在C-上运行/">
-                    C# COM组件编写，并在C++上运行
+                <a href="/2019/01/23/关于VAE/">
+                    关于VAE
                 </a>
             </div>
         
@@ -346,7 +328,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装"><span class="toc-number">1.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#拉取配置文件"><span class="toc-number">2.</span> <span class="toc-text">拉取配置文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#启动容器进行初始化"><span class="toc-number">3.</span> <span class="toc-text">启动容器进行初始化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DNS域名解析："><span class="toc-number">4.</span> <span class="toc-text">DNS域名解析：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#证书-域名以”mail-abc-cn”-为例"><span class="toc-number">5.</span> <span class="toc-text">证书(域名以”mail.abc.cn”,为例)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注册邮箱-邮箱名字以”wuny-abc-cn“为例-密码以yourpassword为例"><span class="toc-number">6.</span> <span class="toc-text">注册邮箱(邮箱名字以”wuny@abc.cn“为例,密码以yourpassword为例)</span></a></li></ol>
+            
         
     </div>
     <style>
@@ -377,15 +359,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2018/08/23/机器学习的工具、文档以及资料记录/" title="上一篇: 机器学习的工具、文档以及资料记录">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2018/06/02/C-COM组件编写，并在C-上运行/" title="下一篇: C# COM组件编写，并在C++上运行">
+            <a href="/2019/01/23/关于VAE/" title="下一篇: 关于VAE">
                 <i class="fa fa-angle-right"></i>
             </a>
         
