@@ -252,6 +252,243 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-go笔记-1" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/03/30/go笔记-1/" class="article-date">
+      <time datetime="2018-03-29T16:31:54.000Z" itemprop="datePublished">2018-03-30</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/03/30/go笔记-1/">go笔记-1</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>大部分资料来自于<a href="https://golangbot.com/" target="_blank" rel="noopener">这里</a></p>
+<h2 id="关于变量"><a href="#关于变量" class="headerlink" title="关于变量"></a>关于变量</h2><p>声明方式<br><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a <span class="keyword">int</span> = <span class="number">1</span></span><br><span class="line"><span class="keyword">var</span> b, c <span class="keyword">int</span> = <span class="number">2</span>, <span class="number">3</span></span><br><span class="line">d, e := <span class="number">4</span>, <span class="number">5</span></span><br><span class="line"><span class="keyword">var</span> (</span><br><span class="line">	f     = <span class="number">6</span></span><br><span class="line">	g <span class="keyword">int</span> = <span class="number">7</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure></p>
+<h2 id="关于常量"><a href="#关于常量" class="headerlink" title="关于常量"></a>关于常量</h2><p>对于没有设定类型的<em>常量</em>，是没有类型的<br>比如说<code>const i = 1</code><br>可以有<code>var a int = i</code>或者<code>var b int8=i</code><br>在需要的地方它才会转化类型，就像是字面常量一样</p>
+<h2 id="关于函数"><a href="#关于函数" class="headerlink" title="关于函数"></a>关于函数</h2><p>函数可以有多个输出（此时需要用括号括起来），下划线<code>_</code>可用来抛弃一些函数的返回值<br><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">f</span><span class="params">(a,b <span class="keyword">int</span>)</span><span class="params">(c,d <span class="keyword">int</span>)</span></span>&#123;</span><br><span class="line">	c=a</span><br><span class="line">	d=b</span><br><span class="line">	<span class="keyword">return</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">_,c = f(<span class="number">1</span>,<span class="number">3</span>)</span><br></pre></td></tr></table></figure></p>
+<p>此时c为3</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## 关于包</span><br><span class="line">只有首字母大写的函数和变量才能够在被其他包引用时调用</span><br><span class="line">包内可以声明</span><br><span class="line">```go</span><br><span class="line">func init()&#123;</span><br><span class="line">	//do something</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>进行包的初始化，<code>init()</code>函数会在包内变量初始化完毕后执行<br>一个包可以有多个<code>init()</code>，不管是在同一个文件内还是放在包内的不同文件中<br>即使被import多次，<code>init()</code>也只会执行一次，</p>
+<p>可以在包前面加入下划线，代表我们需要这个包的<code>init()</code>，但是不一定在代码里用上这个包<br><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> _ <span class="string">"github.com/go-sql-driver/mysql"</span></span><br></pre></td></tr></table></figure></p>
+<p>用下划线<code>_</code>赋值包内函数或变量，则可以在开发时暂时禁用未使用包的错误，等真的使用的时候再删除</p>
+<h2 id="关于if"><a href="#关于if" class="headerlink" title="关于if"></a>关于if</h2><p>else和花括号必须在同一行，除非你用了分号<br><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> &#123;</span><br><span class="line">	<span class="comment">//do something</span></span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">	<span class="comment">//do something</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>或<br><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> &#123;</span><br><span class="line">	<span class="comment">//do something</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">else</span>&#123;</span><br><span class="line">	<span class="comment">//do something</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>if内可以塞语句，语句会在条件判断前执行<br><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> x:=<span class="number">10</span>;x&gt;=<span class="number">10</span>&#123;</span><br><span class="line">	<span class="comment">//do something</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="关于循环"><a href="#关于循环" class="headerlink" title="关于循环"></a>关于循环</h2><p>for 内可以只塞条件，类似其他语言的while一样使用<br>没有条件代表无限循环</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> x==<span class="number">1</span> &#123;</span><br><span class="line">	<span class="comment">//break when x==1</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> &#123;</span><br><span class="line">	<span class="comment">//infinite</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="关于switch"><a href="#关于switch" class="headerlink" title="关于switch"></a>关于switch</h2><p>switch内可以塞语句，语句会在条件判断前执行<br>case中会自动在结尾加上break（对于不想自动添加break的，可以在那一段case内末尾加入fallthrough关键字）<br><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span> x:=<span class="number">1</span>; x&#123;</span><br><span class="line"><span class="keyword">case</span> <span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>:</span><br><span class="line">	<span class="comment">//x is 1 or 2 or 3</span></span><br><span class="line">	<span class="keyword">fallthrough</span></span><br><span class="line"><span class="keyword">default</span>:</span><br><span class="line">	<span class="comment">//do something</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>显式下厨break也不会报错，但是只会跳出switch判断，如<br><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">x:=<span class="number">1</span></span><br><span class="line"><span class="keyword">for</span>&#123;</span><br><span class="line">	<span class="keyword">switch</span> x&#123;</span><br><span class="line">		<span class="keyword">case</span>:<span class="number">1</span></span><br><span class="line">			<span class="keyword">break</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>只会跳出break而不是for，依旧会无限循环下去<br>要跳出for,可以这样<br><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">x:=<span class="number">1</span></span><br><span class="line">myloop: <span class="keyword">for</span>&#123;</span><br><span class="line">	<span class="keyword">switch</span> x&#123;</span><br><span class="line">	<span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">			<span class="keyword">break</span> myloop</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>case条件 <strong>不一定</strong> 是常量,switch为空的时候，匹配条件为true的<br><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span> &#123;</span><br><span class="line"><span class="keyword">case</span> x&lt;<span class="number">2</span>:</span><br><span class="line">	<span class="comment">//x is less than 2</span></span><br><span class="line"><span class="keyword">case</span> x&lt;<span class="number">3</span>:</span><br><span class="line">	<span class="comment">//x is in range [2,3)</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/Language/">Language</a><a class="article-category-link" href="/categories/Language/Golang/">Golang</a>
+    </div>
+
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-VSCode-go-插件安装" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/03/29/VSCode-go-插件安装/" class="article-date">
+      <time datetime="2018-03-29T01:27:35.000Z" itemprop="datePublished">2018-03-29</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/03/29/VSCode-go-插件安装/">VSCode go 插件安装</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>由于部分插件受限于国内网络原因无法下载安装，如果没有科学上网的话，可以尝试以下方式<br>来自<a href="https://zhuanlan.zhihu.com/p/22241891" target="_blank" rel="noopener">这里</a><br>在go工作目录下的<code>src/golang.org/x</code>中克隆<code>https://github.com/golang/tools</code>仓库<br>(路径：src/golang.org/x/tools/各种文件)<br>然后执行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">go get -u -v github.com/rogpeppe/godef</span><br><span class="line">go get -u -v github.com/golang/lint/golint</span><br><span class="line">go get -u -v github.com/lukehoban/go-outline</span><br><span class="line">go get -u -v sourcegraph.com/sqs/goreturns</span><br><span class="line">go get -u -v github.com/tpng/gopkgs</span><br><span class="line">go get -u -v github.com/newhook/go-symbols</span><br><span class="line">go get -u -v golang.org/x/tools/cmd/guru</span><br></pre></td></tr></table></figure></p>
+<p>部分可能下载失败，这部分需要使用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">go install github.com/golang/lint/golint</span><br><span class="line">go install sourcegraph.com/sqs/goreturns</span><br><span class="line">go install golang.org/x/tools/cmd/gorename</span><br><span class="line">go install github.com/newhook/go-symbols</span><br><span class="line">go install golang.org/x/tools/cmd/guru</span><br></pre></td></tr></table></figure></p>
+<p>个人尝试安装glint还是失败，于是去<br><a href="https://github.com/golang/lint" target="_blank" rel="noopener">https://github.com/golang/lint</a><br>直接将东西下载下来放在<code>src/golang.org/x</code>下(文件夹名字是lint)<br>再执行<code>go install github.com/golang/lint/golint</code></p>
+<p>如果其他库也安装失败，应该也可以在git上找到对应的库用类似的方法解决？(不太确定)</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/Language/">Language</a><a class="article-category-link" href="/categories/Language/Golang/">Golang</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VSCode/">VSCode</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-无脑配服务器-Nginx-MySQL-mongoDB-go-redis" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/03/28/无脑配服务器-Nginx-MySQL-mongoDB-go-redis/" class="article-date">
+      <time datetime="2018-03-28T07:02:19.000Z" itemprop="datePublished">2018-03-28</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/03/28/无脑配服务器-Nginx-MySQL-mongoDB-go-redis/">无脑配服务器/Nginx/MySQL/mongoDB/go/redis</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install bison ed gawk gcc libc6-dev make -y</span><br><span class="line">sudo apt-get install nginx -y</span><br><span class="line">sudo apt-get install mongodb-server -y</span><br><span class="line">sudo apt-get install redis-server -y</span><br><span class="line">sudo apt-get install mysql-server -y</span><br><span class="line">sudo apt-get install golang -y</span><br></pre></td></tr></table></figure>
+<p>MYSQL安装需要输入root账户的密码</p>
+<hr>
+<hr>
+<h2 id="nginx配置"><a href="#nginx配置" class="headerlink" title="nginx配置"></a>nginx配置</h2><p>创建nginx用权限账户 www（或者在配置文件中修改user为已存在用户）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo /usr/sbin/groupadd www</span><br><span class="line">sudo /usr/sbin/useradd -g www www</span><br></pre></td></tr></table></figure></p>
+<p>(可能会报sudo: unable to resolve host,这只是warning,可以不用管，下同)</p>
+<p>修改配置文件（参考文件中有参考网址可以查看参数的作用）<br><code>sudo vim /etc/nginx/nginx.conf</code></p>
+<blockquote>
+<p>/etc/nginx/conf.d/*.conf;<br>/etc/nginx/sites-enabled/*;<br>这两个是配置文件中带有的目录，网站的参数也可以在这里进行修改</p>
+</blockquote>
+<blockquote>
+<p>默认在”/etc/nginx/sites-enabled/default”中存在80端口的配置<br>如果自己需要修改80端口的话，可以直接修改这个文件，或者删掉自己重新配置</p>
+</blockquote>
+<p>重启nginx适用配置</p>
+<h2 id="sudo-service-nginx-restart"><a href="#sudo-service-nginx-restart" class="headerlink" title="sudo service nginx restart"></a><code>sudo service nginx restart</code></h2><hr>
+<h2 id="MySql配置"><a href="#MySql配置" class="headerlink" title="MySql配置"></a>MySql配置</h2><p>登陆mysql并创建数据库NEST,远程访问用户bird，并授权<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mysql -u username -p password</span><br><span class="line">create database NEST</span><br><span class="line">CREATE USER &apos;bird&apos;@&apos;%&apos; IDENTIFIED BY &apos;password here&apos;;</span><br><span class="line">GRANT ALL ON NEST.* TO &apos;bird&apos;@&apos;%&apos;;</span><br><span class="line">flush privileges;</span><br></pre></td></tr></table></figure></p>
+<p>修改配置文件<br><code>sudo vim /etc/mysql/mysql.conf.d/mysqld.cnf</code><br>修改bind-address为0.0.0.0</p>
+<p>重启mysql适用配置<br><code>sudo service mysql restart</code></p>
+<hr>
+<hr>
+<h2 id="mongoDB配置"><a href="#mongoDB配置" class="headerlink" title="mongoDB配置"></a>mongoDB配置</h2><p>（记得在防火墙打开27017端口）</p>
+<p>添加用户数据<br>（创建了超级权限的root用户，和一个只读写nest数据库的bird用户）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mongo</span><br><span class="line">use admin</span><br><span class="line">db.createUser(&#123;user:&quot;root&quot;,pwd:&quot;password here&quot;,roles:[&quot;root&quot;]&#125;)</span><br><span class="line">use nest</span><br><span class="line">db.createCollection(&quot;nest&quot;)</span><br><span class="line">db.createUser(&#123;user:&quot;bird&quot;,pwd:&quot;password here&quot;,roles:[&#123;role:&quot;readWrite&quot;,db:&quot;nest&quot;&#125;]&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>然后退出mongo<br><a href="https://docs.mongodb.com/manual/reference/method/db.createUser/#db.createUser" target="_blank" rel="noopener">用户添加参考</a><br><a href="https://docs.mongodb.com/manual/reference/built-in-roles/#built-in-roles" target="_blank" rel="noopener">内置权限参考</a><br><a href="https://docs.mongodb.com/manual/core/security-user-defined-roles/#user-defined-roles" target="_blank" rel="noopener">自定义权限参考</a></p>
+<p>修改配置文件<br><code>sudo vim /etc/mongodb.conf</code><br>注释”bind_ip=127.0.0.1”一行,以允许远程访问<br>取消注释”auth = true”一行,以启用权限管理</p>
+<p>重启mongodb适用配置<br><code>sudo service mongodb restart</code></p>
+<hr>
+<hr>
+<h2 id="redis配置"><a href="#redis配置" class="headerlink" title="redis配置"></a>redis配置</h2><p>（记得在防火墙打开6379端口）<br>如果想要允许远程访问的话，修改配置文件即可<br><code>sudo vim /etc/redis/redis.conf</code><br><code>bind 127.0.0.1改为bind 0.0.0.0</code><br>取消<code>requirepass foobared</code>注释，并且将foobared改为你的密码，如<code>requirepass &quot;your password&quot;</code><br>重启redis服务<br><code>sudo service redis-server restart</code></p>
+<blockquote>
+<p>修改之后在<code>redis-cli</code>中需要添加<code>-a &quot;your password&quot;</code>参数来启动(your password改为你设置的密码)</p>
+</blockquote>
+<h2 id="不添加该参数虽然也可以登录成功，但是没有任何操作权限。"><a href="#不添加该参数虽然也可以登录成功，但是没有任何操作权限。" class="headerlink" title="不添加该参数虽然也可以登录成功，但是没有任何操作权限。"></a>不添加该参数虽然也可以登录成功，但是没有任何操作权限。</h2><hr>
+<h2 id="go配置"><a href="#go配置" class="headerlink" title="go配置"></a>go配置</h2><p>创建工作目录，配置环境变量和项目目录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">cd $HMOE</span><br><span class="line">mkdir Applications Applications/Go</span><br><span class="line">mkdir Applications/Go/src Applications/Go/pkg Applications/Go/bin</span><br><span class="line">export GOROOT=$HOME/go</span><br><span class="line">export PATH=$GOROOT/bin:$PATH</span><br><span class="line">export GOPATH=$HOME/Applications/Go</span><br></pre></td></tr></table></figure></p>
+<hr>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/Server/">Server</a>
+    </div>
+
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-new-Page" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
