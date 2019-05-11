@@ -3,6 +3,36 @@
   
     
     <entry>
+      <title>Docker for Windows相关</title>
+      <link href="/2019/05/11/Docker-for-Windows%E7%9B%B8%E5%85%B3/"/>
+      <url>/2019/05/11/Docker-for-Windows%E7%9B%B8%E5%85%B3/</url>
+      <content type="html"><![CDATA[<h2 id="登陆下载"><a href="#登陆下载" class="headerlink" title="登陆下载"></a>登陆下载</h2><p>下载才能够获得下载地址，真是相当不人性化的东西（尤其是注册还得跑到’不存在的网站’上进行人机验证……）</p><p>为了让下次下载不那么麻烦，将下载地址记录在这了。</p><p>下载地址：<a href="https://download.docker.com/win/stable/Docker%20for%20Windows%20Installer.exe" target="_blank" rel="noopener">https://download.docker.com/win/stable/Docker%20for%20Windows%20Installer.exe</a></p><h2 id="镜像源"><a href="#镜像源" class="headerlink" title="镜像源"></a>镜像源</h2><p>糟糕的国外镜像下载网速，windows下docker的设置与linux下也不一样</p><p>windows下操作方式是右键启动栏内的Docker图标，Setting-&gt;Daemon-&gt;Advanced-&gt;registry-mirrors</p><p>在里面添加镜像源的网站就好，如<code>https://docker.mirrors.ustc.edu.cn</code></p><h2 id="坑"><a href="#坑" class="headerlink" title="坑"></a>坑</h2><h3 id="windows的linux子系统跑docker并不能成功"><a href="#windows的linux子系统跑docker并不能成功" class="headerlink" title="windows的linux子系统跑docker并不能成功"></a>windows的linux子系统跑docker并不能成功</h3><p>截至这篇文章写作之前，ubuntu版本的docker的执行需要的系统调用在windows的linux子系统下无法执行。</p><p>所以还是老老实实跑Docker for Windows（或者等不知道是否有可能的子系统能运行系统调用调用？）</p><h3 id="mongodb无法在windows的docker下成功run"><a href="#mongodb无法在windows的docker下成功run" class="headerlink" title="mongodb无法在windows的docker下成功run"></a>mongodb无法在windows的docker下成功run</h3><p>依旧是虚拟机的锅，不过这个存在<a href="https://github.com/docker-library/mongo/issues/74" target="_blank" rel="noopener">解决方法</a></p><p>设置一个volume然后让-v的映射为该volume而不是本地路径即可</p>]]></content>
+      
+      <categories>
+          
+          <category> Docker </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    <entry>
+      <title>MinGW64及对应VSCode的设置</title>
+      <link href="/2019/04/21/MinGW64%E5%8F%8A%E5%AF%B9%E5%BA%94VSCode%E7%9A%84%E8%AE%BE%E7%BD%AE/"/>
+      <url>/2019/04/21/MinGW64%E5%8F%8A%E5%AF%B9%E5%BA%94VSCode%E7%9A%84%E8%AE%BE%E7%BD%AE/</url>
+      <content type="html"><![CDATA[<p><a href="https://sourceforge.net/projects/mingw-w64/" target="_blank" rel="noopener">minGW64下载地址</a></p><p>（可能需要科学上网）</p><p>VSCode配置文件中加入<code>C_Cpp.default.systemIncludePath</code>属性，改为下载后将安装目录下的include文件夹所在</p><p>可能需要添加的部分</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&quot;D:/CodeEnv/MinGW64/mingw32/lib/gcc/i686-w64-mingw32/8.1.0/include/c++&quot;,</span><br><span class="line">&quot;D:/CodeEnv/MinGW64/mingw32/lib/gcc/i686-w64-mingw32/8.1.0/include/c++/i686-w64-mingw32&quot;,</span><br><span class="line">&quot;D:/CodeEnv/MinGW64/mingw32/lib/gcc/i686-w64-mingw32/8.1.0/include/c++/i686-w64-mingw32&quot;</span><br></pre></td></tr></table></figure><p>截止至2019/4/22为止，VSCode的语法提示存在BUG，导致using namespace std会报错，具体如下</p><p><a href="https://stackoverflow.com/questions/44094817/why-is-visual-studio-code-telling-me-that-cout-is-not-a-member-of-std-namespace" target="_blank" rel="noopener">https://stackoverflow.com/questions/44094817/why-is-visual-studio-code-telling-me-that-cout-is-not-a-member-of-std-namespace</a></p><p>修复方式为在设置中添加属性</p><p><code>&quot;C_Cpp.intelliSenseEngine&quot;: &quot;Tag Parser&quot;</code></p>]]></content>
+      
+      
+        <tags>
+            
+            <tag> CPP </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>pytorch自动补全</title>
       <link href="/2019/02/27/pytorch%E8%87%AA%E5%8A%A8%E8%A1%A5%E5%85%A8/"/>
       <url>/2019/02/27/pytorch%E8%87%AA%E5%8A%A8%E8%A1%A5%E5%85%A8/</url>
@@ -246,10 +276,10 @@
     </entry>
     
     <entry>
-      <title>注意力模型之自己的胡说八道</title>
-      <link href="/2018/08/25/%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%A8%A1%E5%9E%8B%E4%B9%8B%E8%87%AA%E5%B7%B1%E7%9A%84%E8%83%A1%E8%AF%B4%E5%85%AB%E9%81%93/"/>
-      <url>/2018/08/25/%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%A8%A1%E5%9E%8B%E4%B9%8B%E8%87%AA%E5%B7%B1%E7%9A%84%E8%83%A1%E8%AF%B4%E5%85%AB%E9%81%93/</url>
-      <content type="html"><![CDATA[<h1 id="事先提醒"><a href="#事先提醒" class="headerlink" title="事先提醒"></a>事先提醒</h1><hr><p>以下内容属于自己在尚<em>未完全理解</em>时，对于注意力模型自己<em>胡乱思考</em>得出来的<em>毫无根据</em>的<em>个人见解</em>，<em>看看就好，不要全信</em>。<br>可能含有<em>不专业</em>的<em>个人生造词</em></p><h2 id="以上为自己以后回顾和其它观看的人（如果有的话……？）的警告"><a href="#以上为自己以后回顾和其它观看的人（如果有的话……？）的警告" class="headerlink" title="以上为自己以后回顾和其它观看的人（如果有的话……？）的警告"></a>以上为自己以后回顾和其它观看的人（如果有的话……？）的警告</h2><p>可能参考的东西：<br><a href="http://www.cssn.cn/zhx/zx_kxjszx/201601/t20160126_2844813_1.shtml" target="_blank" rel="noopener">认识论的框架问题</a></p><h1 id="关于筛选信息"><a href="#关于筛选信息" class="headerlink" title="关于筛选信息"></a>关于筛选信息</h1><p>先引用一下人工智能框架问题</p><blockquote><p>必须让机器人知道哪些蕴含事件是相关的，而哪些是不相关的，并且学会忽略那些不相关的事件。<br>……<br>框架问题是要解释信息解封（Informationally Unencapsulated）的认知过程，即既能有效解决来自任何潜在认知域的信息，而又不至于受累于不得不明晰地把相关事物从不相关事物中筛选出来的繁重工作。</p></blockquote><p>(题外话：感谢 命运石之门0)</p><p>引用的目的是为了表达信息筛选的重要性，当需要的信息被精确的筛选出来，在之后的步骤中进行处理就会变得更加高效和准确</p><h1 id="关于RNN-Encoder-Decoder中的注意力模型"><a href="#关于RNN-Encoder-Decoder中的注意力模型" class="headerlink" title="关于RNN Encoder-Decoder中的注意力模型"></a>关于RNN Encoder-Decoder中的注意力模型</h1><p>引入注意力模型的RNN Encoder-Decoder为模型带来的更多的信息（因为要将每一步Encoder处理的向量都参与运算<br>而将这些信息筛选出有用的，则是注意力模型关键的地方，将这些信息输入，返回需要位置编号的注意权重<br>一般的解释中，是说权重越高的代表模型越关注这个位置的信息<br>而从另一个角度来看，也可以说是权重越低的信息被筛去的越多，只留下了对自己有用的信息</p><h1 id="关于注意力模型的想法"><a href="#关于注意力模型的想法" class="headerlink" title="关于注意力模型的想法"></a>关于注意力模型的想法</h1><p>看了网上的许多关于NLP的注意力模型的文章，似乎都将注意力模型输出的参数代表成“对应位置上的注意力”<br>从各种截图上来看，对应位置似乎就是对应的输入（词或者单字）<br>但是考虑到最后注意力模型输出是与RNN输出的语义向量进行乘法运算<br>所以注意力模型输出参数代表的应该是“对应位置及其之前的输入综合得到的语义向量的注意力”</p><p>为什么要关注这个呢？<br>首先是对应位置的向量只考虑的前面位置的数据，没有考虑后面位置的数据<br>但最重要的是，这个数据里面存在冗余<br>当然，并不否认这个向量里面存在着判断所需要的词汇的数据，这些数据是有必要存在的<br>但同时也存在着许多没有必要的数据</p><p>如果能够想到办法将这些没有必要的数据筛选出去，或许是一个提升效果的思路？<br>（不过可以真的要改的话模型会发生很大的变化，或许连RNN都不是了？）</p><p><del>然后是对位置的看法……<br>个人对这个位置表示的注意力有些排斥<br>其第一点就是原本变长十分方便的RNN为了引入注意力可能长度就要固定了（或许有不固定的方法？反正我是不知道了……）<br>其次考虑到句子本身长度是不定的，每个成分的长度也是不定的<br>如果某一个成分的长度发生了变化（或者注意力模型本身因为失误判断错位了一些），注意力模型的后续整个输出会不会因此造成错位？<br>（但愿这只是我不理解造成的误会吧……如果有证明或者证伪我这个观点的论文或者其它数据，我还是很希望知道的，至少能安心一些）</del><br>居然还有滑动窗口这种神奇的东西……</p>]]></content>
+      <title>注意力模型</title>
+      <link href="/2018/08/25/%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%A8%A1%E5%9E%8B/"/>
+      <url>/2018/08/25/%E6%B3%A8%E6%84%8F%E5%8A%9B%E6%A8%A1%E5%9E%8B/</url>
+      <content type="html"><![CDATA[<p>可能参考的东西：<br><a href="http://www.cssn.cn/zhx/zx_kxjszx/201601/t20160126_2844813_1.shtml" target="_blank" rel="noopener">认识论的框架问题</a><br><a href="https://lilianweng.github.io/lil-log/2018/06/24/attention-attention.html" target="_blank" rel="noopener">Attention?Attention!</a></p><h1 id="关于筛选信息"><a href="#关于筛选信息" class="headerlink" title="关于筛选信息"></a>关于筛选信息</h1><p>先引用一下人工智能框架问题</p><blockquote><p>必须让机器人知道哪些蕴含事件是相关的，而哪些是不相关的，并且学会忽略那些不相关的事件。<br>……<br>框架问题是要解释信息解封（Informationally Unencapsulated）的认知过程，即既能有效解决来自任何潜在认知域的信息，而又不至于受累于不得不明晰地把相关事物从不相关事物中筛选出来的繁重工作。</p></blockquote><p>(题外话：感谢 命运石之门0)</p><p>引用的目的是为了表达信息筛选的重要性，当需要的信息被精确的筛选出来，在之后的步骤中进行处理就会变得更加高效和准确</p><h1 id="关于RNN-Encoder-Decoder中的注意力模型"><a href="#关于RNN-Encoder-Decoder中的注意力模型" class="headerlink" title="关于RNN Encoder-Decoder中的注意力模型"></a>关于RNN Encoder-Decoder中的注意力模型</h1><p>引入注意力模型的RNN Encoder-Decoder为模型带来的更多的信息（因为要将每一步Encoder处理的向量都参与运算<br>而将这些信息筛选出有用的，则是注意力模型关键的地方，将这些信息输入，返回需要位置编号的注意权重<br>一般的解释中，是说权重越高的代表模型越关注这个位置的信息<br>而从另一个角度来看，也可以说是权重越低的信息被筛去的越多，只留下了对自己有用的信息</p>]]></content>
       
       <categories>
           
