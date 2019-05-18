@@ -252,6 +252,73 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-注意力模型" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/08/25/注意力模型/" class="article-date">
+      <time datetime="2018-08-25T09:25:05.000Z" itemprop="datePublished">2018-08-25</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/25/注意力模型/">注意力模型</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>可能参考的东西：<br><a href="http://www.cssn.cn/zhx/zx_kxjszx/201601/t20160126_2844813_1.shtml" target="_blank" rel="noopener">认识论的框架问题</a><br><a href="https://lilianweng.github.io/lil-log/2018/06/24/attention-attention.html" target="_blank" rel="noopener">Attention?Attention!</a></p>
+<h1 id="关于筛选信息"><a href="#关于筛选信息" class="headerlink" title="关于筛选信息"></a>关于筛选信息</h1><p>先引用一下人工智能框架问题</p>
+<blockquote>
+<p>必须让机器人知道哪些蕴含事件是相关的，而哪些是不相关的，并且学会忽略那些不相关的事件。<br>……<br>框架问题是要解释信息解封（Informationally Unencapsulated）的认知过程，即既能有效解决来自任何潜在认知域的信息，而又不至于受累于不得不明晰地把相关事物从不相关事物中筛选出来的繁重工作。</p>
+</blockquote>
+<p>(题外话：感谢 命运石之门0)</p>
+<p>引用的目的是为了表达信息筛选的重要性，当需要的信息被精确的筛选出来，在之后的步骤中进行处理就会变得更加高效和准确</p>
+<h1 id="关于RNN-Encoder-Decoder中的注意力模型"><a href="#关于RNN-Encoder-Decoder中的注意力模型" class="headerlink" title="关于RNN Encoder-Decoder中的注意力模型"></a>关于RNN Encoder-Decoder中的注意力模型</h1><p>引入注意力模型的RNN Encoder-Decoder为模型带来的更多的信息（因为要将每一步Encoder处理的向量都参与运算<br>而将这些信息筛选出有用的，则是注意力模型关键的地方，将这些信息输入，返回需要位置编号的注意权重<br>一般的解释中，是说权重越高的代表模型越关注这个位置的信息<br>而从另一个角度来看，也可以说是权重越低的信息被筛去的越多，只留下了对自己有用的信息</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/AI/">AI</a><a class="article-category-link" href="/categories/AI/NeuralNetwork/">NeuralNetwork</a>
+    </div>
+
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-机器学习的工具、文档以及资料记录" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -833,101 +900,6 @@
 
 
       
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-go-关于mysql" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/04/04/go-关于mysql/" class="article-date">
-      <time datetime="2018-04-03T16:12:28.000Z" itemprop="datePublished">2018-04-04</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/04/04/go-关于mysql/">go 关于mysql</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="检验连接正确性，需要使用sql-Ping"><a href="#检验连接正确性，需要使用sql-Ping" class="headerlink" title="检验连接正确性，需要使用sql.Ping()"></a>检验连接正确性，需要使用sql.Ping()</h2><p><a href="https://yq.aliyun.com/articles/178898?utm_content=m_29337" target="_blank" rel="noopener">来自阿里云</a></p>
-<blockquote>
-<p>执行sql.Open()并未实际建立起到数据库的连接，也不会验证驱动参数。第一个实际的连接会惰性求值，延迟到第一次需要时建立。用户应该通过db.Ping()来检查数据库是否实际可用。</p>
-</blockquote>
-<p>被坑过一次的坑……</p>
-<h2 id="用Query的话记得读取数据"><a href="#用Query的话记得读取数据" class="headerlink" title="用Query的话记得读取数据"></a>用Query的话记得读取数据</h2><blockquote>
-<p>同样的语句使用Exec和Query执行有巨大的差别。如上文所述，Query会返回结果集Rows，而存在未读取数据的Rows其实会占用底层连接直到rows.Close()为止。因此，使用Query但不读取返回结果，会导致底层连接永远无法释放。database/sql期望用户能够用完就把连接还回来，所以这样的用法很快就会导致资源耗尽（连接过多）。所以，应该用Exec的语句绝不可用Query来执行。</p>
-</blockquote>
-<p>需要注意的地方</p>
-<h2 id="sql中，不需要每次调用Open，可以只有一个全局"><a href="#sql中，不需要每次调用Open，可以只有一个全局" class="headerlink" title="sql中，不需要每次调用Open，可以只有一个全局"></a>sql中，不需要每次调用Open，可以只有一个全局</h2><p><a href="https://www.zhihu.com/question/22197591/answer/20598968" target="_blank" rel="noopener">来自知乎 - 作者：汪亚军</a></p>
-<blockquote>
-<p>sql.Open 不会创建连接 ，只会创建一个DB实例，同时会创建一个go程来管理该DB实例的一个连接池（是长连接，但不是在Open的时候创建）。 在调用Begin()取一个连接，回滚或者提交得时候归还。如果你直接使用时Exec()执行，则每次会从连接池里面取出一个连接，到Exec执行完毕的时候归还。可以通过参数来调节连接池的大小。<br>golang sql包已经做了并发处理，自己通过channel的方式维护了一个连接池，所以没有必要在go程中加锁共享。<br>关于每次sql.Open，我觉得应该是一个不恰当的做法，这会导致连接得不到重用，并产生过多的短时间关闭的连接，给数据库造成没必要的压力。<br><a href="https://yq.aliyun.com/articles/178898?utm_content=m_29337" target="_blank" rel="noopener">来自阿里云</a><br>sql.DB对象是为了长连接而设计的，不要频繁Open()和Close()数据库。而应该为每个待访问的数据库创建<strong>一个</strong>sql.DB实例，并在用完前一直保留它。需要时可将其作为参数传递，或注册为全局对象。<br>这一抽象让用户不必考虑如何管理并发访问底层数据库的问题。当一个连接在执行任务时会被标记为正在使用。用完之后会放回连接池中。不过用户如果用完连接后忘记释放，就会产生大量的连接，极可能导致资源耗尽（建立太多连接，打开太多文件，缺少可用网络端口）。</p>
-</blockquote>
-<p>找到的许多资料都这么说，那么大概可以放心用了？</p>
-<h2 id="重复调用Close-不会出现错误"><a href="#重复调用Close-不会出现错误" class="headerlink" title="重复调用Close()不会出现错误"></a>重复调用Close()不会出现错误</h2><p><a href="https://yq.aliyun.com/articles/178898?utm_content=m_29337" target="_blank" rel="noopener">来自阿里云</a></p>
-<blockquote>
-<p>rows.Close方法是幂等的，重复调用不会产生副作用，因此建议使用 defer rows.Close()来关闭结果集。</p>
-</blockquote>
-<p>安心用函数系列+1</p>
-<h2 id="事务中第二次查询之前先将第一次查询结果读取完毕"><a href="#事务中第二次查询之前先将第一次查询结果读取完毕" class="headerlink" title="事务中第二次查询之前先将第一次查询结果读取完毕"></a>事务中第二次查询之前先将第一次查询结果读取完毕</h2><blockquote>
-<p>因为事务保证在它上面执行的查询都由同一个连接来执行，因此事务中的语句必需按顺序一条一条执行。对于返回结果集的查询，结果集必须Close()之后才能进行下一次查询。用户如果尝试在前一条语句的结果还没读完前就执行新的查询，连接就会失去同步。这意味着事务中返回结果集的语句都会占用一次单独的网络往返。</p>
-</blockquote>
-<h2 id="Scan实参的方法"><a href="#Scan实参的方法" class="headerlink" title="Scan实参的方法"></a>Scan实参的方法</h2><p>不定参数的时候可以使用<code>rows.Columns()</code>来获取列名列表,不定类型的时候，可以使用<code>sql.RawBytes()</code>来获取类型<br><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">cols, err := rows.Columns()</span><br><span class="line"><span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">    <span class="comment">// handle this....</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 目标列是一个动态生成的数组</span></span><br><span class="line">dest := []<span class="keyword">interface</span>&#123;&#125;&#123;</span><br><span class="line">    <span class="built_in">new</span>(<span class="keyword">string</span>),</span><br><span class="line">    <span class="built_in">new</span>(<span class="keyword">uint32</span>),</span><br><span class="line">    <span class="built_in">new</span>(sql.RawBytes),</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 将数组作为可变参数传入Scan中。</span></span><br><span class="line">err = rows.Scan(dest...)</span><br><span class="line"><span class="comment">// ...</span></span><br></pre></td></tr></table></figure></p>
-<h2 id="关于prepare的详情"><a href="#关于prepare的详情" class="headerlink" title="关于prepare的详情"></a>关于prepare的详情</h2><p>(还没有看的资料)[<a href="http://go-database-sql.org/prepared.html]" target="_blank" rel="noopener">http://go-database-sql.org/prepared.html]</a><br>疑问在于，prepare什么时候用？全局注册后重复使用还是用的时候注册，用完销毁的使用？</p>
-<h2 id="提高SQL执行效率的方法"><a href="#提高SQL执行效率的方法" class="headerlink" title="提高SQL执行效率的方法"></a>提高SQL执行效率的方法</h2><p><a href="https://stackoverflow.com/questions/19398773/inserting-rows-in-mysql-in-go-very-slow" target="_blank" rel="noopener">来自StackOverflow</a></p>
-<blockquote>
-<p>It’s an old question but still - better late than never; you’re in for a treat:<br>put all your data into a bytes.Buffer as tab-separated, newline terminated and unquoted lines (if the text causes problems, it has to be escaped first). NULL has to be encoded as \N.<br>Use <a href="http://godoc.org/github.com/go-sql-driver/mysql#RegisterReaderHandler" target="_blank" rel="noopener">http://godoc.org/github.com/go-sql-driver/mysql#RegisterReaderHandler</a> and register a function returning that buffer under “instream”. Next, call LOAD DATA LOCAL INFILE “Reader::instream” INTO TABLE … - that’s a very fast way to pump data into MySQL (I measured about 19 MB/sec with Go from a file piped from stdin compared to 18 MB/sec for the MySQL command line client when uploading data from stdin).<br>As far as I know, that very driver is the only way to LOAD DATA LOCAL INFILE without the need of a file.</p>
-</blockquote>
-<h2 id="避免Null值带来的麻烦，可以使用sql-NullString-sql-NullInt64等含null的类型"><a href="#避免Null值带来的麻烦，可以使用sql-NullString-sql-NullInt64等含null的类型" class="headerlink" title="避免Null值带来的麻烦，可以使用sql.NullString,sql.NullInt64等含null的类型"></a>避免Null值带来的麻烦，可以使用sql.NullString,sql.NullInt64等含null的类型</h2><p><a href="https://github.com/go-sql-driver/mysql/wiki/Examples" target="_blank" rel="noopener">来自github mysql官方插件说明</a></p>
-<blockquote>
-<p>Ignoring NULL values<br>Note: This might cause problems in Go 1.0 since the conversion from integer types to []byte is missing. The Issue is fixed in Go 1.1+<br>Maybe you already encountered this error: sql: Scan error on column index 1: unsupported driver -&gt; Scan pair: <nil> -&gt; <em>string<br>Normally you would use sql.NullString in such a case. But sometimes you don’t care if the value is NULL, you just want to treat it as an empty string.<br>You can do this with a small workaround, which takes advantage of the fact, that a nil-[]byte gets converted to an empty string. Instead of using </em>string as a rows.Scan(…) destination, you simple use <em>[]byte (or </em>sql.RawBytes), which can take the nil value:</nil></p>
-</blockquote>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Language/">Language</a><a class="article-category-link" href="/categories/Language/Golang/">Golang</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/">MySQL</a></li></ul>
-    </div>
-
       
       <div class="clearfix"></div>
     </div>

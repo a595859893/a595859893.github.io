@@ -252,6 +252,68 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-pytorch相关" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/12/14/pytorch相关/" class="article-date">
+      <time datetime="2018-12-14T11:04:27.000Z" itemprop="datePublished">2018-12-14</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/14/pytorch相关/">pytorch相关</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="常用Tensor初始化"><a href="#常用Tensor初始化" class="headerlink" title="常用Tensor初始化"></a>常用Tensor初始化</h2><p>(基本的初始化)[<a href="https://pytorch.org/docs/stable/torch.html#creation-ops]" target="_blank" rel="noopener">https://pytorch.org/docs/stable/torch.html#creation-ops]</a><br>(与特定Tensor相同dtype和device的初始化，在自定义模型中使用可以不用分cpu和gpu了)[<a href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor]" target="_blank" rel="noopener">https://pytorch.org/docs/stable/tensors.html#torch.Tensor]</a><br>(说起来到底怎么判断一个模型属于cpu还是属于gpu……)</p>
+<h2 id="将one-hot转为token"><a href="#将one-hot转为token" class="headerlink" title="将one-hot转为token"></a>将one-hot转为token</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">torch.eye(x.size(<span class="number">1</span>))[x.argmax(<span class="number">1</span>)]</span><br></pre></td></tr></table></figure>
+<p>先生成单位向量，然后用花式索引选择其对应行<br>很赞的方法</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/python/">python</a><a class="article-category-link" href="/categories/python/AI/">AI</a><a class="article-category-link" href="/categories/python/AI/NeuralNetwork/">NeuralNetwork</a><a class="article-category-link" href="/categories/python/AI/NeuralNetwork/pytorch/">pytorch</a><a class="article-category-link" href="/categories/python/AI/NeuralNetwork/pytorch/tips/">tips</a>
+    </div>
+
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-numpy与pandas相关" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -1024,73 +1086,6 @@
       
     <div class="article-category tagcloud">
     <a class="article-category-link" href="/categories/python/">python</a><a class="article-category-link" href="/categories/python/AI/">AI</a><a class="article-category-link" href="/categories/python/AI/NeuralNetwork/">NeuralNetwork</a><a class="article-category-link" href="/categories/python/AI/NeuralNetwork/keras/">keras</a><a class="article-category-link" href="/categories/python/AI/NeuralNetwork/keras/tips/">tips</a>
-    </div>
-
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-注意力模型" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/08/25/注意力模型/" class="article-date">
-      <time datetime="2018-08-25T09:25:05.000Z" itemprop="datePublished">2018-08-25</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/08/25/注意力模型/">注意力模型</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>可能参考的东西：<br><a href="http://www.cssn.cn/zhx/zx_kxjszx/201601/t20160126_2844813_1.shtml" target="_blank" rel="noopener">认识论的框架问题</a><br><a href="https://lilianweng.github.io/lil-log/2018/06/24/attention-attention.html" target="_blank" rel="noopener">Attention?Attention!</a></p>
-<h1 id="关于筛选信息"><a href="#关于筛选信息" class="headerlink" title="关于筛选信息"></a>关于筛选信息</h1><p>先引用一下人工智能框架问题</p>
-<blockquote>
-<p>必须让机器人知道哪些蕴含事件是相关的，而哪些是不相关的，并且学会忽略那些不相关的事件。<br>……<br>框架问题是要解释信息解封（Informationally Unencapsulated）的认知过程，即既能有效解决来自任何潜在认知域的信息，而又不至于受累于不得不明晰地把相关事物从不相关事物中筛选出来的繁重工作。</p>
-</blockquote>
-<p>(题外话：感谢 命运石之门0)</p>
-<p>引用的目的是为了表达信息筛选的重要性，当需要的信息被精确的筛选出来，在之后的步骤中进行处理就会变得更加高效和准确</p>
-<h1 id="关于RNN-Encoder-Decoder中的注意力模型"><a href="#关于RNN-Encoder-Decoder中的注意力模型" class="headerlink" title="关于RNN Encoder-Decoder中的注意力模型"></a>关于RNN Encoder-Decoder中的注意力模型</h1><p>引入注意力模型的RNN Encoder-Decoder为模型带来的更多的信息（因为要将每一步Encoder处理的向量都参与运算<br>而将这些信息筛选出有用的，则是注意力模型关键的地方，将这些信息输入，返回需要位置编号的注意权重<br>一般的解释中，是说权重越高的代表模型越关注这个位置的信息<br>而从另一个角度来看，也可以说是权重越低的信息被筛去的越多，只留下了对自己有用的信息</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/AI/">AI</a><a class="article-category-link" href="/categories/AI/NeuralNetwork/">NeuralNetwork</a>
     </div>
 
 

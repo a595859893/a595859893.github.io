@@ -252,6 +252,63 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-MyPage-相关" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/05/18/MyPage-相关/" class="article-date">
+      <time datetime="2019-05-18T15:46:14.000Z" itemprop="datePublished">2019-05-18</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/05/18/MyPage-相关/">MyPage 相关</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="Docker相关"><a href="#Docker相关" class="headerlink" title="Docker相关"></a>Docker相关</h2><p><code>docker-compose up</code></p>
+<h2 id="Go相关"><a href="#Go相关" class="headerlink" title="Go相关"></a>Go相关</h2><p><code>go run main.go</code> (在src目录下)</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-Docker-for-Windows相关" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -288,9 +345,11 @@
 <p>windows下操作方式是右键启动栏内的Docker图标，Setting-&gt;Daemon-&gt;Advanced-&gt;registry-mirrors</p>
 <p>在里面添加镜像源的网站就好，如<code>https://docker.mirrors.ustc.edu.cn</code></p>
 <h2 id="坑"><a href="#坑" class="headerlink" title="坑"></a>坑</h2><h3 id="windows的linux子系统跑docker并不能成功"><a href="#windows的linux子系统跑docker并不能成功" class="headerlink" title="windows的linux子系统跑docker并不能成功"></a>windows的linux子系统跑docker并不能成功</h3><p>截至这篇文章写作之前，ubuntu版本的docker的执行需要的系统调用在windows的linux子系统下无法执行。</p>
-<p>所以还是老老实实跑Docker for Windows（或者等不知道是否有可能的子系统能运行系统调用调用？）</p>
+<p>所以还是老老实实跑Docker for Windows（或者等不知道什么时候子系统能运行系统调用？）</p>
+<p><a href="https://www.cnblogs.com/94cool/p/9555833.html" target="_blank" rel="noopener">Error starting userland proxy</a></p>
 <h3 id="mongodb无法在windows的docker下成功run"><a href="#mongodb无法在windows的docker下成功run" class="headerlink" title="mongodb无法在windows的docker下成功run"></a>mongodb无法在windows的docker下成功run</h3><p>依旧是虚拟机的锅，不过这个存在<a href="https://github.com/docker-library/mongo/issues/74" target="_blank" rel="noopener">解决方法</a></p>
 <p>设置一个volume然后让-v的映射为该volume而不是本地路径即可</p>
+<h2 id="记录"><a href="#记录" class="headerlink" title="记录"></a>记录</h2><p><a href="http://note.qidong.name/2017/06/26/docker-clean/" target="_blank" rel="noopener">清理技巧</a></p>
 
       
     </div>
@@ -787,68 +846,6 @@ http://www.cnblogs.com/salan668/p/3555871.html
     <div class="article-info article-info-index">
       
       
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-pytorch相关" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/12/14/pytorch相关/" class="article-date">
-      <time datetime="2018-12-14T11:04:27.000Z" itemprop="datePublished">2018-12-14</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/14/pytorch相关/">pytorch相关</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="常用Tensor初始化"><a href="#常用Tensor初始化" class="headerlink" title="常用Tensor初始化"></a>常用Tensor初始化</h2><p>(基本的初始化)[<a href="https://pytorch.org/docs/stable/torch.html#creation-ops]" target="_blank" rel="noopener">https://pytorch.org/docs/stable/torch.html#creation-ops]</a><br>(与特定Tensor相同dtype和device的初始化，在自定义模型中使用可以不用分cpu和gpu了)[<a href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor]" target="_blank" rel="noopener">https://pytorch.org/docs/stable/tensors.html#torch.Tensor]</a><br>(说起来到底怎么判断一个模型属于cpu还是属于gpu……)</p>
-<h2 id="将one-hot转为token"><a href="#将one-hot转为token" class="headerlink" title="将one-hot转为token"></a>将one-hot转为token</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">torch.eye(x.size(<span class="number">1</span>))[x.argmax(<span class="number">1</span>)]</span><br></pre></td></tr></table></figure>
-<p>先生成单位向量，然后用花式索引选择其对应行<br>很赞的方法</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/python/">python</a><a class="article-category-link" href="/categories/python/AI/">AI</a><a class="article-category-link" href="/categories/python/AI/NeuralNetwork/">NeuralNetwork</a><a class="article-category-link" href="/categories/python/AI/NeuralNetwork/pytorch/">pytorch</a><a class="article-category-link" href="/categories/python/AI/NeuralNetwork/pytorch/tips/">tips</a>
-    </div>
-
 
       
       
