@@ -252,6 +252,141 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-XDP杂语" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/02/10/XDP杂语/" class="article-date">
+      <time datetime="2020-02-10T12:25:05.000Z" itemprop="datePublished">2020-02-10</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/02/10/XDP杂语/">XDP杂语</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>参考教程：<a href="https://github.com/xdp-project/xdp-tutorial/" target="_blank" rel="noopener">https://github.com/xdp-project/xdp-tutorial/</a></p>
+<h2 id="包含路径"><a href="#包含路径" class="headerlink" title="包含路径"></a>包含路径</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$&#123;workspaceFolder&#125;/**</span><br><span class="line">/usr/include</span><br><span class="line">/usr/include/linux</span><br><span class="line">/usr/lib/llvm-6.0/lib/clang/6.0.0/include</span><br></pre></td></tr></table></figure>
+<h2 id="bpffs（bpf用文件系统）"><a href="#bpffs（bpf用文件系统）" class="headerlink" title="bpffs（bpf用文件系统）"></a>bpffs（bpf用文件系统）</h2><p>map常用路径:<code>/sys/fs/bpf</code></p>
+<p>创建:<code>mount -t bpf bpf /sys/fs/bpf/</code></p>
+<h2 id="loader读取数据-不用libbpf情况下的步骤-："><a href="#loader读取数据-不用libbpf情况下的步骤-：" class="headerlink" title="loader读取数据(不用libbpf情况下的步骤)："></a>loader读取数据(不用libbpf情况下的步骤)：</h2><p>参考：<a href="https://github.com/xdp-project/xdp-tutorial/blob/master/common/common_user_bpf_xdp.c" target="_blank" rel="noopener">https://github.com/xdp-project/xdp-tutorial/blob/master/common/common_user_bpf_xdp.c</a></p>
+<p>载入<code>ebpf</code>的<code>obj</code>，根据是否重用已有map调用不同的API<br><code>load_bpf_object_file_reuse_maps / load_bpf_object_file</code></p>
+<p>通过title找到<code>ebpf</code>中的特定程序（函数），title是自己在编译前指定的<br><code>bpf_object__find_program_by_title</code><br>(没有title的单函数<code>obj</code>也可以通过<code>bpf_program__next</code>来得到第一个)</p>
+<p>获取程序的文件描述符，用于后续载入<br><code>bpf_program__fd</code></p>
+<p>根据类型的不同，将文件描述符传入以载入程序<br><code>xdp_link_attach</code>（XDP类型下）</p>
+<p>[可选，libbpf下函数(不用libbpf会相对复杂)]共享/解除共享BPF map，使得多个bpf程序可以共用（在bpf文件系统中可见/不可见，不确定有没有持久化功能）<br><code>bpf_object__pin_maps / bpf_object__unpin_maps</code></p>
+<p>读取ebpf程序存入map的数据<br><code>bpf_map_lookup_elem</code></p>
+<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>ifindex(接口索引)：物理或逻辑接口的唯一识别索引<br>参考：<a href="https://www.cisco.com/c/zh_cn/support/docs/ip/simple-network-management-protocol-snmp/28420-ifIndex-Persistence.html" target="_blank" rel="noopener">https://www.cisco.com/c/zh_cn/support/docs/ip/simple-network-management-protocol-snmp/28420-ifIndex-Persistence.html</a></p>
+<p>BTF(Bpf Type Format)：map中key-value对只关注数据类型的字节占用大小，没有语义信息。而BTF为map在debug时提供有结构的语义信息。<br>参考：<a href="https://github.com/torvalds/linux/blob/master/Documentation/bpf/btf.rst" target="_blank" rel="noopener">https://github.com/torvalds/linux/blob/master/Documentation/bpf/btf.rst</a></p>
+<p>(xdp_md ctx): 上下文数据结构<br>其内部结构的__u32不是真正的结构，只是为了确定数据位数，需要手动转化为long<br>一个包的长度可以通过内部的<code>data_end - data</code>运算得到<br>参考：<a href="https://elixir.bootlin.com/linux/v5.0/ident/xdp_md" target="_blank" rel="noopener">https://elixir.bootlin.com/linux/v5.0/ident/xdp_md</a></p>
+<h2 id="XDP无关"><a href="#XDP无关" class="headerlink" title="XDP无关"></a>XDP无关</h2><p>指令ethtool可显示配置网卡硬件<br>参考：<a href="https://man.linuxde.net/ethtool" target="_blank" rel="noopener">https://man.linuxde.net/ethtool</a></p>
+<p>RTNETLINK允许对内核路由表进行读和更改，它用于内核与各个子系统之间（路由子系统、IP地址、链接参数等）的通信，<br>参考：<a href="https://www.cnblogs.com/wenqiang/p/6634447.html" target="_blank" rel="noopener">https://www.cnblogs.com/wenqiang/p/6634447.html</a></p>
+<h2 id="TIPS"><a href="#TIPS" class="headerlink" title="TIPS"></a>TIPS</h2><p>利用PER_CPU类型的map来避免同步带来的开销（只利用特定的CPU来进行计算）</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/ebpf/">ebpf</a><a class="article-category-link" href="/categories/ebpf/xdp/">xdp</a>
+    </div>
+
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-vscode-SSH-config" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/02/10/vscode-SSH-config/" class="article-date">
+      <time datetime="2020-02-10T11:28:21.000Z" itemprop="datePublished">2020-02-10</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/02/10/vscode-SSH-config/">vscode SSH config</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Host [配置名]</span><br><span class="line">  HostName [目标地址]</span><br><span class="line">  User [用户名]</span><br><span class="line">  IdentityFile [证书登录私钥]</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/ssh/">ssh</a><a class="article-category-link" href="/categories/ssh/vscode/">vscode</a>
+    </div>
+
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="w-git的一些指令" class="article article-type-w" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -402,13 +537,20 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        
+        <p>参考资料：<a href="https://www.crifan.com/python_re_sub_detailed_introduction/" target="_blank" rel="noopener">https://www.crifan.com/python_re_sub_detailed_introduction/</a></p>
+<p>匹配中可用\1,\2……等代表匹配的组(括号内的)</p>
+<p>sub替换下，若参数为字符串，可用\g<1>,\g<2>……代表匹配的组，当匹配中有设定<code>(?P&lt;name&gt;)</code>时，<code>\g&lt;name&gt;</code>可以对该组进行匹配（name可是任意其它字符串）；若参数为函数，函数的输入参数是一个match object，可以用<code>obj.groups()</code>或者<code>obj.group(int)</code>来获取匹配值。</2></1></p>
+
       
     </div>
     
     <div class="article-info article-info-index">
       
       
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/Python/">Python</a><a class="article-category-link" href="/categories/Python/regex/">regex</a>
+    </div>
+
 
       
       
@@ -761,119 +903,6 @@
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CPP/">CPP</a></li></ul>
     </div>
 
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-pytorch自动补全" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2019/02/27/pytorch自动补全/" class="article-date">
-      <time datetime="2019-02-26T16:24:42.000Z" itemprop="datePublished">2019-02-27</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/02/27/pytorch自动补全/">pytorch自动补全</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p><a href="https://www.jianshu.com/p/927d04ef997a" target="_blank" rel="noopener">https://www.jianshu.com/p/927d04ef997a</a><br><a href="https://gist.github.com/t-vi/0d0ae013072f96f50fa11fbc2287e33b" target="_blank" rel="noopener">https://gist.github.com/t-vi/0d0ae013072f96f50fa11fbc2287e33b</a><br>·envs{envs-name}\Lib\site-packages\torch·</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-文章相关-Transformer模型的PyTorch实现" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2019/02/26/文章相关-Transformer模型的PyTorch实现/" class="article-date">
-      <time datetime="2019-02-25T16:10:14.000Z" itemprop="datePublished">2019-02-26</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/02/26/文章相关-Transformer模型的PyTorch实现/">文章相关-Transformer模型的PyTorch实现</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>(相关连接)[<a href="https://juejin.im/post/5b9f1af0e51d450e425eb32d#comment]" target="_blank" rel="noopener">https://juejin.im/post/5b9f1af0e51d450e425eb32d#comment]</a></p>
-<p>Mask,Positional encoding</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
       
       <div class="clearfix"></div>
     </div>

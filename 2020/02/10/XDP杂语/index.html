@@ -15,17 +15,17 @@
 
 
 
-<meta name="description" content="前言跑了各种打印店，结果U盘一插上去总是中这个病毒第一次的时候导致作业没办法按时交上去后面虽然知道怎么解决了，这东西还是导致为了处理这货上课迟到了不少次无法忍受后决定好好研究一番，看看能不能从根源上解决这个问题 不过在行动之前，先记录下如果被病毒隐藏了文件后怎么恢复打开命令行，转至U盘所在，输入下面命令attrib -s -h /s /d即依靠/s递归取消系统文件(-s)和隐藏文件(-h)属性 目">
+<meta name="description" content="参考教程：https://github.com/xdp-project/xdp-tutorial/ 包含路径1234$&amp;#123;workspaceFolder&amp;#125;/**/usr/include/usr/include/linux/usr/lib/llvm-6.0/lib/clang/6.0.0/include bpffs（bpf用文件系统）map常用路径:/sys/fs/bpf 创建:m">
 <meta property="og:type" content="article">
-<meta property="og:title" content="关于影印店病毒">
-<meta property="og:url" content="https://a595859893.github.io/2018/12/05/关于影印店病毒/index.html">
+<meta property="og:title" content="XDP杂语">
+<meta property="og:url" content="https://a595859893.github.io/2020/02/10/XDP杂语/index.html">
 <meta property="og:site_name" content="简陋的小屋">
-<meta property="og:description" content="前言跑了各种打印店，结果U盘一插上去总是中这个病毒第一次的时候导致作业没办法按时交上去后面虽然知道怎么解决了，这东西还是导致为了处理这货上课迟到了不少次无法忍受后决定好好研究一番，看看能不能从根源上解决这个问题 不过在行动之前，先记录下如果被病毒隐藏了文件后怎么恢复打开命令行，转至U盘所在，输入下面命令attrib -s -h /s /d即依靠/s递归取消系统文件(-s)和隐藏文件(-h)属性 目">
+<meta property="og:description" content="参考教程：https://github.com/xdp-project/xdp-tutorial/ 包含路径1234$&amp;#123;workspaceFolder&amp;#125;/**/usr/include/usr/include/linux/usr/lib/llvm-6.0/lib/clang/6.0.0/include bpffs（bpf用文件系统）map常用路径:/sys/fs/bpf 创建:m">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-14T11:37:34.000Z">
+<meta property="og:updated_time" content="2020-02-10T14:37:54.760Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="关于影印店病毒">
-<meta name="twitter:description" content="前言跑了各种打印店，结果U盘一插上去总是中这个病毒第一次的时候导致作业没办法按时交上去后面虽然知道怎么解决了，这东西还是导致为了处理这货上课迟到了不少次无法忍受后决定好好研究一番，看看能不能从根源上解决这个问题 不过在行动之前，先记录下如果被病毒隐藏了文件后怎么恢复打开命令行，转至U盘所在，输入下面命令attrib -s -h /s /d即依靠/s递归取消系统文件(-s)和隐藏文件(-h)属性 目">
+<meta name="twitter:title" content="XDP杂语">
+<meta name="twitter:description" content="参考教程：https://github.com/xdp-project/xdp-tutorial/ 包含路径1234$&amp;#123;workspaceFolder&amp;#125;/**/usr/include/usr/include/linux/usr/lib/llvm-6.0/lib/clang/6.0.0/include bpffs（bpf用文件系统）map常用路径:/sys/fs/bpf 创建:m">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -55,7 +55,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>关于影印店病毒 | 简陋的小屋</title>
+<title>XDP杂语 | 简陋的小屋</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -248,11 +248,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-关于影印店病毒" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-XDP杂语" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2018/12/05/关于影印店病毒/" class="article-date">
-      <time datetime="2018-12-05T15:02:23.000Z" itemprop="datePublished">2018-12-05</time>
+      <a href="/2020/02/10/XDP杂语/" class="article-date">
+      <time datetime="2020-02-10T12:25:05.000Z" itemprop="datePublished">2020-02-10</time>
 </a>
 
 
@@ -267,7 +267,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      关于影印店病毒
+      XDP杂语
     </h1>
   
 
@@ -275,6 +275,10 @@
       
       <div class="article-info article-info-post">
         
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/ebpf/">ebpf</a><a class="article-category-link" href="/categories/ebpf/xdp/">xdp</a>
+    </div>
+
 
         
         <div class="clearfix"></div>
@@ -284,12 +288,24 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>跑了各种打印店，结果U盘一插上去总是中这个病毒<br>第一次的时候导致作业没办法按时交上去<br>后面虽然知道怎么解决了，这东西还是导致为了处理这货上课迟到了不少次<br>无法忍受后决定好好研究一番，看看能不能从根源上解决这个问题</p>
-<p>不过在行动之前，先记录下如果被病毒隐藏了文件后怎么恢复<br>打开命令行，转至U盘所在，输入下面命令<br><code>attrib -s -h /s /d</code><br>即依靠<code>/s</code>递归取消<code>系统文件(-s)</code>和<code>隐藏文件(-h)</code>属性</p>
-<h1 id="目前进度"><a href="#目前进度" class="headerlink" title="目前进度"></a>目前进度</h1><p>由于是最后一次感染病毒萌生了这个想法<br>之前看了看快捷方式，大概猜测到了可能的方式是通过快捷方式执行一个vbs程序<br>所以最后一次感染的时候并没有立即处理，而是关掉了反病毒软件，保留了病毒的vbs文件<br>打开源码好好看了下</p>
-<p>相当混乱的代码<br>虽然没有学过vbs，不过大体上连蒙带猜外加百度推出了一些东西<br>然后推到一半发现这个病毒似乎早就有人已经在网上分析过了<br><a href="https://moozik.cn/archives/297/" target="_blank" rel="noopener">网址在这</a></p>
-<p>对比了明文并且并且解析了下加密部分，似乎连代码都没有变过……<br>感觉就是一个相当古老的病毒在打印店里的古老样本<br>虽然存在各种后门，但是后门的IP都ping不通了<br>~（一个大胆的想法， 如果将后门网址的域名购买了的话……）~<br>（查了下域名，似乎都是在被使用的……）</p>
-<h1 id="暂坑"><a href="#暂坑" class="headerlink" title="暂坑"></a>暂坑</h1>
+        <p>参考教程：<a href="https://github.com/xdp-project/xdp-tutorial/" target="_blank" rel="noopener">https://github.com/xdp-project/xdp-tutorial/</a></p>
+<h2 id="包含路径"><a href="#包含路径" class="headerlink" title="包含路径"></a>包含路径</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$&#123;workspaceFolder&#125;/**</span><br><span class="line">/usr/include</span><br><span class="line">/usr/include/linux</span><br><span class="line">/usr/lib/llvm-6.0/lib/clang/6.0.0/include</span><br></pre></td></tr></table></figure>
+<h2 id="bpffs（bpf用文件系统）"><a href="#bpffs（bpf用文件系统）" class="headerlink" title="bpffs（bpf用文件系统）"></a>bpffs（bpf用文件系统）</h2><p>map常用路径:<code>/sys/fs/bpf</code></p>
+<p>创建:<code>mount -t bpf bpf /sys/fs/bpf/</code></p>
+<h2 id="loader读取数据-不用libbpf情况下的步骤-："><a href="#loader读取数据-不用libbpf情况下的步骤-：" class="headerlink" title="loader读取数据(不用libbpf情况下的步骤)："></a>loader读取数据(不用libbpf情况下的步骤)：</h2><p>参考：<a href="https://github.com/xdp-project/xdp-tutorial/blob/master/common/common_user_bpf_xdp.c" target="_blank" rel="noopener">https://github.com/xdp-project/xdp-tutorial/blob/master/common/common_user_bpf_xdp.c</a></p>
+<p>载入<code>ebpf</code>的<code>obj</code>，根据是否重用已有map调用不同的API<br><code>load_bpf_object_file_reuse_maps / load_bpf_object_file</code></p>
+<p>通过title找到<code>ebpf</code>中的特定程序（函数），title是自己在编译前指定的<br><code>bpf_object__find_program_by_title</code><br>(没有title的单函数<code>obj</code>也可以通过<code>bpf_program__next</code>来得到第一个)</p>
+<p>获取程序的文件描述符，用于后续载入<br><code>bpf_program__fd</code></p>
+<p>根据类型的不同，将文件描述符传入以载入程序<br><code>xdp_link_attach</code>（XDP类型下）</p>
+<p>[可选，libbpf下函数(不用libbpf会相对复杂)]共享/解除共享BPF map，使得多个bpf程序可以共用（在bpf文件系统中可见/不可见，不确定有没有持久化功能）<br><code>bpf_object__pin_maps / bpf_object__unpin_maps</code></p>
+<p>读取ebpf程序存入map的数据<br><code>bpf_map_lookup_elem</code></p>
+<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>ifindex(接口索引)：物理或逻辑接口的唯一识别索引<br>参考：<a href="https://www.cisco.com/c/zh_cn/support/docs/ip/simple-network-management-protocol-snmp/28420-ifIndex-Persistence.html" target="_blank" rel="noopener">https://www.cisco.com/c/zh_cn/support/docs/ip/simple-network-management-protocol-snmp/28420-ifIndex-Persistence.html</a></p>
+<p>BTF(Bpf Type Format)：map中key-value对只关注数据类型的字节占用大小，没有语义信息。而BTF为map在debug时提供有结构的语义信息。<br>参考：<a href="https://github.com/torvalds/linux/blob/master/Documentation/bpf/btf.rst" target="_blank" rel="noopener">https://github.com/torvalds/linux/blob/master/Documentation/bpf/btf.rst</a></p>
+<p>(xdp_md ctx): 上下文数据结构<br>其内部结构的__u32不是真正的结构，只是为了确定数据位数，需要手动转化为long<br>一个包的长度可以通过内部的<code>data_end - data</code>运算得到<br>参考：<a href="https://elixir.bootlin.com/linux/v5.0/ident/xdp_md" target="_blank" rel="noopener">https://elixir.bootlin.com/linux/v5.0/ident/xdp_md</a></p>
+<h2 id="XDP无关"><a href="#XDP无关" class="headerlink" title="XDP无关"></a>XDP无关</h2><p>指令ethtool可显示配置网卡硬件<br>参考：<a href="https://man.linuxde.net/ethtool" target="_blank" rel="noopener">https://man.linuxde.net/ethtool</a></p>
+<p>RTNETLINK允许对内核路由表进行读和更改，它用于内核与各个子系统之间（路由子系统、IP地址、链接参数等）的通信，<br>参考：<a href="https://www.cnblogs.com/wenqiang/p/6634447.html" target="_blank" rel="noopener">https://www.cnblogs.com/wenqiang/p/6634447.html</a></p>
+<h2 id="TIPS"><a href="#TIPS" class="headerlink" title="TIPS"></a>TIPS</h2><p>利用PER_CPU类型的map来避免同步带来的开销（只利用特定的CPU来进行计算）</p>
+
       
     </div>
     
@@ -297,13 +313,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2018/12/05/关于影印店病毒/">关于影印店病毒</a></p>
+        <p><span>本文标题:</span><a href="/2020/02/10/XDP杂语/">XDP杂语</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Wuny</a></p>
-        <p><span>发布时间:</span>2018-12-05, 23:02:23</p>
-        <p><span>最后更新:</span>2018-12-14, 19:37:34</p>
+        <p><span>发布时间:</span>2020-02-10, 20:25:05</p>
+        <p><span>最后更新:</span>2020-02-10, 22:37:54</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2018/12/05/关于影印店病毒/" title="关于影印店病毒">https://a595859893.github.io/2018/12/05/关于影印店病毒/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://a595859893.github.io/2018/12/05/关于影印店病毒/　　作者: Wuny" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2020/02/10/XDP杂语/" title="XDP杂语">https://a595859893.github.io/2020/02/10/XDP杂语/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://a595859893.github.io/2020/02/10/XDP杂语/　　作者: Wuny" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -315,16 +331,10 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2018/12/14/numpy与pandas相关/">
-                    numpy与pandas相关
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2018/10/26/Anaconda相关/">
-                    Anaconda相关
+                <a href="/2020/02/10/vscode-SSH-config/">
+                    vscode SSH config
                 </a>
             </div>
         
@@ -336,7 +346,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#目前进度"><span class="toc-number">2.</span> <span class="toc-text">目前进度</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#暂坑"><span class="toc-number">3.</span> <span class="toc-text">暂坑</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#包含路径"><span class="toc-number">1.</span> <span class="toc-text">包含路径</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#bpffs（bpf用文件系统）"><span class="toc-number">2.</span> <span class="toc-text">bpffs（bpf用文件系统）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#loader读取数据-不用libbpf情况下的步骤-："><span class="toc-number">3.</span> <span class="toc-text">loader读取数据(不用libbpf情况下的步骤)：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#概念"><span class="toc-number">4.</span> <span class="toc-text">概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#XDP无关"><span class="toc-number">5.</span> <span class="toc-text">XDP无关</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TIPS"><span class="toc-number">6.</span> <span class="toc-text">TIPS</span></a></li></ol>
         
     </div>
     <style>
@@ -367,15 +377,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2018/12/14/numpy与pandas相关/" title="上一篇: numpy与pandas相关">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2018/10/26/Anaconda相关/" title="下一篇: Anaconda相关">
+            <a href="/2020/02/10/vscode-SSH-config/" title="下一篇: vscode SSH config">
                 <i class="fa fa-angle-right"></i>
             </a>
         
