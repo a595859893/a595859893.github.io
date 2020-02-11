@@ -252,6 +252,76 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-无脑邮件服务器" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/07/20/无脑邮件服务器/" class="article-date">
+      <time datetime="2018-07-20T13:46:30.000Z" itemprop="datePublished">2018-07-20</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/20/无脑邮件服务器/">无脑邮件服务器</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>参考资料：<br><a href="https://www.itmanbu.com/docker-mail-server.html" target="_blank" rel="noopener">利用Docker自建多功能加密邮件服务器</a><br><a href="https://github.com/tomav/docker-mailserver" target="_blank" rel="noopener">docker-mailserver git网址</a><br><a href="https://github.com/tomav/docker-mailserver/wiki/Installation-Examples" target="_blank" rel="noopener">Installation-Examples</a></p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>(安装docker的指令不太确定,如果不行的话上网找吧)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update &amp;&amp; \</span><br><span class="line">sudo apt install docker -y &amp;&amp; \</span><br><span class="line">sudo apt install docker-compose -y &amp;&amp; \</span><br><span class="line">sudo apt install dovecot-core -y &amp;&amp; \</span><br><span class="line">sudo apt-get install software-properties-common -y  &amp;&amp; \</span><br><span class="line">sudo add-apt-repository ppa:certbot/certbot</span><br><span class="line"></span><br><span class="line">sudo apt-get update &amp;&amp; \</span><br><span class="line">sudo apt-get install certbot -y</span><br></pre></td></tr></table></figure></p>
+<h2 id="拉取配置文件"><a href="#拉取配置文件" class="headerlink" title="拉取配置文件"></a>拉取配置文件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">curl -o setup.sh https://raw.githubusercontent.com/tomav/docker-mailserver/master/setup.sh; chmod a+x ./setup.sh</span><br><span class="line">curl -o docker-compose.yml https://raw.githubusercontent.com/tomav/docker-mailserver/master/docker-compose.yml.dist</span><br><span class="line">curl -o .env https://raw.githubusercontent.com/tomav/docker-mailserver/master/.env.dist</span><br></pre></td></tr></table></figure>
+<p>hostname和domainname最终要拼成主机名<br>port加入465<br>修改拉取后的.env文件进行配置，配置属性详情<a href="https://github.com/tomav/docker-mailserver" target="_blank" rel="noopener">见此</a><br>docker-compose中也需要修改volume的映射位置，包括文件存储位置和证书位置（如加入’/etc/letsencrypt:/etc/letsencrypt’）</p>
+<h2 id="启动容器进行初始化"><a href="#启动容器进行初始化" class="headerlink" title="启动容器进行初始化"></a>启动容器进行初始化</h2><p><code>docker-compose up -d mail</code></p>
+<p>可能出现的错误：<code>Couldn&#39;t connect to Docker daemon at http+docker://localunixsocket - is it running?</code><br>若存在上述错误，尝试将用户加入docker组，然后重启终端<br><code>sudo gpasswd -a ${USER} docker</code>)</p>
+<h2 id="DNS域名解析："><a href="#DNS域名解析：" class="headerlink" title="DNS域名解析："></a>DNS域名解析：</h2><p><code>sudo ./setup.sh config dkim</code><br>如果未出现config文件夹，可能需要先添加一个账户后重试<br>生成的字符串长度可以在dkim后面增加参数（如<code>sudo ./setup.sh config dkim 200</code>）进行限制</p>
+<p>复制config/opendkim/keys/domain.tld/mail.txt下内容，将引号内字符串拼接后用于设置DNS<br>类型为TXT，记录名为mail._domainkey，记录值为拼接后字符串<br>类型为MX，记录名为@，记录值”mail.(你的域名)”(如”mail.abc.cn”,下面的域名以此为例)<br>类型为A，记录名为mail，记录值为(服务器的IP)</p>
+<h2 id="证书-域名以”mail-abc-cn”-为例"><a href="#证书-域名以”mail-abc-cn”-为例" class="headerlink" title="证书(域名以”mail.abc.cn”,为例)"></a>证书(域名以”mail.abc.cn”,为例)</h2><p><code>certbot certonly --standalone -d mail.abc.cn</code><br>之后会要求你输入邮箱来获取安全信息等，填入邮箱即可。还会问你是否接受推送，这个看个人意愿选择吧。</p>
+<p>证书续期<br><code>crontab -e</code>打开定时任务设置面板，按i进入编辑模式，粘贴进这段代码即：<br><code>0 5 * * 1 /usr/bin/certbot renew --quiet</code><br>可每周一凌晨5点0分给证书续期</p>
+<h2 id="注册邮箱-邮箱名字以”wuny-abc-cn“为例-密码以yourpassword为例"><a href="#注册邮箱-邮箱名字以”wuny-abc-cn“为例-密码以yourpassword为例" class="headerlink" title="注册邮箱(邮箱名字以”wuny@abc.cn“为例,密码以yourpassword为例)"></a>注册邮箱(邮箱名字以”<a href="mailto:wuny@abc.cn" target="_blank" rel="noopener">wuny@abc.cn</a>“为例,密码以yourpassword为例)</h2><p>sudo ./setup.sh email add <a href="mailto:wuny@abc.cn" target="_blank" rel="noopener">wuny@abc.cn</a> yourpassword</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/Server/">Server</a>
+    </div>
+
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-C-COM组件编写，并在C-上运行" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -871,114 +941,6 @@
 </blockquote>
 <p>所以一级函数就是能作为参数传递的函数</p>
 <p>允许闭包，允许匿名函数，允许函数作为参数或者返回值</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Language/">Language</a><a class="article-category-link" href="/categories/Language/Golang/">Golang</a>
-    </div>
-
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="w-go笔记-2" class="article article-type-w" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/03/30/go笔记-2/" class="article-date">
-      <time datetime="2018-03-30T01:28:13.000Z" itemprop="datePublished">2018-03-30</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/30/go笔记-2/">go笔记-2</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>大部分例子和资料来自于<a href="https://golangbot.com/" target="_blank" rel="noopener">这里</a></p>
-<h2 id="关于数组"><a href="#关于数组" class="headerlink" title="关于数组"></a>关于数组</h2><p>数组声明时<code>[]</code>放在类型前面，如<code>i := [5]int</code><br><code>i := [...]int{1,2,3}</code>可以自动判断数组大小<br>数组传参是按值传递的(但slice是按引用的，见下)，会创建副本，而非引用原来的数组<br>可以用<code>len(i)</code>获取数组长度<br>可以用<code>for index,value := range(i)</code>遍历数组<br>不同长度的数组类型是不同的</p>
-<h2 id="关于slice"><a href="#关于slice" class="headerlink" title="关于slice"></a>关于slice</h2><p><a href="https://www.zhihu.com/question/27161493/answer/153494730" target="_blank" rel="noopener">参考资料</a></p>
-<p>slice内部有三个变量<code>len</code>,<code>cap</code>,<code>ptr</code><br>ptr是指向底层数组的指针<br>cap是ptr的容量<br>len是slice的长度(含有元素的个数)</p>
-<p>没有元素的slice类型是nil，cap和len为0<br><code>a:=i[1:2]</code>切片slice，切出来的部分会随着原数组对应值改变而改变<br>可以用<code>i[:]</code>代表整体的切片<br><code>b:=make([]int,0,10)</code>也可以用来创建slice，此时<code>len(a)</code>为0,<code>cap(a)</code>为10</p>
-<p><code>a = append(a,1,2,3,4)</code>可以对切片添加数据,或<code>b = append(b,a...)</code>来添加切片a的元素值到b</p>
-<p>slice长度变化(扩容)</p>
-<blockquote>
-<p>如果新的大小是当前大小2倍以上，则大小增长为新大小<br>否则循环以下操作：如果当前大小小于1024，按每次2倍增长，否则每次按当前大小1/4增长。直到增长的大小超过或等于新大小。</p>
-</blockquote>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a := [...]<span class="keyword">int</span>&#123;<span class="number">1</span>&#125;</span><br><span class="line">b := <span class="built_in">append</span>(a[<span class="number">0</span>:<span class="number">1</span>], <span class="number">1</span>)</span><br><span class="line">b[<span class="number">0</span>]++</span><br><span class="line">fmt.Println(a,b)</span><br></pre></td></tr></table></figure>
-<p>输出<code>[1] [2 1]</code><br>切片的cap是被切片数组起始元素到数组末尾的元素个数(1-0=1)，而len在此处是切片的长度(1-0=1)<br>添加元素后len+1&lt;cap，需要扩容<br>扩容之后由于内存地址重新分配，值为原先的拷贝而非引用，因此修改值<strong>不会</strong>反映到原数组上</p>
-<p>由于append的长度不需要变化的时候ptr还是原来的值，这时候append是直接通过修改ptr上的元素来实现的<br><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a:=<span class="built_in">make</span>([]<span class="keyword">int</span>,<span class="number">3</span>,<span class="number">5</span>)</span><br><span class="line">x:=<span class="built_in">append</span>(a,<span class="number">1</span>)</span><br><span class="line">y:=<span class="built_in">append</span>(a,<span class="number">2</span>)</span><br><span class="line">fmt.Println(x,y)</span><br></pre></td></tr></table></figure></p>
-<p>输出<code>[0 0 0 2] [0 0 0 2]</code><br>可见x本来应该是1的值因为y的append变成了2<br>因为a不需要扩容(len(a)+1=3+1&lt;=5=cap(a)),x,y指向的还是a的ptr,append在a的len往后一位修改内存<br>append不会改变传入数组的属性，a的len不变，因此两次append都是往a的第四个元素修改<br>如果第3句改为<code>y:=append(x,2)</code>就不会出现上述的问题,因为x的len是4,会后移一位修改,此时y的输出将会是<code>[0 0 0 1 2]</code></p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a := [...]<span class="keyword">int</span>&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>&#125;</span><br><span class="line">b := a[<span class="number">0</span>:<span class="number">1</span>]</span><br><span class="line">c := <span class="built_in">append</span>(b, <span class="number">1</span>)</span><br><span class="line">fmt.Println(a, b, c)</span><br></pre></td></tr></table></figure>
-<p>输出<code>[1 1 3 4] [1] [1 1]</code><br>也同样反应了上述观点,<code>len=1-0=1</code>,<code>cap=4-0=4</code>,<code>len+1&lt;cap</code>,没有扩容<br>直接往b的len的下一位修改，而b的ptr指向的是a的第0个元素,所以修改的是a的第1个元素，即a的元素2被改成了1</p>
-<p>嗯……总之go的slice使用的时候要注意</p>
-<h2 id="可变参函数"><a href="#可变参函数" class="headerlink" title="可变参函数"></a>可变参函数</h2><p>在类型前面加上<code>...</code>(限最后一个参数使用)<br><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">f2</span><span class="params">(num <span class="keyword">int</span>,nums ...<span class="keyword">float64</span>)</span></span>&#123;</span><br><span class="line">	fmt.Println(nums[<span class="number">0</span>],<span class="built_in">len</span>(nums))</span><br><span class="line">	<span class="comment">//do something</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>此时传入的nums类型为 []float64，或者说float的slice</p>
-<p>f2可以接受多个float64参数，或者一个slice(需要在后面加上<code>...</code>,一个语法糖)<br><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">f2(<span class="number">1</span>,<span class="number">1.1</span>,<span class="number">1.2</span>,<span class="number">1.3</span>,<span class="number">1.4</span>)</span><br><span class="line"></span><br><span class="line">a:=[...]<span class="keyword">float64</span>&#123;<span class="number">1.1</span>,<span class="number">2.2</span>,<span class="number">3.3</span>&#125;</span><br><span class="line">f2(<span class="number">1</span>,a[<span class="number">0</span>:<span class="number">3</span>]...)</span><br></pre></td></tr></table></figure></p>
-<p>如果传入了slice,函数内部对slice内元素的修改将会反映到原来的slice上（可以理解为对指针的修改？）</p>
-<h2 id="map"><a href="#map" class="headerlink" title="map"></a>map</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">a := <span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">int</span></span><br><span class="line">b := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">int</span>)</span><br><span class="line">a[<span class="string">"abc"</span>] = <span class="number">1</span></span><br><span class="line">value,ok := a[<span class="string">"def"</span>]<span class="comment">//ok==false</span></span><br><span class="line"><span class="built_in">delete</span>(a,<span class="string">"abc"</span>)</span><br><span class="line">fmt.Println(<span class="built_in">len</span>(a))</span><br></pre></td></tr></table></figure>
-<p>map是引用类型</p>
-<h2 id="string-和-rune"><a href="#string-和-rune" class="headerlink" title="string 和 []rune"></a>string 和 []rune</h2><p>string以十六进制编码，下标对应1个字节，以下标访问时，如果是unicode且占2字节的东西用%c显示的将不是预期的结果<br>rune是int32的别名，rune数组转换的string，下标对应1个字符（不论编码），用%c即使是2字节的unicode也可以正常显示<br><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">s:=<span class="string">"Hello world"</span></span><br><span class="line">a:=[]<span class="keyword">rune</span>(s)</span><br></pre></td></tr></table></figure></p>
-<p>遍历字符<br><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">s:=<span class="string">"Hello World"</span></span><br><span class="line"><span class="keyword">for</span> index,<span class="keyword">rune</span> := <span class="keyword">range</span> s&#123;</span><br><span class="line">	<span class="comment">//index代表该字符占的字节数，rune代表该字符</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>[]rune和[]byte可以转string<br><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">byteSlice := []<span class="keyword">byte</span>&#123;<span class="number">0x43</span>,<span class="number">0x61</span>,<span class="number">0xC3</span>,<span class="number">0XA9</span>&#125;</span><br><span class="line">str1:=<span class="keyword">string</span>(byteSlice)</span><br><span class="line"></span><br><span class="line">runeSlice := []<span class="keyword">rune</span>&#123;<span class="number">0x0053</span>, <span class="number">0x0065</span>, <span class="number">0x00f</span>1, <span class="number">0x006f</span>, <span class="number">0x0072</span>&#125;</span><br><span class="line">str2:=<span class="keyword">string</span>(runeSlice)</span><br></pre></td></tr></table></figure></p>
-<p>string的utf8编码下字符长度用<code>utf8.RuneCountInString(s)</code><br>string是不可修改量，可以通过下标获取，但是不能修改，要修改可以先转为[]rune,改完后再转回string</p>
-<h2 id="指针"><a href="#指针" class="headerlink" title="指针"></a>指针</h2><p>···<br>var a *int<br>//a==nil</p>
-<p>b:=1<br>c:=&amp;b<br>*c++<br>···</p>
-<p>对数组的指针传参<br><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">modify</span><span class="params">(arr *[3]<span class="keyword">int</span>)</span></span>&#123;</span><br><span class="line">	arr[<span class="number">0</span>] = <span class="number">1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>此时arr[0]是(*arr)[0]的缩写</p>
-<p>一般更习惯用slice进行数组修改，而非数组指针<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">func modify(sls []int)&#123;</span><br><span class="line">	sls[0] = 90</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>调用方式<br><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a:=[<span class="number">3</span>]<span class="keyword">int</span>&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;</span><br><span class="line">modify(a[:])</span><br></pre></td></tr></table></figure></p>
-<p><strong>不支持</strong>指针修改，<code>p++</code>之类的操作是不行的</p>
-<h2 id="struct"><a href="#struct" class="headerlink" title="struct"></a>struct</h2><p>定义和使用<br><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Employee <span class="keyword">struct</span> &#123;  </span><br><span class="line">    firstName, lastName <span class="keyword">string</span></span><br><span class="line">    age, salary         <span class="keyword">int</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">emp2 := Employee&#123;<span class="string">"Thomas"</span>, <span class="string">"Paul"</span>, <span class="number">29</span>, <span class="number">800</span>&#125;</span><br><span class="line"><span class="keyword">var</span> a Employee</span><br></pre></td></tr></table></figure>
-<p>匿名struct<br><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">emp3 := <span class="keyword">struct</span> &#123;</span><br><span class="line">        firstName, lastName <span class="keyword">string</span></span><br><span class="line">        age, salary         <span class="keyword">int</span></span><br><span class="line">    &#125;&#123;</span><br><span class="line">        firstName: <span class="string">"Andreah"</span>,</span><br><span class="line">        lastName:  <span class="string">"Nikola"</span>,</span><br><span class="line">        age:       <span class="number">31</span>,</span><br><span class="line">        salary:    <span class="number">5000</span>,</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
-<p>对于struct指针，可以用<code>a.abc</code>代替<code>(*a).abc</code>来访问<code>a</code>中的属性<code>abc</code></p>
-<p>对于struct嵌套，若未声明变量名(即定义如下时,假设Abc为另一个struct，有def属性)<br><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> A <span class="keyword">struct</span>&#123;</span><br><span class="line">	Abc</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>则可以用<code>a.def</code>代替<code>a.Abc.def</code>来访问a中<code>struct Abc</code>中的<code>def</code>变量（下述的’方法’同理）</p>
-<p>当成员变量都可相等比较的时候，struct才可以相等比较，当所有成员都相等时认为相等</p>
-<h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(e Employee)</span> <span class="title">displaySalary</span><span class="params">()</span></span> &#123;  </span><br><span class="line">    fmt.Printf(<span class="string">"Salary of %s is %s%d"</span>, e.name, e.currency, e.salary)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这样可以定义一个Employere的方法，但是这样的方法修改变量不会影响到原变量，传入的e是原来e的拷贝<br>要影响需要用指针，即<code>func (e *Employee) displaySalary()</code><br>对于这种形式的方法，<code>e.dispaleSalary()</code>将是<code>(&amp;e).displaySalary()</code>的简写</p>
-<h2 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h2><p>定义<br><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> A <span class="keyword">interface</span>&#123;</span><br><span class="line">	abc()[]<span class="keyword">int</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>当一个struct实现了所有接口的方法，它将会<strong>自动</strong>应用接口，而不需要自己显式地添加什么</p>
-<p>实现了接口的struct可以被赋值给接口类型，如果a变量的类型实现了A接口，那么就可以<code>var b A:=a</code></p>
-<p>任何数据都应用了空接口<code>interface{}</code>（没有任何方法的接口），所以可以用空接口来为属性传入任何类型的参数<br>可以利用<code>a := i.(int)</code>来断言传入的参数i类型为int，如果不是则报运行时错误<br>可声明ok变量，这样就不会报运行时错误，然后根据ok变量的值做进一步的判断<br><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">assertion</span><span class="params">(i <span class="keyword">interface</span>&#123;&#125;)</span></span>&#123;</span><br><span class="line">	s,ok:=i.(<span class="keyword">int</span>)</span><br><span class="line">	<span class="keyword">if</span> ok &#123;<span class="comment">//是int类型</span></span><br><span class="line">		fmt.Println(s)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>字面量作为这种函数的参数的时候，将会转化为默认类型，传入参数为字面常量<code>8</code>时，断言int是true，int8为false<br>可以在switch中使用断言,断言的类型判断也可以是接口<br><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span> i.(<span class="keyword">type</span>)&#123;</span><br><span class="line"><span class="keyword">case</span> <span class="keyword">string</span>:</span><br><span class="line">	<span class="comment">//do something</span></span><br><span class="line"><span class="keyword">case</span> <span class="keyword">int</span>:</span><br><span class="line">	<span class="comment">//do something</span></span><br><span class="line"><span class="keyword">default</span>:</span><br><span class="line">	<span class="comment">//do something</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>接口可以嵌套，可以声明一个接口，里面嵌套另一个接口<br>未赋值的接口变量为nil</p>
 
       
     </div>
