@@ -15,17 +15,17 @@
 
 
 
-<meta name="description" content="https://draveness.me/whys-the-design-tcp-performance">
+<meta name="description" content="域名解析里正常解析80，在nginx里转发 12345678910111213141516171819server &amp;#123;	listen 80;	# SSL configuration	#	# listen 443 ssl default_server;	# listen [::]:443 ssl default_server;	#	# Note: You should disable gz">
 <meta property="og:type" content="article">
-<meta property="og:title" content="一些网站">
-<meta property="og:url" content="https://a595859893.github.io/2020/02/05/一些网站/index.html">
+<meta property="og:title" content="nginx 二级域名转发">
+<meta property="og:url" content="https://a595859893.github.io/2020/02/11/nginx-二级域名转发/index.html">
 <meta property="og:site_name" content="简陋的小屋">
-<meta property="og:description" content="https://draveness.me/whys-the-design-tcp-performance">
+<meta property="og:description" content="域名解析里正常解析80，在nginx里转发 12345678910111213141516171819server &amp;#123;	listen 80;	# SSL configuration	#	# listen 443 ssl default_server;	# listen [::]:443 ssl default_server;	#	# Note: You should disable gz">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-02-08T18:27:00.501Z">
+<meta property="og:updated_time" content="2020-02-11T10:38:35.863Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="一些网站">
-<meta name="twitter:description" content="https://draveness.me/whys-the-design-tcp-performance">
+<meta name="twitter:title" content="nginx 二级域名转发">
+<meta name="twitter:description" content="域名解析里正常解析80，在nginx里转发 12345678910111213141516171819server &amp;#123;	listen 80;	# SSL configuration	#	# listen 443 ssl default_server;	# listen [::]:443 ssl default_server;	#	# Note: You should disable gz">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -55,7 +55,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>一些网站 | 简陋的小屋</title>
+<title>nginx 二级域名转发 | 简陋的小屋</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -248,11 +248,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-一些网站" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-nginx-二级域名转发" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2020/02/05/一些网站/" class="article-date">
-      <time datetime="2020-02-05T05:43:40.000Z" itemprop="datePublished">2020-02-05</time>
+      <a href="/2020/02/11/nginx-二级域名转发/" class="article-date">
+      <time datetime="2020-02-11T10:35:44.000Z" itemprop="datePublished">2020-02-11</time>
 </a>
 
 
@@ -267,7 +267,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      一些网站
+      nginx 二级域名转发
     </h1>
   
 
@@ -275,6 +275,10 @@
       
       <div class="article-info article-info-post">
         
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/nginx/">nginx</a>
+    </div>
+
 
         
         <div class="clearfix"></div>
@@ -284,7 +288,8 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p><a href="https://draveness.me/whys-the-design-tcp-performance" target="_blank" rel="noopener">https://draveness.me/whys-the-design-tcp-performance</a></p>
+        <p>域名解析里正常解析80，在nginx里转发</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">	listen 80;</span><br><span class="line"></span><br><span class="line">	# SSL configuration</span><br><span class="line">	#</span><br><span class="line">	# listen 443 ssl default_server;</span><br><span class="line">	# listen [::]:443 ssl default_server;</span><br><span class="line">	#</span><br><span class="line">	# Note: You should disable gzip for SSL traffic.</span><br><span class="line">	# See: https://bugs.debian.org/773332</span><br><span class="line"></span><br><span class="line">	server_name [在这填网站];</span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">        proxy_set_header   X-Real-IP $remote_addr;</span><br><span class="line">        proxy_set_header   Host      $http_host;</span><br><span class="line">        proxy_pass         http://0.0.0.0:3000;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -293,13 +298,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2020/02/05/一些网站/">一些网站</a></p>
+        <p><span>本文标题:</span><a href="/2020/02/11/nginx-二级域名转发/">nginx 二级域名转发</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Wuny</a></p>
-        <p><span>发布时间:</span>2020-02-05, 13:43:40</p>
-        <p><span>最后更新:</span>2020-02-09, 02:27:00</p>
+        <p><span>发布时间:</span>2020-02-11, 18:35:44</p>
+        <p><span>最后更新:</span>2020-02-11, 18:38:35</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2020/02/05/一些网站/" title="一些网站">https://a595859893.github.io/2020/02/05/一些网站/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://a595859893.github.io/2020/02/05/一些网站/　　作者: Wuny" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2020/02/11/nginx-二级域名转发/" title="nginx 二级域名转发">https://a595859893.github.io/2020/02/11/nginx-二级域名转发/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://a595859893.github.io/2020/02/11/nginx-二级域名转发/　　作者: Wuny" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -312,15 +317,15 @@
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2020/02/10/git的一些指令/">
-                    git的一些指令
+                <a href="/2020/02/12/k8s-杂语/">
+                    k8s 杂语
                 </a>
             </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2019/12/06/Python正则表达式/">
-                    Python正则表达式
+                <a href="/2020/02/11/Docker相关/">
+                    Docker相关
                 </a>
             </div>
         
@@ -363,7 +368,7 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2020/02/10/git的一些指令/" title="上一篇: git的一些指令">
+            <a href="/2020/02/12/k8s-杂语/" title="上一篇: k8s 杂语">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -371,7 +376,7 @@
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2019/12/06/Python正则表达式/" title="下一篇: Python正则表达式">
+            <a href="/2020/02/11/Docker相关/" title="下一篇: Docker相关">
                 <i class="fa fa-angle-right"></i>
             </a>
         

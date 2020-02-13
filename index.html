@@ -252,6 +252,137 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="w-k8s-杂语" class="article article-type-w" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/02/12/k8s-杂语/" class="article-date">
+      <time datetime="2020-02-12T07:16:05.000Z" itemprop="datePublished">2020-02-12</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/02/12/k8s-杂语/">k8s 杂语</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>快速部署k8s<br><a href="https://github.com/easzlab/kubeasz" target="_blank" rel="noopener">https://github.com/easzlab/kubeasz</a></p>
+<p>Benchmark<br><a href="https://github.com/wwyf/DeathStarBench/tree/master/socialNetwork/k8s-yaml" target="_blank" rel="noopener">https://github.com/wwyf/DeathStarBench/tree/master/socialNetwork/k8s-yaml</a></p>
+<p>vxlan(Virtual eXtential LAN)<br>网络虚拟化技术，穿透三层网络对二层进行扩展<br>弥补了vlan个数少，地址重叠，交换机性能的问题<br>参考：<br><a href="https://blog.csdn.net/octopusflying/article/details/77609199" target="_blank" rel="noopener">https://blog.csdn.net/octopusflying/article/details/77609199</a><br><a href="https://www.cnblogs.com/hbgzy/p/5279269.html" target="_blank" rel="noopener">https://www.cnblogs.com/hbgzy/p/5279269.html</a></p>
+<p>fennel</p>
+<p>weave socpe<br>Docker 和 Kubernetes 可视化监控工具<br><a href="https://github.com/weaveworks/scope" target="_blank" rel="noopener">https://github.com/weaveworks/scope</a></p>
+<p><code>kubectl get pod -n [pod名字] -o wide | sort -k7</code><br><code>-n</code>代表<code>--namespace</code>，接命名空间参数，<code>-k7</code>代表按第七列作为索引进行排序</p>
+<p>pod<br>最小部署单元，一个环节，可以运行多个container，共享所有资源</p>
+<p>service<br>自动感知服务提供方</p>
+<p>namespace<br>一组资源和对象的抽象集合，pod,services等都属于某个namespace</p>
+<p>参考：<a href="https://www.jianshu.com/p/67d4f3d0600e" target="_blank" rel="noopener">https://www.jianshu.com/p/67d4f3d0600e</a></p>
+<p>Grafana<br>跨平台开源度量分析与可视化工具</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/k8s/">k8s</a>
+    </div>
+
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-nginx-二级域名转发" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/02/11/nginx-二级域名转发/" class="article-date">
+      <time datetime="2020-02-11T10:35:44.000Z" itemprop="datePublished">2020-02-11</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/02/11/nginx-二级域名转发/">nginx 二级域名转发</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>域名解析里正常解析80，在nginx里转发</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">	listen 80;</span><br><span class="line"></span><br><span class="line">	# SSL configuration</span><br><span class="line">	#</span><br><span class="line">	# listen 443 ssl default_server;</span><br><span class="line">	# listen [::]:443 ssl default_server;</span><br><span class="line">	#</span><br><span class="line">	# Note: You should disable gzip for SSL traffic.</span><br><span class="line">	# See: https://bugs.debian.org/773332</span><br><span class="line"></span><br><span class="line">	server_name [在这填网站];</span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">        proxy_set_header   X-Real-IP $remote_addr;</span><br><span class="line">        proxy_set_header   Host      $http_host;</span><br><span class="line">        proxy_pass         http://0.0.0.0:3000;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/nginx/">nginx</a>
+    </div>
+
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-Docker相关" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -283,9 +414,12 @@
           
         <p>Docker清华镜像<br><a href="https://mirrors.tuna.tsinghua.edu.cn/help/docker-ce/" target="_blank" rel="noopener">https://mirrors.tuna.tsinghua.edu.cn/help/docker-ce/</a></p>
 <p>Docker安装<br><a href="https://docs.docker.com/install/linux/docker-ce/ubuntu/" target="_blank" rel="noopener">https://docs.docker.com/install/linux/docker-ce/ubuntu/</a></p>
+<p>Docker Compose安装<br><a href="https://docs.docker.com/compose/install/" target="_blank" rel="noopener">https://docs.docker.com/compose/install/</a></p>
 <p>Docker国内镜像加速<br><a href="https://www.daocloud.io/mirror" target="_blank" rel="noopener">https://www.daocloud.io/mirror</a></p>
 <p>将正在运行的容器打包成镜像<br><a href="https://www.jianshu.com/p/608998d7ec9f" target="_blank" rel="noopener">https://www.jianshu.com/p/608998d7ec9f</a></p>
 <p>遇上的坑<br>用户组问题：<a href="https://www.cnblogs.com/studyNT/p/10836021.html" target="_blank" rel="noopener">https://www.cnblogs.com/studyNT/p/10836021.html</a><br>子网网关问题：<a href="https://www.cnblogs.com/lemon-le/p/10531449.html" target="_blank" rel="noopener">https://www.cnblogs.com/lemon-le/p/10531449.html</a></p>
+<p>用docker-compose down来停止</p>
+<p>docker-compose up参数：<br><code>-d</code>后台运行<br><code>--build</code> 重新构建镜像（对含有build的部分）</p>
 
       
     </div>
@@ -346,6 +480,7 @@
       
           
         <p>参考教程：<a href="https://github.com/xdp-project/xdp-tutorial/" target="_blank" rel="noopener">https://github.com/xdp-project/xdp-tutorial/</a> </p>
+<p>ebpf介绍：<a href="https://sysdig.com/blog/sysdig-and-falco-now-powered-by-ebpf/" target="_blank" rel="noopener">https://sysdig.com/blog/sysdig-and-falco-now-powered-by-ebpf/</a></p>
 <h2 id="包含路径"><a href="#包含路径" class="headerlink" title="包含路径"></a>包含路径</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$&#123;workspaceFolder&#125;/**</span><br><span class="line">/usr/include</span><br><span class="line">/usr/include/linux</span><br><span class="line">/usr/lib/llvm-6.0/lib/clang/6.0.0/include</span><br></pre></td></tr></table></figure>
 <h2 id="bpffs（bpf用文件系统）"><a href="#bpffs（bpf用文件系统）" class="headerlink" title="bpffs（bpf用文件系统）"></a>bpffs（bpf用文件系统）</h2><p>map常用路径:<code>/sys/fs/bpf</code></p>
 <p>创建:<code>mount -t bpf bpf /sys/fs/bpf/</code></p>
@@ -766,139 +901,6 @@
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AI/">AI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NeuralNetwork/">NeuralNetwork</a></li></ul>
     </div>
 
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-MyPage-相关" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2019/05/18/MyPage-相关/" class="article-date">
-      <time datetime="2019-05-18T15:46:14.000Z" itemprop="datePublished">2019-05-18</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/18/MyPage-相关/">MyPage 相关</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="Docker相关"><a href="#Docker相关" class="headerlink" title="Docker相关"></a>Docker相关</h2><p><code>docker-compose up</code></p>
-<p>出问题时试试先restart docker，似乎能解决不少问题</p>
-<h2 id="Go相关"><a href="#Go相关" class="headerlink" title="Go相关"></a>Go相关</h2><p>go.mod中module改为main，main内引用本地包XX时用”main/XX”</p>
-<p>go.mod和gopath不能在/指向同一个目录</p>
-<p>`go run main (在src目录下)</p>
-<p>离线包下载后，解压到 <code>$GOPATH$/src</code>对应的路径，然后执行 <code>go install [包名]</code>安装包(存疑)</p>
-<h2 id="React相关"><a href="#React相关" class="headerlink" title="React相关"></a>React相关</h2><p><a href="https://zhuanlan.zhihu.com/p/30271961" target="_blank" rel="noopener">模态框实现</a></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Docker-for-Windows相关" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2019/05/11/Docker-for-Windows相关/" class="article-date">
-      <time datetime="2019-05-11T04:06:57.000Z" itemprop="datePublished">2019-05-11</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/11/Docker-for-Windows相关/">Docker for Windows相关</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="登陆下载"><a href="#登陆下载" class="headerlink" title="登陆下载"></a>登陆下载</h2><p>下载才能够获得下载地址，真是相当不人性化的东西（尤其是注册还得跑到’不存在的网站’上进行人机验证……）</p>
-<p>为了让下次下载不那么麻烦，将下载地址记录在这了。</p>
-<p>下载地址：<a href="https://download.docker.com/win/stable/Docker%20for%20Windows%20Installer.exe" target="_blank" rel="noopener">https://download.docker.com/win/stable/Docker%20for%20Windows%20Installer.exe</a></p>
-<h2 id="镜像源"><a href="#镜像源" class="headerlink" title="镜像源"></a>镜像源</h2><p>糟糕的国外镜像下载网速，windows下docker的设置与linux下也不一样</p>
-<p>windows下操作方式是右键启动栏内的Docker图标，Setting-&gt;Daemon-&gt;Advanced-&gt;registry-mirrors</p>
-<p>在里面添加镜像源的网站就好，如<code>https://docker.mirrors.ustc.edu.cn</code></p>
-<h2 id="坑"><a href="#坑" class="headerlink" title="坑"></a>坑</h2><h3 id="windows的linux子系统跑docker并不能成功"><a href="#windows的linux子系统跑docker并不能成功" class="headerlink" title="windows的linux子系统跑docker并不能成功"></a>windows的linux子系统跑docker并不能成功</h3><p>截至这篇文章写作之前，ubuntu版本的docker的执行需要的系统调用在windows的linux子系统下无法执行。</p>
-<p>所以还是老老实实跑Docker for Windows（或者等不知道什么时候子系统能运行系统调用？）</p>
-<p><a href="https://www.cnblogs.com/94cool/p/9555833.html" target="_blank" rel="noopener">Error starting userland proxy</a></p>
-<h3 id="mongodb无法在windows的docker下成功run"><a href="#mongodb无法在windows的docker下成功run" class="headerlink" title="mongodb无法在windows的docker下成功run"></a>mongodb无法在windows的docker下成功run</h3><p>依旧是虚拟机的锅，不过这个存在<a href="https://github.com/docker-library/mongo/issues/74" target="_blank" rel="noopener">解决方法</a></p>
-<p>设置一个volume然后让-v的映射为该volume而不是本地路径即可</p>
-<h2 id="记录"><a href="#记录" class="headerlink" title="记录"></a>记录</h2><p><a href="http://note.qidong.name/2017/06/26/docker-clean/" target="_blank" rel="noopener">清理技巧</a></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/docker/">docker</a><a class="article-category-link" href="/categories/docker/windows/">windows</a>
-    </div>
-
-
-      
       
       <div class="clearfix"></div>
     </div>

@@ -252,6 +252,139 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-MyPage-相关" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/05/18/MyPage-相关/" class="article-date">
+      <time datetime="2019-05-18T15:46:14.000Z" itemprop="datePublished">2019-05-18</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/05/18/MyPage-相关/">MyPage 相关</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="Docker相关"><a href="#Docker相关" class="headerlink" title="Docker相关"></a>Docker相关</h2><p><code>docker-compose up</code></p>
+<p>出问题时试试先restart docker，似乎能解决不少问题</p>
+<h2 id="Go相关"><a href="#Go相关" class="headerlink" title="Go相关"></a>Go相关</h2><p>go.mod中module改为main，main内引用本地包XX时用”main/XX”</p>
+<p>go.mod和gopath不能在/指向同一个目录</p>
+<p>`go run main (在src目录下)</p>
+<p>离线包下载后，解压到 <code>$GOPATH$/src</code>对应的路径，然后执行 <code>go install [包名]</code>安装包(存疑)</p>
+<h2 id="React相关"><a href="#React相关" class="headerlink" title="React相关"></a>React相关</h2><p><a href="https://zhuanlan.zhihu.com/p/30271961" target="_blank" rel="noopener">模态框实现</a></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-Docker-for-Windows相关" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/05/11/Docker-for-Windows相关/" class="article-date">
+      <time datetime="2019-05-11T04:06:57.000Z" itemprop="datePublished">2019-05-11</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/05/11/Docker-for-Windows相关/">Docker for Windows相关</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="登陆下载"><a href="#登陆下载" class="headerlink" title="登陆下载"></a>登陆下载</h2><p>下载才能够获得下载地址，真是相当不人性化的东西（尤其是注册还得跑到’不存在的网站’上进行人机验证……）</p>
+<p>为了让下次下载不那么麻烦，将下载地址记录在这了。</p>
+<p>下载地址：<a href="https://download.docker.com/win/stable/Docker%20for%20Windows%20Installer.exe" target="_blank" rel="noopener">https://download.docker.com/win/stable/Docker%20for%20Windows%20Installer.exe</a></p>
+<h2 id="镜像源"><a href="#镜像源" class="headerlink" title="镜像源"></a>镜像源</h2><p>糟糕的国外镜像下载网速，windows下docker的设置与linux下也不一样</p>
+<p>windows下操作方式是右键启动栏内的Docker图标，Setting-&gt;Daemon-&gt;Advanced-&gt;registry-mirrors</p>
+<p>在里面添加镜像源的网站就好，如<code>https://docker.mirrors.ustc.edu.cn</code></p>
+<h2 id="坑"><a href="#坑" class="headerlink" title="坑"></a>坑</h2><h3 id="windows的linux子系统跑docker并不能成功"><a href="#windows的linux子系统跑docker并不能成功" class="headerlink" title="windows的linux子系统跑docker并不能成功"></a>windows的linux子系统跑docker并不能成功</h3><p>截至这篇文章写作之前，ubuntu版本的docker的执行需要的系统调用在windows的linux子系统下无法执行。</p>
+<p>所以还是老老实实跑Docker for Windows（或者等不知道什么时候子系统能运行系统调用？）</p>
+<p><a href="https://www.cnblogs.com/94cool/p/9555833.html" target="_blank" rel="noopener">Error starting userland proxy</a></p>
+<h3 id="mongodb无法在windows的docker下成功run"><a href="#mongodb无法在windows的docker下成功run" class="headerlink" title="mongodb无法在windows的docker下成功run"></a>mongodb无法在windows的docker下成功run</h3><p>依旧是虚拟机的锅，不过这个存在<a href="https://github.com/docker-library/mongo/issues/74" target="_blank" rel="noopener">解决方法</a></p>
+<p>设置一个volume然后让-v的映射为该volume而不是本地路径即可</p>
+<h2 id="记录"><a href="#记录" class="headerlink" title="记录"></a>记录</h2><p><a href="http://note.qidong.name/2017/06/26/docker-clean/" target="_blank" rel="noopener">清理技巧</a></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/docker/">docker</a><a class="article-category-link" href="/categories/docker/windows/">windows</a>
+    </div>
+
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-MinGW64及对应VSCode的设置" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -711,130 +844,6 @@ http://www.cnblogs.com/salan668/p/3555871.html
       
           
         <p><a href="https://www.zybang.com/question/6f70ed00e2fa62453476edf8668bb50b.html" target="_blank" rel="noopener">二叉树已知前序、后序，求中序</a><br><a href="https://blog.csdn.net/wang379275614/article/details/13990163/" target="_blank" rel="noopener">关键路径定义</a></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-pytorch相关" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/12/14/pytorch相关/" class="article-date">
-      <time datetime="2018-12-14T11:04:27.000Z" itemprop="datePublished">2018-12-14</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/14/pytorch相关/">pytorch相关</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="常用Tensor初始化"><a href="#常用Tensor初始化" class="headerlink" title="常用Tensor初始化"></a>常用Tensor初始化</h2><p>(基本的初始化)[<a href="https://pytorch.org/docs/stable/torch.html#creation-ops]" target="_blank" rel="noopener">https://pytorch.org/docs/stable/torch.html#creation-ops]</a><br>(与特定Tensor相同dtype和device的初始化，在自定义模型中使用可以不用分cpu和gpu了)[<a href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor]" target="_blank" rel="noopener">https://pytorch.org/docs/stable/tensors.html#torch.Tensor]</a><br>(说起来到底怎么判断一个模型属于cpu还是属于gpu……)</p>
-<h2 id="将one-hot转为token"><a href="#将one-hot转为token" class="headerlink" title="将one-hot转为token"></a>将one-hot转为token</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">torch.eye(x.size(<span class="number">1</span>))[x.argmax(<span class="number">1</span>)]</span><br></pre></td></tr></table></figure>
-<p>先生成单位向量，然后用花式索引选择其对应行<br>很赞的方法</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/python/">python</a><a class="article-category-link" href="/categories/python/AI/">AI</a><a class="article-category-link" href="/categories/python/AI/NeuralNetwork/">NeuralNetwork</a><a class="article-category-link" href="/categories/python/AI/NeuralNetwork/pytorch/">pytorch</a><a class="article-category-link" href="/categories/python/AI/NeuralNetwork/pytorch/tips/">tips</a>
-    </div>
-
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-numpy与pandas相关" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/12/14/numpy与pandas相关/" class="article-date">
-      <time datetime="2018-12-14T10:53:48.000Z" itemprop="datePublished">2018-12-14</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/14/numpy与pandas相关/">numpy与pandas相关</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>#<br><a href="https://pandas.pydata.org/" target="_blank" rel="noopener">pandas官方网站</a></p>
-<h1 id="Pandas教程资料"><a href="#Pandas教程资料" class="headerlink" title="Pandas教程资料"></a>Pandas教程资料</h1><p><a href="http://pandas.pydata.org/pandas-docs/stable/10min.html" target="_blank" rel="noopener">10 Minutes to pandas</a> <a href="http://www.cnblogs.com/chaosimple/p/4153083.html" target="_blank" rel="noopener">（中文翻译）</a></p>
-<h1 id="Pandas备忘"><a href="#Pandas备忘" class="headerlink" title="Pandas备忘"></a>Pandas备忘</h1><h2 id="DataFrame遍历"><a href="#DataFrame遍历" class="headerlink" title="DataFrame遍历"></a>DataFrame遍历</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> index, row <span class="keyword">in</span> data.iterrows():</span><br><span class="line">    <span class="keyword">pass</span> <span class="comment">#做点什么</span></span><br></pre></td></tr></table></figure>
-<h2 id="DataFrame-缺失值填充"><a href="#DataFrame-缺失值填充" class="headerlink" title="DataFrame 缺失值填充"></a>DataFrame 缺失值填充</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DataFrame.fillna()</span><br></pre></td></tr></table></figure>
-<h2 id="链式法则问题"><a href="#链式法则问题" class="headerlink" title="链式法则问题"></a>链式法则问题</h2><p>报<code>SettingWithCopyWarning</code>错误的<strong>链式赋值</strong>语句转而使用<code>.loc</code><strong>一次性定位</strong>完毕后再赋值</p>
-<p><a href="https://blog.csdn.net/haolexiao/article/details/81180571" target="_blank" rel="noopener">参考资料</a></p>
-<h1 id="个人需要注意的"><a href="#个人需要注意的" class="headerlink" title="个人需要注意的"></a>个人需要注意的</h1><p><a href="https://jingyan.baidu.com/article/93f9803fe29aece0e46f55cb.html" target="_blank" rel="noopener">Pandas填充缺失值</a></p>
 
       
     </div>

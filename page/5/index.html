@@ -252,6 +252,207 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-go-关于mysql" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/04/04/go-关于mysql/" class="article-date">
+      <time datetime="2018-04-03T16:12:28.000Z" itemprop="datePublished">2018-04-04</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/04/04/go-关于mysql/">go 关于mysql</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="检验连接正确性，需要使用sql-Ping"><a href="#检验连接正确性，需要使用sql-Ping" class="headerlink" title="检验连接正确性，需要使用sql.Ping()"></a>检验连接正确性，需要使用sql.Ping()</h2><p><a href="https://yq.aliyun.com/articles/178898?utm_content=m_29337" target="_blank" rel="noopener">来自阿里云</a></p>
+<blockquote>
+<p>执行sql.Open()并未实际建立起到数据库的连接，也不会验证驱动参数。第一个实际的连接会惰性求值，延迟到第一次需要时建立。用户应该通过db.Ping()来检查数据库是否实际可用。</p>
+</blockquote>
+<p>被坑过一次的坑……</p>
+<h2 id="用Query的话记得读取数据"><a href="#用Query的话记得读取数据" class="headerlink" title="用Query的话记得读取数据"></a>用Query的话记得读取数据</h2><blockquote>
+<p>同样的语句使用Exec和Query执行有巨大的差别。如上文所述，Query会返回结果集Rows，而存在未读取数据的Rows其实会占用底层连接直到rows.Close()为止。因此，使用Query但不读取返回结果，会导致底层连接永远无法释放。database/sql期望用户能够用完就把连接还回来，所以这样的用法很快就会导致资源耗尽（连接过多）。所以，应该用Exec的语句绝不可用Query来执行。</p>
+</blockquote>
+<p>需要注意的地方</p>
+<h2 id="sql中，不需要每次调用Open，可以只有一个全局"><a href="#sql中，不需要每次调用Open，可以只有一个全局" class="headerlink" title="sql中，不需要每次调用Open，可以只有一个全局"></a>sql中，不需要每次调用Open，可以只有一个全局</h2><p><a href="https://www.zhihu.com/question/22197591/answer/20598968" target="_blank" rel="noopener">来自知乎 - 作者：汪亚军</a></p>
+<blockquote>
+<p>sql.Open 不会创建连接 ，只会创建一个DB实例，同时会创建一个go程来管理该DB实例的一个连接池（是长连接，但不是在Open的时候创建）。 在调用Begin()取一个连接，回滚或者提交得时候归还。如果你直接使用时Exec()执行，则每次会从连接池里面取出一个连接，到Exec执行完毕的时候归还。可以通过参数来调节连接池的大小。<br>golang sql包已经做了并发处理，自己通过channel的方式维护了一个连接池，所以没有必要在go程中加锁共享。<br>关于每次sql.Open，我觉得应该是一个不恰当的做法，这会导致连接得不到重用，并产生过多的短时间关闭的连接，给数据库造成没必要的压力。<br><a href="https://yq.aliyun.com/articles/178898?utm_content=m_29337" target="_blank" rel="noopener">来自阿里云</a><br>sql.DB对象是为了长连接而设计的，不要频繁Open()和Close()数据库。而应该为每个待访问的数据库创建<strong>一个</strong>sql.DB实例，并在用完前一直保留它。需要时可将其作为参数传递，或注册为全局对象。<br>这一抽象让用户不必考虑如何管理并发访问底层数据库的问题。当一个连接在执行任务时会被标记为正在使用。用完之后会放回连接池中。不过用户如果用完连接后忘记释放，就会产生大量的连接，极可能导致资源耗尽（建立太多连接，打开太多文件，缺少可用网络端口）。</p>
+</blockquote>
+<p>找到的许多资料都这么说，那么大概可以放心用了？</p>
+<h2 id="重复调用Close-不会出现错误"><a href="#重复调用Close-不会出现错误" class="headerlink" title="重复调用Close()不会出现错误"></a>重复调用Close()不会出现错误</h2><p><a href="https://yq.aliyun.com/articles/178898?utm_content=m_29337" target="_blank" rel="noopener">来自阿里云</a></p>
+<blockquote>
+<p>rows.Close方法是幂等的，重复调用不会产生副作用，因此建议使用 defer rows.Close()来关闭结果集。</p>
+</blockquote>
+<p>安心用函数系列+1</p>
+<h2 id="事务中第二次查询之前先将第一次查询结果读取完毕"><a href="#事务中第二次查询之前先将第一次查询结果读取完毕" class="headerlink" title="事务中第二次查询之前先将第一次查询结果读取完毕"></a>事务中第二次查询之前先将第一次查询结果读取完毕</h2><blockquote>
+<p>因为事务保证在它上面执行的查询都由同一个连接来执行，因此事务中的语句必需按顺序一条一条执行。对于返回结果集的查询，结果集必须Close()之后才能进行下一次查询。用户如果尝试在前一条语句的结果还没读完前就执行新的查询，连接就会失去同步。这意味着事务中返回结果集的语句都会占用一次单独的网络往返。</p>
+</blockquote>
+<h2 id="Scan实参的方法"><a href="#Scan实参的方法" class="headerlink" title="Scan实参的方法"></a>Scan实参的方法</h2><p>不定参数的时候可以使用<code>rows.Columns()</code>来获取列名列表,不定类型的时候，可以使用<code>sql.RawBytes()</code>来获取类型<br><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">cols, err := rows.Columns()</span><br><span class="line"><span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">    <span class="comment">// handle this....</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 目标列是一个动态生成的数组</span></span><br><span class="line">dest := []<span class="keyword">interface</span>&#123;&#125;&#123;</span><br><span class="line">    <span class="built_in">new</span>(<span class="keyword">string</span>),</span><br><span class="line">    <span class="built_in">new</span>(<span class="keyword">uint32</span>),</span><br><span class="line">    <span class="built_in">new</span>(sql.RawBytes),</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 将数组作为可变参数传入Scan中。</span></span><br><span class="line">err = rows.Scan(dest...)</span><br><span class="line"><span class="comment">// ...</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="关于prepare的详情"><a href="#关于prepare的详情" class="headerlink" title="关于prepare的详情"></a>关于prepare的详情</h2><p>(还没有看的资料)[<a href="http://go-database-sql.org/prepared.html]" target="_blank" rel="noopener">http://go-database-sql.org/prepared.html]</a><br>疑问在于，prepare什么时候用？全局注册后重复使用还是用的时候注册，用完销毁的使用？</p>
+<h2 id="提高SQL执行效率的方法"><a href="#提高SQL执行效率的方法" class="headerlink" title="提高SQL执行效率的方法"></a>提高SQL执行效率的方法</h2><p><a href="https://stackoverflow.com/questions/19398773/inserting-rows-in-mysql-in-go-very-slow" target="_blank" rel="noopener">来自StackOverflow</a></p>
+<blockquote>
+<p>It’s an old question but still - better late than never; you’re in for a treat:<br>put all your data into a bytes.Buffer as tab-separated, newline terminated and unquoted lines (if the text causes problems, it has to be escaped first). NULL has to be encoded as \N.<br>Use <a href="http://godoc.org/github.com/go-sql-driver/mysql#RegisterReaderHandler" target="_blank" rel="noopener">http://godoc.org/github.com/go-sql-driver/mysql#RegisterReaderHandler</a> and register a function returning that buffer under “instream”. Next, call LOAD DATA LOCAL INFILE “Reader::instream” INTO TABLE … - that’s a very fast way to pump data into MySQL (I measured about 19 MB/sec with Go from a file piped from stdin compared to 18 MB/sec for the MySQL command line client when uploading data from stdin).<br>As far as I know, that very driver is the only way to LOAD DATA LOCAL INFILE without the need of a file.</p>
+</blockquote>
+<h2 id="避免Null值带来的麻烦，可以使用sql-NullString-sql-NullInt64等含null的类型"><a href="#避免Null值带来的麻烦，可以使用sql-NullString-sql-NullInt64等含null的类型" class="headerlink" title="避免Null值带来的麻烦，可以使用sql.NullString,sql.NullInt64等含null的类型"></a>避免Null值带来的麻烦，可以使用sql.NullString,sql.NullInt64等含null的类型</h2><p><a href="https://github.com/go-sql-driver/mysql/wiki/Examples" target="_blank" rel="noopener">来自github mysql官方插件说明</a></p>
+<blockquote>
+<p>Ignoring NULL values<br>Note: This might cause problems in Go 1.0 since the conversion from integer types to []byte is missing. The Issue is fixed in Go 1.1+<br>Maybe you already encountered this error: sql: Scan error on column index 1: unsupported driver -&gt; Scan pair: <nil> -&gt; <em>string<br>Normally you would use sql.NullString in such a case. But sometimes you don’t care if the value is NULL, you just want to treat it as an empty string.<br>You can do this with a small workaround, which takes advantage of the fact, that a nil-[]byte gets converted to an empty string. Instead of using </em>string as a rows.Scan(…) destination, you simple use <em>[]byte (or </em>sql.RawBytes), which can take the nil value:</nil></p>
+</blockquote>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/Language/">Language</a><a class="article-category-link" href="/categories/Language/Golang/">Golang</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/">MySQL</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-go笔记-3" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/03/30/go笔记-3/" class="article-date">
+      <time datetime="2018-03-30T12:42:43.000Z" itemprop="datePublished">2018-03-30</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/03/30/go笔记-3/">go笔记-3</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="并发和并行"><a href="#并发和并行" class="headerlink" title="并发和并行"></a>并发和并行</h2><p>并发是只一次做多件事情，但是同一时间只做一件事情<br>并行是一次做多件事情，并且这些事情在同一时间内都在处理</p>
+<p>在函数前加入<code>go</code>关键字来新建一个并发的Goroutines<br>如<code>go funcName(1)</code><br>任何Gorountines都依附在main goroutines上，因此主进程结束时所有Goroutines都会立即结束，<strong>即使没有处理完毕</strong></p>
+<h2 id="channels"><a href="#channels" class="headerlink" title="channels"></a>channels</h2><p>类型前加入chan关键字来声明，如<br><code>var a chan int</code><br><code>a := make(chan int)</code><br>前者<code>a == nil</code>，后者则定义了一个名为a的channel</p>
+<p>channel的数据读写<br><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data := &lt;- a<span class="comment">//从a中读取数据，直到读取到数据才往下运行</span></span><br><span class="line">a &lt;- data <span class="comment">//向a中写入数据</span></span><br></pre></td></tr></table></figure></p>
+<p>用法举例<br><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">hello</span><span class="params">(done <span class="keyword">chan</span> <span class="keyword">bool</span>)</span></span> &#123;  </span><br><span class="line">    fmt.Println(<span class="string">"Hello world goroutine"</span>)</span><br><span class="line">    done &lt;- <span class="literal">true</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;  </span><br><span class="line">    done := <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="keyword">bool</span>)</span><br><span class="line">    <span class="keyword">go</span> hello(done)</span><br><span class="line">    &lt;-done</span><br><span class="line">    fmt.Println(<span class="string">"main function"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>若channels写入数据但是该通道没有地方读取该数据，将会造成deadlock错误<br>参数传入时，可以使用<code>chan&lt;- int</code>，把传入的双向通道改为只写通道，函数内只能向通道写入数据，不能读取数据</p>
+<p>通道中的每一条消息只能被收到一次，即使有多个函数试图接收，也只会有一个收到<br>可以使用’close(ch)’关闭ch通道，此时所有没有收到的都会收到关闭的数据<br>·v,ok&lt;-ch<code>的ok来判断ch通道是否是因为close而关闭，若关闭，收到的值为对应数据的零值</code>for v:=range ch`可以一直循环直到ch关闭</p>
+<h2 id="buffered-channels"><a href="#buffered-channels" class="headerlink" title="buffered channels"></a>buffered channels</h2><p>发送时若buffer满了则会阻塞，受到时若buffer为空则阻塞<br>声明方法<br><code>ch := make(chan type, capacity)</code><br>capacity为buffer的容量，意味着发送时未被收接收的数据存放数量一旦高于就会阻塞<br>可以通过<code>len(eh)</code>获取还没有处理的数据，<code>cap(ch)</code>获取容量</p>
+<h2 id="waitgroup"><a href="#waitgroup" class="headerlink" title="waitgroup"></a>waitgroup</h2><p>声明方法<code>var wg sync.WaitGroup</code><br>用<code>wg.Add(1)</code>添加计数，<code>wg.Down()</code>减少计数<br>用<code>wg.Wait()</code>等待直到计数归零<br>waitgroup作为实参传递的时候，需要加上<code>&amp;</code>防止函数内部传到的是副本而不是本身</p>
+<h2 id="workpool"><a href="#workpool" class="headerlink" title="workpool"></a>workpool</h2><p>处理的任务的方式</p>
+<blockquote>
+<p>（并发1个）输入函数alloacate，将输入传递到’输入用channels’中<br>（并发n个）处理函数worker，从‘输入用channels’获取数据，处理后放在’输出用channels’<br>（并发1个）输出函数result，从’输出用channels’中获取数据用于输出</p>
+</blockquote>
+<p>其中’输入用channels’和’输出用channels’为buffered pool，可以储存一定量的数据供处理<br>n个worker函数使得任务可以一次并发处理多个</p>
+<p>个人认为好处可能是是当其中1个任务工作量太大的时候，依旧可以处理其它工作量较小的任务，而不至于被大任务完全阻塞？</p>
+<h2 id="select"><a href="#select" class="headerlink" title="select"></a>select</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> &#123;</span><br><span class="line"><span class="keyword">case</span> s1 := &lt;-output1:</span><br><span class="line">	fmt.Println(s1)</span><br><span class="line"><span class="keyword">case</span> s2 := &lt;-output2:</span><br><span class="line">	fmt.Println(s2)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>output1,output2是channel<br>类似switch，但是是用来处理channel的，当有channel收到数据的时候，就会执行该分支，在这之前将会阻塞<br>若同时收到数据的有多个，则随机选择一个分支执行</p>
+<p>分支可以使用default,代表没有任何一个case的channel收到了数据则执行<br>个人认为存在default分支的select不会造成阻塞，因为要么收到了数据随机执行分支，要么没有收到执行default，不会有等待的时刻</p>
+<p>select中default的使用可以避免死锁<br>空的select会造成永久阻塞</p>
+<h2 id="Mutex"><a href="#Mutex" class="headerlink" title="Mutex"></a>Mutex</h2><p>临界区(Critical section)</p>
+<blockquote>
+<p>每个线程中访问临界资源的那段程序称为临界区（Critical Section）（临界资源是一次仅允许一个线程使用的共享资源）。每次只准许一个线程进入临界区，进入后不允许其他线程进入。不论是硬件临界资源，还是软件临界资源，多个线程必须互斥地对它进行访问。<br>摘自百度百科</p>
+</blockquote>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mutex.Lock()  </span><br><span class="line">x = x + <span class="number">1</span>  </span><br><span class="line">mutex.Unlock()</span><br></pre></td></tr></table></figure>
+<p>mutex在Lock时会检测是否已经上锁了，如果有，则阻塞直到原先已经上锁的那边的锁的解除(即Unlock被执行)<br>可以防止因为多个Goroutines并发,同时修改同一个数据造成的数据错乱<br>和WaitGroup一样，传递Mutex变量需要使用<code>&amp;</code>来确保不同函数传入的是同一个而非拷贝，因为Mutex只有在同一个变量上锁的情况下才会阻塞</p>
+<p>也可以使用channel达到与mutex相同的效果,令ch为capacity为1的buffered channel<br><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ch&lt;-<span class="literal">true</span><span class="comment">//存在数据，其它函数内的ch只能阻塞直到这个数据被接收</span></span><br><span class="line">x = x+<span class="number">1</span></span><br><span class="line">&lt;-ch<span class="comment">//接收ch内的数据，其它函数内的ch现在可以解除阻塞来传入数据了</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="“仿造”Class"><a href="#“仿造”Class" class="headerlink" title="“仿造”Class"></a>“仿造”Class</h2><p>因为go里并没有提供’构造函数’功能，我们只能声明一个函数，假装它是构造函数:</p>
+<blockquote>
+<p>将struct用小写(比如说 a)设置为外部不可见,这样外部就不能直接声明变量来获得这个类型<br>构造一个函数(比如用Nwe命名)，生成一个a类型，并且为其赋值，然后返回这个a类型<br>由于外部只能通过这个函数生成到这种类型的数据，这个函数将充当构造函数</p>
+</blockquote>
+<h2 id="Defer"><a href="#Defer" class="headerlink" title="Defer"></a>Defer</h2><p>在函数或者方法前面添加<code>defer</code>关键词，可以让它在return之前才调用，但是保留当时参数的值，如<br><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">printA</span><span class="params">(a <span class="keyword">int</span>)</span></span>&#123;</span><br><span class="line">	fmt.Println(<span class="string">"PrintA:"</span>,a)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">print</span><span class="params">()</span></span>&#123;</span><br><span class="line">	a:=<span class="number">5</span></span><br><span class="line">	<span class="keyword">defer</span> printA(a)</span><br><span class="line">	a=<span class="number">10</span></span><br><span class="line">	fmt.Println(<span class="string">"Print:"</span>,a)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>输出为<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Print: 10</span><br><span class="line">PrintA: 5</span><br></pre></td></tr></table></figure></p>
+<p>多个defer采用栈(LIFO)后进先出的顺序执行</p>
+<p>可用于有多个return分支但是又希望在return前进行统一动作的时候使用</p>
+<h2 id="Error"><a href="#Error" class="headerlink" title="Error"></a>Error</h2><p>自带有error接口，只要声明了<code>Error()</code>函数的类型，就可以作为错误输出数据<br>此时<code>Println()</code>函数会调用该数据的Error，输出其返回的string<br><code>errors.New(&quot;错误信息&quot;)</code>也可以用来创建新的错误数据<br><code>fmt.Errorf(&quot;错误信息,附带值:%d&quot;,10)</code>同样可以用来创建新的错误数据</p>
+<p>通过类型断言来转化错误类型获得更多信息<br>比如说对于打开文件<code>f,err:=os.Opem(&quot;path/&quot;)</code>，可以断言err<br><code>if err, ok := err.(*os.PathError);ok</code>这样就可以用<code>err.path</code>获取到路径信息</p>
+<p><code>func panic(interface{})</code>可以用来输出那些可能会导致程序无法继续的错误<br>调用该函数后,调用者函数将会被中止，未处理的deder的函数将会被处理<br>然后以同样的方式中止(调用(调用(panic函数)的函数)的函数)，逐级向外推进，直到推进到没有外层函数为止(即程序中止)<br>程序中止时，将输出调用panic函数的位置追踪。</p>
+<p>可以在deder中调用<code>func recover() interface{}</code>来中止panic向外推进的过程<br>例如在<br><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">recoverName</span><span class="params">()</span></span> &#123;  </span><br><span class="line">    <span class="keyword">if</span> r := <span class="built_in">recover</span>(); r!= <span class="literal">nil</span> &#123;</span><br><span class="line">        fmt.Println(<span class="string">"recovered from "</span>, r)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>那么在调用<code>defer recoverName()</code>的函数不再向外层传递panic的影响（但调用函数本身依旧受到影响）<br>这使得panic只限制于一个范围内，而非让整个程序终止<br>recover只限于恢复同一个goroutine内的函数，无法在一个goroutine下恢复另一个goroutine造成的panic</p>
+<p>runtime error也是内建的panic，所以也可以通过recover恢复</p>
+<p>recover会中止错误路径追踪，如果需要追踪，则要在recover的函数内添加<code>debug.PrintStack()</code>函数来打印它</p>
+<h2 id="一级函数"><a href="#一级函数" class="headerlink" title="一级函数"></a>一级函数</h2><p>(关于类型的分类资料)[<a href="http://rednaxelafx.iteye.com/blog/184199]" target="_blank" rel="noopener">http://rednaxelafx.iteye.com/blog/184199]</a><br>类型：规定了变量可以取的值得范围，以及该类型的值可以进行的操作。根据类型的值的可赋值状况，可以把类型分为三类： </p>
+<blockquote>
+<p>1、一级的（first class）。该等级类型的值可以传给子程序作为参数，可以从子程序里返回，可以赋给变量。大多数程序设计语言里，整型、字符类型等简单类型都是一级的。<br>2、二级的（second class）。该等级类型的值可以传给子程序作为参数，但是不能从子程序里返回，也不能赋给变量。<br>3、三级的（third class）。该等级类型的值连作为参数传递也不行。 </p>
+</blockquote>
+<p>所以一级函数就是能作为参数传递的函数</p>
+<p>允许闭包，允许匿名函数，允许函数作为参数或者返回值</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/Language/">Language</a><a class="article-category-link" href="/categories/Language/Golang/">Golang</a>
+    </div>
+
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="w-go笔记-2" class="article article-type-w" itemscope itemprop="blogPost">
   
     <div class="article-meta">
