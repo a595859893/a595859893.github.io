@@ -3,6 +3,83 @@
   
     
     <entry>
+      <title>PC-algorithm</title>
+      <link href="/2020/02/26/PC-algorithm/"/>
+      <url>/2020/02/26/PC-algorithm/</url>
+      <content type="html"><![CDATA[<h2 id="记录"><a href="#记录" class="headerlink" title="记录"></a>记录</h2><p><a href="https://www.quora.com/What-is-the-PC-algorithm-and-bayesian-networks" target="_blank" rel="noopener">https://www.quora.com/What-is-the-PC-algorithm-and-bayesian-networks</a><br>PC算法可以看作是一种贝叶斯网络的学习算法</p><p><a href="https://github.com/keiichishima/pcalg" target="_blank" rel="noopener">https://github.com/keiichishima/pcalg</a><br><a href="https://cloud.tencent.com/developer/ask/201874" target="_blank" rel="noopener">https://cloud.tencent.com/developer/ask/201874</a><br>可能的参考实现</p><p>看了看实现：<br>构建完全图<br>图中每个边，每个方向进行一次独立性检验（检验方式自定）<br>保留没有通过检验的边<br>得到图</p><p>有点暴力……</p>]]></content>
+      
+      
+        <tags>
+            
+            <tag> algorithm </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>格兰杰因果检验记录</title>
+      <link href="/2020/02/26/%E6%A0%BC%E5%85%B0%E6%9D%B0%E5%9B%A0%E6%9E%9C%E6%A3%80%E9%AA%8C%E8%AE%B0%E5%BD%95/"/>
+      <url>/2020/02/26/%E6%A0%BC%E5%85%B0%E6%9D%B0%E5%9B%A0%E6%9E%9C%E6%A3%80%E9%AA%8C%E8%AE%B0%E5%BD%95/</url>
+      <content type="html"><![CDATA[<h2 id="记录"><a href="#记录" class="headerlink" title="记录"></a>记录</h2><p><a href="https://zhuanlan.zhihu.com/p/79936875" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/79936875</a><br>简单介绍了格兰杰因果，是强调时间序列的因果关系，其出发点在于变量B存在与否，对变量A取值概率大小会发生影响，则B是A的因。<br>没有介绍具体的算法。</p><p><a href="https://zhuanlan.zhihu.com/p/24647310" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/24647310</a><br>指出格兰杰因果检验需要证明随机变量是平稳序列（因为要用到F统计）<br>引出了新的概念：F统计检验，平稳序列<br>F统计检验又称联合假设检验，在零假设下，统计值服从F分布的检验。</p><p><a href="https://blog.csdn.net/baimafujinji/article/details/6496224" target="_blank" rel="noopener">https://blog.csdn.net/baimafujinji/article/details/6496224</a><br>有具体的公式和案例<br>首先需要零假设$H_0$：X不是引起Y变化的Granger原因<br>无约束回归模型(u)：<br>$$<br>Y_t=\alpha_0 + \sum_{i=1}^p \alpha_i Y_{t-i} +\sum_{i=1}^q \beta_i X_{t-i} + \epsilon_t<br>$$<br>有约束回归模型(r)：<br>$$<br>Y_t=\alpha_0 + \sum_{i=1}^p \alpha_i Y_{t-i} + \epsilon_t<br>$$</p><p>其中p,q为最大滞后期数，$\epsilon_t$为白噪声<br>记n为样本容量，二者的残差平方和为$RSS_u$和$RSS_r$，则可构造F统计量（残差平方和为点与回归线之间的距离的平方和）<br>$$<br>F=\frac{(RSS_r-RSS_u)/q}{RSS_u/(n-p-q-1)}<br>$$<br>可认为$H_0$的检验为检验$\beta_0=\beta_1=…=\beta_q=0$是否成立<br>若$F\geq F_\alpha(q,n-p-q-1)$则$\beta_1..\beta_q$显著不为0，拒绝其为Granger因<br>再反过来，检验Y不是引起X变化的原因，从而得到X是Y的Granger原因</p><p>个人简介上，有约束和无约束的区别就在于是否存在对<strong>X变量的卷积项</strong><br>而F检验目的是检验两个随机变量用于检验两个<strong>正态随机变量</strong>方差是否相等（<a href="https://baike.baidu.com/item/F%E2%80%94%E6%A3%80%E9%AA%8C%E6%B3%95）" target="_blank" rel="noopener">https://baike.baidu.com/item/F%E2%80%94%E6%A3%80%E9%AA%8C%E6%B3%95）</a><br>如果二者相等，那么就意味着与X相乘的系数为0，从而得到与X无关</p><h2 id="杂语"><a href="#杂语" class="headerlink" title="杂语"></a>杂语</h2><p>网络上大部分人认为格兰杰因果检验不能检验因果关系，只是检验时间先后关系，或者说，可预测性。</p>]]></content>
+      
+      <categories>
+          
+          <category> algorithm </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    <entry>
+      <title>Flask 生产环境</title>
+      <link href="/2020/02/15/Flask-%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83/"/>
+      <url>/2020/02/15/Flask-%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83/</url>
+      <content type="html"><![CDATA[<p><a href="https://stackoverflow.com/questions/51025893/flask-at-first-run-do-not-use-the-development-server-in-a-production-environmen" target="_blank" rel="noopener">https://stackoverflow.com/questions/51025893/flask-at-first-run-do-not-use-the-development-server-in-a-production-environmen</a></p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route("/")</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">"&lt;h1&gt;Hello!&lt;/h1&gt;"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    <span class="keyword">from</span> waitress <span class="keyword">import</span> serve</span><br><span class="line">    serve(app, host=<span class="string">"0.0.0.0"</span>, port=<span class="number">8080</span>)</span><br></pre></td></tr></table></figure>]]></content>
+      
+      <categories>
+          
+          <category> python </category>
+          
+          <category> flask </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    <entry>
+      <title>Python import 路径</title>
+      <link href="/2020/02/15/Python-import-%E8%B7%AF%E5%BE%84/"/>
+      <url>/2020/02/15/Python-import-%E8%B7%AF%E5%BE%84/</url>
+      <content type="html"><![CDATA[<p><a href="https://www.cnblogs.com/hujq1029/p/7096236.html" target="_blank" rel="noopener">https://www.cnblogs.com/hujq1029/p/7096236.html</a></p><p>在子文件夹下加入<code>__init__.py</code><br>在<code>sys.path.append</code>加入路径</p><p>可能导致的问题：语法提示错误，import要在前面</p><p>有多个解决方法：<br>将append放在新的文件中，别的文件引入这个新的文件<br>try包裹append函数调用后的import<br><a href="https://stackoverflow.com/questions/36827962/pep8-import-not-at-top-of-file-with-sys-path" target="_blank" rel="noopener">https://stackoverflow.com/questions/36827962/pep8-import-not-at-top-of-file-with-sys-path</a></p>]]></content>
+      
+      <categories>
+          
+          <category> python </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    <entry>
+      <title>QoS</title>
+      <link href="/2020/02/14/QoS/"/>
+      <url>/2020/02/14/QoS/</url>
+      <content type="html"><![CDATA[<p><a href="https://zhuanlan.zhihu.com/p/55151040" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/55151040</a></p><p><a href="https://wenku.baidu.com/view/dbcb05d159eef8c75ebfb370.html" target="_blank" rel="noopener">https://wenku.baidu.com/view/dbcb05d159eef8c75ebfb370.html</a></p><p>可用性<br>正常运行时间</p><p>可靠性<br>丢包率，可以正常接收到数据</p><p>高性能<br>带宽、时延、抖动、吞吐量……</p><p>各种debug指标，可以用来看根因</p><p><a href="https://www.lijiaocn.com/soft/linux/01-concept.html" target="_blank" rel="noopener">https://www.lijiaocn.com/soft/linux/01-concept.html</a></p>]]></content>
+      
+      <categories>
+          
+          <category> QoS </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    <entry>
       <title>k8s 杂语</title>
       <link href="/2020/02/12/k8s-%E6%9D%82%E8%AF%AD/"/>
       <url>/2020/02/12/k8s-%E6%9D%82%E8%AF%AD/</url>

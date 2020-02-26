@@ -183,7 +183,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AI/">AI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CPP/">CPP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NeuralNetwork/">NeuralNetwork</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VSCode/">VSCode</a></li></ul>
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AI/">AI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CPP/">CPP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NeuralNetwork/">NeuralNetwork</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VSCode/">VSCode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm/">algorithm</a></li></ul>
                     </div>
                 </section>
                 
@@ -251,6 +251,316 @@
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-go-搭一个websocket" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/05/09/go-搭一个websocket/" class="article-date">
+      <time datetime="2018-05-09T04:09:58.000Z" itemprop="datePublished">2018-05-09</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/09/go-搭一个websocket/">go 搭一个websocket</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>#安装websocket库<br>最简单的方式是通过<code>go get -u golang.org/x/net</code>来安装<br>然而由于墙的原因这种方式似乎并不太好用<br>因此在(github上下载)[<a href="https://github.com/golang/net]后将文件放在`$GOPATH/src/golang.org/x/net`下（见git上介绍）" target="_blank" rel="noopener">https://github.com/golang/net]后将文件放在`$GOPATH/src/golang.org/x/net`下（见git上介绍）</a><br>然后执行指令<code>go install golang.org/x/net/websocket</code>即可安装</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/Language/">Language</a><a class="article-category-link" href="/categories/Language/Golang/">Golang</a>
+    </div>
+
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-构架演变（大概）" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/05/03/构架演变（大概）/" class="article-date">
+      <time datetime="2018-05-03T04:49:00.000Z" itemprop="datePublished">2018-05-03</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/03/构架演变（大概）/">构架演变（大概）</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>引用自某乎</p>
+<blockquote>
+<p>作者：得闲野鹤<br>链接：<a href="https://www.zhihu.com/question/25536695/answer/154614906" target="_blank" rel="noopener">https://www.zhihu.com/question/25536695/answer/154614906</a><br>来源：知乎<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
+</blockquote>
+<p>我们在做一个访问量不大的项目的时候,一台服务器部署上一个应用+数据库也就够了.<br>那么访问量稍微大一点之后呢,为了解决用户反馈的卡,反应慢的情况,我们就上集群.架设nginx,部署多个服务,由nginx负责把请求转发到其他服务上,这样就解决了用户说的卡慢问题.<br>过了一段时间之后呢,我们发现数据库已经扛不住了,应用服务完好,数据库有时候宕机. 那这个时候呢,我们就上数据库读写分离,再架设几台数据库服务器,做主从,做分库分表. 然后数据库也不宕机了,服务又恢复了流畅.<br>又过了一段时间,公司事业增增日上,服务访问量越来越高,且大部分都是查询, 吸取之前宕机且为了办证数据库的健壮性,我们这个时候又加上了缓存, 把用户高频次访问的数据放到缓存里.<br>后来,项目功能越来越多,整个项目也愈发庞大,修改一个类就需要全盘上传,切换nginx重启,这样的发布流程越来越长,越来越繁杂.然后我们开始把模块拆分,用户信息分个项目,订单系统分一个项目.这样就达到了,用户模块代码修改的时候,只需要更新用户信息服务就好了.但是还是需要切换顶层的nginx.把要重启的服务的流量切到可用服务上. 这个时候我们就想到了RPC<br>那么RPC解决了什么呢? 所有的服务在启动的时候注册到一个注册机里面,然后顶层处理在接收到nginx的请求时,去注册机找一个可用的服务,并调用接口. 这样子呢,在不加新功能的时候,顶层处理服务我们就不需要动了? 那修改了用户信息项目的时候,我们只需要一个个更新用户信息项目的服务群就好了?<br>这样的话,无论是扩展还是服务的健壮性都妥妥的了?</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/Server/">Server</a>
+    </div>
+
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-卷积网络笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/04/30/卷积网络笔记/" class="article-date">
+      <time datetime="2018-04-30T13:58:27.000Z" itemprop="datePublished">2018-04-30</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/04/30/卷积网络笔记/">卷积网络笔记以及WaveNet理解相关资料</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p><a href="https://www.zhihu.com/question/39022858" target="_blank" rel="noopener">来自知乎的原文</a><br>下面是自己的一些理解？<br>对于图像的操作可以写成矩阵的形式，作为<em>滤波器</em><br>这些<em>滤波器（filter）</em>会对特定的模式有高的激活（识别特定的曲线或者其它的模式）<br>训练卷积神经网络的时候，我们实际上是在训练每一格卷积层一系列的<em>滤波器</em><br>第二层的滤波器会将第一层的输出作为它的输出，来检测低阶特征的组合等情况<br>随着卷积层数的增加，组合的累计让神经网络能够检测的特征更加的复杂<br>这种方式与人类大脑的视觉信息处理模式相仿，都是由简单到复杂抽象</p>
+<p>构建滤波器（训练）的方式是<em>修改滤波器矩阵的值（权重Weight）</em>,使其能识别特定的特征<br>修改依据是损失函数的输出，尽可能的让损失函数的值最小<br>使其变为一个最优化问题</p>
+<p>WaveNet理解用相关资料<br>(卷积变种)[<a href="https://www.cnblogs.com/yangperasd/p/7071657.html]" target="_blank" rel="noopener">https://www.cnblogs.com/yangperasd/p/7071657.html]</a><br>(优化方法)[<a href="https://zhuanlan.zhihu.com/p/22252270]" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/22252270]</a><br>(卷积训练公式推导)[<a href="https://zybuluo.com/hanbingtao/note/485480]" target="_blank" rel="noopener">https://zybuluo.com/hanbingtao/note/485480]</a></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/AI/">AI</a><a class="article-category-link" href="/categories/AI/NeuralNetwork/">NeuralNetwork</a>
+    </div>
+
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-go-gin框架的一些坑" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/04/05/go-gin框架的一些坑/" class="article-date">
+      <time datetime="2018-04-05T14:26:10.000Z" itemprop="datePublished">2018-04-05</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/04/05/go-gin框架的一些坑/">go gin框架的一些坑</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>我们可以使用<code>c.Bind(&amp;abc)</code>来将传入的数据(json,xml,form等格式)赋值到abc这个struct中<br>但是要注意abc这个struct类型里，字母变量一定要<strong>首字母大写</strong><br>不然的话外部包无法访问这个变量，然后就无法对其赋值了<br>排查了4小时BUG的血的教训</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/Language/">Language</a><a class="article-category-link" href="/categories/Language/Golang/">Golang</a>
+    </div>
+
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-关于整数为什么不能用对角线来证明不可数" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/04/04/关于整数为什么不能用对角线来证明不可数/" class="article-date">
+      <time datetime="2018-04-04T04:36:32.000Z" itemprop="datePublished">2018-04-04</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/04/04/关于整数为什么不能用对角线来证明不可数/">关于整数为什么不能用对角线来证明不可数</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>如题，存点连接<br><a href="https://zhuanlan.zhihu.com/p/19729557?utm_source=wechat_session&amp;utm_medium=social" target="_blank" rel="noopener">来自知乎</a></p>
+<blockquote>
+<p>实数的一种构造是「有理数列的极限」。</p>
+</blockquote>
+<h1 id="这里的数列是柯西数列，但我就不重复高等数学教材上的定义了。如果你学过或者手上有书，请翻书。如果没学过，那就随便看看吧。反正，柯西数列的定义中需要一种「距离」的概念。有了这个「距离」，柯西数列就是直观上越来越近的一系列点。在实数的定义中，这个距离很简单，就是两个有理数之前的差的绝对值。比如-3-14-和-3-1-之间的「距离」就是-0-04，而-3-3-1-3-14-3-141-3-1415-…-就是一个柯西数列。柯西有理数列的极限们就叫做实数。"><a href="#这里的数列是柯西数列，但我就不重复高等数学教材上的定义了。如果你学过或者手上有书，请翻书。如果没学过，那就随便看看吧。反正，柯西数列的定义中需要一种「距离」的概念。有了这个「距离」，柯西数列就是直观上越来越近的一系列点。在实数的定义中，这个距离很简单，就是两个有理数之前的差的绝对值。比如-3-14-和-3-1-之间的「距离」就是-0-04，而-3-3-1-3-14-3-141-3-1415-…-就是一个柯西数列。柯西有理数列的极限们就叫做实数。" class="headerlink" title="这里的数列是柯西数列，但我就不重复高等数学教材上的定义了。如果你学过或者手上有书，请翻书。如果没学过，那就随便看看吧。反正，柯西数列的定义中需要一种「距离」的概念。有了这个「距离」，柯西数列就是直观上越来越近的一系列点。在实数的定义中，这个距离很简单，就是两个有理数之前的差的绝对值。比如 3.14 和 3.1 之间的「距离」就是 0.04，而 3, 3.1, 3.14, 3.141, 3.1415, … 就是一个柯西数列。柯西有理数列的极限们就叫做实数。"></a>这里的数列是柯西数列，但我就不重复高等数学教材上的定义了。如果你学过或者手上有书，请翻书。如果没学过，那就随便看看吧。反正，柯西数列的定义中需要一种「距离」的概念。有了这个「距离」，柯西数列就是直观上越来越近的一系列点。在实数的定义中，这个距离很简单，就是两个有理数之前的差的绝对值。比如 3.14 和 3.1 之间的「距离」就是 0.04，而 3, 3.1, 3.14, 3.141, 3.1415, … 就是一个柯西数列。柯西有理数列的极限们就叫做实数。</h1><p>开头提到的题目中，题主在纠结：如果整数往左一直写下去是什么呢？在初等数学中，这仅仅是一个无穷整数数列，而且这个数列没有定义极限.<br>但是，我们现在来引入一个新的「距离」。如果一个有理数可以写成的形式，其中 p 和 q 不能被 2 整除，那么我们记 n 的「绝对值」为. 也就是说，如果 n 里包含一个 2 的次幂，那么幂次越高 n 就越「小」，幂次越低 n 就越「大」。在这个「绝对值」下，我们定义两个数的「距离」为.<br>我知道这个定义很让人纠结。如果你接受这个定义，那么将数字向左无穷写下去，即 这种形式，就有意义了。在新的「距离」下，比如 1, 01, 101, 1101, 01101, 101101 … 这样的数列就成了一个柯西数列。这个数列在新的「距离」下是收敛的。这些无穷数列的极限叫「2-进数」。比如 1, 11, 111, 1111, 11111 … 这个无穷数列，其极限是 -1.（我只是随便举个例子，请勿用初等数学来解释这个例子）。这样的做法自然适用于所有素数 p，相应的我们就有了 p-进数。<br>如题主所期望的，因为对给定的 p-进数，其位数是无限的，即每个 p-进数都对应一个无穷数列，所以可以用对角线方法证明，p-进数是不可数的。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/Math/">Math</a>
+    </div>
+
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-go-关于mysql" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -705,225 +1015,9 @@
 
 
   
-    <article id="post-无脑配服务器-Nginx-MySQL-mongoDB-go-redis" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/03/28/无脑配服务器-Nginx-MySQL-mongoDB-go-redis/" class="article-date">
-      <time datetime="2018-03-28T07:02:19.000Z" itemprop="datePublished">2018-03-28</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/28/无脑配服务器-Nginx-MySQL-mongoDB-go-redis/">无脑配服务器/Nginx/MySQL/mongoDB/go/redis</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install bison ed gawk gcc libc6-dev make -y</span><br><span class="line">sudo apt-get install nginx -y</span><br><span class="line">sudo apt-get install mongodb-server -y</span><br><span class="line">sudo apt-get install redis-server -y</span><br><span class="line">sudo apt-get install mysql-server -y</span><br><span class="line">sudo apt-get install golang -y</span><br></pre></td></tr></table></figure>
-<p>MYSQL安装需要输入root账户的密码</p>
-<hr>
-<hr>
-<h2 id="nginx配置"><a href="#nginx配置" class="headerlink" title="nginx配置"></a>nginx配置</h2><p>创建nginx用权限账户 www（或者在配置文件中修改user为已存在用户）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo /usr/sbin/groupadd www</span><br><span class="line">sudo /usr/sbin/useradd -g www www</span><br></pre></td></tr></table></figure></p>
-<p>(可能会报sudo: unable to resolve host,这只是warning,可以不用管，下同)</p>
-<p>修改配置文件（参考文件中有参考网址可以查看参数的作用）<br><code>sudo vim /etc/nginx/nginx.conf</code></p>
-<blockquote>
-<p>/etc/nginx/conf.d/*.conf;<br>/etc/nginx/sites-enabled/*;<br>这两个是配置文件中带有的目录，网站的参数也可以在这里进行修改</p>
-</blockquote>
-<blockquote>
-<p>默认在”/etc/nginx/sites-enabled/default”中存在80端口的配置<br>如果自己需要修改80端口的话，可以直接修改这个文件，或者删掉自己重新配置</p>
-</blockquote>
-<p>重启nginx适用配置</p>
-<p><code>sudo service nginx restart</code></p>
-<hr>
-<h2 id="MySql配置"><a href="#MySql配置" class="headerlink" title="MySql配置"></a>MySql配置</h2><p>登陆mysql并创建数据库NEST,远程访问用户bird，并授权<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mysql -u username -p password</span><br><span class="line">create database NEST</span><br><span class="line">CREATE USER &apos;bird&apos;@&apos;%&apos; IDENTIFIED BY &apos;password here&apos;;</span><br><span class="line">GRANT ALL ON NEST.* TO &apos;bird&apos;@&apos;%&apos;;</span><br><span class="line">flush privileges;</span><br></pre></td></tr></table></figure></p>
-<p>修改配置文件<br><code>sudo vim /etc/mysql/mysql.conf.d/mysqld.cnf</code><br>修改bind-address为0.0.0.0</p>
-<p>重启mysql适用配置<br><code>sudo service mysql restart</code></p>
-<hr>
-<hr>
-<h2 id="mongoDB配置"><a href="#mongoDB配置" class="headerlink" title="mongoDB配置"></a>mongoDB配置</h2><p>（记得在防火墙打开27017端口）</p>
-<p>添加用户数据<br>（创建了超级权限的root用户，和一个只读写nest数据库的bird用户）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mongo</span><br><span class="line">use admin</span><br><span class="line">db.createUser(&#123;user:&quot;root&quot;,pwd:&quot;password here&quot;,roles:[&quot;root&quot;]&#125;)</span><br><span class="line">use nest</span><br><span class="line">db.createCollection(&quot;nest&quot;)</span><br><span class="line">db.createUser(&#123;user:&quot;bird&quot;,pwd:&quot;password here&quot;,roles:[&#123;role:&quot;readWrite&quot;,db:&quot;nest&quot;&#125;]&#125;)</span><br></pre></td></tr></table></figure></p>
-<p>然后退出mongo<br><a href="https://docs.mongodb.com/manual/reference/method/db.createUser/#db.createUser" target="_blank" rel="noopener">用户添加参考</a><br><a href="https://docs.mongodb.com/manual/reference/built-in-roles/#built-in-roles" target="_blank" rel="noopener">内置权限参考</a><br><a href="https://docs.mongodb.com/manual/core/security-user-defined-roles/#user-defined-roles" target="_blank" rel="noopener">自定义权限参考</a></p>
-<p>修改配置文件<br><code>sudo vim /etc/mongodb.conf</code><br>注释”bind_ip=127.0.0.1”一行,以允许远程访问<br>取消注释”auth = true”一行,以启用权限管理</p>
-<p>重启mongodb适用配置<br><code>sudo service mongodb restart</code></p>
-<hr>
-<hr>
-<h2 id="redis配置"><a href="#redis配置" class="headerlink" title="redis配置"></a>redis配置</h2><p>（记得在防火墙打开6379端口）<br>如果想要允许远程访问的话，修改配置文件即可<br><code>sudo vim /etc/redis/redis.conf</code><br><code>bind 127.0.0.1改为bind 0.0.0.0</code><br>取消<code>requirepass foobared</code>注释，并且将foobared改为你的密码，如<code>requirepass &quot;your password&quot;</code><br>重启redis服务<br><code>sudo service redis-server restart</code></p>
-<blockquote>
-<p>修改之后在<code>redis-cli</code>中需要添加<code>-a &quot;your password&quot;</code>参数来启动(your password改为你设置的密码)</p>
-</blockquote>
-<h2 id="不添加该参数虽然也可以登录成功，但是没有任何操作权限。"><a href="#不添加该参数虽然也可以登录成功，但是没有任何操作权限。" class="headerlink" title="不添加该参数虽然也可以登录成功，但是没有任何操作权限。"></a>不添加该参数虽然也可以登录成功，但是没有任何操作权限。</h2><hr>
-<h2 id="go配置"><a href="#go配置" class="headerlink" title="go配置"></a>go配置</h2><p>创建工作目录，配置环境变量和项目目录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">cd $HMOE</span><br><span class="line">mkdir Applications Applications/Go</span><br><span class="line">mkdir Applications/Go/src Applications/Go/pkg Applications/Go/bin</span><br><span class="line">export GOROOT=$HOME/go</span><br><span class="line">export PATH=$GOROOT/bin:$PATH</span><br><span class="line">export GOPATH=$HOME/Applications/Go</span><br></pre></td></tr></table></figure></p>
-<hr>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Server/">Server</a>
-    </div>
-
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-new-Page" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/03/28/new-Page/" class="article-date">
-      <time datetime="2018-03-28T05:59:11.000Z" itemprop="datePublished">2018-03-28</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/28/new-Page/">new Page</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>久违的又一篇文章<br>为了某项目而学习go语言的记录大概会放在这里？<br>大概吧……</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	fmt.<span class="built_in">print</span>(<span class="string">"HelloWorld!"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Diary/">Diary</a>
-    </div>
-
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-first-page" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/10/12/first-page/" class="article-date">
-      <time datetime="2017-10-12T13:36:15.000Z" itemprop="datePublished">2017-10-12</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/12/first-page/">first page</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>嗯，总之就是简单的第一篇文章。</p>
-<blockquote><p>听说有引用这种东西，所以拿来试试</p>
-<footer><strong>简陋的小屋</strong><cite>Wuny</cite></footer></blockquote>
-<figure class="highlight c"><figcaption><span>++</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">printf</span>(<span class="string">"Hello world!"</span>);</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Diary/">Diary</a>
-    </div>
-
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/4/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span>
+      <a class="extend prev" rel="prev" href="/page/4/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/6/">Next &raquo;</a>
     </nav>
   
 </div>
