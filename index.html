@@ -348,7 +348,7 @@
 <p><a href="https://zhuanlan.zhihu.com/p/24647310" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/24647310</a><br>指出格兰杰因果检验需要证明随机变量是平稳序列（因为要用到F统计）<br>引出了新的概念：F统计检验，平稳序列<br>F统计检验又称联合假设检验，在零假设下，统计值服从F分布的检验。</p>
 <p><a href="https://blog.csdn.net/baimafujinji/article/details/6496224" target="_blank" rel="noopener">https://blog.csdn.net/baimafujinji/article/details/6496224</a><br>有具体的公式和案例<br>首先需要零假设$H_0$：X不是引起Y变化的Granger原因<br>无约束回归模型(u)：<br>$$<br>Y_t=\alpha_0 + \sum_{i=1}^p \alpha_i Y_{t-i} +\sum_{i=1}^q \beta_i X_{t-i} + \epsilon_t<br>$$<br>有约束回归模型(r)：<br>$$<br>Y_t=\alpha_0 + \sum_{i=1}^p \alpha_i Y_{t-i} + \epsilon_t<br>$$</p>
 <p>其中p,q为最大滞后期数，$\epsilon_t$为白噪声<br>记n为样本容量，二者的残差平方和为$RSS_u$和$RSS_r$，则可构造F统计量（残差平方和为点与回归线之间的距离的平方和）<br>$$<br>F=\frac{(RSS_r-RSS_u)/q}{RSS_u/(n-p-q-1)}<br>$$<br>可认为$H_0$的检验为检验$\beta_0=\beta_1=…=\beta_q=0$是否成立<br>若$F\geq F_\alpha(q,n-p-q-1)$则$\beta_1..\beta_q$显著不为0，拒绝其为Granger因<br>再反过来，检验Y不是引起X变化的原因，从而得到X是Y的Granger原因</p>
-<p>个人简介上，有约束和无约束的区别就在于是否存在对<strong>X变量的卷积项</strong><br>而F检验目的是检验两个随机变量用于检验两个<strong>正态随机变量</strong>方差是否相等（<a href="https://baike.baidu.com/item/F%E2%80%94%E6%A3%80%E9%AA%8C%E6%B3%95）" target="_blank" rel="noopener">https://baike.baidu.com/item/F%E2%80%94%E6%A3%80%E9%AA%8C%E6%B3%95）</a><br>如果二者相等，那么就意味着与X相乘的系数为0，从而得到与X无关</p>
+<p>个人认为，有约束和无约束的区别就在于是<strong>否存在随机变量X</strong><br>而F检验目的是检验两个随机变量用于检验两个<strong>正态随机变量</strong>方差是否相等（<a href="https://baike.baidu.com/item/F%E2%80%94%E6%A3%80%E9%AA%8C%E6%B3%95）" target="_blank" rel="noopener">https://baike.baidu.com/item/F%E2%80%94%E6%A3%80%E9%AA%8C%E6%B3%95）</a><br>如果二者相等，那么就意味着与X相乘的系数为0，从而得到与X无关</p>
 <h2 id="杂语"><a href="#杂语" class="headerlink" title="杂语"></a>杂语</h2><p>网络上大部分人认为格兰杰因果检验不能检验因果关系，只是检验时间先后关系，或者说，可预测性。</p>
 
       
