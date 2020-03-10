@@ -183,7 +183,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AI/">AI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CPP/">CPP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NeuralNetwork/">NeuralNetwork</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VSCode/">VSCode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm/">algorithm</a></li></ul>
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AI/">AI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CPP/">CPP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NLP/">NLP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NeuralNetwork/">NeuralNetwork</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VSCode/">VSCode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm/">algorithm</a></li></ul>
                     </div>
                 </section>
                 
@@ -251,6 +251,320 @@
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-MyPage-相关" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/05/18/MyPage-相关/" class="article-date">
+      <time datetime="2019-05-18T15:46:14.000Z" itemprop="datePublished">2019-05-18</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/05/18/MyPage-相关/">MyPage 相关</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="Docker相关"><a href="#Docker相关" class="headerlink" title="Docker相关"></a>Docker相关</h2><p><code>docker-compose up</code></p>
+<p>出问题时试试先restart docker，似乎能解决不少问题</p>
+<h2 id="Go相关"><a href="#Go相关" class="headerlink" title="Go相关"></a>Go相关</h2><p>go.mod中module改为main，main内引用本地包XX时用”main/XX”</p>
+<p>go.mod和gopath不能在/指向同一个目录</p>
+<p>`go run main (在src目录下)</p>
+<p>离线包下载后，解压到 <code>$GOPATH$/src</code>对应的路径，然后执行 <code>go install [包名]</code>安装包(存疑)</p>
+<h2 id="React相关"><a href="#React相关" class="headerlink" title="React相关"></a>React相关</h2><p><a href="https://zhuanlan.zhihu.com/p/30271961" target="_blank" rel="noopener">模态框实现</a></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-Docker-for-Windows相关" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/05/11/Docker-for-Windows相关/" class="article-date">
+      <time datetime="2019-05-11T04:06:57.000Z" itemprop="datePublished">2019-05-11</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/05/11/Docker-for-Windows相关/">Docker for Windows相关</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="登陆下载"><a href="#登陆下载" class="headerlink" title="登陆下载"></a>登陆下载</h2><p>下载才能够获得下载地址，真是相当不人性化的东西（尤其是注册还得跑到’不存在的网站’上进行人机验证……）</p>
+<p>为了让下次下载不那么麻烦，将下载地址记录在这了。</p>
+<p>下载地址：<a href="https://download.docker.com/win/stable/Docker%20for%20Windows%20Installer.exe" target="_blank" rel="noopener">https://download.docker.com/win/stable/Docker%20for%20Windows%20Installer.exe</a></p>
+<h2 id="镜像源"><a href="#镜像源" class="headerlink" title="镜像源"></a>镜像源</h2><p>糟糕的国外镜像下载网速，windows下docker的设置与linux下也不一样</p>
+<p>windows下操作方式是右键启动栏内的Docker图标，Setting-&gt;Daemon-&gt;Advanced-&gt;registry-mirrors</p>
+<p>在里面添加镜像源的网站就好，如<code>https://docker.mirrors.ustc.edu.cn</code></p>
+<h2 id="坑"><a href="#坑" class="headerlink" title="坑"></a>坑</h2><h3 id="windows的linux子系统跑docker并不能成功"><a href="#windows的linux子系统跑docker并不能成功" class="headerlink" title="windows的linux子系统跑docker并不能成功"></a>windows的linux子系统跑docker并不能成功</h3><p>截至这篇文章写作之前，ubuntu版本的docker的执行需要的系统调用在windows的linux子系统下无法执行。</p>
+<p>所以还是老老实实跑Docker for Windows（或者等不知道什么时候子系统能运行系统调用？）</p>
+<p><a href="https://www.cnblogs.com/94cool/p/9555833.html" target="_blank" rel="noopener">Error starting userland proxy</a></p>
+<h3 id="mongodb无法在windows的docker下成功run"><a href="#mongodb无法在windows的docker下成功run" class="headerlink" title="mongodb无法在windows的docker下成功run"></a>mongodb无法在windows的docker下成功run</h3><p>依旧是虚拟机的锅，不过这个存在<a href="https://github.com/docker-library/mongo/issues/74" target="_blank" rel="noopener">解决方法</a></p>
+<p>设置一个volume然后让-v的映射为该volume而不是本地路径即可</p>
+<h2 id="记录"><a href="#记录" class="headerlink" title="记录"></a>记录</h2><p><a href="http://note.qidong.name/2017/06/26/docker-clean/" target="_blank" rel="noopener">清理技巧</a></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/docker/">docker</a><a class="article-category-link" href="/categories/docker/windows/">windows</a>
+    </div>
+
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-MinGW64及对应VSCode的设置" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/04/21/MinGW64及对应VSCode的设置/" class="article-date">
+      <time datetime="2019-04-21T15:01:20.000Z" itemprop="datePublished">2019-04-21</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/21/MinGW64及对应VSCode的设置/">MinGW64及对应VSCode的设置</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p><a href="https://sourceforge.net/projects/mingw-w64/" target="_blank" rel="noopener">minGW64下载地址</a></p>
+<p>（可能需要科学上网）</p>
+<p>VSCode配置文件中加入<code>C_Cpp.default.systemIncludePath</code>属性，改为下载后将安装目录下的include文件夹所在</p>
+<p>可能需要添加的部分</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&quot;D:/CodeEnv/MinGW64/mingw32/lib/gcc/i686-w64-mingw32/8.1.0/include/c++&quot;,</span><br><span class="line">&quot;D:/CodeEnv/MinGW64/mingw32/lib/gcc/i686-w64-mingw32/8.1.0/include/c++/i686-w64-mingw32&quot;,</span><br><span class="line">&quot;D:/CodeEnv/MinGW64/mingw32/lib/gcc/i686-w64-mingw32/8.1.0/include/c++/i686-w64-mingw32&quot;</span><br></pre></td></tr></table></figure>
+<p>截止至2019/4/22为止，VSCode的语法提示存在BUG，导致using namespace std会报错，具体如下</p>
+<p><a href="https://stackoverflow.com/questions/44094817/why-is-visual-studio-code-telling-me-that-cout-is-not-a-member-of-std-namespace" target="_blank" rel="noopener">https://stackoverflow.com/questions/44094817/why-is-visual-studio-code-telling-me-that-cout-is-not-a-member-of-std-namespace</a></p>
+<p>修复方式为在设置中添加属性</p>
+<p><code>&quot;C_Cpp.intelliSenseEngine&quot;: &quot;Tag Parser&quot;</code></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CPP/">CPP</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-pytorch自动补全" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/02/27/pytorch自动补全/" class="article-date">
+      <time datetime="2019-02-26T16:24:42.000Z" itemprop="datePublished">2019-02-27</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/02/27/pytorch自动补全/">pytorch自动补全</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p><a href="https://www.jianshu.com/p/927d04ef997a" target="_blank" rel="noopener">https://www.jianshu.com/p/927d04ef997a</a><br><a href="https://gist.github.com/t-vi/0d0ae013072f96f50fa11fbc2287e33b" target="_blank" rel="noopener">https://gist.github.com/t-vi/0d0ae013072f96f50fa11fbc2287e33b</a><br>·envs{envs-name}\Lib\site-packages\torch·</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-文章相关-Transformer模型的PyTorch实现" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/02/26/文章相关-Transformer模型的PyTorch实现/" class="article-date">
+      <time datetime="2019-02-25T16:10:14.000Z" itemprop="datePublished">2019-02-26</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/02/26/文章相关-Transformer模型的PyTorch实现/">文章相关-Transformer模型的PyTorch实现</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>(相关连接)[<a href="https://juejin.im/post/5b9f1af0e51d450e425eb32d#comment]" target="_blank" rel="noopener">https://juejin.im/post/5b9f1af0e51d450e425eb32d#comment]</a></p>
+<p>Mask,Positional encoding</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-论文相关-Fully-automated-macular-pathology-detection-in-retina-OCT" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -537,546 +851,6 @@ http://www.cnblogs.com/salan668/p/3555871.html
     <div class="article-info article-info-index">
       
       
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-pytorch相关" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/12/14/pytorch相关/" class="article-date">
-      <time datetime="2018-12-14T11:04:27.000Z" itemprop="datePublished">2018-12-14</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/14/pytorch相关/">pytorch相关</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="常用Tensor初始化"><a href="#常用Tensor初始化" class="headerlink" title="常用Tensor初始化"></a>常用Tensor初始化</h2><p>(基本的初始化)[<a href="https://pytorch.org/docs/stable/torch.html#creation-ops]" target="_blank" rel="noopener">https://pytorch.org/docs/stable/torch.html#creation-ops]</a><br>(与特定Tensor相同dtype和device的初始化，在自定义模型中使用可以不用分cpu和gpu了)[<a href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor]" target="_blank" rel="noopener">https://pytorch.org/docs/stable/tensors.html#torch.Tensor]</a><br>(说起来到底怎么判断一个模型属于cpu还是属于gpu……)</p>
-<h2 id="将one-hot转为token"><a href="#将one-hot转为token" class="headerlink" title="将one-hot转为token"></a>将one-hot转为token</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">torch.eye(x.size(<span class="number">1</span>))[x.argmax(<span class="number">1</span>)]</span><br></pre></td></tr></table></figure>
-<p>先生成单位向量，然后用花式索引选择其对应行<br>很赞的方法</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/python/">python</a><a class="article-category-link" href="/categories/python/AI/">AI</a><a class="article-category-link" href="/categories/python/AI/NeuralNetwork/">NeuralNetwork</a><a class="article-category-link" href="/categories/python/AI/NeuralNetwork/pytorch/">pytorch</a><a class="article-category-link" href="/categories/python/AI/NeuralNetwork/pytorch/tips/">tips</a>
-    </div>
-
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-numpy与pandas相关" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/12/14/numpy与pandas相关/" class="article-date">
-      <time datetime="2018-12-14T10:53:48.000Z" itemprop="datePublished">2018-12-14</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/14/numpy与pandas相关/">numpy与pandas相关</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>#<br><a href="https://pandas.pydata.org/" target="_blank" rel="noopener">pandas官方网站</a></p>
-<h1 id="Pandas教程资料"><a href="#Pandas教程资料" class="headerlink" title="Pandas教程资料"></a>Pandas教程资料</h1><p><a href="http://pandas.pydata.org/pandas-docs/stable/10min.html" target="_blank" rel="noopener">10 Minutes to pandas</a> <a href="http://www.cnblogs.com/chaosimple/p/4153083.html" target="_blank" rel="noopener">（中文翻译）</a></p>
-<h1 id="Pandas备忘"><a href="#Pandas备忘" class="headerlink" title="Pandas备忘"></a>Pandas备忘</h1><h2 id="DataFrame遍历"><a href="#DataFrame遍历" class="headerlink" title="DataFrame遍历"></a>DataFrame遍历</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> index, row <span class="keyword">in</span> data.iterrows():</span><br><span class="line">    <span class="keyword">pass</span> <span class="comment">#做点什么</span></span><br></pre></td></tr></table></figure>
-<h2 id="DataFrame-缺失值填充"><a href="#DataFrame-缺失值填充" class="headerlink" title="DataFrame 缺失值填充"></a>DataFrame 缺失值填充</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DataFrame.fillna()</span><br></pre></td></tr></table></figure>
-<h2 id="链式法则问题"><a href="#链式法则问题" class="headerlink" title="链式法则问题"></a>链式法则问题</h2><p>报<code>SettingWithCopyWarning</code>错误的<strong>链式赋值</strong>语句转而使用<code>.loc</code><strong>一次性定位</strong>完毕后再赋值</p>
-<p><a href="https://blog.csdn.net/haolexiao/article/details/81180571" target="_blank" rel="noopener">参考资料</a></p>
-<h1 id="个人需要注意的"><a href="#个人需要注意的" class="headerlink" title="个人需要注意的"></a>个人需要注意的</h1><p><a href="https://jingyan.baidu.com/article/93f9803fe29aece0e46f55cb.html" target="_blank" rel="noopener">Pandas填充缺失值</a></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-关于影印店病毒" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/12/05/关于影印店病毒/" class="article-date">
-      <time datetime="2018-12-05T15:02:23.000Z" itemprop="datePublished">2018-12-05</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/05/关于影印店病毒/">关于影印店病毒</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>跑了各种打印店，结果U盘一插上去总是中这个病毒<br>第一次的时候导致作业没办法按时交上去<br>后面虽然知道怎么解决了，这东西还是导致为了处理这货上课迟到了不少次<br>无法忍受后决定好好研究一番，看看能不能从根源上解决这个问题</p>
-<p>不过在行动之前，先记录下如果被病毒隐藏了文件后怎么恢复<br>打开命令行，转至U盘所在，输入下面命令<br><code>attrib -s -h /s /d</code><br>即依靠<code>/s</code>递归取消<code>系统文件(-s)</code>和<code>隐藏文件(-h)</code>属性</p>
-<h1 id="目前进度"><a href="#目前进度" class="headerlink" title="目前进度"></a>目前进度</h1><p>由于是最后一次感染病毒萌生了这个想法<br>之前看了看快捷方式，大概猜测到了可能的方式是通过快捷方式执行一个vbs程序<br>所以最后一次感染的时候并没有立即处理，而是关掉了反病毒软件，保留了病毒的vbs文件<br>打开源码好好看了下</p>
-<p>相当混乱的代码<br>虽然没有学过vbs，不过大体上连蒙带猜外加百度推出了一些东西<br>然后推到一半发现这个病毒似乎早就有人已经在网上分析过了<br><a href="https://moozik.cn/archives/297/" target="_blank" rel="noopener">网址在这</a></p>
-<p>对比了明文并且并且解析了下加密部分，似乎连代码都没有变过……<br>感觉就是一个相当古老的病毒在打印店里的古老样本<br>虽然存在各种后门，但是后门的IP都ping不通了<br>~（一个大胆的想法， 如果将后门网址的域名购买了的话……）~<br>（查了下域名，似乎都是在被使用的……）</p>
-<h1 id="暂坑"><a href="#暂坑" class="headerlink" title="暂坑"></a>暂坑</h1>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Anaconda相关" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/10/26/Anaconda相关/" class="article-date">
-      <time datetime="2018-10-25T16:06:14.000Z" itemprop="datePublished">2018-10-26</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/10/26/Anaconda相关/">Anaconda相关</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h1 id="镜像"><a href="#镜像" class="headerlink" title="镜像"></a>镜像</h1><p>为解决部分安装包无法下载的问题</p>
-<p><a href="https://mirrors.tuna.tsinghua.edu.cn/help/anaconda/" target="_blank" rel="noopener">清华大学开源镜像站</a></p>
-<h1 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h1><p><code>conda create -n env_name [list of packages]</code> 创建新的虚拟环境(参数<code>python=3</code>或<code>python=2</code>指定版本)</p>
-<p><code>conda env remove -n env_name</code> 移除虚拟环境</p>
-<p><code>conda env list</code> 列出当前虚拟环境表</p>
-<p><code>conda activate env_name</code> 激活环境</p>
-<p><code>conda install package_name</code> 安装包</p>
-<p><code>conda upgrade --all</code>更新所有包</p>
-<p>更多参考：<br><a href="https://www.jianshu.com/p/169403f7e40c" target="_blank" rel="noopener">Anaconda入门使用指南</a><br><a href="http://www.cnblogs.com/harvey888/p/5465452.html" target="_blank" rel="noopener">Anaconda多环境多版本python配置指导</a></p>
-<h2 id="常用包"><a href="#常用包" class="headerlink" title="常用包"></a>常用包</h2><p>pandas tensorflow keras tushare flake8 numpy</p>
-<p>opencv(需要指令<code>conda install -c conda-forge opencv</code>)<br>torch(指令见<a href="https://pytorch.org/" target="_blank" rel="noopener">https://pytorch.org/</a>)</p>
-<p>如何在多版本anaconda python环境下转换spyder？ - 王浩的回答 - 知乎<br><a href="https://www.zhihu.com/question/49144687/answer/165033340" target="_blank" rel="noopener">https://www.zhihu.com/question/49144687/answer/165033340</a></p>
-<p>spyder相关（黑色背景和anconda环境）<br><a href="https://www.cnblogs.com/studyzen/p/7889534.html" target="_blank" rel="noopener">黑色背景</a><br><a href="https://www.cnblogs.com/xingshansi/p/6725298.html" target="_blank" rel="noopener">anaconda环境</a><br><a href="https://blog.csdn.net/weixin_39278265/article/details/83757603" target="_blank" rel="noopener">打开速度</a><br><a href="https://www.zhihu.com/question/278838622" target="_blank" rel="noopener">https://www.zhihu.com/question/278838622</a><br><a href="https://www.cnblogs.com/283383765pw/articles/9974857.html" target="_blank" rel="noopener">https://www.cnblogs.com/283383765pw/articles/9974857.html</a></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/python/">python</a><a class="article-category-link" href="/categories/python/AI/">AI</a><a class="article-category-link" href="/categories/python/AI/NeuralNetwork/">NeuralNetwork</a><a class="article-category-link" href="/categories/python/AI/NeuralNetwork/anaconda/">anaconda</a><a class="article-category-link" href="/categories/python/AI/NeuralNetwork/anaconda/tips/">tips</a>
-    </div>
-
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-神经科学学习随意记录" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/09/28/神经科学学习随意记录/" class="article-date">
-      <time datetime="2018-09-28T11:04:26.000Z" itemprop="datePublished">2018-09-28</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/28/神经科学学习随意记录/">神经科学学习随意记录</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p><del>（懒得看latex公式有没有正确显示了……如果没有正确显示的话看看有没有时间弄弄吧）</del><br>然后就改掉了</p>
-<p>尼氏染料除了神经元还会染色尼氏小体（粗面内质网），高尔基染料不会染色尼氏小体<br>细胞体，胞体，核周体是神经元”有核膨胀区”的不同称呼<br>神经元学说(建立者：Cajal)：神经元的突起不是连通的，它们通过接触而非连通传递信息。</p>
-<ul>
-<li>神经元（0.01~0.05mm）<ul>
-<li>胞体<ul>
-<li>细胞质<ul>
-<li>细胞液</li>
-<li>细胞器<ul>
-<li>线粒体<ul>
-<li>Kreba循环（ADP-&gt;ATP）</li>
-</ul>
-</li>
-<li>粗面内质网（粗面ER）<ul>
-<li>核糖体（合成蛋白质嵌在细胞膜或细胞器膜上）</li>
-</ul>
-</li>
-<li>滑面内质网（滑面ER）<ul>
-<li>有多种不同的类型和功能</li>
-<li>与粗面ER相连部分，膜上蛋白质能正确折叠并形成三维结构</li>
-</ul>
-</li>
-<li>高尔基体<ul>
-<li>蛋白质”翻译“后进行大量化学修饰的场所</li>
-<li>把转运到神经元不同部位（如轴突和树突）的蛋白质进行分类整理</li>
-</ul>
-</li>
-<li>游离核糖体（合成蛋白质在神经元胞浆内）</li>
-<li>多聚核糖体（几个游离核糖体附着在单链mRNA上）</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>细胞核<ul>
-<li>染色体<ul>
-<li>DNA</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>神经元膜<ul>
-<li>厚约5nm</li>
-<li>嵌有蛋白质<ul>
-<li>一些可把膜内物质”泵”到膜外</li>
-<li>其他蛋白质形成膜孔筛选能进入神经元的物质</li>
-</ul>
-</li>
-<li>神经元重要特征：胞体、树突、轴突膜的蛋白质组成均不同</li>
-</ul>
-</li>
-<li>细胞骨架（微管和微丝不断装配和解聚）<ul>
-<li>微管<ul>
-<li>直径越20nm</li>
-<li>沿神经突起纵向排列</li>
-<li>看似笔直中空的管子，管壁由围绕中心部分更小的瓣状链组成<ul>
-<li>每条小链由微管蛋白（呈球状）聚合而成</li>
-</ul>
-</li>
-<li>微管相关蛋白（MAPs）可把微管锚定在另一个微管或者神经元的其它部分。<ul>
-<li>名为 tau 的轴突微管相关蛋白 病理学变化已知与阿尔茨海默病引起的痴呆有关</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>微丝<ul>
-<li>直径5nm</li>
-<li>遍布于神经元，在神经突起中更多</li>
-<li>由两股细链盘绕而成，每股都是肌肉纤维蛋白的聚合物</li>
-</ul>
-</li>
-<li>神经丝<ul>
-<li>直径10nm</li>
-<li>存在于身体每个细胞中，被称为中等纤维（仅在神经元中被称为神经丝）</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>神经突起<ul>
-<li>轴突<ul>
-<li>可短于1mm，也可长于1m</li>
-<li>一般只有一个，直径均一（若有分支，一般成直角衍生）</li>
-<li>不含粗面ER，仅有少量游离核糖体</li>
-<li>膜蛋白质组成基本不同于胞体膜</li>
-<li>直径范围很广(人类在1~25微米，枪乌贼可达1mm)</li>
-<li>轴突侧支<ul>
-<li>返回侧支：与产生轴突的同一细胞或邻居细胞的树突连接的轴突侧枝</li>
-</ul>
-</li>
-<li>轴突终末（终末扣）<ul>
-<li>像一个膨胀的圆盘</li>
-<li>不存在微管</li>
-<li>包含了为数众多的膜质小泡，成为突触囊泡（直径约50nm）</li>
-<li>面对突触的囊泡膜内附有特别高密度的蛋白质</li>
-<li>含有大量线粒体，说明能量需求很高</li>
-<li>末梢是和其他神经元或其它细胞的链接点，即突触</li>
-<li>终末树：所有和同一区域树突或胞体组成的突触的分支的统称</li>
-<li>神经支配：一个神经元和另一个细胞建立了突触联系。</li>
-</ul>
-</li>
-<li>突触<ul>
-<li>突触间隙：突触前膜和突触后膜之间的空间</li>
-<li>突触传递：型号通过突触从一个神经元传递到另一个的传递</li>
-<li>神经递质：可穿越突触间隙的化学信号（储存于末梢的突触囊泡内）</li>
-</ul>
-</li>
-<li>轴浆运输（物质沿着轴突流动）<ul>
-<li>慢速轴浆运输：每天1~10mm</li>
-<li>快速轴浆运输：每天1000mm</li>
-<li>顺向运输：囊泡沿着神经元微管通过驱动蛋白运输（ATP供能）</li>
-<li>逆向运输<ul>
-<li>分子机制类似于顺向运输，但通过动力蛋白运输</li>
-<li>通常认为这个过程给胞体提供关于轴突末梢代谢需求变化的信号</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>树突<ul>
-<li>延伸距离很少超过2mm</li>
-<li>树突树：单个神经元上树突的统称</li>
-<li>树突侧支：树突树上的每个分支</li>
-<li>受体：可探知突触间隙中的神经递质</li>
-<li>树突棘<ul>
-<li>接受某些突触输入</li>
-<li>据说可以隔离某些突触激活引起的不同化学反应</li>
-<li>突触活动类型和数量均可以影响棘的结构</li>
-<li>认知能力有缺陷的人脑可呈现棘异常</li>
-</ul>
-</li>
-<li>有多聚核糖体，表明突触传递实际上能指导某些神经元内部区域蛋白质的合成</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li>神经元的分类<ul>
-<li>按突起数目（单极，双极，多极）</li>
-<li>树突分类（椎体细胞，星形细胞）（棘状神经元，无棘神经元）</li>
-<li>连接分类（初级感觉神经元，运动神经元，中间神经元）</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li>神经胶质细胞<ul>
-<li>星形胶质细胞<ul>
-<li>调节细胞外空间化学物质</li>
-<li>也有神经递质受体，可以引发电和生化反应</li>
-<li>严格控制一些物质的细胞外浓度</li>
-</ul>
-</li>
-<li>成髓鞘胶质细胞<ul>
-<li>少突胶质细胞和施万细胞<ul>
-<li>提供一层层膜以隔离轴突（髓鞘）</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>其它非神经元细胞<ul>
-<li>管室膜细胞：脑内充满液体的脑室衬里</li>
-<li>小胶质细胞：吞噬细胞吞噬由死细胞或退化神经元及神经胶质细胞留下的残渣</li>
-<li>脉管（动脉，静脉，毛细血管）</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p>电流不达到阈值不会产生动作电位<br>通过微电极不断注入电流时，会得到很多个动作电位<br>电流强度越大，动作电位发放频率越高（但存在绝对不应期和相对不应期）<br>动作电位强度似乎并不会随着电流增大而增大（根据图片）<br>Na通道开放时间约1ms，其不应期解释失活现象<br>Na通道通过半径来筛除K进入的可能<br>通道失活和恢复是通过连接的球的阻塞和下落完成的<br>动作电位传导速度随着轴突直径增加而加快</p>
-<p>星形细胞产生动作电位较为稳定<br>锥形细胞产生动作电位开始很频繁，后来逐渐减慢（适应）<br>适应是可兴奋细胞的共性<br>某些细胞对稳定输入刺激的反应是产生有节奏可重复的爆发</p>
-<p>运动神经元轴突一个神经电位可以引起其支配的肌肉细胞产生一个动作电位</p>
-<p>突触囊泡 50nm<br>分泌颗粒 100nm</p>
-<p>同一神经元中含有不同的神经递质<br>钙离子如何引发胞吐尚不明确<br>刺激时间较长时，结合于突触末梢细胞骨架的“储存池”的囊泡会释放和锚定到活性带<br>肽类释放需要高频串状动作电位（释放缓慢，50ms或更长时间）</p>
-<ul>
-<li>电压门控通道（受到电压刺激后改变通透性）</li>
-<li>递质门控通道（与递质结合后改变通透性）<ul>
-<li>兴奋性突触后电位:EPSP（同时打开Na+,K+）</li>
-<li>抑制性突触后电位:IPSP（打开Cl-）</li>
-</ul>
-</li>
-</ul>
-<p>促代谢型受体-&gt;G蛋白-&gt;效应器-&gt;离子通道<br>促代谢型受体-&gt;G蛋白-&gt;效应器-&gt;酶-&gt;第二信使-&gt;其它酶</p>
-<p>前膜也有受体，一般用于抑制神经递质的释放，有时也抑制合成<br>神经递质会通过扩散和（突触前神经末梢和神经胶质细胞的）重摄取被清除<br>突触后膜可能有几十到几千个递质门控通道，被激活数量取决于神经递质的释放量</p>
-<ul>
-<li>神经递质释放的基本单位是一个突触囊泡内容物。换句话说，EPSP是量子化的<ul>
-<li>神经肌肉接头传递的量子分析揭示：一个突触前末梢的动作电位能触发大约200个突触囊泡释放，产生40mV或更大的EPSP</li>
-<li>许多中枢神经系统的突触中，一个突触前动作电位仅引起一个囊泡的释放，产生的EPSP仅几毫伏</li>
-<li>多数神经元执行更为精细的运算，需要许多EPSP叠加起来产生一个有意义的突触后去极化</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li>EPSP总和<ul>
-<li>空间上是树突上不同突触同时产生的EPSPs叠加</li>
-<li>时间上是同一个突触产生的间隔在1~15ms之内的一系列EPSP叠加</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li>假定树突在功能上像一个具有被动电活性的电缆（它缺乏电压门控离子通道）<ul>
-<li>突触电流可以沿树突内部传递，或者跨树突膜(大部分跨膜流出)。</li>
-<li>树突电缆上去极化的衰减参数是距离的函数\(V_x=V_o/E^{\chi/\lambda}\)</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li>许多神经元的树突被确定是非被动性的（即存在电压门控离子通道）<ul>
-<li>这些电压门控通道不足以产生如轴突产生的可以完全扩布的动作电位</li>
-<li>但是可以作为产生在树突远端较小突触后电位的重要放大器（可以增加电流促使突触信号朝胞体方向延伸）</li>
-<li>某些树突上的钠通道可以将电信号从胞体向树突输出</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li>抑制性突触与兴奋性突触非常相似<ul>
-<li>主要区别在于结合的神经递质不同</li>
-<li>若膜电位是-65mV，看不到IPSP，但是神经元还是会被抑制（分流抑制）</li>
-<li>IPSP可以从EPSP中减去，使得突触后神经元不易发放动作电位</li>
-<li>分流抑制的作用是极大减少\(r_m\)，从而减少\(\lambda\)使得正电流流出膜外而不是在树突内流向峰电位起始区</li>
-</ul>
-</li>
-</ul>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/NeuralScience/">NeuralScience</a>
-    </div>
-
 
       
       

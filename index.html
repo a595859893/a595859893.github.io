@@ -183,7 +183,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AI/">AI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CPP/">CPP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NeuralNetwork/">NeuralNetwork</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VSCode/">VSCode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm/">algorithm</a></li></ul>
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AI/">AI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CPP/">CPP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NLP/">NLP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NeuralNetwork/">NeuralNetwork</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VSCode/">VSCode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm/">algorithm</a></li></ul>
                     </div>
                 </section>
                 
@@ -251,6 +251,328 @@
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-Minikube安装记录" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/03/10/Minikube安装记录/" class="article-date">
+      <time datetime="2020-03-10T14:37:03.000Z" itemprop="datePublished">2020-03-10</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/10/Minikube安装记录/">Minikube安装记录</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>参考资料：<a href="https://minikube.sigs.k8s.io/docs/start/linux/" target="_blank" rel="noopener">https://minikube.sigs.k8s.io/docs/start/linux/</a></p>
+<p>安装kubectl</p>
+<p>安装docker</p>
+<p>下载minikube并安装</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 \</span><br><span class="line">  &amp;&amp; sudo install minikube-linux-amd64 /usr/local/bin/minikube</span><br></pre></td></tr></table></figure>
+<p>由于云服务器不支持虚拟化，所以使用虚拟化使用None</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">minikube start --image-mirror-country cn \</span><br><span class="line">    --iso-url=https://kubernetes.oss-cn-hangzhou.aliyuncs.com/minikube/iso/minikube-v1.7.3.iso \</span><br><span class="line">    --registry-mirror=https://xxxxxx.mirror.aliyuncs.com</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/k8s/">k8s</a>
+    </div>
+
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-influxdb相关" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/03/10/influxdb相关/" class="article-date">
+      <time datetime="2020-03-10T10:08:53.000Z" itemprop="datePublished">2020-03-10</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/10/influxdb相关/">influxdb相关</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p><a href="https://docs.influxdata.com/influxdb/v1.7/introduction/getting-started/" target="_blank" rel="noopener">https://docs.influxdata.com/influxdb/v1.7/introduction/getting-started/</a></p>
+<p>measurement是tag，time和fields的容器，每一列都是measurement</p>
+<p>tag列是字符串，在WHERE查询中，值需要用单引号</p>
+<p>没有办法只查询tag，query中必须至少存在一列field，才能查询到tag（见：<a href="https://stackoverflow.com/questions/33612506/select-only-values-from-influxdb-measurement）" target="_blank" rel="noopener">https://stackoverflow.com/questions/33612506/select-only-values-from-influxdb-measurement）</a></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/influxdb/">influxdb</a>
+    </div>
+
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-Gitlab相关" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/03/10/Gitlab相关/" class="article-date">
+      <time datetime="2020-03-10T03:58:10.000Z" itemprop="datePublished">2020-03-10</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/10/Gitlab相关/">Gitlab相关</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="CI相关"><a href="#CI相关" class="headerlink" title="CI相关"></a>CI相关</h1><p>参考：<a href="https://docs.gitlab.com/runner/install/" target="_blank" rel="noopener">https://docs.gitlab.com/runner/install/</a></p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>K8S的CI可用helm安装：<a href="https://docs.gitlab.com/runner/install/kubernetes.html#installing-gitlab-runner-using-the-helm-chart" target="_blank" rel="noopener">https://docs.gitlab.com/runner/install/kubernetes.html#installing-gitlab-runner-using-the-helm-chart</a></p>
+<p>步骤就是下载value.yaml</p>
+<p>修改配置，主要为<code>gitlabUrl</code>,<code>gitlabUrl</code>,<code>privileged(如果跑doker)</code></p>
+<p><a href="https://docs.gitlab.com/runner/executors/kubernetes.html#using-docker-dind" target="_blank" rel="noopener">https://docs.gitlab.com/runner/executors/kubernetes.html#using-docker-dind</a></p>
+<p>用helm来应用配置安装。</p>
+<h2 id="配置相关"><a href="#配置相关" class="headerlink" title="配置相关"></a>配置相关</h2><p>CI中设置环境变量可以修改DOCKER连接的配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">variables:</span><br><span class="line">  DOCKER_DRIVER: </span><br><span class="line">  DOCKER_HOST:</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/gitlab/">gitlab</a>
+    </div>
+
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-情感分析尝试" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/03/07/情感分析尝试/" class="article-date">
+      <time datetime="2020-03-07T14:51:04.000Z" itemprop="datePublished">2020-03-07</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/07/情感分析尝试/">情感分析尝试</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>（大概率坑掉，所以可以无视）</p>
+<h2 id="数据爬取"><a href="#数据爬取" class="headerlink" title="数据爬取"></a>数据爬取</h2><p>首先是资料来源，评论非常多并且两极分化较为严重的一个事件，感觉可以作为资料</p>
+<h2 id="资料准备"><a href="#资料准备" class="headerlink" title="资料准备"></a>资料准备</h2><p><a href="https://open.weibo.com/wiki/微博API" target="_blank" rel="noopener">微博API接口</a></p>
+<p><a href="https://s.weibo.com/weibo?q=%23解读肖战风波3大法律疑问%23" target="_blank" rel="noopener">微博评论网址</a></p>
+<p>API接口不好用，也不太想怕爬虫，最后半脚本半人肉的将数据弄了出来。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NLP/">NLP</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-k8s-指令记录" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/03/04/k8s-指令记录/" class="article-date">
+      <time datetime="2020-03-04T06:44:44.000Z" itemprop="datePublished">2020-03-04</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/04/k8s-指令记录/">k8s 指令记录</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>禁止节点被调度（需要恢复则将<code>false</code>改为<code>true</code>）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl patch node &lt;node name&gt; -p <span class="string">'&#123;"spec":&#123;"unschedulable":false&#125;&#125;'</span></span><br></pre></td></tr></table></figure>
+<p><code>-l</code>参数可以用来筛选<code>kubectl get</code>得到的记录，其筛选是通过<code>yaml</code>中的label定义的标签进行的，通过<code>-o jsonpath</code>可以获取指定的属性从而塞入命令行中。</p>
+<p><a href="https://mp.weixin.qq.com/s/JVFaE0yO36L7Il_Occ7IyQ" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/JVFaE0yO36L7Il_Occ7IyQ</a></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/k8s/">k8s</a>
+    </div>
+
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-PC-algorithm" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -348,7 +670,12 @@
 <p><a href="https://zhuanlan.zhihu.com/p/24647310" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/24647310</a><br>指出格兰杰因果检验需要证明随机变量是平稳序列（因为要用到F统计）<br>引出了新的概念：F统计检验，平稳序列<br>F统计检验又称联合假设检验，在零假设下，统计值服从F分布的检验。</p>
 <p><a href="https://blog.csdn.net/baimafujinji/article/details/6496224" target="_blank" rel="noopener">https://blog.csdn.net/baimafujinji/article/details/6496224</a><br>有具体的公式和案例<br>首先需要零假设$H_0$：X不是引起Y变化的Granger原因<br>无约束回归模型(u)：<br>$$<br>Y_t=\alpha_0 + \sum_{i=1}^p \alpha_i Y_{t-i} +\sum_{i=1}^q \beta_i X_{t-i} + \epsilon_t<br>$$<br>有约束回归模型(r)：<br>$$<br>Y_t=\alpha_0 + \sum_{i=1}^p \alpha_i Y_{t-i} + \epsilon_t<br>$$</p>
 <p>其中p,q为最大滞后期数，$\epsilon_t$为白噪声<br>记n为样本容量，二者的残差平方和为$RSS_u$和$RSS_r$，则可构造F统计量（残差平方和为点与回归线之间的距离的平方和）<br>$$<br>F=\frac{(RSS_r-RSS_u)/q}{RSS_u/(n-p-q-1)}<br>$$<br>可认为$H_0$的检验为检验$\beta_0=\beta_1=…=\beta_q=0$是否成立<br>若$F\geq F_\alpha(q,n-p-q-1)$则$\beta_1..\beta_q$显著不为0，拒绝其为Granger因<br>再反过来，检验Y不是引起X变化的原因，从而得到X是Y的Granger原因</p>
-<p>个人认为，有约束和无约束的区别就在于是<strong>否存在随机变量X</strong><br>而F检验目的是检验两个随机变量用于检验两个<strong>正态随机变量</strong>方差是否相等（<a href="https://baike.baidu.com/item/F%E2%80%94%E6%A3%80%E9%AA%8C%E6%B3%95）" target="_blank" rel="noopener">https://baike.baidu.com/item/F%E2%80%94%E6%A3%80%E9%AA%8C%E6%B3%95）</a><br>如果二者相等，那么就意味着与X相乘的系数为0，从而得到与X无关</p>
+<p><a href="https://www.cnblogs.com/hdu-zsk/p/7235200.html" target="_blank" rel="noopener">https://www.cnblogs.com/hdu-zsk/p/7235200.html</a><br>有详细的步骤，并且将格兰杰因果的条件检验和标准流程都列出来了，适合作为实现的参考。</p>
+<p><a href="https://pengfoo.com/post/machine-learning/2017-01-24" target="_blank" rel="noopener">https://pengfoo.com/post/machine-learning/2017-01-24</a><br>格兰杰因果检验要求随机变量是平稳的，平稳要求没有单位根，这里介绍了Python利用ADF检验来检测单位根的方法<br>(网上找到的大多数都是直接调库，没发现原理解释的)</p>
+<p><a href="https://zhuanlan.zhihu.com/p/21566798" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/21566798</a><br>除了差分外，协整也可以是让随机变量变成平稳的方法</p>
+<p><a href="https://github.com/h-cel/ClimateVegetationDynamics_GrangerCausality/tree/691b7a1979144be8e7fd64beab338bbab93ce0f0" target="_blank" rel="noopener">https://github.com/h-cel/ClimateVegetationDynamics_GrangerCausality/tree/691b7a1979144be8e7fd64beab338bbab93ce0f0</a><br>github上找到的实现，方法是随机森林回归加上K-Fold交叉验证后的r2_score</p>
+<p><a href="https://github.com/USC-Melady/Granger-causality" target="_blank" rel="noopener">https://github.com/USC-Melady/Granger-causality</a><br>使用的方法是Lasso Granger，查了下，相关描述是：Lasso-Granger is an efficient algorithm for learning the temporal dependency among multiple time series based on variable selection using Lasso.<br>Reference:A. Arnold, Y. Liu, and N. Abe.<a href="https://link.jianshu.com?t=http://www.cs.cmu.edu/~aarnold/cald/frp781-arnold.pdf" target="_blank" rel="noopener">Temporal causal modeling with graphical granger methods</a>. In KDD, 2007.</p>
+<p><a href="https://github.com/statsmodels/statsmodels/blob/1212616d27ab820d303377f0bcf421cd3f46c289/statsmodels/tsa/vector_ar/vecm.py" target="_blank" rel="noopener">https://github.com/statsmodels/statsmodels/blob/1212616d27ab820d303377f0bcf421cd3f46c289/statsmodels/tsa/vector_ar/vecm.py</a><br>发现库内有实现，根据这里的类关系，格兰杰因果关系测试与<strong>向量误差修正模型(VECM)</strong>有关</p>
 <h2 id="杂语"><a href="#杂语" class="headerlink" title="杂语"></a>杂语</h2><p>网络上大部分人认为格兰杰因果检验不能检验因果关系，只是检验时间先后关系，或者说，可预测性。</p>
 
       
@@ -549,340 +876,6 @@
       
     <div class="article-category tagcloud">
     <a class="article-category-link" href="/categories/QoS/">QoS</a>
-    </div>
-
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="w-k8s-杂语" class="article article-type-w" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2020/02/12/k8s-杂语/" class="article-date">
-      <time datetime="2020-02-12T07:16:05.000Z" itemprop="datePublished">2020-02-12</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/02/12/k8s-杂语/">k8s 杂语</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>快速部署k8s<br><a href="https://github.com/easzlab/kubeasz" target="_blank" rel="noopener">https://github.com/easzlab/kubeasz</a></p>
-<p>Benchmark<br><a href="https://github.com/wwyf/DeathStarBench/tree/master/socialNetwork/k8s-yaml" target="_blank" rel="noopener">https://github.com/wwyf/DeathStarBench/tree/master/socialNetwork/k8s-yaml</a></p>
-<p>vxlan(Virtual eXtential LAN)<br>网络虚拟化技术，穿透三层网络对二层进行扩展<br>弥补了vlan个数少，地址重叠，交换机性能的问题<br>参考：<br><a href="https://blog.csdn.net/octopusflying/article/details/77609199" target="_blank" rel="noopener">https://blog.csdn.net/octopusflying/article/details/77609199</a><br><a href="https://www.cnblogs.com/hbgzy/p/5279269.html" target="_blank" rel="noopener">https://www.cnblogs.com/hbgzy/p/5279269.html</a></p>
-<p>fennel</p>
-<p>weave socpe<br>Docker 和 Kubernetes 可视化监控工具<br><a href="https://github.com/weaveworks/scope" target="_blank" rel="noopener">https://github.com/weaveworks/scope</a></p>
-<p><code>kubectl get pod -n [pod名字] -o wide | sort -k7</code><br><code>-n</code>代表<code>--namespace</code>，接命名空间参数，<code>-k7</code>代表按第七列作为索引进行排序</p>
-<p>pod<br>最小部署单元，一个环节，可以运行多个container，共享所有资源</p>
-<p>service<br>自动感知服务提供方</p>
-<p>namespace<br>一组资源和对象的抽象集合，pod,services等都属于某个namespace</p>
-<p>参考：<a href="https://www.jianshu.com/p/67d4f3d0600e" target="_blank" rel="noopener">https://www.jianshu.com/p/67d4f3d0600e</a></p>
-<p>Grafana<br>跨平台开源度量分析与可视化工具</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/k8s/">k8s</a>
-    </div>
-
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-nginx-二级域名转发" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2020/02/11/nginx-二级域名转发/" class="article-date">
-      <time datetime="2020-02-11T10:35:44.000Z" itemprop="datePublished">2020-02-11</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/02/11/nginx-二级域名转发/">nginx 二级域名转发</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>域名解析里正常解析80，在nginx里转发</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">	listen 80;</span><br><span class="line"></span><br><span class="line">	# SSL configuration</span><br><span class="line">	#</span><br><span class="line">	# listen 443 ssl default_server;</span><br><span class="line">	# listen [::]:443 ssl default_server;</span><br><span class="line">	#</span><br><span class="line">	# Note: You should disable gzip for SSL traffic.</span><br><span class="line">	# See: https://bugs.debian.org/773332</span><br><span class="line"></span><br><span class="line">	server_name [在这填网站];</span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">        proxy_set_header   X-Real-IP $remote_addr;</span><br><span class="line">        proxy_set_header   Host      $http_host;</span><br><span class="line">        proxy_pass         http://0.0.0.0:3000;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/nginx/">nginx</a>
-    </div>
-
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Docker相关" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2020/02/11/Docker相关/" class="article-date">
-      <time datetime="2020-02-11T02:36:30.000Z" itemprop="datePublished">2020-02-11</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/02/11/Docker相关/">Docker相关</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>Docker清华镜像<br><a href="https://mirrors.tuna.tsinghua.edu.cn/help/docker-ce/" target="_blank" rel="noopener">https://mirrors.tuna.tsinghua.edu.cn/help/docker-ce/</a></p>
-<p>Docker安装<br><a href="https://docs.docker.com/install/linux/docker-ce/ubuntu/" target="_blank" rel="noopener">https://docs.docker.com/install/linux/docker-ce/ubuntu/</a></p>
-<p>Docker Compose安装<br><a href="https://docs.docker.com/compose/install/" target="_blank" rel="noopener">https://docs.docker.com/compose/install/</a></p>
-<p>Docker国内镜像加速<br><a href="https://www.daocloud.io/mirror" target="_blank" rel="noopener">https://www.daocloud.io/mirror</a></p>
-<p>将正在运行的容器打包成镜像<br><a href="https://www.jianshu.com/p/608998d7ec9f" target="_blank" rel="noopener">https://www.jianshu.com/p/608998d7ec9f</a></p>
-<p>遇上的坑<br>用户组问题：<a href="https://www.cnblogs.com/studyNT/p/10836021.html" target="_blank" rel="noopener">https://www.cnblogs.com/studyNT/p/10836021.html</a><br>子网网关问题：<a href="https://www.cnblogs.com/lemon-le/p/10531449.html" target="_blank" rel="noopener">https://www.cnblogs.com/lemon-le/p/10531449.html</a></p>
-<p>用docker-compose down来停止</p>
-<p>docker-compose up参数：<br><code>-d</code>后台运行<br><code>--build</code> 重新构建镜像（对含有build的部分）</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/docker/">docker</a><a class="article-category-link" href="/categories/docker/linux/">linux</a>
-    </div>
-
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-XDP杂语" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2020/02/10/XDP杂语/" class="article-date">
-      <time datetime="2020-02-10T12:25:05.000Z" itemprop="datePublished">2020-02-10</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/02/10/XDP杂语/">XDP杂语</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>参考教程：<a href="https://github.com/xdp-project/xdp-tutorial/" target="_blank" rel="noopener">https://github.com/xdp-project/xdp-tutorial/</a> </p>
-<p>ebpf介绍：<a href="https://sysdig.com/blog/sysdig-and-falco-now-powered-by-ebpf/" target="_blank" rel="noopener">https://sysdig.com/blog/sysdig-and-falco-now-powered-by-ebpf/</a></p>
-<h2 id="包含路径"><a href="#包含路径" class="headerlink" title="包含路径"></a>包含路径</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$&#123;workspaceFolder&#125;/**</span><br><span class="line">/usr/include</span><br><span class="line">/usr/include/linux</span><br><span class="line">/usr/lib/llvm-6.0/lib/clang/6.0.0/include</span><br></pre></td></tr></table></figure>
-<h2 id="bpffs（bpf用文件系统）"><a href="#bpffs（bpf用文件系统）" class="headerlink" title="bpffs（bpf用文件系统）"></a>bpffs（bpf用文件系统）</h2><p>map常用路径:<code>/sys/fs/bpf</code></p>
-<p>创建:<code>mount -t bpf bpf /sys/fs/bpf/</code></p>
-<h2 id="loader读取数据-不用libbpf情况下的步骤-："><a href="#loader读取数据-不用libbpf情况下的步骤-：" class="headerlink" title="loader读取数据(不用libbpf情况下的步骤)："></a>loader读取数据(不用libbpf情况下的步骤)：</h2><p>参考：<a href="https://github.com/xdp-project/xdp-tutorial/blob/master/common/common_user_bpf_xdp.c" target="_blank" rel="noopener">https://github.com/xdp-project/xdp-tutorial/blob/master/common/common_user_bpf_xdp.c</a></p>
-<p>载入<code>ebpf</code>的<code>obj</code>，根据是否重用已有map调用不同的API<br><code>load_bpf_object_file_reuse_maps / load_bpf_object_file</code></p>
-<p>通过title找到<code>ebpf</code>中的特定程序（函数），title是自己在编译前指定的<br><code>bpf_object__find_program_by_title</code><br>(没有title的单函数<code>obj</code>也可以通过<code>bpf_program__next</code>来得到第一个)</p>
-<p>获取程序的文件描述符，用于后续载入<br><code>bpf_program__fd</code></p>
-<p>根据类型的不同，将文件描述符传入以载入程序<br><code>xdp_link_attach</code>（XDP类型下）</p>
-<p>[可选，libbpf下函数(不用libbpf会相对复杂)]共享/解除共享BPF map，使得多个bpf程序可以共用（在bpf文件系统中可见/不可见，不确定有没有持久化功能）<br><code>bpf_object__pin_maps / bpf_object__unpin_maps</code></p>
-<p>读取ebpf程序存入map的数据<br><code>bpf_map_lookup_elem</code></p>
-<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>ifindex(接口索引)：物理或逻辑接口的唯一识别索引<br>参考：<a href="https://www.cisco.com/c/zh_cn/support/docs/ip/simple-network-management-protocol-snmp/28420-ifIndex-Persistence.html" target="_blank" rel="noopener">https://www.cisco.com/c/zh_cn/support/docs/ip/simple-network-management-protocol-snmp/28420-ifIndex-Persistence.html</a></p>
-<p>BTF(Bpf Type Format)：map中key-value对只关注数据类型的字节占用大小，没有语义信息。而BTF为map在debug时提供有结构的语义信息。<br>参考：<a href="https://github.com/torvalds/linux/blob/master/Documentation/bpf/btf.rst" target="_blank" rel="noopener">https://github.com/torvalds/linux/blob/master/Documentation/bpf/btf.rst</a></p>
-<p>(xdp_md ctx): 上下文数据结构<br>其内部结构的__u32不是真正的结构，只是为了确定数据位数，需要手动转化为long<br>一个包的长度可以通过内部的<code>data_end - data</code>运算得到<br>参考：<a href="https://elixir.bootlin.com/linux/v5.0/ident/xdp_md" target="_blank" rel="noopener">https://elixir.bootlin.com/linux/v5.0/ident/xdp_md</a></p>
-<h2 id="XDP无关"><a href="#XDP无关" class="headerlink" title="XDP无关"></a>XDP无关</h2><p>指令ethtool可显示配置网卡硬件<br>参考：<a href="https://man.linuxde.net/ethtool" target="_blank" rel="noopener">https://man.linuxde.net/ethtool</a></p>
-<p>RTNETLINK允许对内核路由表进行读和更改，它用于内核与各个子系统之间（路由子系统、IP地址、链接参数等）的通信，<br>参考：<a href="https://www.cnblogs.com/wenqiang/p/6634447.html" target="_blank" rel="noopener">https://www.cnblogs.com/wenqiang/p/6634447.html</a></p>
-<h2 id="TIPS"><a href="#TIPS" class="headerlink" title="TIPS"></a>TIPS</h2><p>利用PER_CPU类型的map来避免同步带来的开销（只利用特定的CPU来进行计算）</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/ebpf/">ebpf</a><a class="article-category-link" href="/categories/ebpf/xdp/">xdp</a>
-    </div>
-
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-vscode-SSH-config" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2020/02/10/vscode-SSH-config/" class="article-date">
-      <time datetime="2020-02-10T11:28:21.000Z" itemprop="datePublished">2020-02-10</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/02/10/vscode-SSH-config/">vscode SSH config</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Host [配置名]</span><br><span class="line">  HostName [目标地址]</span><br><span class="line">  User [用户名]</span><br><span class="line">  IdentityFile [证书登录私钥]</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/ssh/">ssh</a><a class="article-category-link" href="/categories/ssh/vscode/">vscode</a>
     </div>
 
 
