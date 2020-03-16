@@ -183,7 +183,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AI/">AI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CPP/">CPP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NLP/">NLP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NeuralNetwork/">NeuralNetwork</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VSCode/">VSCode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm/">algorithm</a></li></ul>
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AI/">AI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CPP/">CPP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NLP/">NLP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NeuralNetwork/">NeuralNetwork</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VSCode/">VSCode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm/">algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/regexp/">regexp</a></li></ul>
                     </div>
                 </section>
                 
@@ -251,6 +251,266 @@
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-格兰杰因果检验记录" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/02/26/格兰杰因果检验记录/" class="article-date">
+      <time datetime="2020-02-26T13:23:47.000Z" itemprop="datePublished">2020-02-26</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/02/26/格兰杰因果检验记录/">格兰杰因果检验记录</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="记录"><a href="#记录" class="headerlink" title="记录"></a>记录</h2><p><a href="https://zhuanlan.zhihu.com/p/79936875" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/79936875</a><br>简单介绍了格兰杰因果，是强调时间序列的因果关系，其出发点在于变量B存在与否，对变量A取值概率大小会发生影响，则B是A的因。<br>没有介绍具体的算法。</p>
+<p><a href="https://zhuanlan.zhihu.com/p/24647310" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/24647310</a><br>指出格兰杰因果检验需要证明随机变量是平稳序列（因为要用到F统计）<br>引出了新的概念：F统计检验，平稳序列<br>F统计检验又称联合假设检验，在零假设下，统计值服从F分布的检验。</p>
+<p><a href="https://blog.csdn.net/baimafujinji/article/details/6496224" target="_blank" rel="noopener">https://blog.csdn.net/baimafujinji/article/details/6496224</a><br>有具体的公式和案例<br>首先需要零假设$H_0$：X不是引起Y变化的Granger原因<br>无约束回归模型(u)：<br>$$<br>Y_t=\alpha_0 + \sum_{i=1}^p \alpha_i Y_{t-i} +\sum_{i=1}^q \beta_i X_{t-i} + \epsilon_t<br>$$<br>有约束回归模型(r)：<br>$$<br>Y_t=\alpha_0 + \sum_{i=1}^p \alpha_i Y_{t-i} + \epsilon_t<br>$$</p>
+<p>其中p,q为最大滞后期数，$\epsilon_t$为白噪声<br>记n为样本容量，二者的残差平方和为$RSS_u$和$RSS_r$，则可构造F统计量（残差平方和为点与回归线之间的距离的平方和）<br>$$<br>F=\frac{(RSS_r-RSS_u)/q}{RSS_u/(n-p-q-1)}<br>$$<br>可认为$H_0$的检验为检验$\beta_0=\beta_1=…=\beta_q=0$是否成立<br>若$F\geq F_\alpha(q,n-p-q-1)$则$\beta_1..\beta_q$显著不为0，拒绝其为Granger因<br>再反过来，检验Y不是引起X变化的原因，从而得到X是Y的Granger原因</p>
+<p><a href="https://www.cnblogs.com/hdu-zsk/p/7235200.html" target="_blank" rel="noopener">https://www.cnblogs.com/hdu-zsk/p/7235200.html</a><br>有详细的步骤，并且将格兰杰因果的条件检验和标准流程都列出来了，适合作为实现的参考。</p>
+<p><a href="https://pengfoo.com/post/machine-learning/2017-01-24" target="_blank" rel="noopener">https://pengfoo.com/post/machine-learning/2017-01-24</a><br>格兰杰因果检验要求随机变量是平稳的，平稳要求没有单位根，这里介绍了Python利用ADF检验来检测单位根的方法<br>(网上找到的大多数都是直接调库，没发现原理解释的)</p>
+<p><a href="https://zhuanlan.zhihu.com/p/21566798" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/21566798</a><br>除了差分外，协整也可以是让随机变量变成平稳的方法</p>
+<p><a href="https://github.com/h-cel/ClimateVegetationDynamics_GrangerCausality/tree/691b7a1979144be8e7fd64beab338bbab93ce0f0" target="_blank" rel="noopener">https://github.com/h-cel/ClimateVegetationDynamics_GrangerCausality/tree/691b7a1979144be8e7fd64beab338bbab93ce0f0</a><br>github上找到的实现，方法是随机森林回归加上K-Fold交叉验证后的r2_score</p>
+<p><a href="https://github.com/USC-Melady/Granger-causality" target="_blank" rel="noopener">https://github.com/USC-Melady/Granger-causality</a><br>使用的方法是Lasso Granger，查了下，相关描述是：Lasso-Granger is an efficient algorithm for learning the temporal dependency among multiple time series based on variable selection using Lasso.<br>Reference:A. Arnold, Y. Liu, and N. Abe.<a href="https://link.jianshu.com?t=http://www.cs.cmu.edu/~aarnold/cald/frp781-arnold.pdf" target="_blank" rel="noopener">Temporal causal modeling with graphical granger methods</a>. In KDD, 2007.</p>
+<p><a href="https://github.com/statsmodels/statsmodels/blob/1212616d27ab820d303377f0bcf421cd3f46c289/statsmodels/tsa/vector_ar/vecm.py" target="_blank" rel="noopener">https://github.com/statsmodels/statsmodels/blob/1212616d27ab820d303377f0bcf421cd3f46c289/statsmodels/tsa/vector_ar/vecm.py</a><br>发现库内有实现，根据这里的类关系，格兰杰因果关系测试与<strong>向量误差修正模型(VECM)</strong>有关</p>
+<h2 id="杂语"><a href="#杂语" class="headerlink" title="杂语"></a>杂语</h2><p>网络上大部分人认为格兰杰因果检验不能检验因果关系，只是检验时间先后关系，或者说，可预测性。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/algorithm/">algorithm</a>
+    </div>
+
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-Flask-生产环境" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/02/15/Flask-生产环境/" class="article-date">
+      <time datetime="2020-02-15T15:54:21.000Z" itemprop="datePublished">2020-02-15</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/02/15/Flask-生产环境/">Flask 生产环境</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p><a href="https://stackoverflow.com/questions/51025893/flask-at-first-run-do-not-use-the-development-server-in-a-production-environmen" target="_blank" rel="noopener">https://stackoverflow.com/questions/51025893/flask-at-first-run-do-not-use-the-development-server-in-a-production-environmen</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route("/")</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">"&lt;h1&gt;Hello!&lt;/h1&gt;"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    <span class="keyword">from</span> waitress <span class="keyword">import</span> serve</span><br><span class="line">    serve(app, host=<span class="string">"0.0.0.0"</span>, port=<span class="number">8080</span>)</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/python/">python</a><a class="article-category-link" href="/categories/python/flask/">flask</a>
+    </div>
+
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-Python-import-路径" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/02/15/Python-import-路径/" class="article-date">
+      <time datetime="2020-02-15T15:24:23.000Z" itemprop="datePublished">2020-02-15</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/02/15/Python-import-路径/">Python import 路径</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p><a href="https://www.cnblogs.com/hujq1029/p/7096236.html" target="_blank" rel="noopener">https://www.cnblogs.com/hujq1029/p/7096236.html</a></p>
+<p>在子文件夹下加入<code>__init__.py</code><br>在<code>sys.path.append</code>加入路径</p>
+<p>可能导致的问题：语法提示错误，import要在前面</p>
+<p>有多个解决方法：<br>将append放在新的文件中，别的文件引入这个新的文件<br>try包裹append函数调用后的import<br><a href="https://stackoverflow.com/questions/36827962/pep8-import-not-at-top-of-file-with-sys-path" target="_blank" rel="noopener">https://stackoverflow.com/questions/36827962/pep8-import-not-at-top-of-file-with-sys-path</a></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/python/">python</a>
+    </div>
+
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-QoS" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/02/14/QoS/" class="article-date">
+      <time datetime="2020-02-14T02:58:47.000Z" itemprop="datePublished">2020-02-14</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/02/14/QoS/">QoS</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p><a href="https://zhuanlan.zhihu.com/p/55151040" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/55151040</a></p>
+<p><a href="https://wenku.baidu.com/view/dbcb05d159eef8c75ebfb370.html" target="_blank" rel="noopener">https://wenku.baidu.com/view/dbcb05d159eef8c75ebfb370.html</a></p>
+<p>可用性<br>正常运行时间</p>
+<p>可靠性<br>丢包率，可以正常接收到数据</p>
+<p>高性能<br>带宽、时延、抖动、吞吐量……</p>
+<p>各种debug指标，可以用来看根因</p>
+<p><a href="https://www.lijiaocn.com/soft/linux/01-concept.html" target="_blank" rel="noopener">https://www.lijiaocn.com/soft/linux/01-concept.html</a></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/QoS/">QoS</a>
+    </div>
+
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="w-k8s-杂语" class="article article-type-w" itemscope itemprop="blogPost">
   
@@ -557,6 +817,11 @@
       
           
         <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Host [配置名]</span><br><span class="line">  HostName [目标地址]</span><br><span class="line">  User [用户名]</span><br><span class="line">  IdentityFile [证书登录私钥]</span><br></pre></td></tr></table></figure>
+<p>服务器端ssh设置：<a href="https://www.runoob.com/w3cnote/set-ssh-login-key.html" target="_blank" rel="noopener">https://www.runoob.com/w3cnote/set-ssh-login-key.html</a></p>
+<p>简单说就是到<code>etc/ssh/sshd_config</code>里开了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">RSAAuthentication yes</span><br><span class="line">PubkeyAuthentication yes</span><br></pre></td></tr></table></figure>
+<p>然后往<code>/ssh/suthorized_keys</code>里加公钥</p>
+
       
     </div>
     
@@ -615,16 +880,21 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>切换submodule的仓库：修改.gitmodules后执行</p>
+        <h2 id="切换submodule的仓库"><a href="#切换submodule的仓库" class="headerlink" title="切换submodule的仓库"></a>切换submodule的仓库</h2><p>修改.gitmodules后执行</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git submodule sync</span><br><span class="line">git submodule init</span><br><span class="line">git submodule update</span><br></pre></td></tr></table></figure>
-<p>迁移git仓库</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git clone -bare [url from]</span><br><span class="line">git push --mirror [url to]</span><br></pre></td></tr></table></figure>
-<p>删除本地分支</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -d [branchname]</span><br></pre></td></tr></table></figure>
-<p>使用其他ssh：</p>
-<p>环境变量<code>GIT_SSH</code>可以指定使用的ssh连接命令，因此可以通过这个来改变使用的公钥</p>
+<p>submodule在init时的HEAD是独立于对应的仓库的（它只是一个指向对应commit的指针），要让submodule的修改引用于其对应的仓库，见:<br><a href="https://stackoverflow.com/questions/9189575/git-submodule-tracking-latest" target="_blank" rel="noopener">https://stackoverflow.com/questions/9189575/git-submodule-tracking-latest</a><br><a href="https://stackoverflow.com/questions/5828324/update-git-submodule-to-latest-commit-on-origin" target="_blank" rel="noopener">https://stackoverflow.com/questions/5828324/update-git-submodule-to-latest-commit-on-origin</a><br><a href="https://stackoverflow.com/a/19872486" target="_blank" rel="noopener">https://stackoverflow.com/a/19872486</a></p>
+<p>总结:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git submodule update --remote --merge</span><br></pre></td></tr></table></figure>
+<p>可以确保拉取的是仓库中的最新版，然后自己手工或脚本在update后checkout每个submodule到master分支</p>
+<p>重定向HEAD到master（<code>&lt;path&gt;</code>记得修改成自己的仓库路径）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">repoPath=$(git rev-parse --show-toplevel)</span><br><span class="line">git submodule foreach --recursive &apos;branchName=$(git config -f $repoPath/.gitmodules submodule.$name.branch);git checkout $branchName&apos;</span><br></pre></td></tr></table></figure>
+<h2 id="从仓库移除submodule"><a href="#从仓库移除submodule" class="headerlink" title="从仓库移除submodule"></a>从仓库移除submodule</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git submodule deinit &lt;submodule name&gt;</span><br><span class="line">git rm --cached &lt;submodule name&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="迁移git仓库"><a href="#迁移git仓库" class="headerlink" title="迁移git仓库"></a>迁移git仓库</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git clone --bare [url from]</span><br><span class="line">git push --mirror [url to]</span><br></pre></td></tr></table></figure>
+<h2 id="删除本地分支"><a href="#删除本地分支" class="headerlink" title="删除本地分支"></a>删除本地分支</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -d [branchname]</span><br></pre></td></tr></table></figure>
+<h2 id="使用其他ssh"><a href="#使用其他ssh" class="headerlink" title="使用其他ssh"></a>使用其他ssh</h2><p>环境变量<code>GIT_SSH</code>可以指定使用的ssh连接命令，因此可以通过这个来改变使用的公钥</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config core.sshCommand &quot;ssh -i ~/.ssh/id_rsa_example -F /dev/null&quot;</span><br></pre></td></tr></table></figure>
 <p><a href="https://www.cnblogs.com/chenkeyu/p/10440798.html" target="_blank" rel="noopener">https://www.cnblogs.com/chenkeyu/p/10440798.html</a></p>
+<h2 id="路径相关"><a href="#路径相关" class="headerlink" title="路径相关"></a>路径相关</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 获取当前所在仓库根目录在本机上的绝对路径</span><br><span class="line">git rev-parse --show-toplevel</span><br><span class="line"># 获取仓库内文件相对于仓库根目录下的路径</span><br><span class="line">git ls-files</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -655,276 +925,9 @@
 
 
   
-    <article id="post-一些网站" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2020/02/05/一些网站/" class="article-date">
-      <time datetime="2020-02-05T05:43:40.000Z" itemprop="datePublished">2020-02-05</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/02/05/一些网站/">一些网站</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p><a href="https://draveness.me/whys-the-design-tcp-performance" target="_blank" rel="noopener">https://draveness.me/whys-the-design-tcp-performance</a></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Python正则表达式" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2019/12/06/Python正则表达式/" class="article-date">
-      <time datetime="2019-12-06T07:02:59.000Z" itemprop="datePublished">2019-12-06</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/12/06/Python正则表达式/">Python正则表达式</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>参考资料：<a href="https://www.crifan.com/python_re_sub_detailed_introduction/" target="_blank" rel="noopener">https://www.crifan.com/python_re_sub_detailed_introduction/</a></p>
-<p>匹配中可用\1,\2……等代表匹配的组(括号内的)</p>
-<p>sub替换下，若参数为字符串，可用\g<1>,\g<2>……代表匹配的组，当匹配中有设定<code>(?P&lt;name&gt;)</code>时，<code>\g&lt;name&gt;</code>可以对该组进行匹配（name可是任意其它字符串）；若参数为函数，函数的输入参数是一个match object，可以用<code>obj.groups()</code>或者<code>obj.group(int)</code>来获取匹配值。</2></1></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Python/">Python</a><a class="article-category-link" href="/categories/Python/regex/">regex</a>
-    </div>
-
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-博弈树剪枝相关" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2019/09/10/博弈树剪枝相关/" class="article-date">
-      <time datetime="2019-09-10T04:46:25.000Z" itemprop="datePublished">2019-09-10</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/09/10/博弈树剪枝相关/">博弈树剪枝相关</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>课上对博弈树的$\alpha-\beta剪枝$算法没有完全理解，写个博客理一理……</p>
-<p>（双方、确定、有限状态、离散状态、完全信息下的零和博弈，极大极小策略下的情况）</p>
-<h2 id="代码部分"><a href="#代码部分" class="headerlink" title="代码部分"></a>代码部分</h2><p>​    因为代码部分实现比较简单，先从伪代码部分开始说起，无剪枝博弈树的深度优先策略伪代码如下:</p>
-<ul>
-<li>函数<code>succsor</code>代表该状态可能的后继状态</li>
-<li>函数<code>value</code>代表该状态的收益值</li>
-<li>函数<code>isTerminal</code>判断是否是叶节点</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">gameTree(state,player):</span><br><span class="line">	if isTerminal(state):</span><br><span class="line">		return value(state)</span><br><span class="line">	if player is MAX:</span><br><span class="line">		return max(gameTree(next,MIN) for next in succsor(state))</span><br><span class="line">	else:</span><br><span class="line">		return min(gameTree(next,MAX) for next in succsor(state))</span><br></pre></td></tr></table></figure>
-<p>​    <del>下意识就写成了类似python的格式</del></p>
-<p>​    比较简单的算法（当然以为是伪代码所以并不是完整的实现），目的就是对MAX玩家而言，找到子节点中值最大的，对MIN玩家而言，找到子节点中最小的，不断迭代就好</p>
-<p>​    由于计算量比较大，所以引入了$\alpha-\beta剪枝$，用于剪掉一部分不必要的搜索，添加剪枝后的伪代码如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">gameTree(state,player,alpha,beta):</span><br><span class="line">	if isTerminal(state):</span><br><span class="line">		return value(state)</span><br><span class="line">	if player is MAX:</span><br><span class="line">		for next in succsor(state)</span><br><span class="line">			alpha = max(alpha, gameTree(next,MIN,alpha,beta))</span><br><span class="line">			if alpha &gt; beta:</span><br><span class="line">				break</span><br><span class="line">		return alpha</span><br><span class="line">	else:</span><br><span class="line">		for next in succsor(state)</span><br><span class="line">			beta = min(alpha, gameTree(next,MIN,alpha,beta))</span><br><span class="line">			if alpha &lt; beta:</span><br><span class="line">				break</span><br><span class="line">		return alpha</span><br></pre></td></tr></table></figure>
-<p>​    可以看到和之前相比就是MAX(MIN)中途如果检测到比父节点传来的beta(alpha)更大(小)的alpha(beta)就将后续的搜索全部剪掉。</p>
-<p>​    嗯，就是实现来说还是比较容易理解的，但是为什么能这样剪？</p>
-<h2 id="对alpha-beta剪枝的理解"><a href="#对alpha-beta剪枝的理解" class="headerlink" title="对alpha-beta剪枝的理解"></a>对alpha-beta剪枝的理解</h2><h3 id="临近分支情况"><a href="#临近分支情况" class="headerlink" title="临近分支情况"></a>临近分支情况</h3><p>​    由于<strong>alpha值只会在遍历到比他大的值时才会更新</strong>，所以只要能<strong>提前得知</strong>某个子节点的分支全部搜索完的<strong>alpha值必然小于或等于自己的alpha</strong>时，那么就可以直接<strong>省略掉该节点剩下的搜索</strong>了</p>
-<p>​    考虑到<strong>beta值只会在遍历到比他小的值时才会更新</strong>，只要我们发现<strong>MIN节点的当前的beta值小于或等于其父节点的alpha值</strong>时，我们就可以保证<strong>无论是否继续搜索下去，该MIN节点的beta值都会小于等于其父节点的alpha</strong>，故剩余的搜索就可以省略了，因为<strong>父节点必然不会采纳这个点来更新alpha</strong></p>
-<h3 id="跨节点情况"><a href="#跨节点情况" class="headerlink" title="跨节点情况"></a>跨节点情况</h3><p>​    我们搜索子节点的目的就是需要<strong>更改祖先节点alpha或者beta值</strong>，所以我们需要<strong>剪枝的是那些没有办法更改的祖先节点</strong>。</p>
-<p>​    假设一个节点可以更改其祖先节点的值，那么它将会<strong>一层层向上传递</strong>，所以它至少需要满足的条件是：<strong>大于最大值祖先节点，或者值小于最小值祖先节点</strong>。</p>
-<p>​    剩下的推理就和临近分支类似了。</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/AI/">AI</a>
-    </div>
-
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-最近的NLP记录" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2019/07/28/最近的NLP记录/" class="article-date">
-      <time datetime="2019-07-28T04:55:58.000Z" itemprop="datePublished">2019-07-28</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/28/最近的NLP记录/">最近的NLP记录</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="关于disentangled-representation-learning（解耦表示？）"><a href="#关于disentangled-representation-learning（解耦表示？）" class="headerlink" title="关于disentangled representation learning（解耦表示？）"></a>关于disentangled representation learning（解耦表示？）</h2><p><a href="https://www.zhihu.com/question/329025043" target="_blank" rel="noopener">https://www.zhihu.com/question/329025043</a><br><a href="https://www.zhihu.com/question/329270182" target="_blank" rel="noopener">https://www.zhihu.com/question/329270182</a><br><a href="https://blog.csdn.net/cv_family_z/article/details/77868401" target="_blank" rel="noopener">https://blog.csdn.net/cv_family_z/article/details/77868401</a></p>
-<p>看了点东西之后感觉就是将特征的不同分量表示为不同的物体属性，从而只改变一些分量的情况下可以只变化物体的某一些属性而对另一些影响不大</p>
-<h2 id="有点感兴趣的东西"><a href="#有点感兴趣的东西" class="headerlink" title="有点感兴趣的东西"></a>有点感兴趣的东西</h2><p>Wasserstein Auto-Encoders</p>
-<h2 id="一些大概算是摘抄翻译？"><a href="#一些大概算是摘抄翻译？" class="headerlink" title="一些大概算是摘抄翻译？"></a>一些大概算是摘抄翻译？</h2><p>问号的地方是自己可能之后需要再找些资料深入理解的地方（虽然鸽掉的可能性更大……）</p>
-<h3 id="Toward-Controlled-Generation-of-Text"><a href="#Toward-Controlled-Generation-of-Text" class="headerlink" title="Toward Controlled Generation of Text"></a>Toward Controlled Generation of Text</h3><p>之前人们的语言生成据大多数都限制在特定任务使用监督方式<br>自编码和RNN不适用于从任意隐藏层表示生成（？）<br>更近的研究尝试VAE和GAN来生成文本，然而他们的生成有极大的随机性和不可控性</p>
-<p>这篇论文试图解决受控文本生成的问题<br>他们关注于生成真实的段落利用dr表示</p>
-<p>挑战之一：<br>是离散文本不可微，无法使用全局判别器来反向梯度<br>解决方式是策略梯度（SeqGAN（训练高方差））、连续近似（预先定性存在的结果）（？）。半监督VAE最小化逐元素重构误差（丢失了段落的整体信息）</p>
-<p>挑战之二：<br>控制生成与disentangled representation learning相关<br>可能进行限制时，产生的属性并不一定是我们需要的</p>
-<p>模型优势：高度表示设计好的语义结构，用动态的执行属性生成段落。<br>基于VAE，结合整体判别器，端到端优化<br>模型可描述为带wake-sleep（笔者注：现在还能看到这个术语有点意外……不过说起来为啥这东西之后就没见怎么用过了）功能的增强版VAE</p>
-<p>判别器与传统方法相比优点在于不同属性可以独立训练<br>将特征向量分为两部分，结构化和非结构化<br>结构化部分是我们需要调整的部分，这部分交给discriminator来拟合自己定义的值，从而进行约束<br>非结构化部分用于储存不是我们需要约束的那些所有特征信息</p>
-<p>退火算法可以解决梯度离散问题（？）</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AI/">AI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NeuralNetwork/">NeuralNetwork</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
     </nav>
   
 </div>
