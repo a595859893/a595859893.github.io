@@ -183,7 +183,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AI/">AI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CPP/">CPP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NLP/">NLP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NeuralNetwork/">NeuralNetwork</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VSCode/">VSCode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm/">algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/regexp/">regexp</a></li></ul>
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AI/">AI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CPP/">CPP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NLP/">NLP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NeuralNetwork/">NeuralNetwork</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VSCode/">VSCode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm/">algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hyperv/">hyperv</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ntpd/">ntpd</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/regexp/">regexp</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vm/">vm</a></li></ul>
                     </div>
                 </section>
                 
@@ -251,6 +251,132 @@
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-k8s-指令记录" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/03/04/k8s-指令记录/" class="article-date">
+      <time datetime="2020-03-04T06:44:44.000Z" itemprop="datePublished">2020-03-04</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/04/k8s-指令记录/">k8s 指令记录</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>禁止节点被调度（需要恢复则将<code>false</code>改为<code>true</code>）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl patch node &lt;node name&gt; -p <span class="string">'&#123;"spec":&#123;"unschedulable":false&#125;&#125;'</span></span><br></pre></td></tr></table></figure>
+<p><code>-l</code>参数可以用来筛选<code>kubectl get</code>得到的记录，其筛选是通过<code>yaml</code>中的label定义的标签进行的，通过<code>-o jsonpath</code>可以获取指定的属性从而塞入命令行中。</p>
+<p><a href="https://mp.weixin.qq.com/s/JVFaE0yO36L7Il_Occ7IyQ" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/JVFaE0yO36L7Il_Occ7IyQ</a></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/k8s/">k8s</a>
+    </div>
+
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-PC-algorithm" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/02/26/PC-algorithm/" class="article-date">
+      <time datetime="2020-02-26T14:27:46.000Z" itemprop="datePublished">2020-02-26</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/02/26/PC-algorithm/">PC-algorithm</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="记录"><a href="#记录" class="headerlink" title="记录"></a>记录</h2><p><a href="https://www.quora.com/What-is-the-PC-algorithm-and-bayesian-networks" target="_blank" rel="noopener">https://www.quora.com/What-is-the-PC-algorithm-and-bayesian-networks</a><br>PC算法可以看作是一种贝叶斯网络的学习算法</p>
+<p><a href="https://github.com/keiichishima/pcalg" target="_blank" rel="noopener">https://github.com/keiichishima/pcalg</a><br><a href="https://cloud.tencent.com/developer/ask/201874" target="_blank" rel="noopener">https://cloud.tencent.com/developer/ask/201874</a><br>可能的参考实现</p>
+<p>看了看实现：<br>构建完全图<br>图中每个边，每个方向进行一次独立性检验（检验方式自定）<br>保留没有通过检验的边<br>得到图</p>
+<p>有点暴力……</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/algorithm/">algorithm</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-格兰杰因果检验记录" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -766,144 +892,6 @@
       
     <div class="article-category tagcloud">
     <a class="article-category-link" href="/categories/ebpf/">ebpf</a><a class="article-category-link" href="/categories/ebpf/xdp/">xdp</a>
-    </div>
-
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-vscode-SSH-config" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2020/02/10/vscode-SSH-config/" class="article-date">
-      <time datetime="2020-02-10T11:28:21.000Z" itemprop="datePublished">2020-02-10</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/02/10/vscode-SSH-config/">vscode SSH config</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Host [配置名]</span><br><span class="line">  HostName [目标地址]</span><br><span class="line">  User [用户名]</span><br><span class="line">  IdentityFile [证书登录私钥]</span><br></pre></td></tr></table></figure>
-<p>服务器端ssh设置：<a href="https://www.runoob.com/w3cnote/set-ssh-login-key.html" target="_blank" rel="noopener">https://www.runoob.com/w3cnote/set-ssh-login-key.html</a></p>
-<p>简单说就是到<code>etc/ssh/sshd_config</code>里开了</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">RSAAuthentication yes</span><br><span class="line">PubkeyAuthentication yes</span><br></pre></td></tr></table></figure>
-<p>然后往<code>/ssh/suthorized_keys</code>里加公钥</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/ssh/">ssh</a><a class="article-category-link" href="/categories/ssh/vscode/">vscode</a>
-    </div>
-
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="w-git的一些指令" class="article article-type-w" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2020/02/10/git的一些指令/" class="article-date">
-      <time datetime="2020-02-09T16:34:22.000Z" itemprop="datePublished">2020-02-10</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/02/10/git的一些指令/">git的一些指令</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h2 id="切换submodule的仓库"><a href="#切换submodule的仓库" class="headerlink" title="切换submodule的仓库"></a>切换submodule的仓库</h2><p>修改.gitmodules后执行</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git submodule sync</span><br><span class="line">git submodule init</span><br><span class="line">git submodule update</span><br></pre></td></tr></table></figure>
-<p>submodule在init时的HEAD是独立于对应的仓库的（它只是一个指向对应commit的指针），要让submodule的修改引用于其对应的仓库，见:<br><a href="https://stackoverflow.com/questions/9189575/git-submodule-tracking-latest" target="_blank" rel="noopener">https://stackoverflow.com/questions/9189575/git-submodule-tracking-latest</a><br><a href="https://stackoverflow.com/questions/5828324/update-git-submodule-to-latest-commit-on-origin" target="_blank" rel="noopener">https://stackoverflow.com/questions/5828324/update-git-submodule-to-latest-commit-on-origin</a><br><a href="https://stackoverflow.com/a/19872486" target="_blank" rel="noopener">https://stackoverflow.com/a/19872486</a></p>
-<p>总结:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git submodule update --remote --merge</span><br></pre></td></tr></table></figure>
-<p>可以确保拉取的是仓库中的最新版，然后自己手工或脚本在update后checkout每个submodule到master分支</p>
-<p>重定向HEAD到master（<code>&lt;path&gt;</code>记得修改成自己的仓库路径）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">repoPath=$(git rev-parse --show-toplevel)</span><br><span class="line">git submodule foreach --recursive &apos;branchName=$(git config -f $repoPath/.gitmodules submodule.$name.branch);git checkout $branchName&apos;</span><br></pre></td></tr></table></figure>
-<h2 id="从仓库移除submodule"><a href="#从仓库移除submodule" class="headerlink" title="从仓库移除submodule"></a>从仓库移除submodule</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git submodule deinit &lt;submodule name&gt;</span><br><span class="line">git rm --cached &lt;submodule name&gt;</span><br></pre></td></tr></table></figure>
-<h2 id="迁移git仓库"><a href="#迁移git仓库" class="headerlink" title="迁移git仓库"></a>迁移git仓库</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git clone --bare [url from]</span><br><span class="line">git push --mirror [url to]</span><br></pre></td></tr></table></figure>
-<h2 id="删除本地分支"><a href="#删除本地分支" class="headerlink" title="删除本地分支"></a>删除本地分支</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -d [branchname]</span><br></pre></td></tr></table></figure>
-<h2 id="使用其他ssh"><a href="#使用其他ssh" class="headerlink" title="使用其他ssh"></a>使用其他ssh</h2><p>环境变量<code>GIT_SSH</code>可以指定使用的ssh连接命令，因此可以通过这个来改变使用的公钥</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config core.sshCommand &quot;ssh -i ~/.ssh/id_rsa_example -F /dev/null&quot;</span><br></pre></td></tr></table></figure>
-<p><a href="https://www.cnblogs.com/chenkeyu/p/10440798.html" target="_blank" rel="noopener">https://www.cnblogs.com/chenkeyu/p/10440798.html</a></p>
-<h2 id="路径相关"><a href="#路径相关" class="headerlink" title="路径相关"></a>路径相关</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 获取当前所在仓库根目录在本机上的绝对路径</span><br><span class="line">git rev-parse --show-toplevel</span><br><span class="line"># 获取仓库内文件相对于仓库根目录下的路径</span><br><span class="line">git ls-files</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/git/">git</a>
     </div>
 
 
