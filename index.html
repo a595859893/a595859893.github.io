@@ -252,10 +252,10 @@
 </nav>
       <div class="body-wrap">
   
-    <article id="post-go协程整理" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-goroutine整理" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2021/03/31/go协程整理/" class="article-date">
+      <a href="/2021/03/31/goroutine整理/" class="article-date">
       <time datetime="2021-03-31T15:15:06.000Z" itemprop="datePublished">2021-03-31</time>
 </a>
 
@@ -271,7 +271,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2021/03/31/go协程整理/">go协程整理</a>
+      <a class="article-title" href="/2021/03/31/goroutine整理/">goroutine整理</a>
     </h1>
   
 
@@ -282,7 +282,7 @@
       
           
         <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>虽然写了不少go的代码了，但是对于go本身的了解还处于比较片面的阶段，因此在后续几天内打算将基础慢慢补回来。</p>
-<p>就从go的协程部分开始整理吧</p>
+<p>就从goroutine部分开始整理吧</p>
 <h1 id="什么是协程"><a href="#什么是协程" class="headerlink" title="什么是协程"></a>什么是协程</h1><h2 id="多核的流行"><a href="#多核的流行" class="headerlink" title="多核的流行"></a>多核的流行</h2><p>由于单核性能提升的成本越来越高，出于性能和成本的考虑，多核心逐渐成为主流。但虽然硬件上多核已经有了实现，能充分利用多核特性的程序比例仍然比较小。</p>
 <h2 id="进程、线程、协程"><a href="#进程、线程、协程" class="headerlink" title="进程、线程、协程"></a>进程、线程、协程</h2><p>多进程、线程或协程都可以利用多核心的特性，但是他们具有不同的特点：</p>
 <p>进程是资源分配的最小单位，同一时间执行的进程数不会超过核心数目，由于进程的上下文切换需要切换页目录、内核栈和硬件上下文，其上下文切换开销较高。同时页缓存的切换会导致cache失效，使得cache的命中率降低。</p>
