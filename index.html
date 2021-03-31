@@ -252,6 +252,307 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-go协程整理" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2021/03/31/go协程整理/" class="article-date">
+      <time datetime="2021-03-31T15:15:06.000Z" itemprop="datePublished">2021-03-31</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/03/31/go协程整理/">go协程整理</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>虽然写了不少go的代码了，但是对于go本身的了解还处于比较片面的阶段，因此在后续几天内打算将基础慢慢补回来。</p>
+<p>就从go的协程部分开始整理吧</p>
+<h1 id="什么是协程"><a href="#什么是协程" class="headerlink" title="什么是协程"></a>什么是协程</h1><h2 id="多核的流行"><a href="#多核的流行" class="headerlink" title="多核的流行"></a>多核的流行</h2><p>由于单核性能提升的成本越来越高，出于性能和成本的考虑，多核心逐渐成为主流。但虽然硬件上多核已经有了实现，能充分利用多核特性的程序比例仍然比较小。</p>
+<h2 id="进程、线程、协程"><a href="#进程、线程、协程" class="headerlink" title="进程、线程、协程"></a>进程、线程、协程</h2><p>多进程、线程或协程都可以利用多核心的特性，但是他们具有不同的特点：</p>
+<p>进程是资源分配的最小单位，同一时间执行的进程数不会超过核心数目，由于进程的上下文切换需要切换页目录、内核栈和硬件上下文，其上下文切换开销较高。同时页缓存的切换会导致cache失效，使得cache的命中率降低。</p>
+<p>线程上下文切换不需要切换页目录（虚拟内存空间相同），而只需要切换内核栈和硬件上下文，因此其开销低于进程，相对来说更加轻量。多核中线程一般是利用开发者接口，由内核完成到处理器的映射，实现并行。但由于内核栈和硬件上下文的切换仍然需要操作系统协助，需要陷入内核态，因此依旧存在一定开销。</p>
+<p>协程占用资源小，由用户进行调度（内核无感知），因此不必陷入内核中（没有内核上下文切换）。由于通常情况下用户调度会使用比线程更轻量的上下文（通常是更少的寄存器和动态大小的栈），因此创建开销以及上下文切换开销会比线程更低。除此之外，同一线程上的协程不会出现写变量冲突（因为它们本身就不会同时执行），因此控制共享资源不必加锁而只要判断状态。</p>
+<h2 id="如何根据情况来使用"><a href="#如何根据情况来使用" class="headerlink" title="如何根据情况来使用"></a>如何根据情况来使用</h2><p>多进程（稳定性）：由于进程通常各用独立的内存区间，进程的崩溃不会影响到其它进程的运行，因此具有更好的稳定性，相比之下线程和协程的崩溃会导致进程崩溃，进而影响到同进程下的其它线程或协程（因为它们共享相同的资源）。</p>
+<p>多线程（并行计算任务）：多核处理器情况下，并行依靠线程，由内核完成线程到处理器映射的。协程的轻量化设计是为了降低上下文切换开销，并不会在并行计算上带来优势（同一线程上的协程同时只会有一个在执行，因此单线程上开大量协程并不能提高计算的并行度）。更加轻量的上下位在计算过程可能反而引起额外开销（动态栈或共享栈的设计引发的额外栈检查、栈内存分配和栈内存复制操作等）</p>
+<p>协程（阻塞频繁的任务）：不必进入内核态和更轻量的上下文使其在面临阻塞的时候被调度的开销更低，因此当任务存在大量频繁的阻塞和唤起时，协程的开销会小于线程（提高了并发度，而非并行度）。同时由于同线程内的协程不会出现写变量冲突。</p>
+<p>三者的使用中就个人理解：进程倾向于隔离（安全性），线程倾向于并行，而协程倾向于异步。</p>
+<h1 id="协程的特点"><a href="#协程的特点" class="headerlink" title="协程的特点"></a>协程的特点</h1><p>综上总结之后，协程的特点如下：</p>
+<ul>
+<li>由用户自己进行调度，减少上下文切换，提高效率</li>
+<li>栈更小，在同内存中可以比线程开启更多的数量</li>
+<li>协程在同一线程上，可以避免竞争关系而使用锁</li>
+<li>适用于被阻塞且需要大量并发的场景，但不适用于大量计算并发场景，计算型场景更适合使用线程实现</li>
+</ul>
+<h1 id="goroutine"><a href="#goroutine" class="headerlink" title="goroutine"></a>goroutine</h1><p>goroutine有些类似于协程，但它不像是nodejs那种单线程下的携程，它是基于内核线程上的轻量抽象，使用GMP模型抽象（下详述）。</p>
+<p>goroutine的调度方式是协同式的，在协同式调度中，没有时间片的概念。为了并行执行goroutine，调度器会在以下几个时间点对其进行切换：</p>
+<ul>
+<li>Channel接收或者发送会造成阻塞的消息</li>
+<li>当一个新的goroutine被创建时</li>
+<li>可以造成阻塞的系统调用，如文件和网络操作</li>
+<li>垃圾回收</li>
+</ul>
+<p>尽管调度方式是协同式的，但是go考虑到协程饿死的情况，针对其抢占机制（详见参考资料《Implemention of golang》），同时由于我们不能保证goroutine全都在同一个线程上，因此它不具有协程中不会引起冲突的特点，开发时我们仍需要考虑临界区等因素。</p>
+<p>相比nodejs的回调函数方式解决异步的处理方式带来的繁杂嵌套，golang使用了goroutine+channel的设计思路，让异步代码编写时能以一种更加线性的思维来完成，降低了开发人员的精神负担。</p>
+<h1 id="GMP模型"><a href="#GMP模型" class="headerlink" title="GMP模型"></a>GMP模型</h1><p>Golang的调度器中存在三个概念：</p>
+<ul>
+<li>Processor（P）</li>
+<li>OSThread（M）</li>
+<li>Goroutines（G）</li>
+</ul>
+<p>详情待续，也可参考参考资料中《Go的并发机制：线程模型》</p>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><h2 id="待看"><a href="#待看" class="headerlink" title="待看"></a>待看</h2><p><a href="https://www.jianshu.com/p/8063a82edf0e" target="_blank" rel="noopener">Go的并发机制：线程模型</a><br><a href="https://docs.google.com/document/d/1wAaf1rYoM4S4gtnPh0zOlGzWtrZFQ5suE8qr2sD8uWQ/pub" target="_blank" rel="noopener">golang设计文档</a></p>
+<h2 id="已参考"><a href="#已参考" class="headerlink" title="已参考"></a>已参考</h2><p><a href="https://www.jianshu.com/p/80bde972196d" target="_blank" rel="noopener">进程、线程、协程</a><br><a href="https://blog.csdn.net/liyangxueit/article/details/108510518" target="_blank" rel="noopener">进程、线程上下文切换的开销</a><br><a href="http://c.biancheng.net/view/5154.html" target="_blank" rel="noopener">多进程编程和多线程编程优缺点</a><br><a href="https://www.oschina.net/news/78542/how-wechat-support-800-million-users-by-libco" target="_blank" rel="noopener">微信libco协程介绍</a><br><a href="https://zhuanlan.zhihu.com/p/74047342" target="_blank" rel="noopener">Golang协程详解和应用</a><br><a href="https://www.cnblogs.com/liang1101/p/7285955.html" target="_blank" rel="noopener">Golang 之协程详解</a><br><a href="https://blog.csdn.net/weixin_30851867/article/details/101808108" target="_blank" rel="noopener">Go语言中Goroutine与线程的区别</a><br><a href="https://cloud.tencent.com/developer/article/1573101" target="_blank" rel="noopener">Go语言程序设计 读书笔记</a><br><a href="https://segmentfault.com/a/1190000010634291" target="_blank" rel="noopener">Go语言的栈空间管理</a><br><a href="https://colobu.com/2020/12/20/threads-in-go-runtime/" target="_blank" rel="noopener">Go 运行程序中的线程数</a><br><a href="https://tracymacding.gitbooks.io/implementation-of-golang/content/" target="_blank" rel="noopener">Implemention of golang</a></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/go/">go</a>
+    </div>
+
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-cgo中向C部分函数传入go的slice" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/05/10/cgo中向C部分函数传入go的slice/" class="article-date">
+      <time datetime="2020-05-10T14:01:36.000Z" itemprop="datePublished">2020-05-10</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/10/cgo中向C部分函数传入go的slice/">cgo中向C部分函数传入go的slice</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>注意事项：</p>
+<p>传入C函数中的slice需要以<code>&amp;array[0]</code>的形式进行，而不能单纯使用<code>&amp;array</code>，因为go中的slice数据结构不仅仅具有首地址。</p>
+<h2 id="类型对应表"><a href="#类型对应表" class="headerlink" title="类型对应表"></a>类型对应表</h2><table>
+<thead>
+<tr>
+<th>type</th>
+<th>C</th>
+<th>go</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>char</td>
+<td>C.char</td>
+<td>byte</td>
+</tr>
+<tr>
+<td>signed</td>
+<td>C.schar</td>
+<td>int8</td>
+</tr>
+<tr>
+<td>unsigned char</td>
+<td>C.uchar</td>
+<td>uint8</td>
+</tr>
+<tr>
+<td>short int</td>
+<td>C.short</td>
+<td>int16</td>
+</tr>
+<tr>
+<td>short unsigned int</td>
+<td>C.ushort</td>
+<td>uint16</td>
+</tr>
+<tr>
+<td>int</td>
+<td>C.int</td>
+<td>int</td>
+</tr>
+<tr>
+<td>unsigned int</td>
+<td>C.uint</td>
+<td>uint32</td>
+</tr>
+<tr>
+<td>long int</td>
+<td>C.long</td>
+<td>int32/int64</td>
+</tr>
+<tr>
+<td>long unsigned int</td>
+<td>C.ulong</td>
+<td>uint32/uint64</td>
+</tr>
+<tr>
+<td>long long int</td>
+<td>C.longlong</td>
+<td>int64</td>
+</tr>
+<tr>
+<td>long long unsigned int</td>
+<td>C.ulonglong</td>
+<td>uint64</td>
+</tr>
+<tr>
+<td>float</td>
+<td>C.float</td>
+<td>float32</td>
+</tr>
+<tr>
+<td>double</td>
+<td>C.double</td>
+<td>float64</td>
+</tr>
+<tr>
+<td>wchar_t</td>
+<td>C.wchar_t</td>
+<td></td>
+</tr>
+<tr>
+<td>void *</td>
+<td>unsafe.Pointer</td>
+</tr>
+</tbody>
+</table>
+<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">struct test_t&#123;</span></span><br><span class="line"><span class="comment">	int a;</span></span><br><span class="line"><span class="comment">&#125;;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">void setInt(void *t)&#123;</span></span><br><span class="line"><span class="comment">	unsigned long *arr = (unsigned long *)t;</span></span><br><span class="line"><span class="comment">	for(int i=0;i&lt;10;i++)&#123;</span></span><br><span class="line"><span class="comment">		arr[i] = i;</span></span><br><span class="line"><span class="comment">	&#125;</span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">void setTest(void *t)&#123;</span></span><br><span class="line"><span class="comment">	struct test_t *m = (struct test_t *)t;</span></span><br><span class="line"><span class="comment">	m-&gt;a = 10;</span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="comment">// #cgo 386 CFLAGS: -DX86=1</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">"C"</span></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">	<span class="string">"unsafe"</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> test <span class="keyword">struct</span> &#123;</span><br><span class="line">	a <span class="keyword">int</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	arr := <span class="built_in">make</span>([]C.ulong, <span class="number">10</span>)</span><br><span class="line">	t := test&#123;&#125;</span><br><span class="line">	C.setInt(unsafe.Pointer(&amp;arr[<span class="number">0</span>]))</span><br><span class="line">	C.setTest(unsafe.Pointer(&amp;t))</span><br><span class="line">	fmt.Println(arr)</span><br><span class="line">	fmt.Println(t)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/go/">go</a>
+    </div>
+
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="w-Python爬虫" class="article article-type-w" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2020/03/27/Python爬虫/" class="article-date">
+      <time datetime="2020-03-27T11:01:53.000Z" itemprop="datePublished">2020-03-27</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/27/Python爬虫/">爬虫</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>前端保存结构代码（代码源于网络）<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span> (<span class="params">console</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.save = <span class="function"><span class="keyword">function</span> (<span class="params">data, filename</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!data) &#123;</span><br><span class="line">            <span class="built_in">console</span>.error(<span class="string">'Console.save: No data'</span>)</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (!filename) filename = <span class="string">'console.json'</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">typeof</span> data === <span class="string">"object"</span>) &#123;</span><br><span class="line">            data = <span class="built_in">JSON</span>.stringify(data, <span class="literal">undefined</span>, <span class="number">4</span>)</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">var</span> blob = <span class="keyword">new</span> Blob([data], &#123; <span class="attr">type</span>: <span class="string">'text/ json'</span> &#125;),</span><br><span class="line">            e = <span class="built_in">document</span>.createEvent(<span class="string">'MouseEvents'</span>),</span><br><span class="line">            a = <span class="built_in">document</span>.createElement(<span class="string">'a'</span>)</span><br><span class="line">        a.download = filename</span><br><span class="line">        a.href = <span class="built_in">window</span>.URL.createObjectURL(blob)</span><br><span class="line">        a.dataset.downloadurl = [<span class="string">'text / json'</span>, a.download, a.href].join(<span class="string">': '</span>)</span><br><span class="line">        e.initMouseEvent(<span class="string">'click'</span>, <span class="literal">true</span>, <span class="literal">false</span>, <span class="built_in">window</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="literal">false</span>, <span class="literal">false</span>, <span class="literal">false</span>, <span class="literal">false</span>, <span class="number">0</span>, <span class="literal">null</span>)</span><br><span class="line">        a.dispatchEvent(e)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)(<span class="built_in">console</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用方法：console.save(obj)</span></span><br></pre></td></tr></table></figure></p>
+<p>Python爬取的编码转换</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"><span class="comment"># 获取当前网站编码并转换</span></span><br><span class="line">r = requests.get(website)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取当前网站编码并转换</span></span><br><span class="line"><span class="keyword">if</span> r.encoding == <span class="string">'ISO-8859-1'</span>:</span><br><span class="line">    encodings = requests.utils.get_encodings_from_content(r.text)</span><br><span class="line">    <span class="keyword">if</span> encodings:</span><br><span class="line">        encoding = encodings[<span class="number">0</span>]</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        encoding = r.apparent_encoding</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    encoding = r.encoding</span><br><span class="line">encode_content = r.content.decode(</span><br><span class="line">    encoding, <span class="string">'replace'</span>).encode(<span class="string">'utf-8'</span>, <span class="string">'replace'</span>)</span><br><span class="line">soup = BeautifulSoup(encode_content, features=<span class="string">"html.parser"</span>)</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-HyperV与其它虚拟机的冲突" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -724,201 +1025,6 @@
 
 
   
-    <article id="post-influxdb相关" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2020/03/10/influxdb相关/" class="article-date">
-      <time datetime="2020-03-10T10:08:53.000Z" itemprop="datePublished">2020-03-10</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/10/influxdb相关/">influxdb相关</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p><a href="https://docs.influxdata.com/influxdb/v1.7/introduction/getting-started/" target="_blank" rel="noopener">https://docs.influxdata.com/influxdb/v1.7/introduction/getting-started/</a></p>
-<p>measurement是tag，time和fields的容器，每一列都是measurement</p>
-<p>tag列是字符串，在WHERE查询中，值需要用单引号</p>
-<p>没有办法只查询tag，query中必须至少存在一列field，才能查询到tag（见：<a href="https://stackoverflow.com/questions/33612506/select-only-values-from-influxdb-measurement）" target="_blank" rel="noopener">https://stackoverflow.com/questions/33612506/select-only-values-from-influxdb-measurement）</a></p>
-<p>查询时间字符串格式化</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">influx -precision rfc3339</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/influxdb/">influxdb</a>
-    </div>
-
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Gitlab相关" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2020/03/10/Gitlab相关/" class="article-date">
-      <time datetime="2020-03-10T03:58:10.000Z" itemprop="datePublished">2020-03-10</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/10/Gitlab相关/">Gitlab相关</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h1 id="CI相关"><a href="#CI相关" class="headerlink" title="CI相关"></a>CI相关</h1><p>参考：<a href="https://docs.gitlab.com/runner/install/" target="_blank" rel="noopener">https://docs.gitlab.com/runner/install/</a></p>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>K8S的CI可用helm安装：<a href="https://docs.gitlab.com/runner/install/kubernetes.html#installing-gitlab-runner-using-the-helm-chart" target="_blank" rel="noopener">https://docs.gitlab.com/runner/install/kubernetes.html#installing-gitlab-runner-using-the-helm-chart</a></p>
-<p>步骤就是下载value.yaml</p>
-<p>修改配置，主要为<code>gitlabUrl</code>,<code>gitlabUrl</code>,<code>privileged(如果跑doker)</code></p>
-<p><a href="https://docs.gitlab.com/runner/executors/kubernetes.html#using-docker-dind" target="_blank" rel="noopener">https://docs.gitlab.com/runner/executors/kubernetes.html#using-docker-dind</a></p>
-<p>用helm来应用配置安装。</p>
-<h2 id="配置相关"><a href="#配置相关" class="headerlink" title="配置相关"></a>配置相关</h2><p>CI中设置环境变量可以修改DOCKER连接的配置</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">variables:</span><br><span class="line">  DOCKER_DRIVER: </span><br><span class="line">  DOCKER_HOST:</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/gitlab/">gitlab</a>
-    </div>
-
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-情感分析尝试" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2020/03/07/情感分析尝试/" class="article-date">
-      <time datetime="2020-03-07T14:51:04.000Z" itemprop="datePublished">2020-03-07</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/07/情感分析尝试/">情感分析尝试</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>（大概率坑掉，所以可以无视）</p>
-<h2 id="数据爬取"><a href="#数据爬取" class="headerlink" title="数据爬取"></a>数据爬取</h2><p>首先是资料来源，评论非常多并且两极分化较为严重的一个事件，感觉可以作为资料</p>
-<h2 id="资料准备"><a href="#资料准备" class="headerlink" title="资料准备"></a>资料准备</h2><p><a href="https://open.weibo.com/wiki/微博API" target="_blank" rel="noopener">微博API接口</a></p>
-<p><a href="https://s.weibo.com/weibo?q=%23解读肖战风波3大法律疑问%23" target="_blank" rel="noopener">微博评论网址</a></p>
-<p>API接口不好用，也不太想怕爬虫，最后半脚本半人肉的将数据弄了出来。</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NLP/">NLP</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -930,7 +1036,7 @@
         <div id="footer-info">
             <div class="footer-left">
                 <i class="fa fa-copyright"></i> 
-                2017-2020 Wuny
+                2017-2021 Wuny
             </div>
             <div class="footer-right">
                 <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>

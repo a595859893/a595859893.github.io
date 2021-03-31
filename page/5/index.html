@@ -252,6 +252,200 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-numpy与pandas相关" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/12/14/numpy与pandas相关/" class="article-date">
+      <time datetime="2018-12-14T10:53:48.000Z" itemprop="datePublished">2018-12-14</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/14/numpy与pandas相关/">numpy与pandas相关</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>#<br><a href="https://pandas.pydata.org/" target="_blank" rel="noopener">pandas官方网站</a></p>
+<h1 id="Pandas教程资料"><a href="#Pandas教程资料" class="headerlink" title="Pandas教程资料"></a>Pandas教程资料</h1><p><a href="http://pandas.pydata.org/pandas-docs/stable/10min.html" target="_blank" rel="noopener">10 Minutes to pandas</a> <a href="http://www.cnblogs.com/chaosimple/p/4153083.html" target="_blank" rel="noopener">（中文翻译）</a></p>
+<h1 id="Pandas备忘"><a href="#Pandas备忘" class="headerlink" title="Pandas备忘"></a>Pandas备忘</h1><h2 id="DataFrame遍历"><a href="#DataFrame遍历" class="headerlink" title="DataFrame遍历"></a>DataFrame遍历</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> index, row <span class="keyword">in</span> data.iterrows():</span><br><span class="line">    <span class="keyword">pass</span> <span class="comment">#做点什么</span></span><br></pre></td></tr></table></figure>
+<h2 id="DataFrame-缺失值填充"><a href="#DataFrame-缺失值填充" class="headerlink" title="DataFrame 缺失值填充"></a>DataFrame 缺失值填充</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DataFrame.fillna()</span><br></pre></td></tr></table></figure>
+<h2 id="链式法则问题"><a href="#链式法则问题" class="headerlink" title="链式法则问题"></a>链式法则问题</h2><p>报<code>SettingWithCopyWarning</code>错误的<strong>链式赋值</strong>语句转而使用<code>.loc</code><strong>一次性定位</strong>完毕后再赋值</p>
+<p><a href="https://blog.csdn.net/haolexiao/article/details/81180571" target="_blank" rel="noopener">参考资料</a></p>
+<h1 id="个人需要注意的"><a href="#个人需要注意的" class="headerlink" title="个人需要注意的"></a>个人需要注意的</h1><p><a href="https://jingyan.baidu.com/article/93f9803fe29aece0e46f55cb.html" target="_blank" rel="noopener">Pandas填充缺失值</a></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-关于影印店病毒" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/12/05/关于影印店病毒/" class="article-date">
+      <time datetime="2018-12-05T15:02:23.000Z" itemprop="datePublished">2018-12-05</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/05/关于影印店病毒/">关于影印店病毒</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>跑了各种打印店，结果U盘一插上去总是中这个病毒<br>第一次的时候导致作业没办法按时交上去<br>后面虽然知道怎么解决了，这东西还是导致为了处理这货上课迟到了不少次<br>无法忍受后决定好好研究一番，看看能不能从根源上解决这个问题</p>
+<p>不过在行动之前，先记录下如果被病毒隐藏了文件后怎么恢复<br>打开命令行，转至U盘所在，输入下面命令<br><code>attrib -s -h /s /d</code><br>即依靠<code>/s</code>递归取消<code>系统文件(-s)</code>和<code>隐藏文件(-h)</code>属性</p>
+<h1 id="目前进度"><a href="#目前进度" class="headerlink" title="目前进度"></a>目前进度</h1><p>由于是最后一次感染病毒萌生了这个想法<br>之前看了看快捷方式，大概猜测到了可能的方式是通过快捷方式执行一个vbs程序<br>所以最后一次感染的时候并没有立即处理，而是关掉了反病毒软件，保留了病毒的vbs文件<br>打开源码好好看了下</p>
+<p>相当混乱的代码<br>虽然没有学过vbs，不过大体上连蒙带猜外加百度推出了一些东西<br>然后推到一半发现这个病毒似乎早就有人已经在网上分析过了<br><a href="https://moozik.cn/archives/297/" target="_blank" rel="noopener">网址在这</a></p>
+<p>对比了明文并且并且解析了下加密部分，似乎连代码都没有变过……<br>感觉就是一个相当古老的病毒在打印店里的古老样本<br>虽然存在各种后门，但是后门的IP都ping不通了<br>~（一个大胆的想法， 如果将后门网址的域名购买了的话……）~<br>（查了下域名，似乎都是在被使用的……）</p>
+<h1 id="暂坑"><a href="#暂坑" class="headerlink" title="暂坑"></a>暂坑</h1>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-Anaconda相关" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/10/26/Anaconda相关/" class="article-date">
+      <time datetime="2018-10-25T16:06:14.000Z" itemprop="datePublished">2018-10-26</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/26/Anaconda相关/">Anaconda相关</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="镜像"><a href="#镜像" class="headerlink" title="镜像"></a>镜像</h1><p>为解决部分安装包无法下载的问题</p>
+<p><a href="https://mirrors.tuna.tsinghua.edu.cn/help/anaconda/" target="_blank" rel="noopener">清华大学开源镜像站</a></p>
+<h1 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h1><p><code>conda create -n env_name [list of packages]</code> 创建新的虚拟环境(参数<code>python=3</code>或<code>python=2</code>指定版本)</p>
+<p><code>conda env remove -n env_name</code> 移除虚拟环境</p>
+<p><code>conda env list</code> 列出当前虚拟环境表</p>
+<p><code>conda activate env_name</code> 激活环境</p>
+<p><code>conda install package_name</code> 安装包</p>
+<p><code>conda upgrade --all</code>更新所有包</p>
+<p>更多参考：<br><a href="https://www.jianshu.com/p/169403f7e40c" target="_blank" rel="noopener">Anaconda入门使用指南</a><br><a href="http://www.cnblogs.com/harvey888/p/5465452.html" target="_blank" rel="noopener">Anaconda多环境多版本python配置指导</a></p>
+<h2 id="常用包"><a href="#常用包" class="headerlink" title="常用包"></a>常用包</h2><p>pandas tensorflow keras tushare flake8 numpy</p>
+<p>opencv(需要指令<code>conda install -c conda-forge opencv</code>)<br>torch(指令见<a href="https://pytorch.org/" target="_blank" rel="noopener">https://pytorch.org/</a>)</p>
+<p>如何在多版本anaconda python环境下转换spyder？ - 王浩的回答 - 知乎<br><a href="https://www.zhihu.com/question/49144687/answer/165033340" target="_blank" rel="noopener">https://www.zhihu.com/question/49144687/answer/165033340</a></p>
+<p>spyder相关（黑色背景和anconda环境）<br><a href="https://www.cnblogs.com/studyzen/p/7889534.html" target="_blank" rel="noopener">黑色背景</a><br><a href="https://www.cnblogs.com/xingshansi/p/6725298.html" target="_blank" rel="noopener">anaconda环境</a><br><a href="https://blog.csdn.net/weixin_39278265/article/details/83757603" target="_blank" rel="noopener">打开速度</a><br><a href="https://www.zhihu.com/question/278838622" target="_blank" rel="noopener">https://www.zhihu.com/question/278838622</a><br><a href="https://www.cnblogs.com/283383765pw/articles/9974857.html" target="_blank" rel="noopener">https://www.cnblogs.com/283383765pw/articles/9974857.html</a></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/python/">python</a><a class="article-category-link" href="/categories/python/AI/">AI</a><a class="article-category-link" href="/categories/python/AI/NeuralNetwork/">NeuralNetwork</a><a class="article-category-link" href="/categories/python/AI/NeuralNetwork/anaconda/">anaconda</a><a class="article-category-link" href="/categories/python/AI/NeuralNetwork/anaconda/tips/">tips</a>
+    </div>
+
+
+      
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-神经科学学习随意记录" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -920,233 +1114,6 @@
 
 
   
-    <article id="post-机器学习的工具、文档以及资料记录" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/08/23/机器学习的工具、文档以及资料记录/" class="article-date">
-      <time datetime="2018-08-23T11:54:59.000Z" itemprop="datePublished">2018-08-23</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/08/23/机器学习的工具、文档以及资料记录/">机器学习的工具、文档以及资料记录</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h1 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h1><p><a href="https://keras.io/" target="_blank" rel="noopener">keras</a>  <a href="https://keras-cn.readthedocs.io/en/latest/" target="_blank" rel="noopener">[中文]</a><br><a href="https://tushare.pro/" target="_blank" rel="noopener">Tushare Pro</a><br><a href="https://matplotlib.org/" target="_blank" rel="noopener">plt</a><br><a href="https://gym.openai.com/" target="_blank" rel="noopener">gym(openAI)</a></p>
-<h1 id="可能有用的网站"><a href="#可能有用的网站" class="headerlink" title="可能有用的网站"></a>可能有用的网站</h1><p><a href="https://colab.research.google.com/" target="_blank" rel="noopener">Colaboratory(墙)</a><br>Google的免费AI训练网站，有账号就能够在上面使用一定的资源进行计算<br>嗯……有TPU<br><a href="http://rsarxiv.github.io/" target="_blank" rel="noopener">PaperWeekly</a><br>可以看到许多不错的论文推荐之类的东西<br>不过似乎没有在更新了，最新的一篇也只是2017年的东西了<br>但是里面的东西对个人还是挺有学习价值的<br><em>修正：<a href="http://paperweek.ly/" target="_blank" rel="noopener">PaperWeekly</a>新地址，似乎在这边更新了，似乎要注册才能看</em><br><a href="https://www.fast.ai/" target="_blank" rel="noopener">fastAI</a><br>据说是个好东西？不过还没看</p>
-<h1 id="相关教程及文档"><a href="#相关教程及文档" class="headerlink" title="相关教程及文档"></a>相关教程及文档</h1><h2 id="gym"><a href="#gym" class="headerlink" title="gym"></a>gym</h2><p><a href="https://www.jianshu.com/p/cb0839a4d1d3" target="_blank" rel="noopener">https://www.jianshu.com/p/cb0839a4d1d3</a></p>
-<h2 id="plt"><a href="#plt" class="headerlink" title="plt"></a>plt</h2><p><a href="http://www.cnblogs.com/wei-li/archive/2012/05/23/2506940.html#pyplot" target="_blank" rel="noopener">http://www.cnblogs.com/wei-li/archive/2012/05/23/2506940.html#pyplot</a></p>
-<h2 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h2><p><a href="https://www.runoob.com/python/python-tutorial.html" target="_blank" rel="noopener">菜鸟基础教程</a><br>如果忽然忘了一些Python的基础操作可以在这里找<br><a href="https://www.jianshu.com/p/04d180d90a3f" target="_blank" rel="noopener">《利用Python进行数据分析·第2版》</a><br>前几章详细地介绍了numpy等工具的利用，可以用于参考</p>
-<h2 id="Keras"><a href="#Keras" class="headerlink" title="Keras"></a>Keras</h2><p><a href="https://keras-cn.readthedocs.io/en/latest/" target="_blank" rel="noopener">中文文档</a><br><a href="https://www.jianshu.com/p/6de246284f5c" target="_blank" rel="noopener">LSTM详解</a><br>因为是中文所以看着比较轻松，但是和英文相比有许多不全的地方<br>找不到或者不详尽的地方还是要看英文的文档<br><a href="https://keras.io/" target="_blank" rel="noopener">英文文档</a><br>英文，相对中文文档来说资料更全更新一些，在中文文档不够用的时候就要上了<br><a href="https://tensorflow.google.cn/" target="_blank" rel="noopener">tensorflow</a><br>含有基于keras的高级API教程和一些文档API<br>也有一些对基本模型的讨论和讲述<br>以后想要自定义keras的训练层的时候可能会需要在这里找文档<br>对于tensorflow的新功能也可以在这里多看看了解一下<br><a href="https://github.com/keras-team/keras/tree/master/examples" target="_blank" rel="noopener">官方例子</a><br>很棒的例子，代码简洁，有助于理解keras的使用和对部分网络结构的熟悉<br>不过建议只用来理解，真正做的时候看一下文档，因为部分例子里没有文档里的一些更方便的东西<br>（比如说在我写这篇的时候，seq2seq就没有使用embedding层，也没有忽略0数据<br>（不过更新似乎一直在继续，也许之后会看到更有效率的做法吧</p>
-<h1 id="基础概念"><a href="#基础概念" class="headerlink" title="基础概念"></a>基础概念</h1><h2 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h2><p><a href="https://zhuanlan.zhihu.com/p/34667893" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/34667893</a><br><a href="https://blog.csdn.net/u010312436/article/details/78449632" target="_blank" rel="noopener">https://blog.csdn.net/u010312436/article/details/78449632</a></p>
-<h1 id="模型"><a href="#模型" class="headerlink" title="模型"></a>模型</h1><p><a href="https://www.zybuluo.com/hanbingtao/note/433855" target="_blank" rel="noopener">零基础入门深度学习</a></p>
-<h2 id="RNN"><a href="#RNN" class="headerlink" title="RNN"></a>RNN</h2><p><a href="https://www.jianshu.com/p/75eeaee7f67d" target="_blank" rel="noopener">简要介绍</a></p>
-<h2 id="seq2seq"><a href="#seq2seq" class="headerlink" title="seq2seq"></a>seq2seq</h2><p><a href="http://rsarxiv.github.io/2016/05/31/Sequence-to-Sequence-Learning-with-Neural-Networks-PaperWeekly/" target="_blank" rel="noopener">Sequence to Sequence Learning with Neural Networks</a><br>关于seq2seq的介绍</p>
-<p><a href="http://rsarxiv.github.io/2016/06/01/Learning-Phrase-Representations-using-RNN-Encoder–Decoder-for-Statistical-Machine-Translation-PaperWeekly/" target="_blank" rel="noopener">Learning Phrase Representations using RNN Encoder–Decoder for Statistical Machine Translation</a><br>里面涉及到的原论文中给出了GRU单元的算法以及概率的计算，可以较为清楚地了解GRU这个东西，还有seq2seq的原理</p>
-<p><a href="https://github.com/Lsdefine/attention-is-all-you-need-keras/blob/master/rnn_s2s.py" target="_blank" rel="noopener">attention-is-all-you-need-keras</a><br>含有自定义程度较高的keras的seq2seq实现</p>
-<h2 id="attention"><a href="#attention" class="headerlink" title="attention"></a>attention</h2><p><a href="https://arxiv.org/pdf/1409.0473.pdf" target="_blank" rel="noopener">NEURAL MACHINE TRANSLATION BY JOINTLY LEARNING TO ALIGN AND TRANSLATE</a><br>关于注意力模型的论文<br><a href="https://zhuanlan.zhihu.com/p/21287807" target="_blank" rel="noopener">知乎上对论文的中文介绍和理解</a></p>
-<p><a href="https://blog.csdn.net/malefactor/article/details/50550211" target="_blank" rel="noopener">自然语言处理中的Attention Model：是什么及为什么</a><br>将引入注意力模型的原因和详细的解释一步步的说了出来，很清晰</p>
-<p><a href="https://zhuanlan.zhihu.com/p/37835894" target="_blank" rel="noopener">attention模型方法综述</a></p>
-<p><a href="http://ruder.io/deep-learning-nlp-best-practices/" target="_blank" rel="noopener">deep-learning-nlp-best-practices</a><br>比较全面的介绍</p>
-<p><a href="https://blog.csdn.net/malefactor/article/details/50583474" target="_blank" rel="noopener">以Attention Model为例谈谈两种研究创新模式</a><br>对注意力模型的总结回顾和拓展</p>
-<p><a href="https://blog.csdn.net/mpk_no1/article/details/72862348" target="_blank" rel="noopener">深度学习笔记——Attention Model（注意力模型）学习总结</a></p>
-<p><a href="https://github.com/Xls1994/CDRextraction" target="_blank" rel="noopener">CDRextraction</a><br>似乎含有keras的attentionLayer实现</p>
-<p><a href="https://arxiv.org/pdf/1706.03762.pdf" target="_blank" rel="noopener">AttentionIsAllYouNeed</a><br>不含有RNN和CNN的纯粹注意力模型论文<br>keras实践：<a href="https://github.com/Lsdefine/attention-is-all-you-need-keras/blob/master/transformer.py" target="_blank" rel="noopener">attention-is-all-you-need-keras </a><br>可能需要的参考：<br><a href="https://arxiv.org/pdf/1607.06450v1.pdf" target="_blank" rel="noopener">Layer Normalization</a><br><a href="https://www.zhihu.com/question/48820040" target="_blank" rel="noopener">你是怎样看待刚刚出炉的 Layer Normalisation 的？</a></p>
-<h2 id="GAN"><a href="#GAN" class="headerlink" title="GAN"></a>GAN</h2><p>待填</p>
-<h2 id="知识图谱"><a href="#知识图谱" class="headerlink" title="知识图谱"></a>知识图谱</h2><p><a href="https://zhuanlan.zhihu.com/p/41637843" target="_blank" rel="noopener">《知识图谱》专题论文解读</a><br>还没看，之后评价</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/AI/">AI</a><a class="article-category-link" href="/categories/AI/NeuralNetwork/">NeuralNetwork</a>
-    </div>
-
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-无脑邮件服务器" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/07/20/无脑邮件服务器/" class="article-date">
-      <time datetime="2018-07-20T13:46:30.000Z" itemprop="datePublished">2018-07-20</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/20/无脑邮件服务器/">无脑邮件服务器</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>参考资料：<br><a href="https://www.itmanbu.com/docker-mail-server.html" target="_blank" rel="noopener">利用Docker自建多功能加密邮件服务器</a><br><a href="https://github.com/tomav/docker-mailserver" target="_blank" rel="noopener">docker-mailserver git网址</a><br><a href="https://github.com/tomav/docker-mailserver/wiki/Installation-Examples" target="_blank" rel="noopener">Installation-Examples</a></p>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>(安装docker的指令不太确定,如果不行的话上网找吧)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update &amp;&amp; \</span><br><span class="line">sudo apt install docker -y &amp;&amp; \</span><br><span class="line">sudo apt install docker-compose -y &amp;&amp; \</span><br><span class="line">sudo apt install dovecot-core -y &amp;&amp; \</span><br><span class="line">sudo apt-get install software-properties-common -y  &amp;&amp; \</span><br><span class="line">sudo add-apt-repository ppa:certbot/certbot</span><br><span class="line"></span><br><span class="line">sudo apt-get update &amp;&amp; \</span><br><span class="line">sudo apt-get install certbot -y</span><br></pre></td></tr></table></figure></p>
-<h2 id="拉取配置文件"><a href="#拉取配置文件" class="headerlink" title="拉取配置文件"></a>拉取配置文件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">curl -o setup.sh https://raw.githubusercontent.com/tomav/docker-mailserver/master/setup.sh; chmod a+x ./setup.sh</span><br><span class="line">curl -o docker-compose.yml https://raw.githubusercontent.com/tomav/docker-mailserver/master/docker-compose.yml.dist</span><br><span class="line">curl -o .env https://raw.githubusercontent.com/tomav/docker-mailserver/master/.env.dist</span><br></pre></td></tr></table></figure>
-<p>hostname和domainname最终要拼成主机名<br>port加入465<br>修改拉取后的.env文件进行配置，配置属性详情<a href="https://github.com/tomav/docker-mailserver" target="_blank" rel="noopener">见此</a><br>docker-compose中也需要修改volume的映射位置，包括文件存储位置和证书位置（如加入’/etc/letsencrypt:/etc/letsencrypt’）</p>
-<h2 id="启动容器进行初始化"><a href="#启动容器进行初始化" class="headerlink" title="启动容器进行初始化"></a>启动容器进行初始化</h2><p><code>docker-compose up -d mail</code></p>
-<p>可能出现的错误：<code>Couldn&#39;t connect to Docker daemon at http+docker://localunixsocket - is it running?</code><br>若存在上述错误，尝试将用户加入docker组，然后重启终端<br><code>sudo gpasswd -a ${USER} docker</code>)</p>
-<h2 id="DNS域名解析："><a href="#DNS域名解析：" class="headerlink" title="DNS域名解析："></a>DNS域名解析：</h2><p><code>sudo ./setup.sh config dkim</code><br>如果未出现config文件夹，可能需要先添加一个账户后重试<br>生成的字符串长度可以在dkim后面增加参数（如<code>sudo ./setup.sh config dkim 200</code>）进行限制</p>
-<p>复制config/opendkim/keys/domain.tld/mail.txt下内容，将引号内字符串拼接后用于设置DNS<br>类型为TXT，记录名为mail._domainkey，记录值为拼接后字符串<br>类型为MX，记录名为@，记录值”mail.(你的域名)”(如”mail.abc.cn”,下面的域名以此为例)<br>类型为A，记录名为mail，记录值为(服务器的IP)</p>
-<h2 id="证书-域名以”mail-abc-cn”-为例"><a href="#证书-域名以”mail-abc-cn”-为例" class="headerlink" title="证书(域名以”mail.abc.cn”,为例)"></a>证书(域名以”mail.abc.cn”,为例)</h2><p><code>certbot certonly --standalone -d mail.abc.cn</code><br>之后会要求你输入邮箱来获取安全信息等，填入邮箱即可。还会问你是否接受推送，这个看个人意愿选择吧。</p>
-<p>证书续期<br><code>crontab -e</code>打开定时任务设置面板，按i进入编辑模式，粘贴进这段代码即：<br><code>0 5 * * 1 /usr/bin/certbot renew --quiet</code><br>可每周一凌晨5点0分给证书续期</p>
-<h2 id="注册邮箱-邮箱名字以”wuny-abc-cn“为例-密码以yourpassword为例"><a href="#注册邮箱-邮箱名字以”wuny-abc-cn“为例-密码以yourpassword为例" class="headerlink" title="注册邮箱(邮箱名字以”wuny@abc.cn“为例,密码以yourpassword为例)"></a>注册邮箱(邮箱名字以”<a href="mailto:wuny@abc.cn" target="_blank" rel="noopener">wuny@abc.cn</a>“为例,密码以yourpassword为例)</h2><p>sudo ./setup.sh email add <a href="mailto:wuny@abc.cn" target="_blank" rel="noopener">wuny@abc.cn</a> yourpassword</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Server/">Server</a>
-    </div>
-
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-C-COM组件编写，并在C-上运行" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2018/06/02/C-COM组件编写，并在C-上运行/" class="article-date">
-      <time datetime="2018-06-02T07:07:47.000Z" itemprop="datePublished">2018-06-02</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/02/C-COM组件编写，并在C-上运行/">C# COM组件编写，并在C++上运行</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>本篇文章使用的是<em>VS2017</em>，故以下内容操作均以<em>VS2017</em>版本为例子<br>部分代码在写本篇文章时与测试时所用代码略有不同，所以不保证能够生效<br>参考资料：<br><a href="https://blog.csdn.net/weiwenhp/article/details/7640936" target="_blank" rel="noopener">C++调用C# com组件:一个完整的的小例子</a><br><a href="http://www.cnblogs.com/JessieDong/archive/2009/07/21/1527632.html" target="_blank" rel="noopener">ClassInterface</a></p>
-<hr>
-<h1 id="新建并配置项目"><a href="#新建并配置项目" class="headerlink" title="新建并配置项目"></a>新建并配置项目</h1><p>新建一个<code>Visual C#/类库(.NET FrameWork)</code>项目，此处以<code>ComTest</code>作为项目名为例<br>在<em>解决方案资源管理器</em>中找到<code>ComTest/Properties/AssemblyInfo.cs</code>，将内部的<code>[assembly: ComVisible(false)]</code>由false改为true<br>打开<code>项目 - 属性</code>，在<code>生成 - 输出</code>中勾选”生成序列化程序集”</p>
-<blockquote>
-<p>可选：勾选<code>签名 - 为程序集签名</code>然后选择强名称密钥文件(方面起见本人测试时使用的是新建的,未勾选”使用密码保护密钥文件”的)</p>
-</blockquote>
-<hr>
-<h1 id="编写注意事项"><a href="#编写注意事项" class="headerlink" title="编写注意事项"></a>编写注意事项</h1><p>##1、C++调用com组件中所有的功能<em>只能通过接口</em>来调用<br>    因此我们需要为暴露出来的类写一个<em>public接口</em>(通常接口名为”类名加上I前缀”)<br>    该接口需要有属性<code>[ComVisible(true)]</code></p>
-<p>##3、需要为类和上述接口添加<a href="https://msdn.microsoft.com/zh-cn/library/system.guid(v=vs.80" target="_blank" rel="noopener">GUID</a>.aspx)<br>    GUI的生成可以在VS的<code>工具 - 创建GUID</code>栏中生成，格式为[GUID(“xxxxxxx-xxxx … xxxx”)]</p>
-<p>生产环境卸下，建议</p>
-<p>##1、接口的方法有属性<code>[DispId(X)]//X为不重复的整数</code></p>
-<p>##2、类有属性<code>[ClassInterface(ClassInterfaceType.None)]</code></p>
-<p>代码例子如下：<br><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> System.Runtime.InteropServices;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">ComTest</span></span><br><span class="line">&#123;</span><br><span class="line">    [<span class="meta">ComVisible(true)</span>]</span><br><span class="line">    [<span class="meta">Guid(<span class="meta-string">"80EB95B3-62C5-4469-B897-81BFA9D33447"</span>)</span>]</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">interface</span> <span class="title">ITestClass</span></span><br><span class="line">    &#123;</span><br><span class="line">        [<span class="meta">DispId(1)</span>]</span><br><span class="line">        <span class="function"><span class="keyword">int</span> <span class="title">Add</span>(<span class="params"><span class="keyword">int</span> x, <span class="keyword">int</span> y</span>)</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    [<span class="meta">Guid(<span class="meta-string">"8FEBFADA-8442-4C50-A7FE-B788633EED8B"</span>)</span>]</span><br><span class="line">    [<span class="meta">ClassInterface(ClassInterfaceType.None)</span>]</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">class</span> <span class="title">TestClass</span> : <span class="title">ITestClass</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">Add</span>(<span class="params"><span class="keyword">int</span> x, <span class="keyword">int</span> y</span>)</span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> x + y;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<hr>
-<p>#编译和注册COM组件<br>通过<code>生成 - 生成ComTest</code>即可编译生成dll、tlb、pdb文件<br>由于VS在生成dll是会自动将代码注册至编译电脑，故COM组件的注册忽略，详情可见上方参考资料</p>
-<p>#在C++中使用<br>将生成的dll、tlb、pdb<em>全部导入</em>C++项目中(导入后可能需要重新生成解决方案来更新引用，解决报错问题)<br>使用<code>#import &quot;.\ComTest.tlb&quot; named_guids raw_interfaces_only</code>进行引用，引用路径取决于三个文件在项目文件夹中的位置<br>通过<code>CoInitialize(NULL)</code>初始化COM组件<br>通过<code>ComTest::ITestClassPtr ptr;</code>创建一个类的类似指针的东西，注意<em>类型是”接口名+Ptr”</em><br>通过<code>ptr.CreateInstance(ComTest::CLSID_TestClass)</code>实例化一个类<br>(也可以通过<code>using namespace ComTest</code>省略前面的命名空间，此处的命名空间和COM组件在C#中定义的一致<br>通过<code>ptr-&gt;Add(a,b,&amp;c)</code>来调用类的方法，注意此处类型在C++中为long，而非C#中声明的int，且<em>不是通过return返回值，而是在末尾将值赋值给一个指针</em><br>(不过为什么这样资料上似乎也不太清楚)</p>
-<p>调用示例如下<br><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#include "stdafx.h"</span></span><br><span class="line"><span class="meta">#import ".\\ComTest.tlb" named_guids raw_interfaces_only</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="title">ComTest</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">long</span> a, b = <span class="number">2</span>, c = <span class="number">3</span>;</span><br><span class="line"></span><br><span class="line">	CoInitialize(NULL);</span><br><span class="line">	ITestClassPtr ptr;</span><br><span class="line">	ptr.CreateInstance(CLSID_TestClass);</span><br><span class="line">	ptr-&gt;Add(<span class="number">1</span>, <span class="number">2</span>, &amp;a);</span><br><span class="line"></span><br><span class="line">	printf_s(<span class="string">"%ld"</span>, a);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Language/">Language</a><a class="article-category-link" href="/categories/Language/C/">C#</a>
-    </div>
-
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/4/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/6/">Next &raquo;</a>
@@ -1158,7 +1125,7 @@
         <div id="footer-info">
             <div class="footer-left">
                 <i class="fa fa-copyright"></i> 
-                2017-2020 Wuny
+                2017-2021 Wuny
             </div>
             <div class="footer-right">
                 <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
